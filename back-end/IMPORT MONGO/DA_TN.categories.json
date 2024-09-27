@@ -1,0 +1,138 @@
+[{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "name": "Thiếu nhi"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c40"
+  },
+  "name": "Giáo khoa - Tham khảo"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c41"
+  },
+  "name": "Văn học"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c42"
+  },
+  "name": "Tâm lý - Kỹ năng sống"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "name": "Manga - Comic"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c44"
+  },
+  "name": "Sách học ngoại ngữ"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "name": "Kinh Tế"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "name": "Lịch Sử - Địa Lý - Tôn Giáo"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c47"
+  },
+  "name": "Khoa học kỹ thuật"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c48"
+  },
+  "name": "Nuôi Dạy Con"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c49"
+  },
+  "name": "Chính Trị - Pháp Lý - Triết Học"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c4a"
+  },
+  "name": "Tiểu Sử Hồi Ký"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c4b"
+  },
+  "name": "Đam Mỹ"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c4c"
+  },
+  "name": "Nữ Công Gia Chánh"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c4d"
+  },
+  "name": "Văn Hóa - Nghệ Thuật - Du Lịch"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c4e"
+  },
+  "name": "Phong Thủy - Kinh Dịch"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c4f"
+  },
+  "name": "Từ điển"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c50"
+  },
+  "name": "Âm Nhạc - Mỹ Thuật - Thời Trang"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c51"
+  },
+  "name": "Thể Dục Thể thao - Giải Trí"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c52"
+  },
+  "name": "Báo - Tạp Chí"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c53"
+  },
+  "name": "Giáo trình"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c54"
+  },
+  "name": "Mystery Box"
+},
+{
+  "_id": {
+    "$oid": "66e52d1113ae0384d3444c55"
+  },
+  "name": "Làm Vườn - Thú Nuôi"
+}]
