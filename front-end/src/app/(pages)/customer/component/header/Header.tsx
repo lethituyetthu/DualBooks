@@ -153,8 +153,8 @@ export default function Header() {
       <div className="menu w-full h-[130px]">
       {/* header thông tin liên hệ */}
 
-        <div className="flex justify-between text-light-100 items-center h-[50px] bg-primary-400 w-full ">
-          <ul className="flex w-[70%]">
+        <div className="flex justify-evenly text-light-100 items-center h-[50px] bg-primary-400 w-full pr-[5rem] ">
+          <ul className="flex w-[60%]">
             {list.map((e) => {
               return (
                 <li
@@ -166,7 +166,7 @@ export default function Header() {
               );
             })}
           </ul>
-          <ul className="flex w-[30%] justify-evenly">
+          <ul className="flex w-[30%] justify-between pr-4">
             {list2.map((e) => {
               return (
                 <li key={e.title}>
@@ -183,19 +183,19 @@ export default function Header() {
         </div>
 
       {/* header menu & giỏ hàng */}
-        <nav className="flex h-[80px] bg-light-100 items-center">
-          <ul className="flex w-[80%] justify-start">
+        <nav className="flex h-[80px] bg-light-100 items-center w-full justify-evenly pr-[5rem]">
+          <ul className="flex w-[60%] justify-start">
             {list3.map((e) => {
               return (
-                <li key={e.title} className="m-6">
-                  <a href="#" className="capitalize text-lg">
+                <li key={e.title} className="mx-6 h-[100%]">
+                  <a href="#" className="capitalize text-lg h-[100%]">
                     <p>{e.title}</p>
                   </a>
                 </li>
               );
             })}
           </ul>
-          <ul className="flex">
+          <ul className="flex w-[30%] justify-end">
             {listIcon.map((e) => {
               return (
                 <li
