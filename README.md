@@ -99,7 +99,7 @@ Dự án BookStore là một ứng dụng quản lý sách trực tuyến và tr
 2. Di chuyển vào thư mục dự án:
     ```bash
     cd front-end 
-    ```bash
+    ```
     cd back-end
     ```
 4. Cài đặt các package:
