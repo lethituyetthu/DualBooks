@@ -172,7 +172,7 @@ export default function Header() {
                 <li key={e.title}>
                   <a
                     href="#"
-                    className="flex justify-between w-auto capitalize"
+                    className="flex justify-between w-auto capitalize hover:text-dark-600 transition-transform duration-300"
                   >
                     {e.icon && e.icon} <p className="ml-2">{e.title}</p>
                   </a>
@@ -183,11 +183,11 @@ export default function Header() {
         </div>
 
       {/* header menu & giỏ hàng */}
-        <nav className="flex h-[80px] bg-light-100 items-center w-full justify-evenly pr-[5rem]">
+        <nav className="flex h-[80px] bg-white items-center w-full justify-evenly pr-[5rem]">
           <ul className="flex w-[60%] justify-start">
             {list3.map((e) => {
               return (
-                <li key={e.title} className="mx-6 h-[100%]">
+                <li key={e.title} className="mx-6 h-[100%] hover:text-dark-400 hover:scale-110 transition-transform duration-300">
                   <a href="#" className="capitalize text-lg h-[100%]">
                     <p>{e.title}</p>
                   </a>

@@ -1,0 +1,21 @@
+.bannerContainer{
+    width: 100%;
+    position: relative;
+
+}
+.bannerImg{
+    width: 100%;
+}
+
+.bannerBtn{
+
+    position: absolute;
+    top: 450px;
+    left: 142px;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    transition: 0.2s;
+}
+
