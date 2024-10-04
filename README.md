@@ -98,11 +98,17 @@ Dự án BookStore là một ứng dụng quản lý sách trực tuyến và tr
     ```
 2. Di chuyển vào thư mục dự án:
     ```bash
-    cd front-end 
-    ```
-3. Cài đặt các package:
-    ```bash
+    cd front-end
     npm install
+    ```
+    ```bash
+    cd back-end
+    npm install cors
+    npm run dev 
+    ```
+4. Cài đặt các package:
+    ```bash
+    npm run dev 
     ```
     npm intall 
 
