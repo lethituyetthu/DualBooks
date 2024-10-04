@@ -32,8 +32,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // Middleware để phục vụ tệp tin tĩnh từ thư mục 'uploads/admins'
 app.use('/uploads/admins', express.static(path.join(__dirname, 'uploads/admins')));
-
-
+// Cấu hình đường dẫn tĩnh cho thư mục uploads/categories
+app.use('/uploads/categories', express.static(path.join(__dirname, 'uploads/categories')));
+// Cấu hình đường dẫn tĩnh cho thư mục uploads/books
+app.use('/uploads/books', express.static(path.join(__dirname, 'uploads/books')));
 // Middleware để cấu hình CORS
 app.use(cors({
   origin: 'http://localhost:3000',

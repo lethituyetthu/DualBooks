@@ -9,6 +9,9 @@ exports.getAll = async (req, res) => {
     return categories.map((c) => ({
         id: c._id,              // Sử dụng _id làm id
         name: c.name,           // Tên thể loại
+        description: c.description,
+        cate_image: c.cate_image,
+
         parent_id: c.parent_id,  // ID của thể loại cha (nếu có)
       }));
     } catch (error) {
@@ -27,21 +30,21 @@ exports.findById = async (id) => {
 // Tạo một thể loại mới
 exports.createCategory = async (categoryData) => {
     try {
-        const newCategory = await categoryService.createCategory(categoryData); // Gọi service để tạo mới
-        return newCategory;
+        const category = await categoryService.createCategory(categoryData);
+        return category;
     } catch (error) {
         throw new Error('Error creating category: ' + error.message);
     }
 };
-// cập nhật thông tin thể loại
-exports.updateCategory = async (id, updatedData) => {
+// Hàm cập nhật danh mục
+exports.updateCategory = async (id, categoryData) => {
     try {
-        const updateCategory = await categoryService.updateCategory(id, updatedData);
-        return updateCategory;
+        const updatedCategory = await categoryService.updateCategory(id, categoryData);
+        return updatedCategory;
     } catch (error) {
         throw new Error('Error updating category: ' + error.message);
     }
-  };
+};
  
  exports.deleteCategory = async (id) => {
     await categoryService.deleteCategory(id);

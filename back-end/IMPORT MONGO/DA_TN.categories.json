@@ -2,31 +2,41 @@
   "_id": {
     "$oid": "66e52d1113ae0384d3444c3f"
   },
-  "name": "Thiếu nhi"
+  "name": "Thiếu nhi",
+  "cate_image": "1727923378988-394065473.webp",
+  "description": "Truyện tranh, Sách giáo dục sớm, Truyện cổ tích, Sách học sinh tiểu học"
 },
 {
   "_id": {
     "$oid": "66e52d1113ae0384d3444c40"
   },
-  "name": "Giáo khoa - Tham khảo"
+  "name": "Giáo khoa - Tham khảo",
+  "cate_image": "1727923577321-353125680.jpg",
+  "description": "Sách giáo khoa, Sách tham khảo, Sách ôn thi, Sách nghiên cứu khoa học"
 },
 {
   "_id": {
     "$oid": "66e52d1113ae0384d3444c41"
   },
-  "name": "Văn học"
+  "name": "Văn học",
+  "cate_image": "1727923703696-478066596.webp",
+  "description": "Tiểu thuyết, Truyện ngắn, Thơ ca, Văn học cổ điển, Văn học hiện đại"
 },
 {
   "_id": {
     "$oid": "66e52d1113ae0384d3444c42"
   },
-  "name": "Tâm lý - Kỹ năng sống"
+  "name": "Tâm lý - Kỹ năng sống",
+  "cate_image": "1727924009591-959112386.webp",
+  "description": "Sách hướng dẫn kỹ năng, Phát triển tư duy, Quản lý thời gian, Lãnh đạo và quản lý"
 },
 {
   "_id": {
     "$oid": "66e52d1113ae0384d3444c43"
   },
-  "name": "Manga - Comic"
+  "name": "Manga - Comic",
+  "cate_image": "1727924124003-171567278.webp",
+  "description": "Truyện tranh, Hài hước, Hành động, Phiêu lưu, Giả tưởng"
 },
 {
   "_id": {
@@ -38,101 +48,15 @@
   "_id": {
     "$oid": "66e52d1113ae0384d3444c45"
   },
-  "name": "Kinh Tế"
+  "name": "Kinh Tế",
+  "cate_image": "1727924284212-756689444.webp",
+  "description": "Sách về quản lý kinh doanh, Đầu tư và tài chính, Chiến lược kinh doanh, Kinh tế vi mô và vĩ mô"
 },
 {
   "_id": {
     "$oid": "66e52d1113ae0384d3444c46"
   },
-  "name": "Lịch Sử - Địa Lý - Tôn Giáo"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c47"
-  },
-  "name": "Khoa học kỹ thuật"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c48"
-  },
-  "name": "Nuôi Dạy Con"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c49"
-  },
-  "name": "Chính Trị - Pháp Lý - Triết Học"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c4a"
-  },
-  "name": "Tiểu Sử Hồi Ký"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c4b"
-  },
-  "name": "Đam Mỹ"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c4c"
-  },
-  "name": "Nữ Công Gia Chánh"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c4d"
-  },
-  "name": "Văn Hóa - Nghệ Thuật - Du Lịch"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c4e"
-  },
-  "name": "Phong Thủy - Kinh Dịch"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c4f"
-  },
-  "name": "Từ điển"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c50"
-  },
-  "name": "Âm Nhạc - Mỹ Thuật - Thời Trang"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c51"
-  },
-  "name": "Thể Dục Thể thao - Giải Trí"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c52"
-  },
-  "name": "Báo - Tạp Chí"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c53"
-  },
-  "name": "Giáo trình"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c54"
-  },
-  "name": "Mystery Box"
-},
-{
-  "_id": {
-    "$oid": "66e52d1113ae0384d3444c55"
-  },
-  "name": "Làm Vườn - Thú Nuôi"
+  "name": "Lịch Sử - Địa Lý - Tôn Giáo",
+  "cate_image": "1727924415213-732205190.webp",
+  "description": "Sách về lịch sử nhân loại, địa lý thế giới, và các tôn giáo lớn trên thế giới."
 }]
