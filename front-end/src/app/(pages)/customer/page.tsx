@@ -4,6 +4,7 @@ import banner from "@/app/publics/banner/banner.png";
 
 import styles from '@/app/(pages)/customer/style.module.css'
 import Category from "./component/category/category";
+import NewBooks from "./component/newBooks/newBooks";
 
 export default function page() {
   return (
@@ -13,6 +14,7 @@ export default function page() {
         <button className={`${styles.bannerBtn} bg-primary-400 hover:bg-primary-200`}>xem ngay</button>
       </div>
       <Category/>
+      <NewBooks/>
     </div>
   );
 }
