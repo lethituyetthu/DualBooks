@@ -5,6 +5,7 @@ import banner from "@/app/publics/banner/banner.png";
 import styles from '@/app/(pages)/customer/style.module.css'
 import Category from "./component/category/category";
 
+
 export default function page() {
   return (
     <div>
