@@ -3,8 +3,8 @@ import Image from "next/image";
 import banner from "@/app/publics/banner/banner.png";
 
 import styles from '@/app/(pages)/customer/style.module.css'
-import Category from "./component/category/category";
-import NewBooks from "./component/newBooks/newBooks";
+import Category from "./component/category";
+import NewBooks from "./component/NewBooks";
 
 export default function page() {
   return (

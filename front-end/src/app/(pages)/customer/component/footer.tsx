@@ -28,7 +28,7 @@ export default function Footer() {
   ];
   return (
     <div className="bg-light-100">
-      <div className="max-w-[1300px] mx-auto flex justify-between py-10">
+      <div className="max-w-[1100px] mx-auto flex justify-between py-10">
         <div className="footer-box1">
           <h3 className="text-lg font-bold text-primary">
             Tham gia cùng <span className="text-primary-400">DualBooks!</span>
