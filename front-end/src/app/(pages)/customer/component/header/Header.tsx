@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import logo from "@/app/publics/img/logo/01.png";
+import Link from "next/link";
+
 export default function Header() {
 
   // số đt và email
@@ -84,8 +86,10 @@ export default function Header() {
         </svg>
       ),
       title: "Đăng Nhập",
-    },
+      link:"/customer/login",
+    }
   ];
+  
 
 
   // menu
@@ -170,12 +174,12 @@ export default function Header() {
             {list2.map((e) => {
               return (
                 <li key={e.title}>
-                  <a
-                    href="#"
+                  <Link
+                    href={`${e.link}`}
                     className="flex justify-between w-auto capitalize hover:text-dark-600 transition-transform duration-300"
                   >
                     {e.icon && e.icon} <p className="ml-2">{e.title}</p>
-                  </a>
+                  </Link>
                 </li>
               );
             })}
