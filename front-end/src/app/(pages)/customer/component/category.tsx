@@ -14,7 +14,7 @@ import {
 import Image from "next/image";
 
 export default function Showcategory() {
-  const { cate ,error, loading } = useFetchCategory();
+  const { cate} = useFetchCategory();
 
   return (
     <div className="max-w-[1100px] m-auto my-8">
