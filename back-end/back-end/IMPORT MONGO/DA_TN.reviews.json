@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "66d56be3afc8a51793d73209"
+  },
+  "id": 1,
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e5"
+  },
+  "comment": "Một cuốn sách rất tuyệt vời về các vấn đề xã hội và đạo đức.",
+  "created_at": "2024-08-26T15:30:00Z"
+},
+{
+  "_id": {
+    "$oid": "66d56be3afc8a51793d7320a"
+  },
+  "id": 2,
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e6"
+  },
+  "comment": "Một câu chuyện dự đoán tương lai rất đáng suy ngẫm.",
+  "created_at": "2024-08-27T10:00:00Z"
+},
+{
+  "_id": {
+    "$oid": "66d56be3afc8a51793d7320b"
+  },
+  "id": 3,
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322a"
+  },
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e7"
+  },
+  "comment": "Một tác phẩm văn học xuất sắc về sự nổi loạn của tuổi trẻ.",
+  "created_at": "2024-08-28T09:45:00Z"
+},
+{
+  "_id": {
+    "$oid": "66d56be3afc8a51793d7320c"
+  },
+  "id": 4,
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e8"
+  },
+  "comment": "Một câu chuyện tình yêu đầy cảm xúc và sâu lắng.",
+  "created_at": "2024-08-29T11:30:00Z"
+},
+{
+  "_id": {
+    "$oid": "66d56be3afc8a51793d7320d"
+  },
+  "id": 5,
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e9"
+  },
+  "comment": "Cuốn sách này rất có giá trị và đáng đọc nhiều lần.",
+  "created_at": "2024-08-30T14:00:00Z"
+}]

@@ -6,24 +6,24 @@ export default function BookCard({ book }:{ book: any }) {
   return (
     <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all duration-300 ease-in-out">
       <Image
-        src={book.image}
+        src={`http://localhost:3200/uploads/books/${book.cover_image}`}
         alt={book.title}
         width={150}
-        height={200}
-        className="mb-4 w-full h-56 object-cover rounded-md object-top"
+        height={150}
+        className="mb-4 w-full h-40 object-cover rounded-md object-top"
       />
       <Link
         href={"/"}
-        className="text-lg font-bold text-center overflow-hidden text-ellipsis line-clamp-2"
+        className="text-sm font-semibold text-center h-10 font-inter overflow-hidden text-ellipsis line-clamp-2"
       >
         {book.title}
       </Link>
-      <p className="text-sm text-gray-600 my-5 text-center underline">
+      <p className="text-sm text-gray-600 my-5 text-center ">
         {book.author}
       </p>
       <div className="flex items-center justify-between space-x-2 bg-light-100 rounded-lg m-auto w-[90%]">
         <span className="text-brown-700 font-bold text-lg mx-4 text-primary-700">
-          {book.price.toLocaleString("vi-VN")}đ
+          {(book.price * 1000).toLocaleString("vi-VN") + "đ"}
         </span>
         <button className="bg-primary-400 text-white p-2 rounded-lg hover:bg-primary-300 transition-all duration-300">
           <svg

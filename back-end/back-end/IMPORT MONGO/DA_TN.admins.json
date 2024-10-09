@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "66ee524ebad0b1add904387a"
+  },
+  "id": 1,
+  "username": "HieuQC",
+  "email": "hieuqc@example.com",
+  "password": "$2b$10$p2bePqTXo.Jx3ox46ZVLX.zqxpNtM9Z3CcTHJs6XBZKCvVZfvm24m",
+  "user_img": "1726894670415-hieuqc.jpg",
+  "role": "admin",
+  "created_at": {
+    "$date": "2024-09-21T04:57:50.485Z"
+  },
+  "updated_at": {
+    "$date": "2024-09-21T04:57:50.485Z"
+  },
+  "__v": 0
+}]

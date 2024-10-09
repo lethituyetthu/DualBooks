@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "66d56a80afc8a51793d731ef"
+  },
+  "id": 1,
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e5"
+  },
+  "order_date": "2024-08-25T14:30:00Z",
+  "status": "Đang xử lý",
+  "total_amount": 45.96,
+  "shipping_address": "123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh"
+},
+{
+  "_id": {
+    "$oid": "66d56a80afc8a51793d731f0"
+  },
+  "id": 2,
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e6"
+  },
+  "order_date": "2024-08-26T09:00:00Z",
+  "status": "Hoàn thành",
+  "total_amount": 29.99,
+  "shipping_address": "456 Đường Nguyễn Huệ, Quận 3, TP. Hồ Chí Minh"
+},
+{
+  "_id": {
+    "$oid": "66d56a80afc8a51793d731f1"
+  },
+  "id": 3,
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e7"
+  },
+  "order_date": "2024-08-27T11:45:00Z",
+  "status": "Đã hủy",
+  "total_amount": 0,
+  "shipping_address": "789 Đường Cách Mạng Tháng 8, Quận 10, TP. Hồ Chí Minh"
+},
+{
+  "_id": {
+    "$oid": "66d56a80afc8a51793d731f2"
+  },
+  "id": 4,
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e8"
+  },
+  "order_date": "2024-08-28T16:15:00Z",
+  "status": "Hoàn thành",
+  "total_amount": 89.5,
+  "shipping_address": "321 Đường Trần Hưng Đạo, Quận 5, TP. Hồ Chí Minh"
+},
+{
+  "_id": {
+    "$oid": "66d56a80afc8a51793d731f3"
+  },
+  "id": 5,
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e9"
+  },
+  "order_date": "2024-08-29T08:30:00Z",
+  "status": "Đang xử lý",
+  "total_amount": 75.2,
+  "shipping_address": "654 Đường Bạch Đằng, Quận Bình Thạnh, TP. Hồ Chí Minh"
+},
+{
+  "_id": {
+    "$oid": "66de475530679c1891ecbc22"
+  },
+  "id": 7,
+  "customer_id": {
+    "$oid": "66d569d3afc8a51793d731e5"
+  },
+  "order_date": {
+    "$date": "2024-09-09T00:54:45.840Z"
+  },
+  "status": "Đang xử lý",
+  "total_amount": 59.97,
+  "shipping_address": "123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh",
+  "__v": 0
+}]

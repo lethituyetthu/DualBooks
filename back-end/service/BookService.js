@@ -88,6 +88,7 @@ exports.updateBook = async function (id, updatedData) {
 
       // Cập nhật sách trong cơ sở dữ liệu
       const updatedBook = await bookModel.findByIdAndUpdate(id, updatedData, { new: true, runValidators: true });
+      console.log('Updated book:', updatedBook);
       return updatedBook;
   } catch (error) {
       throw new Error('Error updating book: ' + error.message);
@@ -137,7 +138,7 @@ exports.getFeaturedProducts = async () => {
     // Lấy danh sách sản phẩm theo số lượng bán giảm dần
     const featuredProducts = await bookModel.find({})
       .sort({ sales: -1 }) // Sắp xếp theo số lượng bán giảm dần
-      .limit(10); // Giới hạn số lượng sản phẩm nổi bật được trả về
+      .limit(5); // Giới hạn số lượng sản phẩm nổi bật được trả về
 
     return featuredProducts;
   } catch (error) {

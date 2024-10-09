@@ -1,19 +1,51 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 interface typeBook {
   id: string;
-  title:string;
+  title: string;
   author: string;
-  category: "Văn học";
-  categoryID: "66e52d1113ae0384d3444c41";
-  description: "Thất lạc người thân, sinh ly tử biệt, lãng quên tên họ... Những con người đột nhiên đánh mất điều quý giá rồi sa chân vào một góc đô thị - một thế giới tràn đầy sự trùng hợp và bất ngờ. Lữ khách tình cờ đưa ta lần theo ánh sáng nhạt mờ trong trái tim người chỉnh đàn cô độc, Vịnh Hanalei họa nên cuộc sống của một người mẹ có đứa con trai bỏ mạng nơi biển cả xứ xa... Ở thế giới mà ta đã quen, có những điểm mù xuất hiện trong khoảnh khắc, số phận bí ẩn của những người mất hút vào những điểm mù ấy được thuật lại trong năm câu chuyện này.";
-  price: 88;
-  stock: 100;
-  cover_image: "1726962990341-145623384.webp";
-  created_at: "2024-09-21T23:56:30.354Z";
-  updated_at: "2024-09-21T23:56:30.354Z";
+  categoryID: string;
+  description: string;
+  price: number;
+  stock: number;
+  cover_image: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export default function useFetchBook() {
-  return <div>useFetchBook</div>;
+  const [hotBooks, setNewBooks] = useState<typeBook[]>([]);
+  const [books, setBooks] = useState<typeBook[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); // State để quản lý trạng thái loading
+  const [error, setError] = useState<string | null>(null); // State để lưu thông báo lỗi
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch sách nổi bật
+        const resHot = await fetch('http://localhost:3200/books/hot');
+        if (!resHot.ok) {
+          throw new Error("Lỗi khi lấy sách nổi bật!!!");
+        }
+        const resultHot = await resHot.json();
+        setNewBooks(resultHot);
+
+        // Fetch tất cả sách
+        const resAll = await fetch('http://localhost:3200/books');
+        if (!resAll.ok) {
+          throw new Error("Lỗi khi lấy tất cả dữ liệu sách!!!");
+        }
+        const resultAll = await resAll.json();
+        setBooks(resultAll); // Cập nhật danh sách tất cả sách
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false); // Đặt trạng thái loading thành false khi hoàn tất
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return { hotBooks, books, loading, error }; // Trả về tất cả thông tin
 }

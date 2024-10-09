@@ -14,10 +14,10 @@ import {
 import Image from "next/image";
 
 export default function Showcategory() {
-  const { cate } = useFetchCategory();
+  const { cate ,error, loading } = useFetchCategory();
 
   return (
-    <div className="max-w-[1100px] m-auto">
+    <div className="max-w-[1100px] m-auto my-8">
       <Carousel className="p-2">
         <CarouselContent className="py-[50px]">
           {cate.map((item) => (
