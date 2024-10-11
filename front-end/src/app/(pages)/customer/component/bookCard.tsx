@@ -18,10 +18,10 @@ export default function BookCard({ book }:{ book: any }) {
       >
         {book.title}
       </Link>
-      <p className="text-sm text-gray-600 my-5 text-center ">
+      <p className="text-sm text-gray-600 my-5   text-center">
         {book.author}
       </p>
-      <div className="flex items-center justify-between space-x-2 bg-light-100 rounded-lg m-auto w-[90%]">
+      <div className="flex items-center justify-between space-x-2 bg-light-300 rounded-lg m-auto w-[90%]">
         <span className="text-brown-700 font-bold text-lg mx-4 text-primary-700">
           {(book.price * 1000).toLocaleString("vi-VN") + "đ"}
         </span>

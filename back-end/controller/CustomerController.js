@@ -9,6 +9,7 @@ exports.registerCustomer = async (customerData) => {
         throw new Error('Error registering customer: ' + error.message);
     }
 };
+
 exports.loginCustomer = async (req, res) => {
   const { email, password } = req.body;
 
@@ -18,4 +19,26 @@ exports.loginCustomer = async (req, res) => {
   } catch (error) {
       res.status(401).json({ error: error.message });
   }
+};
+// Cập nhật thông tin khách hàng
+exports.updateCustomer = async (customerId, customerData) => {
+    try {
+        const updatedCustomer = await customerService.updateCustomer(customerId, customerData);
+        return updatedCustomer;
+    } catch (error) {
+        throw new Error('Error updating customer: ' + error.message);
+    }
+};
+// Xóa khách hàng
+exports.deleteCustomer = async (customerId) => {
+    try {
+        const result = await customerService.deleteCustomer(customerId); // Sử dụng service để xóa
+        if (!result) {
+            console.error('Customer not found with id:', customerId); // Log lỗi nếu không tìm thấy
+            throw new Error('Customer not found');
+        }
+    } catch (error) {
+        console.error('Error deleting customer:', error.message); // Log lỗi cụ thể
+        throw new Error('Error deleting customer: ' + error.message);
+    }
 };

@@ -62,6 +62,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`http://localhost:${PORT}/books`);
   console.log(`http://localhost:${PORT}/books/hot`);
+  console.log(`http://localhost:${PORT}/books/new`);
   console.log(`http://localhost:${PORT}/books/featured`);
   console.log(`http://localhost:${PORT}/books/66d57256afc8a51793d73227`);
   console.log(`http://localhost:${PORT}/books/category/66e52d1113ae0384d3444c40`);
@@ -73,7 +74,8 @@ app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/admins/register`);
   console.log(`http://localhost:${PORT}/admins/login`);
   console.log(`http://localhost:${PORT}/admins`);
-
+  console.log(`http://localhost:${PORT}/uploads/books/1728314210371-331872765.webp`);
+  console.log(`http://localhost:${PORT}/uploads/categories/1727923378988-394065473.webp`);
 
 
 });

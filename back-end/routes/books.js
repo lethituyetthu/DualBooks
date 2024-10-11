@@ -124,7 +124,16 @@ router.get('/sortedByPrice', async function(req, res, next) {
       res.status(500).json({ error: error.message });
   }
 });
-
+// Endpoint lấy danh sách sách mới nhất
+// GET /books/latest
+router.get('/new', async (req, res) => {
+    try {
+      // Gọi controller để xử lý yêu cầu
+      await bookController.getLatestBooks(req, res);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
 // Endpoint xem chi tiết sách theo ID
 router.get('/:id', async function(req, res, next) {
   console.log('GET /books/:id endpoint hit');
@@ -260,4 +269,5 @@ router.delete('/:id',authenticateAdmin, async (req, res, next) => {
   }
 });
 
+  
 module.exports = router;

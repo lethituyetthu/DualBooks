@@ -14,7 +14,8 @@ interface typeBook {
 }
 
 export default function useFetchBook() {
-  const [hotBooks, setNewBooks] = useState<typeBook[]>([]);
+  const [hotBooks, setHotBooks] = useState<typeBook[]>([]);
+  const [newBooks, setNewBooks] = useState<typeBook[]>([]);
   const [books, setBooks] = useState<typeBook[]>([]);
   const [loading, setLoading] = useState<boolean>(true); // State để quản lý trạng thái loading
   const [error, setError] = useState<string | null>(null); // State để lưu thông báo lỗi
@@ -28,7 +29,17 @@ export default function useFetchBook() {
           throw new Error("Lỗi khi lấy sách nổi bật!!!");
         }
         const resultHot = await resHot.json();
-        setNewBooks(resultHot);
+        setHotBooks(resultHot);
+
+
+        // fetch sách mới 
+
+        const resNew = await fetch('http://localhost:3200/books/new');
+        if (!resNew.ok) {
+          throw new Error("Lỗi khi lấy sách nổi bật!!!");
+        }
+        const resultNew = await resNew.json();
+        setNewBooks(resultNew); 
 
         // Fetch tất cả sách
         const resAll = await fetch('http://localhost:3200/books');
@@ -47,5 +58,5 @@ export default function useFetchBook() {
     fetchData();
   }, []);
 
-  return { hotBooks, books, loading, error }; // Trả về tất cả thông tin
+  return { hotBooks, books,newBooks, loading, error }; // Trả về tất cả thông tin
 }

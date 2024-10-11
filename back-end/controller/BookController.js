@@ -123,3 +123,15 @@ exports.getFeaturedProducts = async (req, res) => {
     res.status(500).json({ error: 'Error fetching featured products: ' + error.message });
   }
 };
+// Xử lý API lấy danh sách sách mới nhất
+exports.getLatestBooks = async (req, res) => {
+  try {
+    // Gọi service để lấy danh sách sách mới nhất
+    const books = await bookService.getLatestBooks();
+
+    // Trả về kết quả
+    res.status(200).json(books);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching latest books: ' + error.message });
+  }
+};

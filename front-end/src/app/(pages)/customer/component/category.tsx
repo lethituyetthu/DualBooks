@@ -16,6 +16,14 @@ import Image from "next/image";
 export default function Showcategory() {
   const { cate ,error, loading } = useFetchCategory();
 
+  if (loading){
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div className="max-w-[1100px] m-auto my-8">
       <Carousel className="p-2">

@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
-
 
 const CustomerSchema = new Schema({
-    id: { type: Number, required: true },
     name: { type: String, required: true },
-    email: { type: String, required: true },
+    email: { type: String, required: true, unique: true }, // Đảm bảo email là duy nhất
     password: { type: String, required: true }, // Trường mật khẩu
     phone: { type: String, required: true },
     address: { type: String, required: true },

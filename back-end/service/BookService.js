@@ -138,10 +138,23 @@ exports.getFeaturedProducts = async () => {
     // Lấy danh sách sản phẩm theo số lượng bán giảm dần
     const featuredProducts = await bookModel.find({})
       .sort({ sales: -1 }) // Sắp xếp theo số lượng bán giảm dần
-      .limit(5); // Giới hạn số lượng sản phẩm nổi bật được trả về
+      .limit(10); // Giới hạn số lượng sản phẩm nổi bật được trả về
 
     return featuredProducts;
   } catch (error) {
     throw new Error('Error fetching featured products: ' + error.message);
+  }
+};
+// Hàm lấy danh sách 5 cuốn sách mới nhất
+exports.getLatestBooks = async () => {
+  try {
+    // Lấy danh sách sách theo ngày tạo mới nhất
+    const latestBooks = await bookModel.find({})
+      .sort({ createdAt: -1 }) // Sắp xếp theo ngày tạo giảm dần (mới nhất lên trước)
+      .limit(5); // Giới hạn kết quả trả về 5 cuốn sách
+
+    return latestBooks;
+  } catch (error) {
+    throw new Error('Error fetching latest books: ' + error.message);
   }
 };
