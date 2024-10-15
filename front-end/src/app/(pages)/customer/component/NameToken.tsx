@@ -9,7 +9,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import Link from "next/link";
+import useFetchCustomer from "../hook/useFetchCustomer";
 export default function NameToken({ customer }: { customer: any }) {
+
+  const {logout} = useFetchCustomer()
+
+  const handleLogout = () => {
+    logout();
+    
+    window.location.href = "/customer";
+  };
+
   return (
     <li>
       <DropdownMenu>
@@ -33,13 +44,16 @@ export default function NameToken({ customer }: { customer: any }) {
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Thông tin cá nhân</DropdownMenuItem>
+          <Link href="/customer/profile">
+            <DropdownMenuItem>
+              <p>Thông tin cá nhân</p>
+            </DropdownMenuItem>
+          </Link>
           <DropdownMenuItem>Lịch sử đơn hàng</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
-          <DropdownMenuItem>
-            Log out
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
+
+          <DropdownMenuSeparator />
+
+          <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </li>

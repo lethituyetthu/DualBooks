@@ -5,11 +5,7 @@ const Schema = mongoose.Schema;
 
 // Định nghĩa schema cho bảng Admins
 const AdminSchema = new Schema({
-    id: { 
-        type: Number, 
-        required: true, 
-        unique: true // Đảm bảo id là duy nhất
-    },
+
     username: { 
         type: String, 
         required: true, 

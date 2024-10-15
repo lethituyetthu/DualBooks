@@ -9,7 +9,6 @@ exports.registerCustomer = async (customerData) => {
         throw new Error('Error registering customer: ' + error.message);
     }
 };
-
 exports.loginCustomer = async (req, res) => {
   const { email, password } = req.body;
 
@@ -40,5 +39,24 @@ exports.deleteCustomer = async (customerId) => {
     } catch (error) {
         console.error('Error deleting customer:', error.message); // Log lỗi cụ thể
         throw new Error('Error deleting customer: ' + error.message);
+    };
+};
+// Lấy danh sách toàn bộ khách hàng
+exports.getAllCustomers = async () => {
+    try {
+        const customers = await customerService.getAllCustomers();
+        return customers;
+    } catch (error) {
+        throw new Error('Error fetching customers: ' + error.message);
+    }
+};
+
+// Lấy thông tin chi tiết của khách hàng theo ID
+exports.getCustomerById = async (customerId) => {
+    try {
+        const customer = await customerService.getCustomerById(customerId);
+        return customer;
+    } catch (error) {
+        throw new Error('Error fetching customer: ' + error.message);
     }
 };

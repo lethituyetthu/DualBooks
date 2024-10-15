@@ -37,9 +37,7 @@ exports.registerCustomer = async (customerData) => {
         }
 
         // Kiểm tra độ dài mật khẩu và ký tự hợp lệ
-        const passwordRegex = /^[a-zA-Z0-9]{6,}$/; // Tối thiểu 6 ký tự
-        
-        // Mật khẩu chỉ gồm 6 ký tự chữ hoặc số
+        const passwordRegex = /^[a-zA-Z0-9]{6}$/; // Mật khẩu chỉ gồm 6 ký tự chữ hoặc số
         if (!passwordRegex.test(customerData.password)) {
             throw new Error('Mật khẩu phải gồm 6 ký tự, chỉ bao gồm chữ cái và số.');
         }
@@ -66,6 +64,7 @@ exports.registerCustomer = async (customerData) => {
         throw new Error('Error registering customer: ' + error.message);
     }
 };
+// đăng nhập 
 exports.loginCustomer = async (email, password) => {
   try {
       // Tìm khách hàng theo email
@@ -83,7 +82,7 @@ exports.loginCustomer = async (email, password) => {
       }
 
       // Tạo token
-      const token = jwt.sign({ id: customer._id, email: customer.email }, SECRET_KEY, { expiresIn: '3h' });
+      const token = jwt.sign({ id: customer._id, email: customer.email }, SECRET_KEY, { expiresIn: '1h' });
 
       return { token, customer };
   } catch (error) {
@@ -108,5 +107,26 @@ exports.deleteCustomer = async (customerId) => {
         }
     } catch (error) {
         throw new Error('Error deleting customer: ' + error.message);
+    }
+};
+// Lấy danh sách toàn bộ khách hàng
+exports.getAllCustomers = async () => {
+    try {
+        const customers = await Customer.find({});
+        return customers;
+    } catch (error) {
+        throw new Error('Error fetching customers: ' + error.message);
+    }
+};
+// Lấy thông tin chi tiết của khách hàng theo ID
+exports.getCustomerById = async (customerId) => {
+    try {
+        const customer = await Customer.findById(customerId);
+        if (!customer) {
+            throw new Error('Customer not found');
+        }
+        return customer;
+    } catch (error) {
+        throw new Error('Error fetching customer: ' + error.message);
     }
 };
