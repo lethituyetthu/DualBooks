@@ -45,7 +45,6 @@ const config: Config = {
           DEFAULT: '#D98B48',
         },
         light: {
-          '50':'#fefdfb',
           '100': '#FBF3E9',
           '200': '#F9EBDB',
           '300': '#F6E3CC',
