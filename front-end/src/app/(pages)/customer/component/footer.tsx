@@ -26,21 +26,26 @@ export default function Footer() {
       link: "https://facebook.com",
     },
   ];
+
   return (
-    <div className="bg-light-200">
+    <div className="bg-light-100">
       <div className="max-w-[1100px] mx-auto flex justify-between py-10">
         <div className="footer-box1">
           <h3 className="text-lg font-bold text-primary">
             Tham gia cùng <span className="text-primary-400">DualBooks!</span>
           </h3>
-          <p>"Khám phá thế giới từ những trang giấy."</p>
+          <p>&quot;Khám phá thế giới từ những trang giấy.&quot;</p> {/* Đã escape dấu nháy */}
           <div className="mt-4">
-            <button className="bg-primary text-white px-6 py-2 rounded-lg bg-primary-700 hover:bg-primary-300">
-              Đăng ký
-            </button>
-            <button className="border border-primary text-primary px-6 py-2 rounded-lg ml-4 hover:bg-primary-700 hover:text-light-100">
-              Đăng nhập
-            </button>
+            <Link href="/customer/register">
+              <button className="bg-primary text-white px-6 py-2 rounded-lg bg-primary-700 hover:bg-primary-300">
+                Đăng ký
+              </button>
+            </Link>
+            <Link href="/customer/login">
+              <button className="border border-primary text-primary px-6 py-2 rounded-lg ml-4 hover:bg-primary-700 hover:text-light-100">
+                Đăng nhập
+              </button>
+            </Link>
           </div>
         </div>
         <div className="footer-box2">
