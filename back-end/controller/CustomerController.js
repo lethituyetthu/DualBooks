@@ -28,6 +28,8 @@ exports.updateCustomer = async (customerId, customerData) => {
         throw new Error('Error updating customer: ' + error.message);
     }
 };
+
+
 // Xóa khách hàng
 exports.deleteCustomer = async (customerId) => {
     try {

@@ -53,6 +53,7 @@ const CustomerProfilePage = () => {
     e.preventDefault();
     console.log(formData,"trang prpfile")
     await edit(formData.id, formData)
+    
    
     
   };
