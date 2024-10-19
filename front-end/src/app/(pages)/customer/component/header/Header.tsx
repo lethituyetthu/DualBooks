@@ -114,10 +114,10 @@ export default function Header() {
 
   // menu
   const list3: any = [
-    { title: "trang chủ" },
-    { title: "sản phẩm" },
-    { title: "giới thiệu" },
-    { title: "liên hệ" },
+    { title: "trang chủ", link:"/customer" },
+    { title: "sản phẩm", link:"/customer/products" },
+    { title: "giới thiệu", link:"/" },
+    { title: "liên hệ", link:"/" },
   ];
 
   // icon giỏ hàng & yêu thích
@@ -140,6 +140,7 @@ export default function Header() {
           />
         </svg>
       ),
+      link: "/customer/cart", // Đường dẫn đến trang giỏ hàng
     },
     {
       id: 2,
@@ -159,32 +160,29 @@ export default function Header() {
           />
         </svg>
       ),
+      link: "/wishlist", // Đường dẫn tới trang yêu thích
     },
   ];
-
+  
   return (
-    <div className="flex ">
+    <div className="flex">
       <div className="relative w-[350px] mx-auto flex justify-center ">
         {/* Lớp nền nâu */}
         <div className="absolute inset-0 bg-primary-400 " />
-
+  
         {/* Logo */}
-        <div className="bg-white rounded-tr-[55px] z-10 flex justify-center w-full  py-4">
-          <Image src={logo} width={137}  alt="DualBooks" />
+        <div className="bg-white rounded-tr-[55px] z-10 flex justify-center w-full py-4">
+          <Image src={logo} width={137} alt="DualBooks" />
         </div>
       </div>
-
+  
       <div className="menu w-full h-[130px]">
-      {/* header thông tin liên hệ */}
-
+        {/* header thông tin liên hệ */}
         <div className="flex justify-evenly text-light-100 items-center h-[50px] bg-primary-400 w-full pr-[5rem] ">
           <ul className="flex w-[60%]">
             {list.map((e) => {
               return (
-                <li
-                  key={e.title}
-                  className="flex justify-between w-auto ml-[20px]"
-                >
+                <li key={e.title} className="flex justify-between w-auto ml-[20px]">
                   {e.icon && e.icon} <p className="ml-2">{e.title}</p>
                 </li>
               );
@@ -205,14 +203,17 @@ export default function Header() {
             })}
           </ul>
         </div>
-
-      {/* header menu & giỏ hàng */}
+  
+        {/* header menu & giỏ hàng */}
         <nav className="flex h-[80px] bg-white items-center w-full justify-evenly pr-[5rem]">
           <ul className="flex w-[60%] justify-start">
             {list3.map((e) => {
               return (
-                <li key={e.title} className="mx-6 h-[100%] hover:text-dark-400 hover:scale-110 transition-transform duration-300">
-                  <a href="#" className="capitalize text-lg h-[100%]">
+                <li
+                  key={e.title}
+                  className="mx-6 h-[100%] hover:text-dark-400 hover:scale-110 transition-transform duration-300"
+                >
+                  <a href={`${e.link}`} className="capitalize text-lg h-[100%]">
                     <p>{e.title}</p>
                   </a>
                 </li>
@@ -222,11 +223,10 @@ export default function Header() {
           <ul className="flex w-[30%] justify-end">
             {listIcon.map((e) => {
               return (
-                <li
-                  key={e.id}
-                  className="rounded-full border border-solid border-dark-800 p-2 m-3"
-                >
-                  <a href="#">{e.icon}</a>
+                <li key={e.id} className="rounded-full border border-solid border-dark-800 p-2 m-3">
+                  <Link href={e.link}>
+                    {e.icon}
+                  </Link>
                 </li>
               );
             })}

@@ -68,7 +68,7 @@ const RegisterPage = () => {
         <div className="flex justify-between p-8 max-w-4xl mx-auto">
             {/* Left Side - Register Form */}
             <div className="flex-1 p-8 flex flex-col items-center border border-gray-300 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-6 text-[#F2B05E]">Đăng Ký</h2>
+                <h2 className="text-2xl font-bold mb-6 text-primary-600">Đăng Ký</h2>
                 <form className="flex flex-col w-full mb-6" onSubmit={handleSubmit}>
                     {/* Name Field */}
                     <input 
@@ -103,7 +103,7 @@ const RegisterPage = () => {
                     />
                     {errors.password && <p className="text-red-500 text-sm mb-4">{errors.password}</p>}
 
-                    <button className="p-3 bg-[#D98B48] text-white rounded-full hover:bg-opacity-90">
+                    <button className="p-3 bg-primary-400 text-white rounded-full hover:bg-opacity-90">
                         Đăng Ký Ngay
                     </button>
                 </form>
@@ -122,10 +122,10 @@ const RegisterPage = () => {
             </div>
 
             {/* Right Side - "HELLO" message */}
-            <div className="flex-1 p-8 flex flex-col items-center justify-center rounded-lg shadow-md text-center" style={{ backgroundColor: '#F2B05E' }}>
+            <div className="flex-1 p-8 flex flex-col items-center justify-center rounded-lg shadow-md text-center bg-primary-400">
                 <h2 className="text-2xl font-bold mb-4 text-white">HELLO</h2>
                 <p className="mb-6 text-white">Nếu bạn đã có tài khoản, hãy đăng nhập tại đây</p>
-                <button className="p-3 bg-[#D98B48] text-white rounded-full hover:bg-opacity-90">
+                <button className="p-3 bg-light-100 text-dark-700 rounded-full hover:bg-opacity-90">
                     Tham Gia Ngay
                 </button>
             </div>
