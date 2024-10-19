@@ -162,22 +162,23 @@ export default function useFetchCustomer() {
       setErrors({ email: "Thiếu token. Vui lòng đăng nhập." });
       return;
     }
-    console.log(token, formData)
+
     const validateErrors = validateForm(formData);
     if (Object.keys(validateErrors).length > 0) {
       setErrors(validateErrors);
       return;
     }
+
     try {
       const response = await fetch(`http://localhost:3200/customers/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
-      console.log(formData) ///222
+      console.log(formData)
       if (!response.ok) {
         const errorData = await response.json();
         setErrors({ email: errorData.message });

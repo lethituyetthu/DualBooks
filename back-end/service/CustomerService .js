@@ -64,7 +64,6 @@ exports.registerCustomer = async (customerData) => {
         throw new Error('Error registering customer: ' + error.message);
     }
 };
-// đăng nhập 
 exports.loginCustomer = async (email, password) => {
   try {
       // Tìm khách hàng theo email
@@ -89,15 +88,22 @@ exports.loginCustomer = async (email, password) => {
       throw new Error('Error logging in customer: ' + error.message);
   }
 };
-// Cập nhật thông tin khách hàng
-exports.updateCustomer = async (customerId, customerData) => {
+// Cập nhật thông tin chi tiết của khách hàng theo ID
+exports.updateCustomerById = async (customerId, updatedData) => {
     try {
-        const updatedCustomer = await Customer.findByIdAndUpdate(customerId, customerData, { new: true });
+        // Tìm và cập nhật khách hàng với dữ liệu mới
+        const updatedCustomer = await Customer.findByIdAndUpdate(customerId, updatedData, { new: true });
+
+        if (!updatedCustomer) {
+            throw new Error('Customer not found');
+        }
+
         return updatedCustomer;
     } catch (error) {
         throw new Error('Error updating customer: ' + error.message);
     }
 };
+
 // Xóa khách hàng
 exports.deleteCustomer = async (customerId) => {
     try {
@@ -128,5 +134,23 @@ exports.getCustomerById = async (customerId) => {
         return customer;
     } catch (error) {
         throw new Error('Error fetching customer: ' + error.message);
+    }
+};
+
+exports.updateCustomerStatus = async (customerId, status) => {
+    try {
+        // Tìm kiếm khách hàng theo ID
+        const customer = await Customer.findById(customerId);
+        if (!customer) {
+            throw new Error('Customer not found');
+        }
+
+        // Cập nhật trạng thái mới
+        customer.status = status;
+        await customer.save(); // Lưu lại thay đổi vào cơ sở dữ liệu
+
+        return customer;
+    } catch (error) {
+        throw new Error('Error updating customer status: ' + error.message);
     }
 };

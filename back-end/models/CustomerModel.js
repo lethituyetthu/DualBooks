@@ -7,6 +7,7 @@ const CustomerSchema = new Schema({
     password: { type: String, required: true }, // Trường mật khẩu
     phone: { type: String, required: true },
     address: { type: String, required: true },
+    status: { type: String, enum: ['active', 'blocked'], default: 'active' }, // Trạng thái hoạt động của khách hàng
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now }
 });

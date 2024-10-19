@@ -3,7 +3,7 @@ import React from "react";
 
 import BookCard from "./bookCard";
 
-import useFetchBook, { typeBook } from "../hook/useFetchBook";
+import useFetchBook from "../hook/useFetchBook";
 
 export default function NewBooks() {
   const { newBooks, error, loading } = useFetchBook();
@@ -14,8 +14,6 @@ export default function NewBooks() {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  console.log(newBooks);
-  
   return (
     <div className="container mx-auto max-w-[1200px]">
       <h2 className="text-center text-3xl font-bold mb-8 text-primary-400 font-itim">
@@ -23,7 +21,7 @@ export default function NewBooks() {
       </h2>
       <div className="grid grid-cols-5 gap-5">
         {/* Book Card 1 */}
-        { newBooks && newBooks.map((book: typeBook, index: number) => (
+        {newBooks.map((book: any, index: number) => (
           <BookCard key={index} book={book} />
         ))}
       </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { set } from "react-hook-form";
 
-export interface typeBook {
+interface typeBook {
   id: string;
   title: string;
   author: string;
@@ -14,43 +15,78 @@ export interface typeBook {
 }
 
 export default function useFetchBook() {
+  
+  const [detailBook, setDetailBook] = useState<typeBook|null>(null);
+  const [hotBooks, setHotBooks] = useState<typeBook[]>([]);
   const [newBooks, setNewBooks] = useState<typeBook[]>([]);
-  // const [hotBooks, setHotBooks] = useState<typeBook[]>([]); // Comment nếu không sử dụng
   const [books, setBooks] = useState<typeBook[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true); // State để quản lý trạng thái loading
+  const [error, setError] = useState<string | null>(null); // State để lưu thông báo lỗi
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Lấy dữ liệu sách nổi bật
-        const resFeatured = await fetch("http://localhost:3200/books/featured");
-        if (!resFeatured.ok) {
+        // Fetch sách nổi bật
+        const resHot = await fetch('http://localhost:3200/books/hot');
+        if (!resHot.ok) {
           throw new Error("Lỗi khi lấy sách nổi bật!!!");
         }
-        const resultFeatured = await resFeatured.json();
-        setNewBooks(resultFeatured);
+        const resultHot = await resHot.json();
+        setHotBooks(resultHot);
 
-        // Lấy tất cả sách
-        const resAll = await fetch("http://localhost:3200/books");
+
+        // fetch sách mới 
+
+        const resNew = await fetch('http://localhost:3200/books/new');
+        if (!resNew.ok) {
+          throw new Error("Lỗi khi lấy sách nổi bật!!!");
+        }
+        const resultNew = await resNew.json();
+        setNewBooks(resultNew); 
+
+        // Fetch tất cả sách
+        const resAll = await fetch('http://localhost:3200/books');
         if (!resAll.ok) {
-          throw new Error("Lỗi khi lấy tất cả sách!!!");
+          throw new Error("Lỗi khi lấy tất cả dữ liệu sách!!!");
         }
         const resultAll = await resAll.json();
-        setBooks(resultAll);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("Lỗi không xác định");
-        }
+        setBooks(resultAll); // Cập nhật danh sách tất cả sách
+
+
+
+      } catch (error) {
+        setError(error.message);
       } finally {
-        setLoading(false);
+        setLoading(false); // Đặt trạng thái loading thành false khi hoàn tất
       }
     };
 
     fetchData();
   }, []);
 
-  return { newBooks, books, loading, error };
+  const fetchDetail = async (id:string)=>{
+    setLoading(true)
+
+    try {
+
+      const res = await fetch(`http://localhost:3200/books/${id}`)
+      
+      if(!res.ok){
+        throw new Error ("lỗi khi lấy thông tin chi tiết sp")
+      }
+
+      const result = await res.json()
+
+      setDetailBook(result);
+      
+    } catch (error) {
+
+      setError((error as Error).message)
+      
+    }finally{
+      setLoading(false)
+    }
+  }
+
+  return { hotBooks, books,newBooks,fetchDetail,detailBook, loading, error }; // Trả về tất cả thông tin
 }

@@ -1,13 +1,12 @@
 import React from 'react';
-import Header from './component/Header';
-import Footer from './component/footer';
+import Nav from './nav/nav';
+
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <Header/>
+      <Nav/>
       <main className='bg-light-50'>{children}</main>
-      <Footer/>
     </div>
   );
 };

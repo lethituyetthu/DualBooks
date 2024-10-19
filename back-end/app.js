@@ -76,6 +76,13 @@ app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/admins`);
   console.log(`http://localhost:${PORT}/uploads/books/1728314210371-331872765.webp`);
   console.log(`http://localhost:${PORT}/uploads/categories/1727923378988-394065473.webp`);
+  console.log(`http://localhost:${PORT}/customers/register`);
+  console.log(`http://localhost:${PORT}/customers/login`);
+  console.log(`http://localhost:${PORT}/customers`);
+  console.log(`http://localhost:${PORT}/customers/6707f3aee55fb28d5793988f`);
+  console.log(`http://localhost:${PORT}/customers/status/6707f3aee55fb28d5793988f`);
+
+
 
 
 });

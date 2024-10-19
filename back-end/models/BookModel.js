@@ -45,7 +45,7 @@ const bookSchema = new mongoose.Schema({
     default: Date.now
   },
   categoryID: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Category', // Tham chiếu đến model Category
     required: true
   },

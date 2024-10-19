@@ -1,9 +1,21 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "@/app/publics/img/logo/01.png";
 import Link from "next/link";
-
+import NameToken from "./NameToken";
 export default function Header() {
+  const [customer, setCustomer] = useState<any>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const customerToken = JSON.parse(
+        localStorage.getItem("customer") || "{}"
+      );
+      setCustomer(customerToken);
+    }
+  }, []);
 
   // số đt và email
   const list: any = [
@@ -46,78 +58,14 @@ export default function Header() {
       title: "dualbooks@gmail.com",
     },
   ];
+
  
-  // hỗ trợ trực tuyến và đăng nhập
-  const list2: any = [
-    {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="size-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
-          />
-        </svg>
-      ),
-      title: "Hỗ Trợ Trực Tuyến",
-    },
-    {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="size-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-          />
-        </svg>
-      ),
-      title: "Đăng Nhập",
-      link:"/customer/login",
-    },
-    {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="size-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12l3 3l6-6M6 18V9h6"
-          />
-        </svg>
-      ),
-      title: "Đăng Ký",
-      link:"/customer/register"
-    },
-  ];
-  
-
-
   // menu
   const list3: any = [
-    { title: "trang chủ", link:"/customer" },
-    { title: "sản phẩm", link:"/customer/products" },
-    { title: "giới thiệu", link:"/" },
-    { title: "liên hệ", link:"/" },
+    { title: "trang chủ", link: "/customer" },
+    { title: "sản phẩm", link: "/customer/products" },
+    { title: "giới thiệu", link: "/customer" },
+    { title: "liên hệ", link: "/customer" },
   ];
 
   // icon giỏ hàng & yêu thích
@@ -170,12 +118,12 @@ export default function Header() {
 
         {/* Logo */}
         <div className="bg-white rounded-tr-[55px] z-10 flex justify-center w-full  py-4">
-          <Image src={logo} width={137}  alt="DualBooks" />
+          <Image src={logo} width={137} alt="DualBooks" />
         </div>
       </div>
 
       <div className="menu w-full h-[130px]">
-      {/* header thông tin liên hệ */}
+        {/* header thông tin liên hệ */}
 
         <div className="flex justify-evenly text-light-100 items-center h-[50px] bg-primary-400 w-full pr-[5rem] ">
           <ul className="flex w-[60%]">
@@ -191,30 +139,72 @@ export default function Header() {
             })}
           </ul>
           <ul className="flex w-[30%] justify-between pr-4">
-            {list2.map((e) => {
-              return (
-                <li key={e.title}>
-                  <Link
-                    href={`${e.link}`}
-                    className="flex justify-between w-auto capitalize hover:text-dark-600 transition-transform duration-300"
+            <li>
+              <Link
+                href={`/`}
+                className="flex justify-between w-auto capitalize hover:text-dark-600 transition-transform duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+                  />
+                </svg>{" "}
+                <p className="ml-2">Hỗ Trợ Trực Tuyến</p>
+              </Link>
+            </li>
+
+            {customer ? (
+             
+                <NameToken customer = {customer} />
+            
+            ) : (
+              <li>
+                <Link
+                  href={`/customer/login`}
+                  className="flex justify-between w-auto capitalize hover:text-dark-600 transition-transform duration-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="size-6"
                   >
-                    {e.icon && e.icon} <p className="ml-2">{e.title}</p>
-                  </Link>
-                </li>
-              );
-            })}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                  </svg>{" "}
+                  <p className="ml-2">Đăng nhập</p>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
 
-      {/* header menu & giỏ hàng */}
+        {/* header menu & giỏ hàng */}
         <nav className="flex h-[80px] bg-white items-center w-full justify-evenly pr-[5rem]">
           <ul className="flex w-[60%] justify-start">
             {list3.map((e) => {
               return (
-                <li key={e.title} className="mx-6 h-[100%] hover:text-dark-400 hover:scale-110 transition-transform duration-300">
-                  <a href={`${e.link}`} className="capitalize text-lg h-[100%]">
+                <li
+                  key={e.title}
+                  className="mx-6 h-[100%] hover:text-dark-400 hover:scale-110 transition-transform duration-300"
+                >
+                  <Link href={e.link} className="capitalize text-lg h-[100%]">
                     <p>{e.title}</p>
-                  </a>
+                  </Link>
                 </li>
               );
             })}
