@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import useFetchCustomer from "../hook/useFetchCustomer";
+import useFetchCustomer from "../../../hook/useFetchCustomer";
 import Link from "next/link";
 // Define the interface for the customer data.
 interface FormData {

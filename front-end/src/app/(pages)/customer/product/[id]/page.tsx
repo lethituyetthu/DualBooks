@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import useFetchBook from "../../hook/useFetchBook"; // Hook lấy dữ liệu sách
+import useFetchBook from "../../../../hook/useFetchBook"; // Hook lấy dữ liệu sách
 import BookDetail from "../../component/bookDetail";
 import {
   Breadcrumb,

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import useFetchBook from "../hook/useFetchBook"; // Sử dụng hook đã viết
+import useFetchBook from "../../../hook/useFetchBook"; // Sử dụng hook đã viết
 import Link from "next/link";
 
 interface Product {

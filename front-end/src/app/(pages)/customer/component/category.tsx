@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 
-import useFetchCategory from "../hook/useFetchCategory";
+import useFetchCategory from "../../../hook/useFetchCategory";
 import {
   Carousel,
   CarouselContent,

@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import Link from "next/link";
-import useFetchCustomer from "../hook/useFetchCustomer";
+import useFetchCustomer from "../../../hook/useFetchCustomer";
 export default function NameToken({ customer }: { customer: any }) {
 
   const {logout} = useFetchCustomer()

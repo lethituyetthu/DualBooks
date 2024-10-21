@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import InputField from "../component/input";
-import useFetchCustomer from "../hook/useFetchCustomer";
+import useFetchCustomer from "../../../hook/useFetchCustomer";
 
 interface FormData {
   name: string;

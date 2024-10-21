@@ -3,7 +3,7 @@ import React from "react";
 
 import BookCard from "./bookCard";
 
-import useFetchBook from "../hook/useFetchBook";
+import useFetchBook from "../../../hook/useFetchBook";
 
 export default function NewBooks() {
   const { newBooks, error, loading } = useFetchBook();
