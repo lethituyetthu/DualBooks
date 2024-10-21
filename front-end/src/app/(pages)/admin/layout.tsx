@@ -1,12 +1,17 @@
+
+"use client";
 import React from 'react';
-import Nav from './nav/nav';
+import Sidebar from './component/Sidebar';
+import Header from './component/Header';
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-      <Nav/>
-      <main className='bg-light-50'>{children}</main>
+    <div className='flex bg-light-50'>
+      <Sidebar/>
+      <main className=' w-full mx-10'>
+        <Header/>
+        {children}</main>
     </div>
   );
 };

@@ -111,7 +111,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="flex ">
+    <div className="flex h-auto ">
       <div className="relative w-[350px] mx-auto flex justify-center ">
         {/* Lớp nền nâu */}
         <div className="absolute inset-0 bg-primary-400 " />
@@ -122,7 +122,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="menu w-full h-[130px]">
+      <div className="menu w-full ">
         {/* header thông tin liên hệ */}
 
         <div className="flex justify-evenly text-light-100 items-center h-[50px] bg-primary-400 w-full pr-[5rem] ">

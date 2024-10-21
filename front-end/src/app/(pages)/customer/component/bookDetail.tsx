@@ -29,7 +29,7 @@ const BookDetail = ({
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 mt-[30px] py-20 border-spacing-6 bg-white border border-gray-200 p-6 rounded-lg shadow-md">
+    <div className="flex flex-col lg:flex-row gap-8 py-20 border-spacing-6 bg-white border border-gray-200 p-6 rounded-lg shadow-md">
       {/* Phần hình ảnh */}
       <div className="w-full lg:w-1/3">
         <Image
@@ -59,15 +59,15 @@ const BookDetail = ({
         </div>
 
         {/* Phần số lượng */}
-        <div className="flex items-center mb-4">
           <span className="mr-4">Số lượng:</span>
+        <div className="flex items-center mb-4 border w-fit rounded-sm p-0 ">
           <button
             onClick={handleDecrease}
             className="px-4 py-2 bg-light-200 text-gray-600 rounded-l"
           >
             -
           </button>
-          <span className="px-4 py-[7px] border">{quantity}</span>
+          <span className="px-4 py-[8px] ">{quantity}</span>
           <button
             onClick={handleIncrease}
             className="px-4 py-2 bg-light-200 text-gray-600 rounded-r"

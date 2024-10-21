@@ -11,8 +11,10 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-
+} from "@/components/ui/breadcrumb";
+import Rating from "../../component/rating";
+import FeetBack from "../../component/feetback";
+import ReviewForm from "../../component/reviewForm";
 
 const ProductDetailPage = ({ params }: { params: { id: string } }) => {
   const { id } = params;
@@ -31,23 +33,22 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
     detailBook;
 
   return (
-
-    <div className="max-w-[1200px] m-auto p-4">
-      <Breadcrumb>
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/">DualBooks</BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/components">{categoryID}</BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <BreadcrumbPage>{title}</BreadcrumbPage>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>
+    <div className="max-w-[1200px] m-auto ">
+      <Breadcrumb className="py-[30px]">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">DualBooks</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/components">{categoryID}</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{title}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
       {/* Phần thông tin sản phẩm */}
       <BookDetail
@@ -59,7 +60,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
       />
       {/* Phần MÔ TẢ SẢN PHẨM - Nhỏ lại */}
       <div className="mt-[40px] text-sm ">
-        <h1 className="text-xl mb-4 bg-primary-400 text-light-100 font-inter py-5 pl-3 rounded-sm">
+        <h1 className="text-xl mb-4 bg-primary-400 text-light-100 py-5 pl-3 rounded-sm font-itim">
           MÔ TẢ SẢN PHẨM
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -106,6 +107,20 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
         <div className="mt-4 w-full px-5">
           <h2 className="text-lg font-semibold mb-2">Giới thiệu sách</h2>
           <p>{description}</p>
+        </div>
+      </div>
+
+      {/* Phần đánh giá sp  */}
+      <div className="mt-[40px] text-sm ">
+        <h1 className="text-xl mb-4 bg-primary-400 text-light-100 py-5 pl-3 rounded-sm font-itim">
+          ĐÁNH GIÁ SẢN PHẨM
+        </h1>
+        <div className="">
+          <Rating />
+          <div className="flex justify-between">
+            <ReviewForm />
+            <FeetBack />
+          </div>
         </div>
       </div>
     </div>
