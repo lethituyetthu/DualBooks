@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import ShowCustomer from "../component/showCustomer"; 
+import ShowCustomer from "../../component/showCustomer"; 
 import useFetchCustomer from "@/app/hook/useFetchCustomer";
 
 export default function Page() {
