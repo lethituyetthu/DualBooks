@@ -108,9 +108,7 @@ exports.updateCustomerById = async (customerId, updatedData) => {
 exports.deleteCustomer = async (customerId) => {
     try {
         const result = await Customer.findByIdAndDelete(customerId); // Sử dụng findByIdAndDelete để xóa khách hàng theo ID
-        if (!result) {
-            throw new Error('Customer not found'); // Nếu không tìm thấy khách hàng
-        }
+       return result;
     } catch (error) {
         throw new Error('Error deleting customer: ' + error.message);
     }

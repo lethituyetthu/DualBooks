@@ -32,12 +32,8 @@ exports.updateCustomer = async (customerId, customerData) => {
 exports.deleteCustomer = async (customerId) => {
     try {
         const result = await customerService.deleteCustomer(customerId); // Sử dụng service để xóa
-        if (!result) {
-            console.error('Customer not found with id:', customerId); // Log lỗi nếu không tìm thấy
-            throw new Error('Customer not found');
-        }
+        return result
     } catch (error) {
-        console.error('Error deleting customer:', error.message); // Log lỗi cụ thể
         throw new Error('Error deleting customer: ' + error.message);
     };
 };

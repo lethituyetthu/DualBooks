@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
-
+import { useRouter } from "next/navigation";
 interface typeCustomer {
+  id?:string;
   name?: string;
   email: string;
   phone?: string;
@@ -17,8 +18,12 @@ interface Errors {
 }
 
 export default function useFetchCustomer() {
+  const route = useRouter()
   const [errors, setErrors] = useState<Errors>({});
   const [successMessage, setSuccessMessage] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false); // Trạng thái loading
+  const [customers, setCustomers] = useState<typeCustomer[]>([]); // Danh sách khách hàng
+  const [error, setError] = useState<string | null>(null); // Lỗi
 
   const validateForm = (formData: typeCustomer, isLogin = false) => {
     const newErrors: Errors = {};
@@ -178,31 +183,79 @@ export default function useFetchCustomer() {
         },
         body: JSON.stringify(formData),
       });
-      console.log(formData)
+      console.log(formData);
       if (!response.ok) {
         const errorData = await response.json();
         setErrors({ email: errorData.message });
         return;
-      }else{
-        const data= await response.json();
+      } else {
+        const data = await response.json();
         console.log("Cập nhật thông tin thành công");
         setSuccessMessage(data.message);
         setErrors({});
       }
-     
     } catch (error) {
       console.error("Đã xảy ra lỗi khi cập nhật thông tin khách hàng:", error);
       setErrors({ email: "Đã xảy ra lỗi không xác định." });
     }
   };
 
+  // Fetch all customers
+  const fetchCustomers = async () => {
+    setLoading(true); // Bắt đầu quá trình loading
+    try {
+      const response = await fetch('http://localhost:3200/customers');
+      if (!response.ok) {
+        throw new Error('Mã lỗi: ' + response.status);
+      }
+      const data = await response.json();
+      setCustomers(data); // Cập nhật danh sách khách hàng
+    } catch (err) {
+      setError(err.message); // Cập nhật lỗi
+    } finally {
+      setLoading(false); // Kết thúc loading
+    }
+  };
+
+  // Delete customer
+  const deleteCustomer = async (id: string) => {
+    const confirmed = window.confirm("Bạn có chắc chắn muốn xóa khách hàng này?");
+    if (confirmed) {
+      setLoading(true); // Bắt đầu loading
+      try {
+        const response = await fetch(`http://localhost:3200/customers/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Không thể xóa khách hàng: ' + response.status);
+        }
+
+        alert("đã xoá thành công khách hàng")
+        await fetchCustomers()
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false); // Kết thúc loading
+      }
+    }
+  };
+
   return {
     fetchCustomer,
+    fetchCustomers,
     edit,
     register,
     login,
     logout,
+    deleteCustomer,
     errors,
     successMessage,
+    loading,
+    customers,
+    error,
   };
 }

@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 
 // Định nghĩa schema cho bảng Admins
 const AdminSchema = new Schema({
-
     username: { 
         type: String, 
         required: true, 
@@ -30,7 +29,7 @@ const AdminSchema = new Schema({
     role: { 
         type: String, 
         required: true,
-        enum: ['admin'] // Có thể mở rộng nếu có nhiều vai trò hơn
+        enum: ['Admin','Staff'] 
     },
     created_at: { 
         type: Date, 

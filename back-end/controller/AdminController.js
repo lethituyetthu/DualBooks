@@ -7,14 +7,13 @@ exports.registerAdmin = async (req, res) => {
 
         // Kiểm tra xem có tệp tin ảnh được tải lên không
         if (!req.file) {
-            return res.status(400).json({ error: 'User image is required' });
+            return res.status(400).json({ error: 'hình ảnh không thể bỏ trống' });
         }
 
-        // Thêm tên file ảnh vào dữ liệu admin
         adminData.user_img = req.file.filename;
 
         const newAdmin = await adminService.registerAdmin(adminData);
-        res.status(201).json({ message: 'Admin registered successfully', data: newAdmin });
+        res.status(201).json({ message: 'nhân viên mới', data: newAdmin });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -35,7 +34,7 @@ exports.loginAdmin = async (req, res) => {
 exports.getAllAdmins = async (req, res) => {
     try {
         const admins = await adminService.getAllAdmins();
-        res.status(200).json({ data: admins });
+        res.status(200).json( admins );
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

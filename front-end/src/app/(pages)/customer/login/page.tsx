@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import InputField from "../component/input";
+import InputField from "../../../../components/ui/input";
 import useFetchCustomer from "../../../hook/useFetchCustomer";
 
 interface LoginFormData {

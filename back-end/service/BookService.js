@@ -108,9 +108,8 @@ exports.searchBooks = async function (query) {
   try {
       const books = await bookModel.find({
           $or: [
-              { title: { $regex: query, $options: 'i' } },
-              { author: { $regex: query, $options: 'i' } },
-              { description: { $regex: query, $options: 'i' } }
+              { title: { $regex: query, $options: 'i' } }
+              
           ]
       });
       return books;

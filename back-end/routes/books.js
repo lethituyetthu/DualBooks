@@ -158,7 +158,7 @@ router.get('/:id', async function(req, res, next) {
 
 // Endpoint tạo sách mới với hình ảnh
 // POST /api/books
-router.post('/', authenticateAdmin, uploadBooks.single('cover_image'), async (req, res, next) => {
+router.post('/', uploadBooks.single('cover_image'), async (req, res, next) => {
     console.log('POST /books endpoint hit');
     try {
         // Lấy dữ liệu sách từ body của request
@@ -187,7 +187,6 @@ router.post('/', authenticateAdmin, uploadBooks.single('cover_image'), async (re
 // PUT /api/books/:id
 router.put(
     '/:id',
-    authenticateAdmin,
     uploadBooks.single('cover_image'), // Sử dụng Multer để xử lý tải lên hình ảnh (nếu có)
     [
         // body('title').optional().notEmpty().withMessage('Title không được để trống'),
@@ -252,7 +251,7 @@ router.put(
     }
 );
 // Xóa một cuốn sách
-router.delete('/:id',authenticateAdmin, async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   const bookId = req.params.id;
 
   try {

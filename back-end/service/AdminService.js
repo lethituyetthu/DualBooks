@@ -6,22 +6,25 @@ const { SECRET_KEY } = require('../config'); // Đảm bảo bạn có file conf
 // Hàm đăng ký admin mới
 exports.registerAdmin = async (adminData) => {
     try {
-        // Kiểm tra xem email hoặc username đã tồn tại chưa
-        const existingAdmin = await Admin.findOne({ 
-            $or: [{ email: adminData.email }, { username: adminData.username }, { id: adminData.id }]
-        });
+        // Kiểm tra xem email đã tồn tại chưa
+        const existingEmail = await Admin.findOne({ email: adminData.email });
+        if (existingEmail) {
+            throw new Error("Email đã tồn tại");
+        }   
 
-        if (existingAdmin) {
-            throw new Error('Admin with given email, username, or id already exists');
+        // Kiểm tra xem username đã tồn tại chưa
+        const existingUsername = await Admin.findOne({ username: adminData.username });
+        if (existingUsername) {
+            throw new Error("Tên người dùng đã tồn tại");
         }
-
+        
         // Tạo admin mới (mật khẩu sẽ được mã hóa bởi middleware pre-save)
         const newAdmin = new Admin({
             username: adminData.username,
             email: adminData.email,
-            password: adminData.password, // Mật khẩu chưa mã hóa
-            user_img: adminData.user_img, // Tên file ảnh đã được lưu
-            role: adminData.role || 'admin',
+            password: adminData.password, 
+            user_img: adminData.user_img, 
+            role: adminData.role || 'Admin',
             created_at: new Date(),
             updated_at: new Date()
         });
