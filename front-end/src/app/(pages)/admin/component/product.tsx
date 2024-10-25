@@ -28,9 +28,9 @@ export default function Product({ product, getCategoryName, formatDateTime }) {
         />
       </td>
       <td className="px-6 py-4">{product.title}</td>
-      <td className="px-6 py-4">{product.author}</td>
+      <td className="px-6 py-4 text-nowrap">{product.author}</td>
       <td className="px-6 py-4">{getCategoryName(product.categoryID)}</td>
-      <td className="px-6 py-4"> {(product.price * 1000).toLocaleString("vi-VN") + " đ"}</td>
+      <td className="px-6 py-4 text-nowrap"> {(product.price * 1000).toLocaleString("vi-VN") + " đ"}</td>
       <td className="px-6 py-4">{product.stock}</td>
       <td className="px-6 py-4">{formatDateTime(product.updated_at)}</td>
       <td className="px-6 py-4 flex">
