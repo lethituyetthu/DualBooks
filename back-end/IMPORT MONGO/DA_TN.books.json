@@ -1,58 +1,18 @@
 [{
   "_id": {
-    "$oid": "66d57256afc8a51793d73227"
-  },
-  "id": 1,
-  "title": "Búp Sen Xanh (Tái Bản 2020)",
-  "author": "Sơn Tùng",
-  "category": "Thiếu nhi",
-  "description": "Có thể xếp “Búp Sen Xanh” vào nhóm tác phẩm văn học dành cho thiếu nhi và là tác phẩm nổi tiếng nhất viết về chủ tịch Hồ Chí Minh trong suốt thời thơ ấu cho đến khi rời Việt Nam sang Pháp.\\n\\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...\"",
-  "price": 52.56,
-  "stock": 100,
-  "cover_image": "1728314210371-331872765.webp",
-  "created_at": "2024-09-02T00:00:00Z",
-  "updated_at": {
-    "$date": "2024-10-07T15:16:50.379Z"
-  },
-  "categoryID": {
-    "$oid": "66e52d1113ae0384d3444c3f"
-  }
-},
-{
-  "_id": {
-    "$oid": "66d57256afc8a51793d73228"
-  },
-  "id": 2,
-  "title": "Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019)",
-  "author": "Luis Sepúlveda",
-  "category": "Thiếu nhi",
-  "description": "Chuyện con mèo dạy hải âu bay là kiệt tác dành cho thiếu nhi của nhà văn Chi Lê nổi tiếng Luis Sepúlveda – tác giả của cuốn Lão già mê đọc truyện tình đã bán được 18 triệu bản khắp thế giới. Tác phẩm không chỉ là một câu chuyện ấm áp, trong sáng, dễ thương về loài vật mà còn chuyển tải thông điệp về trách nhiệm với môi trường, về sự sẻ chia và yêu thương cũng như ý nghĩa của những nỗ lực – “Chỉ những kẻ dám mới có thể bay”.\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...",
-  "price": 39.2,
-  "stock": 100,
-  "cover_image": "1728314238932-845181620.webp",
-  "created_at": "2024-09-02T00:00:00Z",
-  "updated_at": {
-    "$date": "2024-10-07T15:17:18.936Z"
-  },
-  "categoryID": {
-    "$oid": "66e52d1113ae0384d3444c3f"
-  }
-},
-{
-  "_id": {
     "$oid": "66d57256afc8a51793d73229"
   },
   "id": 3,
-  "title": "Chú Mèo Nhiều Tên",
+  "title": "Chú Mèo Nhiều Tên 22",
   "author": "Katie Harnett",
   "category": "Thiếu nhi",
-  "description": "Chú mèo ở phố Ngàn Hoa có vô số cái tên, mỗi người gọi chú một kiểu. Ai cũng yêu chú cả. Nhưng có một ngôi nhà trên phố chú chưa từng ghé chân…\n\nCuốn sách tranh tuyệt vời này kể câu chuyện ngọt ngào và đáng nhớ về tình cảm láng giềng, tình bạn… mà không ai trong chúng ta quên được.",
+  "description": "Chú mèo ở phố Ngàn Hoa có vô số cái tên, mỗi người gọi chú một kiểu. Ai cũng yêu chú cả. Nhưng có một ngôi nhà trên phố chú chưa từng ghé chân…\r\n\r\nCuốn sách tranh tuyệt vời này kể câu chuyện ngọt ngào và đáng nhớ về tình cảm láng giềng, tình bạn… mà không ai trong chúng ta quên được.",
   "price": 39.2,
   "stock": 100,
   "cover_image": "1728314472597-447946428.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
-    "$date": "2024-10-07T15:21:12.607Z"
+    "$date": "2024-10-25T12:12:21.006Z"
   },
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
@@ -496,26 +456,70 @@
 },
 {
   "_id": {
-    "$oid": "66ef843b1b051c0fe567b157"
+    "$oid": "6717843976606d2a6f8dae90"
   },
-  "id": 22,
-  "title": "Những Chuyện Lạ Ở Tokyo\n",
-  "author": "Haruki Murakami",
-  "category": "Văn học",
-  "description": "Thất lạc người thân, sinh ly tử biệt, lãng quên tên họ... Những con người đột nhiên đánh mất điều quý giá rồi sa chân vào một góc đô thị - một thế giới tràn đầy sự trùng hợp và bất ngờ. Lữ khách tình cờ đưa ta lần theo ánh sáng nhạt mờ trong trái tim người chỉnh đàn cô độc, Vịnh Hanalei họa nên cuộc sống của một người mẹ có đứa con trai bỏ mạng nơi biển cả xứ xa... Ở thế giới mà ta đã quen, có những điểm mù xuất hiện trong khoảnh khắc, số phận bí ẩn của những người mất hút vào những điểm mù ấy được thuật lại trong năm câu chuyện này.",
-  "price": 88,
-  "stock": 100,
-  "cover_image": "1726972987811-43036230.webp",
+  "title": "  Trí tuệ do thái",
+  "author": "Eran Katz",
+  "description": "Trí tuệ Do Thái là một cuốn sách tư duy đầy tham vọng trong việc nâng cao khả năng tự học tập, ghi nhớ và phân tích - những điều đã khiến người Do Thái vượt trội lên, chiếm lĩnh những vị trí quan trọng trong ngành truyền thông, ngân hàng và những giải thưởng sáng tạo trên thế giới. Tuy là một cuốn sách nhỏ nhưng Trí Tuệ Do Thái lại mang trong mình tri thức về một dân tộc có thể nhỏ về số lượng nhưng vĩ đại về trí tuệ và tài năng. Cuốn sách không chỉ lý giải lý do vì sao những người Do Thái trên thế giới lại thông minh và giàu có, mà còn đặc tả con đường thành công của một người Do Thái - Jerome cùng những triết lý được đúc kết đầy giá trị. Trí Tuệ Do Thái không dừng lại ở giới hạn của một cuốn sách triết lý hay kỹ năng. Thông qua Jerome, một kẻ lông bông thích la cà, tác giả đưa người đọc vào một chuyến khám phá về trí tuệ của người Do Thái, từ đó khơi ra những giới hạn để người đọc có thể tự khai phá trí tuệ bản thân với \"Năm nguyên tắc\" và \"Mười lăm gợi ý\". Đây sẽ là những bài học quý giá dành cho những ai muốn tồn tại và phát triển mạnh mẽ, không chỉ với con đường thành công của riêng mình. Không được viết như một cuốn sách kỹ năng khô khan, Trí Tuệ Do Thái được dựng lên bằng một câu chuyện và rồi cũng khép lại với một cái kết mở, nơi những người Do Thái đang không ngừng đối mặt với cuộc sống và chinh phục nó.",
+  "price": 170,
+  "stock": 10,
+  "cover_image": "1729594425218-447637413.jpg",
   "categoryID": {
-    "$oid": "66e52d1113ae0384d3444c41"
+    "$oid": "66e52d1113ae0384d3444c42"
   },
   "views": 0,
   "sales": 0,
   "created_at": {
-    "$date": "2024-09-22T02:43:07.827Z"
+    "$date": "2024-10-22T10:53:45.221Z"
   },
   "updated_at": {
-    "$date": "2024-09-22T02:43:07.827Z"
+    "$date": "2024-10-22T10:53:45.221Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671b825c9be6b149eb02cb46"
+  },
+  "title": " Công việc trong tương lai - Thu hút nhân tài, xây dựng đội ngũ lãnh đạo giỏi và tạo ra tổ chức có tính cạnh",
+  "author": " Jacob Morgan",
+  "description": "“Cuốn sách của Jacob là vô giá đối với các tổ chức đang nỗ lực đem lại môi trường làm việc hiệu quả cho lực lượng lao động tương lai. Nhân viên tự chủ hơn và có động lực hơn trong công việc, công nghệ tiếp tục cho phép chúng ta tương tác, kết nối, giao tiếp. Kết quả là các công ty thành công sẽ hiểu được vai trò ngày càng tăng của các nhà quản lý để trở thành những nhà lãnh đạo và sẽ học cách sử dụng “nền kinh tế tự do”, nơi các cá nhân có tay nghề tập hợp lại với nhau để hoàn thành các dự án và sau đó tiếp tục dự án khác. Các công ty hiểu rõ cách tạo ra môi trường nơi các nhóm tập hợp lại sối nổi, cả nội bộ lẫn bên ngoài, sẽ không chỉ thu hút được những tài năng vượt trội mà còn là nơi tuyệt vời để đổi mới” – Stephen Hoover, CEO của PARC",
+  "price": 118,
+  "stock": 8,
+  "cover_image": "1729856092336-131046174.jpeg",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "views": 0,
+  "sales": 0,
+  "created_at": {
+    "$date": "2024-10-25T11:34:52.340Z"
+  },
+  "updated_at": {
+    "$date": "2024-10-25T11:34:52.340Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671b82c09be6b149eb02cc69"
+  },
+  "title": "Hỏi đáp về Logistics",
+  "author": "Trần Thanh Hải",
+  "description": "Hỏi đáp về Logistics (tái bản 2023) Logistics là một ngành dịch vụ mới, đang có những bước tăng trưởng mạnh mẽ, đóng góp quan trọng cho nền kinh tế và gắn liền với các hoạt động của ngành công thương. Tại Việt Nam, logistics được Chính phủ đặc biệt quan tâm. Cùng với việc hoàn thiện thể chế pháp lý, chính sách, Chính phủ đang triển khai các nhiệm vụ nhằm cải thiện cơ sở hạ tầng, hỗ trợ doanh nghiệp kinh doanh dịch vụ logistics nâng cao năng lực cạnh tranh và mở rộng thị trường, đẩy mạnh đào tạo, phát triển nhân lực cho ngành logistics, tăng cường nhận thức về logistics trong cộng đồng doanh nghiệp.",
+  "price": 67,
+  "stock": 19,
+  "cover_image": "1729856192032-941078429.jpg",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "views": 0,
+  "sales": 0,
+  "created_at": {
+    "$date": "2024-10-25T11:36:32.036Z"
+  },
+  "updated_at": {
+    "$date": "2024-10-25T11:36:58.465Z"
   },
   "__v": 0
 }]

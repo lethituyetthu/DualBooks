@@ -1,18 +1,68 @@
 [{
   "_id": {
-    "$oid": "66ee524ebad0b1add904387a"
+    "$oid": "671b6a29bd2e1a4b63a0d9e1"
   },
-  "id": 1,
-  "username": "HieuQC",
-  "email": "hieuqc@example.com",
-  "password": "$2b$10$p2bePqTXo.Jx3ox46ZVLX.zqxpNtM9Z3CcTHJs6XBZKCvVZfvm24m",
-  "user_img": "1726894670415-hieuqc.jpg",
-  "role": "admin",
+  "username": "nhathuy",
+  "email": "nhathuy@gmail.com",
+  "password": "$2b$10$Oi1M0Gca0UOtmud8jA2wkONw9wlw.5fqJsT5I3H5GNJsuMw8q0bvu",
+  "user_img": "1729849897203-Max-R_Headshot (1).jpg",
+  "role": "Staff",
   "created_at": {
-    "$date": "2024-09-21T04:57:50.485Z"
+    "$date": "2024-10-25T09:51:37.221Z"
   },
   "updated_at": {
-    "$date": "2024-09-21T04:57:50.485Z"
+    "$date": "2024-10-25T09:51:37.221Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671b6f45c6c1bfe07ce53f42"
+  },
+  "username": "hieunguyen",
+  "email": "hieunguyen@gmail.com",
+  "password": "$2b$10$BP8Xh4Iw7sUFRw.ZqOvnKe4V7VJhhAAN3v9wcy4nwQ/B31LbUpVRS",
+  "user_img": "1729851205045-spPdZ0yz.jpg",
+  "role": "Staff",
+  "created_at": {
+    "$date": "2024-10-25T10:13:25.058Z"
+  },
+  "updated_at": {
+    "$date": "2024-10-25T10:13:25.058Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671b6fc6c6c1bfe07ce53f4c"
+  },
+  "username": "tuyetthu",
+  "email": "tuyetthu@gmail.com",
+  "password": "$2b$10$kaWZ/wQc2gYvBdyyE6YRj.zOC/SU7UWwtuIbFn26c0q1d5jHZ.I6S",
+  "user_img": "1729851334178-p4.jpg",
+  "role": "Staff",
+  "created_at": {
+    "$date": "2024-10-25T10:15:34.188Z"
+  },
+  "updated_at": {
+    "$date": "2024-10-25T10:15:34.188Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6720b8efcf281f6f5c0623f9"
+  },
+  "username": "thule",
+  "email": "thule01266@gmail.com",
+  "password": "$2b$10$69Ui1BzBehfKLg0UeeUho.cvkWotDAwclDxEcuMkOYcvKg5xnKlF2",
+  "user_img": "1730197743855-70ranf7pstdgdm73mjbypkzhpomok3sc.jpeg",
+  "role": "Admin",
+  "created_at": {
+    "$date": "2024-10-29T10:29:03.863Z"
+  },
+  "updated_at": {
+    "$date": "2024-10-29T10:29:03.863Z"
   },
   "__v": 0
 }]
