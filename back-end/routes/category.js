@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
   });
 // Endpoint tạo danh mục mới với hình ảnh
 // POST /api/categories
-router.post('/', uploadCategory.single('cate_image'), async (req, res) => {
+router.post('/',authenticateAdmin, uploadCategory.single('cate_image'), async (req, res) => {
   console.log('POST /categories endpoint hit');
   try {
       const categoryData = req.body;

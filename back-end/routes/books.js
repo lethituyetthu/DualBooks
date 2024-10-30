@@ -14,10 +14,9 @@ router.get('/', async function(req, res, next) {
     try {
         const result = await bookController.getAll();
 
-       
-        if (result) {
+        if (result && result.length > 0) {
             console.log('Books fetched successfully:', result);
-            res.status(200).json( result );
+            res.status(200).json(result);  // Gửi phản hồi thành công
         } else {
             console.log('No Books found');
             res.status(404).json({ error: 'No Books found' });
@@ -27,6 +26,9 @@ router.get('/', async function(req, res, next) {
         res.status(500).json({ error: error.message });
     }
 });
+
+module.exports = router;
+
 // Tìm kiếm sách theo từ khóa
 router.get('/search', async (req, res, next) => {
   const query = req.query.query;
@@ -83,6 +85,29 @@ router.get('/author/:author', async function(req, res, next) {
       res.status(500).json({ error: error.message });
   }
 });
+// Định nghĩa endpoint GET để lọc sách theo tên
+// URL sẽ có dạng: /books/title/:title, với :title là tên sách cần tìm
+router.get('/title/:title', async function(req, res, next) {
+    console.log('GET /books/title/:title endpoint hit'); // Log để kiểm tra khi endpoint được truy cập
+    const title = req.params.title; // Lấy tên sách từ URL
+  
+    try {
+        // Gọi hàm từ controller để lấy sách theo tên từ database
+        const result = await bookController.getByTitle(title);
+  
+        if (result.length > 0) { // Nếu có sách được tìm thấy
+            console.log(`Books fetched successfully for title ${title}:`, result);
+            res.status(200).json(result); // Trả về danh sách sách với mã trạng thái 200
+        } else { // Nếu không tìm thấy sách nào
+            console.log(`No Books found for title ${title}`);
+            res.status(404).json({ error: `No Books found for title ${title}` }); // Trả về lỗi 404
+        }
+    } catch (error) {
+        // Log và trả về lỗi 500 nếu xảy ra lỗi trong quá trình lấy sách
+        console.error(`Error fetching Books for title ${title}:`, error.message);
+        res.status(500).json({ error: error.message });
+    }
+  });
 // Endpoint lấy danh sách sản phẩm hot
 // GET /books/hot
 router.get('/hot', async (req, res) => {
@@ -158,7 +183,7 @@ router.get('/:id', async function(req, res, next) {
 
 // Endpoint tạo sách mới với hình ảnh
 // POST /api/books
-router.post('/', uploadBooks.single('cover_image'), async (req, res, next) => {
+router.post('/', authenticateAdmin, uploadBooks.single('cover_image'), async (req, res, next) => {
     console.log('POST /books endpoint hit');
     try {
         // Lấy dữ liệu sách từ body của request
@@ -187,6 +212,7 @@ router.post('/', uploadBooks.single('cover_image'), async (req, res, next) => {
 // PUT /api/books/:id
 router.put(
     '/:id',
+    // authenticateAdmin,
     uploadBooks.single('cover_image'), // Sử dụng Multer để xử lý tải lên hình ảnh (nếu có)
     [
         // body('title').optional().notEmpty().withMessage('Title không được để trống'),
@@ -251,7 +277,9 @@ router.put(
     }
 );
 // Xóa một cuốn sách
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id',
+    // authenticateAdmin,
+     async (req, res, next) => {
   const bookId = req.params.id;
 
   try {

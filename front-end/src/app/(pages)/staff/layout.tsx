@@ -3,9 +3,9 @@ import Header from './component/Header';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className=''>
+    <div className=' h-screen'>
       <Header/>
-      <main className='bg-light-50'>{children}</main>
+      <main className='bg-light-100 '>{children}</main>
     </div>
   );
 };

@@ -35,6 +35,7 @@ const App = () => {
             date={e.created_at}
             email={e.email}
             img={e.user_img}
+
           />
         ))}
       </div>

@@ -1,10 +1,19 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UserMenu from "./UserMenu";
 import Image from "next/image";
 import logo from "@/app/publics/img/logo/logo cua thu-06.png";
 
 const Header: React.FC = () => {
+  const [admin, setAdmin] = useState<{ username?: string } | null>(null); 
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const adminToken = JSON.parse(localStorage.getItem("admin") || "{}");
+      setAdmin(adminToken);
+    }
+  }, []);
   return (
     <header className="bg-primary-400 p-4 flex justify-between items-center">
       {/* Logo and Navigation */}
@@ -35,9 +44,8 @@ const Header: React.FC = () => {
       </div>
 
       {/* User Menu */}
-      
-        <UserMenu />
-     
+
+      <UserMenu userName={admin?.username||"guest"}/>
     </header>
   );
 };

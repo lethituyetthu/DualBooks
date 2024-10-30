@@ -1,11 +1,21 @@
+// controllers/orderItemController.js
 const orderItemService = require('../service/OrderItemService');
 
-// Thêm mặt hàng vào đơn hàng
-exports.addItemToOrder = async (orderId, itemData) => {
+
+exports.addOrderItem = async (req, res) => {
+    const { orderId } = req.params;
+    const { book_id, quantity, price } = req.body;
+
     try {
-        const newItem = await orderItemService.addItemToOrder(orderId, itemData); // Gọi service để thêm mặt hàng vào đơn hàng
-        return newItem;
+        // Tạo OrderItem mới
+        const newOrderItem = await orderItemService.createOrderItem(orderId, book_id, quantity, price);
+
+        // Cập nhật Order để thêm OrderItem vào mảng orderItems
+        await orderItemService.addOrderItemToOrder(orderId, newOrderItem._id);
+
+        res.status(201).json(newOrderItem); // Trả về OrderItem mới
     } catch (error) {
-        throw new Error('Error adding item to order: ' + error.message);
+        console.error('Lỗi khi thêm OrderItem:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 };

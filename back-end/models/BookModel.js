@@ -3,11 +3,20 @@ const Schema = mongoose.Schema;
 
 // Định nghĩa schema cho bảng Books
 const bookSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+    required: true,
+    unique: true
+  },
   title: {
     type: String,
     required: true
   },
   author: {
+    type: String,
+    required: true
+  },
+  category: {
     type: String,
     required: true
   },
@@ -36,12 +45,23 @@ const bookSchema = new mongoose.Schema({
     default: Date.now
   },
   categoryID: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Category', // Tham chiếu đến model Category
     required: true
   },
-  views: { type: Number, default: 0 }, // Số lượt xem
-  sales: { type: Number, default: 0 }, // Số lượng sản phẩm đã bán
+  publisherID: {
+    type: Schema.Types.ObjectId,
+    ref: 'Publisher', // Tham chiếu đến model Publisher
+    required: true
+  },
+  views: { 
+    type: Number, 
+    default: 0 
+  }, // Số lượt xem
+  sales: { 
+    type: Number, 
+    default: 0 
+  }, // Số lượng sản phẩm đã bán
 });
 
 // Tạo model từ schema

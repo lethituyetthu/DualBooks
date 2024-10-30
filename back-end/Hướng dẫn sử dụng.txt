@@ -1,0 +1,213 @@
+Hướng dẫn sử dụng API
+
+1. Đăng ký admin mới
+URL: POST http://localhost:3200/admins/register
+Dữ liệu yêu cầu:
+Body chứa thông tin admin (ví dụ: username, email, password, user_img).
+Hình ảnh sẽ được gửi dưới dạng multipart/form-data với trường tên là user_img.
+
+2. Đăng nhập admin
+URL: POST http://localhost:3200/admins/login
+Dữ liệu yêu cầu:
+Body chứa thông tin đăng nhập (ví dụ: email, password).
+
+3. Lấy danh sách tất cả admin
+URL: GET http://localhost:3200/admins
+Dữ liệu yêu cầu: Không cần dữ liệu nào trong body. (Lưu ý: cần có xác thực để truy cập endpoint này.)
+
+4. Cập nhật thông tin admin
+URL: PUT http://localhost:3200/adminsupdate/:id
+Dữ liệu yêu cầu:
+URL parameter: :id (ID của admin cần cập nhật).
+Body chứa thông tin cập nhật (ví dụ: username, email, user_img).
+
+5. Xóa admin theo ID
+URL: DELETE http://localhost:3200/admins/delete/:id
+Dữ liệu yêu cầu:
+URL parameter: :id (ID của admin cần xóa).
+
+6. Lọc admin theo role
+URL: GET http://localhost:3200/admins/filter?role=staff
+Dữ liệu yêu cầu: Không cần dữ liệu nào trong body. 
+
+7. Lọc người dùng theo tên
+URL: GEThttp://localhost:3200/admins/username/:name
+Dữ liệu yêu cầu:
+URL parameter: :name (Tên của admin mà bạn muốn tìm kiếm, ví dụ: Thu Lê).
+
+Hướng Dẫn Sử Dụng API Books
+
+1. Lấy danh sách tất cả sách
+URL: GET http://localhost:3200/books
+Mô tả: Endpoint này cho phép bạn lấy danh sách tất cả sách có trong cơ sở dữ liệu.
+Yêu cầu: Không cần dữ liệu nào trong body.
+Phản hồi thành công: Trả về mã trạng thái 200 và danh sách sách dưới dạng JSON.
+Phản hồi lỗi: Nếu không tìm thấy sách, trả về mã 404 cùng thông báo lỗi.
+
+2. Tìm kiếm sách theo từ khóa
+URL: GET http://localhost:3200/books/search?query=<từ khóa>
+Mô tả: Endpoint này cho phép bạn tìm kiếm sách theo từ khóa.
+Yêu cầu: Từ khóa tìm kiếm được truyền qua query string.
+Phản hồi thành công: Trả về mã trạng thái 200 và danh sách sách khớp với từ khóa.
+Phản hồi lỗi: Nếu không tìm thấy sách, trả về mã 404 với thông báo không tìm thấy sách.
+
+3. Lọc sách theo thể loại
+URL: GET http://localhost:3200/books/category/:categoryID
+Mô tả: Lọc danh sách sách theo thể loại cụ thể.
+Yêu cầu: Thể loại được chỉ định qua tham số URL :categoryID.
+Phản hồi thành công: Trả về mã trạng thái 200 và danh sách sách thuộc thể loại đã chọn.
+Phản hồi lỗi: Nếu không tìm thấy sách theo thể loại, trả về mã 404 cùng thông báo lỗi.
+
+4. Lọc sách theo tác giả
+URL: GET http://localhost:3200/books/author/:author
+Mô tả: Endpoint này cho phép bạn lọc sách theo tên tác giả.
+Yêu cầu: Tên tác giả được chỉ định qua tham số URL :author.
+Phản hồi thành công: Trả về mã trạng thái 200 và danh sách sách của tác giả đã chỉ định.
+Phản hồi lỗi: Nếu không tìm thấy sách của tác giả đó, trả về mã 404 cùng thông báo lỗi.
+
+5. Lọc sách theo tên
+URL: GET http://localhost:3200/books/title/:title
+Mô tả: Endpoint này cho phép bạn tìm kiếm sách dựa trên tên sách.
+Yêu cầu: Tên sách được chỉ định qua tham số URL :title.
+Phản hồi thành công: Trả về mã trạng thái 200 cùng với danh sách sách khớp với tên đã cho.
+Phản hồi lỗi: Nếu không tìm thấy sách nào, trả về mã 404 và thông báo không tìm thấy sách.
+
+6. Lấy danh sách sản phẩm hot
+URL: GET http://localhost:3200/books/hot
+Mô tả: Endpoint này trả về danh sách sách hot, thường là những sản phẩm đang được ưa chuộng hoặc có lượt xem cao.
+Yêu cầu: Không cần dữ liệu nào trong body.
+Phản hồi thành công: Trả về mã trạng thái 200 cùng với danh sách sách hot.
+Phản hồi lỗi: Nếu có lỗi xảy ra trong quá trình lấy dữ liệu, trả về mã 500 cùng thông báo lỗi.
+
+7. Lấy danh sách sản phẩm nổi bật
+URL: GET http://localhost:3200/books/featured
+Mô tả: Endpoint này trả về danh sách sách nổi bật, thường là những sản phẩm được lựa chọn bởi người quản lý hoặc có đánh giá cao.
+Yêu cầu: Không cần dữ liệu nào trong body.
+Phản hồi thành công: Trả về mã trạng thái 200 cùng với danh sách sách nổi bật.
+Phản hồi lỗi: Nếu có lỗi xảy ra trong quá trình lấy dữ liệu, trả về mã 500 cùng thông báo lỗi.
+
+8. Lấy danh sách sách và sắp xếp theo giá
+URL: GET http://localhost:3200/books/sortedByPrice
+Mô tả: Endpoint này cho phép bạn lấy danh sách sách và sắp xếp chúng theo giá.
+Tham số truy vấn:
+sortOrder: Tham số này cho phép bạn chỉ định thứ tự sắp xếp. Giá trị có thể là asc (tăng dần) hoặc desc (giảm dần). Mặc định là asc.
+Phản hồi thành công: Trả về mã trạng thái 200 cùng với danh sách sách được sắp xếp.
+Phản hồi lỗi: Nếu không tìm thấy sách nào, trả về mã 404 và thông báo không tìm thấy sách.
+
+9. Lấy danh sách sách mới nhất
+URL: GET http://localhost:3200/books/new
+Mô tả: Endpoint này trả về danh sách sách mới nhất, có thể là những sách vừa được thêm vào hệ thống.
+Yêu cầu: Không cần dữ liệu nào trong body.
+Phản hồi thành công: Trả về mã trạng thái 200 cùng với danh sách sách mới nhất.
+Phản hồi lỗi: Nếu có lỗi xảy ra trong quá trình lấy dữ liệu, trả về mã 500 cùng thông báo lỗi.
+
+10. Xem chi tiết sách theo ID
+URL: GET http://localhost:3200/books/:id
+Mô tả: Endpoint này cho phép bạn xem chi tiết thông tin của một cuốn sách cụ thể dựa trên ID.
+Tham số:
+:id: ID của cuốn sách cần xem chi tiết.
+Phản hồi thành công: Trả về mã trạng thái 200 cùng với thông tin chi tiết của cuốn sách.
+Phản hồi lỗi: Nếu không tìm thấy sách nào với ID đã cho, trả về mã 404 và thông báo không tìm thấy sách.
+
+11. Tạo sách mới
+POST http://localhost:3200/books:
+Dữ liệu:
+title: Tiêu đề sách
+author: Tác giả
+category: Thể loại
+description: Mô tả
+price: Giá
+stock: Số lượng tồn kho
+categoryID: ID của thể loại (nếu có)
+cover_image: Hình ảnh bìa sách (dạng file)
+
+12Cập nhật sách
+Phương thức: PUT
+URL: http://localhost:3200/books/:id
+Dữ liệu:
+:id: ID của sách cần cập nhật
+Các trường cần cập nhật (tương tự như khi tạo sách mới)
+
+13. DELETE http://localhost:3200/books/:id: Xóa một cuốn sách
+
+Hướng dẫn sử dụng API quản lý thể loại sách
+1. Lấy danh sách thể loại (GET /categories)
+http://localhost:3200/categories
+Không cần dữ liệu trong body request.
+
+2Lấy chi tiết thể loại theo ID (GET /categories/:id)
+URL: http://localhost:3200/categories/:id
+:id: ID của thể loại cần lấy chi tiết (tham số trên URL).
+
+3. Tạo thể loại mới (POST /categories)
+Phương thức: POST
+URL: http://localhost:3200/categories
+Dữ liệu:
+name: Tên thể loại (bắt buộc)
+description: Mô tả thể loại (bắt buộc)
+cate_image: File hình ảnh đại diện cho thể loại (dạng multipart/form-data) - Tùy chọn
+
+4. Cập nhật thông tin thể loại (PUT /categories/:id)
+Phương thức: PUT
+URL: http://localhost:3200/categories/:id
+:id: ID của thể loại cần cập nhật (tham số trên URL).
+Dữ liệu:
+name: Tên thể loại (tùy chọn)
+description: Mô tả thể loại (tùy chọn)
+cate_image: File hình ảnh đại diện cho thể loại (dạng multipart/form-data) - Tùy chọn
+
+5.Xóa thể loại (DELETE /categories/:id)
+URL: http://localhost:3200/categories/:id
+:id: ID của thể loại cần xóa (tham số trên URL).
+Xác thực
+API yêu cầu người dùng phải được xác thực với quyền admin trước khi thực hiện các hành động tạo, 
+cập nhật, xóa thể loại. (Cách thức xác thực cụ thể phụ thuộc vào ứng dụng).
+
+Hướng dẫn sử dụng API quản lý khách hàng
+1.Đăng ký khách hàng mới (POST /customers/register)
+Phương thức: POST
+URL: http://localhost:3200/customers/register
+Dữ liệu:
+name: Tên khách hàng (bắt buộc)
+email: Email đăng nhập (bắt buộc, phải là email hợp lệ)
+password: Mật khẩu (bắt buộc)
+phone: Số điện thoại (tùy chọn)
+address: Địa chỉ (tùy chọn)
+
+2.Đăng nhập khách hàng (POST /customers/login)
+Phương thức: POST
+URL: http://localhost:3200/customers/login
+Dữ liệu:
+email: Email đăng nhập (bắt buộc)
+password: Mật khẩu (bắt buộc)
+
+3. Cập nhật thông tin khách hàng (PUT /customers/:id)
+Phương thức: PUT
+URL: http://localhost:3200/customers/:id (thay thế :id bằng ID của khách hàng)
+Dữ liệu:
+Các trường cần cập nhật (tên, email, số điện thoại, địa chỉ) - chỉ cung cấp những trường cần thay đổi
+
+4.Xóa khách hàng (DELETE /customers/:id)
+Phương thức: DELETE
+URL: http://localhost:3200/customers/:id (thay thế :id bằng ID của khách hàng)
+Xác thực: Chỉ tài khoản quản trị viên được phép xóa khách hàng.
+
+5.Lấy danh sách tất cả khách hàng (GET /customers)
+Phương thức: GET
+URL: http://localhost:3200/customers
+Xác thực: Chỉ tài khoản quản trị viên được phép xem danh sách tất cả khách hàng
+
+6. Lấy thông tin chi tiết của khách hàng (GET /customers/:id)
+Phương thức: GET
+URL: http://localhost:3200/customers/:id (thay thế :id bằng ID của khách hàng)
+
+7. Cập nhật trạng thái hoạt động của khách hàng (PUT /customers/:id/status)
+Phương thức: PUT
+URL: http://localhost:3200/customers/:id/status
+Dữ liệu:
+isActive: true/false (Kích hoạt/Vô hiệu hóa tài khoản khách hàng)
+Xác thực: Chỉ tài khoản quản trị viên được phép cập nhật trạng thái hoạt động.
+
+8.Tìm kiếm khách hàng theo tên (GET /customers/name/:name)
+Phương thức: GET
+URL: http://localhost:3200/customers/name/:name (thay thế :name bằng tên của khách hàng)

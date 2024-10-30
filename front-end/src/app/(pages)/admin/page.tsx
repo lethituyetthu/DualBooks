@@ -1,7 +1,24 @@
-import React from 'react'
+"use client";
 
-export default function page() {
-  return (
-    <div>admin</div>
-  )
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function AdminPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const adminInfo = localStorage.getItem("admin");
+
+    if (!adminInfo) {
+      router.push("/login_admin"); 
+    } else {
+      const admin = JSON.parse(adminInfo);
+      if (admin.role !== "Admin") {
+        alert("bạn không được phân quyền vào Admin")
+        router.push("/login_admin"); 
+      }
+    }
+  }, [router]);
+
+  return <div>admin</div>;
 }

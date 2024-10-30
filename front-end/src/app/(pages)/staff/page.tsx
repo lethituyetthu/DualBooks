@@ -1,45 +1,69 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import useFetchBook from "@/app/hook/useFetchBook";
 import CartItem from "./component/cartItem";
+import ProductList from "./component/productList";
+import { useRouter } from "next/navigation";
+import { Books } from "@/app/types/Books";
+import SearchProduct from "@/components/ui/searchProduct_byName";
+
+interface CartItem {
+  id: string;
+  product: string;
+  quantity: number;
+  price: number;
+}
 
 const Staff: React.FC = () => {
-  const { books, loading, error } = useFetchBook();
 
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      product: "Sống để kể lại những anh hùng",
-      quantity: 1,
-      price: 250000,
-    },
-    {
-      id: 2,
-      product: "Sống để kể lại những anh hùng",
-      quantity: 1,
-      price: 250000,
-    },
-    {
-      id: 3,
-      product: "Sống để kể lại những anh hùng",
-      quantity: 1,
-      price: 250000,
-    },
-    {
-      id: 4,
-      product: "Sống để kể lại những anh hùng",
-      quantity: 1,
-      price: 250000,
-    },
-    {
-      id: 5,
-      product: "Sống để kể lại những anh hùng",
-      quantity: 1,
-      price: 250000,
-    },
-  ]);
+const router = useRouter()
+  const { books, loading, error, searchBooks, fetchDetail } = useFetchBook();
+  
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchId, setSearchId] = useState(""); // State for searching by ID
+
+  useEffect(() => {
+    const adminInfo = localStorage.getItem("admin");
+
+    if (!adminInfo) {
+      router.push("/login_admin"); 
+    } else {
+      const admin = JSON.parse(adminInfo);
+      if (admin.role !== "staff") {
+        alert("bạn không được phân quyền vào Staff")
+        router.push("/login_admin"); 
+      }
+    }
+  }, [router]);
+
+  const addToCart = (book: Books) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.id === book.id);
+
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item.id === book.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [
+          ...prevItems,
+          { id: book.id, product: book.title, quantity: 1, price: book.price },
+        ];
+      }
+    });
+  };
+
+  const updateCartItemQuantity = (id: string, newQuantity: number) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
 
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -48,69 +72,77 @@ const Staff: React.FC = () => {
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   if (loading) {
-    return <div className="text-center text-lg">Loading...</div>;
+    return <div className="text-center text-lg">Đang tải...</div>;
   }
 
   if (error) {
-    return (
-      <div className="text-center text-lg text-red-600">Error: {error}</div>
-    );
+    return <div className="text-center text-lg text-red-600">Lỗi: {error}</div>;
   }
 
-  // Function to truncate book title
-  const truncateTitle = (title: string, maxLength: number) => {
-    return title.length > maxLength ? title.slice(0, maxLength) + "..." : title;
+  const handleDelete = (id: string) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+    searchBooks(term);
+  };
+
+const handleSearchByIdChange = (id: string) => {
+  setSearchId(id);
+  if (id) {
+    fetchDetail(id); // Tự động tìm kiếm chi tiết khi có ID
+  }
+};
+
   return (
-    <div className="min-h-screen flex  bg-light-50">
-      <div className="w-4/5 p-3 ">
-        <div className=" bg-white p-6 rounded-lg shadow-md">
+    <div className="flex">
+      <div className="w-4/5 p-3 flex flex-col max-h-[calc(100vh-80px)]">
+        <div className="bg-white p-6 rounded-lg shadow-md h-screen overflow-y-auto flex-grow">
           {cartItems.map((item) => (
             <CartItem
               key={item.id}
+              id={item.id}
               product={item.product}
               quantity={item.quantity}
               price={item.price}
+              onQuantityChange={updateCartItemQuantity}
+              onDelete={handleDelete}
             />
           ))}
-          <div className="flex justify-between mt-6 font-semibold">
-            <span>Tổng tiền sản phẩm:</span>
-            <span>
-              {totalQuantity} {totalQuantity === 1 ? "sản phẩm" : "sản phẩm"}
-            </span>
-            <span>{totalPrice.toLocaleString()} đ</span>
-          </div>
+        </div>
+        <div className="bg-primary-400 text-white p-6 rounded-lg shadow-md mt-4 font-semibold flex justify-between">
+          <span>Tổng tiền sản phẩm:</span>
+          <span>{totalQuantity} sản phẩm</span>
+          <span>{(totalPrice * 1000).toLocaleString("vi-VN") + " đ"}</span>
         </div>
       </div>
 
-      <div className=" bg-white p-5 rounded-md shadow-lg">
-        <input
-          type="text"
-          placeholder="Nhập mã sản phẩm"
-          className="w-full p-2 mb-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#A05D3A]"
-        />
+      <div className="bg-white p-5 shadow-lg max-h-screen">
+        <div className="mb-5 flex">
+          <SearchProduct
+            searchTerm={searchTerm}
+            onSearchChange={handleSearchChange}
+          />
 
-        <div className="grid grid-cols-3 gap-4 overflow-y-auto h-[60%]">
-          {books.map((book) => (
-            <div
-              key={book.id}
-              className="bg-gray-50 p-2 rounded-lg shadow-md flex flex-col items-center transition-transform transform hover:scale-105"
-            >
-              <Image
-                src={`http://localhost:3200/uploads/books/${book.cover_image}`}
-                alt={book.title}
-                width={500}
-                height={300}
-                className="w-32 h-48 object-cover rounded mb-2"
-              />
-              <p className="text-sm  text-center h-10">
-                {truncateTitle(book.title, 20)}
-              </p>
-              <p className="text-sm text-primary-700 fo">
-                {(book.price * 1000).toLocaleString("vi-VN") + "đ"}
-              </p>
-            </div>
+          <input
+            type="text"
+            placeholder="Tìm kiếm theo ID"
+            value={searchId}
+            onChange={(e) => setSearchId(e.target.value)}
+            className="border rounded-md px-3 py-2 ml-2"
+          />
+          {/* {/* <button
+            onClick={handleSearchById}
+            className="bg-primary-400 text-white px-4 py-2 ml-2 rounded-md hover:bg-primary-300 transition-colors"
+          > 
+            Tìm ID
+          </button> */}
+        </div>
+
+        <div className="grid grid-cols-3 gap-4 max-h-[calc(100vh-230px)] overflow-y-auto">
+          {books.map((book: Books) => (
+            <ProductList key={book.id} book={book} onAddToCart={addToCart} />
           ))}
         </div>
 

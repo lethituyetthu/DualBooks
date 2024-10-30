@@ -10,15 +10,9 @@ router.post('/register', uploadAdmin.single('user_img'), async (req, res) => {
     try {
         await adminController.registerAdmin(req, res);
     } catch (error) {
-        console.error('Lỗi khi đăng ký admin:', error);  // Log chi tiết lỗi ra console
-        res.status(500).json({
-            error: error.message,  // Gửi thông điệp lỗi đến client
-            stack: error.stack,    // Gửi thêm stack trace (nếu cần chi tiết)
-            code: error.code || 'SERVER_ERROR', // Gửi mã lỗi nếu có
-        });
+        res.status(500).json({ error: error.message });
     }
 });
-
 
 // Endpoint đăng nhập admin
 // POST /api/admins/login
@@ -38,4 +32,34 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+// Route: Cập nhật thông tin admin qua id
+router.put('/update/:id',  uploadAdmin.single('user_img'), async (req, res) => {
+    try {
+        await adminController.updateAdmin(req, res); // Gọi controller cập nhật
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+// Route: Xóa admin theo ID
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        await adminController.deleteAdmin(req, res);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+// Endpoint lọc admin theo role
+// GET /api/admins/username/<tên>
+router.get('/filter', adminController.getByRole);
+// Endpoint lọc người dùng theo tên
+router.get('/username/:name', async (req, res) => {
+    try {
+        const { name } = req.params; // Lấy tên từ URL parameters
+        await adminController.getAdminsByName(req, res, name);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
 module.exports = router;

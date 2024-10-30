@@ -108,7 +108,9 @@ exports.updateCustomerById = async (customerId, updatedData) => {
 exports.deleteCustomer = async (customerId) => {
     try {
         const result = await Customer.findByIdAndDelete(customerId); // Sử dụng findByIdAndDelete để xóa khách hàng theo ID
-       return result;
+        if (!result) {
+            throw new Error('Customer not found'); // Nếu không tìm thấy khách hàng
+        }
     } catch (error) {
         throw new Error('Error deleting customer: ' + error.message);
     }
@@ -135,20 +137,36 @@ exports.getCustomerById = async (customerId) => {
     }
 };
 
-exports.updateCustomerStatus = async (customerId, status) => {
-    try {
-        // Tìm kiếm khách hàng theo ID
-        const customer = await Customer.findById(customerId);
-        if (!customer) {
-            throw new Error('Customer not found');
-        }
-
-        // Cập nhật trạng thái mới
-        customer.status = status;
-        await customer.save(); // Lưu lại thay đổi vào cơ sở dữ liệu
-
-        return customer;
-    } catch (error) {
-        throw new Error('Error updating customer status: ' + error.message);
+exports.updateCustomerStatus = async (customerId) => {
+    // Tìm khách hàng theo ID
+    const customer = await Customer.findById(customerId);
+    
+    if (!customer) {
+        throw new Error('Customer not found');
     }
+
+    // Kiểm tra trạng thái hiện tại của khách hàng
+    if (customer.status === 'blocked') {
+        customer.status = 'active'; // Chuyển từ 'blocked' sang 'active'
+    } else if (customer.status === 'active') {
+        customer.status = 'blocked'; // Chuyển từ 'active' sang 'blocked'
+    }
+
+    // Lưu thay đổi
+    await customer.save();
+
+    return customer;
 };
+// Hàm lọc khách hàng theo tên
+  exports.getByName = async function (name) {
+      try {
+          // Tìm khách hàng theo tên
+          // Thêm \ trước dấu ngoặc để đảm bảo các ký tự đặc biệt không gây lỗi
+          const regexName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
+          const customers = await Customer.find({ name: new RegExp(regexName, 'i') }); // Sử dụng RegExp để tìm kiếm không phân biệt chữ hoa chữ thường
+          return customers;
+      } catch (error) {
+          throw new Error('Error fetching customers by name: ' + error.message);
+      }
+  };
+  

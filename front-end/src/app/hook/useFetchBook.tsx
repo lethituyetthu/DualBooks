@@ -1,17 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface typeBook {
-  id: string;
-  title: string;
-  author: string;
-  categoryID: string;
-  description: string;
-  price: number;
-  stock: number;
-  cover_image: string;
-  created_at: string;
-  updated_at: string;
-}
+import { Books } from "../types/Books";
 
 interface Error {
   id?: string;
@@ -27,10 +16,10 @@ interface Error {
 }
 
 export default function useFetchBook() {
-  const [detailBook, setDetailBook] = useState<typeBook | null>(null);
-  const [hotBooks, setHotBooks] = useState<typeBook[]>([]);
-  const [newBooks, setNewBooks] = useState<typeBook[]>([]);
-  const [books, setBooks] = useState<typeBook[]>([]);
+  const [detailBook, setDetailBook] = useState<Books | null>(null);
+  const [hotBooks, setHotBooks] = useState<Books[]>([]);
+  const [newBooks, setNewBooks] = useState<Books[]>([]);
+  const [books, setBooks] = useState<Books[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
