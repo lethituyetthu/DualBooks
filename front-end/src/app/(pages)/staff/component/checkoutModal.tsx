@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import logo from "@/app/publics/ma_qr.png"
 interface typeCheckout {
   cartItems: {
@@ -20,14 +20,37 @@ const CheckoutModal: React.FC<typeCheckout> = ({
   onClose,
 }) => {
   const [paymentMethod, setPaymentMethod] = useState<string>("");
+  const [adminId, setAdminId] = useState(null);
 
   useEffect(() => {
-    console.log("cartItems trong CheckoutModal:", cartItems);
-  }, [cartItems]);
-
+    const adminData  = localStorage.getItem("admin");
+    if (adminData) {
+      const admin = JSON.parse(adminData);
+      if (admin && admin.id) {
+        setAdminId(admin.id);
+      }
+    }
+  }, []);
+  
   const handlePaymentChange = (method: string) => {
     setPaymentMethod(method);
   };
+
+  const handlePayment = () =>{
+    const orderData = {
+      orderItems: cartItems,
+      totalPrice,
+      total_amount: totalPrice,
+      total_quantity: totalQuantity,
+      oderDate: new Date(),
+      order_status: "Hoàn thành",
+      payment_status:"Đã thanh toán",
+      order_type: 'offline',
+      staff_id: adminId,
+    };
+    console.log("Danh sách sản phẩm thanh toán:", orderData);
+
+  }
 
   return (
     <div className="fixed inset-0 flex items-stretch justify-end bg-black bg-opacity-50 z-50">
@@ -131,7 +154,7 @@ const CheckoutModal: React.FC<typeCheckout> = ({
 
         <button
           className="w-full mt-4 py-2 bg-[#A05D3A] text-white rounded-lg hover:bg-[#8C4C2F] transition-colors"
-          onClick={onClose}
+          onClick={handlePayment}
         >
           Thanh Toán
         </button>

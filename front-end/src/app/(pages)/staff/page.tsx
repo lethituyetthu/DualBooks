@@ -160,7 +160,7 @@ const Staff: React.FC = () => {
         </div>
 
         <button
-          className="w-full mt-4 py-2 bg-[#A05D3A] text-white rounded-lg hover:bg-[#8C4C2F] transition-colors"
+          className="w-full mt-4 py-2 bg-[#A05D3A] text-white rounded-sm hover:bg-[#8C4C2F] transition-colors"
           onClick={handleCheckout}
         >
           Thanh Toán

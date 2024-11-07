@@ -12,6 +12,7 @@ exports.createOrder = async (orderData) => {
             order_status: orderData.order_status || 'Chờ xác nhận', // Trạng thái đơn hàng, mặc định là 'Chờ xác nhận'
             payment_status: orderData.payment_status || 'Chưa thanh toán', // Trạng thái thanh toán, mặc định là 'Chưa thanh toán'
             total_amount: orderData.total_amount, // Tổng số tiền
+            total_quantity: orderData.total_quantity, // Tổng số lượng
             shipping_address: orderData.shipping_address || "Đường số 3. CVPM Quang Trung, Quận 12", // Địa chỉ giao hàng, mặc định nếu không có
             order_type: orderData.order_type, // Loại đơn hàng: online hoặc offline
             customer_feedback: orderData.customer_feedback // Đánh giá của khách hàng

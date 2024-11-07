@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
             order_status, 
             payment_status, 
             total_amount, 
+            total_quantity, 
             shipping_address, 
             order_type, // Thêm trường order_type để xác định đơn hàng online hoặc offline
             customer_feedback // Thêm trường customer_feedback cho đánh giá của khách hàng
@@ -27,6 +28,7 @@ router.post('/', async (req, res) => {
             order_status, 
             payment_status, 
             total_amount, 
+            total_quantity, 
             shipping_address,
             order_type,
             customer_feedback
@@ -44,6 +46,8 @@ router.post('/', async (req, res) => {
 router.get('/:orderId', orderController.getOrderDetail);
 // Route để thêm chi tiết đơn hàng
 router.post('/:orderId/order-items', orderItemController.addOrderItem);
+
+
 router.get('/', async (req, res) => {
     try {
         // Gọi controller để lấy danh sách đơn hàng
@@ -59,6 +63,7 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
 // Route: Lọc đơn hàng theo ngày cập nhật
 router.get('/filter-by-date/:date', async (req, res) => {
     try {
@@ -68,6 +73,7 @@ router.get('/filter-by-date/:date', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
 // Route: Lọc đơn hàng theo địa chỉ nhận
 router.get('/filter-by-address/:address', async (req, res) => {
     try {

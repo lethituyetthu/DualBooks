@@ -39,6 +39,11 @@ const orderSchema = new Schema({
         type: Number,
         required: true,
     },
+    total_quantity: {
+        type: Number,
+        default: 0,
+        required: true,
+    },
     orderItems: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'OrderItem'

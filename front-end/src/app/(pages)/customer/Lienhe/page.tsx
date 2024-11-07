@@ -37,7 +37,7 @@ const ContactPage: React.FC = () => {
           Liên hệ
         </a>
         <span>/</span>
-        <span style={{ color: "#D98B48" }} className="text font-semibold">
+        <span  className="text font-semibold text-primary-400">
           Liên hệ DualBooks
         </span>
       </nav>
@@ -72,7 +72,7 @@ const ContactPage: React.FC = () => {
                 <input
                   type="text"
                   id="name"
-                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  className="mt-1 block w-full border border-gray-300 rounded-sm p-2"
                   required
                 />
               </div>
@@ -86,7 +86,7 @@ const ContactPage: React.FC = () => {
                 <input
                   type="email"
                   id="email"
-                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  className="mt-1 block w-full border border-gray-300 rounded-sm p-2"
                   required
                 />
               </div>
@@ -100,7 +100,7 @@ const ContactPage: React.FC = () => {
                 <input
                   type="tel"
                   id="phone"
-                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  className="mt-1 block w-full border border-gray-300 rounded-sm p-2"
                   placeholder="Vui lòng nhập số điện thoại của bạn"
                   required
                 />
@@ -115,14 +115,14 @@ const ContactPage: React.FC = () => {
                 <textarea
                   id="message"
                   rows={4}
-                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  className="mt-1 block w-full border border-gray-300 rounded-sm p-2"
                   required
                 />
               </div>
               <div className="text-center">
                 <button
                   type="submit"
-                  className="w-full  p-2 bg-primary-400 text-white rounded-none hover:bg-opacity-80"
+                  className="w-full  p-2 bg-primary-400 text-white rounded-sm hover:bg-opacity-80"
                 >
                   Gửi
                 </button>
