@@ -4,12 +4,14 @@
 import React, { useState } from "react";
 import { FaHome, FaClipboardList, FaChartBar, FaUser, FaSignOutAlt } from "react-icons/fa";
 import MenuItem from "./menuItem"; // Đảm bảo đường dẫn đúng
-
+import useFetchAdmin from "@/app/hook/useFetchAdmin";
 interface UserMenuProps {
   userName: string;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ userName }) => {
+
+  const {logout} = useFetchAdmin()
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -19,10 +21,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ userName }) => {
   // Danh sách menu
   const menuList = [
     { href: "/staff", icon: <FaHome />, title: "Trang Chủ" },
-    { href: "/orders", icon: <FaClipboardList />, title: "Đơn Hàng" },
+    { href: "/staff/order", icon: <FaClipboardList />, title: "Đơn Hàng" },
     { href: "/statistics", icon: <FaChartBar />, title: "Thống Kê" },
-    { href: "/profile", icon: <FaUser />, title: "Thông Tin" },
-    { href: "/logout", icon: <FaSignOutAlt />, title: "Đăng Xuất", className: "text-red-500" },
+    { href: "/logout", icon: <FaSignOutAlt />, title: "Đăng Xuất", className: "text-red-500", onclick: logout },
   ];
 
   return (
@@ -44,7 +45,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ userName }) => {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
           {menuList.map((item) => (
-            <MenuItem key={item.href} href={item.href} icon={item.icon} label={item.title} />
+            <MenuItem key={item.href} href={item.href} icon={item.icon} label={item.title} onClick={item.onclick} />
           ))}
         </div>
       )}

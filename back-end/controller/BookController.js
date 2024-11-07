@@ -6,7 +6,7 @@ exports.getAll = async () => {
 
     // Định dạng dữ liệu trước khi trả về
     const formattedBooks = books.map((book) => ({
-      id: book._id, // ObjectId của sách
+      id: book._id, 
       title: book.title,
       author: book.author,
       category: book.categoryID ? {

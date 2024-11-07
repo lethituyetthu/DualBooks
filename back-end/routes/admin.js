@@ -49,8 +49,9 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 // Endpoint lọc admin theo role
-// GET /api/admins/username/<tên>
 router.get('/filter', adminController.getByRole);
+
+// GET /api/admins/username/<tên>
 // Endpoint lọc người dùng theo tên
 router.get('/username/:name', async (req, res) => {
     try {

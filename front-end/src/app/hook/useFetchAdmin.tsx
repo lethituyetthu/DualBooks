@@ -77,26 +77,26 @@ export default function useFetchAdmin() {
 
       const data = await response.json();
 
-      alert ("đăng nhập thành công")
+      alert("đăng nhập thành công");
 
       localStorage.setItem("token", data.token);
 
-        const adminInfo = {
-          id: data.admin._id,
-          email: data.admin.email,
-          username: data.admin.username,
-          role: data.admin.role,
-        };
-        localStorage.setItem("admin", JSON.stringify(adminInfo));
-      
-        setIsAuthenticated(true);
+      const adminInfo = {
+        id: data.admin._id,
+        email: data.admin.email,
+        username: data.admin.username,
+        role: data.admin.role,
+      };
+      localStorage.setItem("admin", JSON.stringify(adminInfo));
 
-        if (data.admin.role === "Staff") {
-          router.push("/staff");
-        } else {
-          router.push("/admin");
-        }
-      
+      setIsAuthenticated(true);
+
+      if (data.admin.role === "Staff") {
+        router.push("/staff");
+      } else {
+        router.push("/admin");
+      }
+
       return data;
     } catch (error) {
       console.error("Login error:", error);
@@ -104,5 +104,12 @@ export default function useFetchAdmin() {
     }
   };
 
-  return { admin, addStaff, login, isAuthenticated };
+  // Logout
+  const logout = () => {
+    localStorage.removeItem("admin");
+    router.push("/login_admin")
+    console.log("Đã đăng xuất");
+  };
+
+  return { admin, addStaff, login, isAuthenticated, logout};
 }

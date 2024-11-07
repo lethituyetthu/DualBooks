@@ -2,6 +2,7 @@ const Customer = require('../models/CustomerModel');
 const bcrypt = require('bcrypt'); // Để mã hóa mật khẩu
 const jwt = require('jsonwebtoken'); // Để tạo token
 const { SECRET_KEY } = require('../config');
+
 // Hàm kiểm tra định dạng email
 const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -64,30 +65,33 @@ exports.registerCustomer = async (customerData) => {
         throw new Error('Error registering customer: ' + error.message);
     }
 };
+
+// Đăng nhập khách hàng
 exports.loginCustomer = async (email, password) => {
-  try {
-      // Tìm khách hàng theo email
-      const customer = await Customer.findOne({ email });
+    try {
+        // Tìm khách hàng theo email
+        const customer = await Customer.findOne({ email });
 
-      if (!customer) {
-          throw new Error('Customer not found');
-      }
+        if (!customer) {
+            throw new Error('Customer not found');
+        }
 
-      // Kiểm tra mật khẩu
-      const isMatch = await bcrypt.compare(password, customer.password);
+        // Kiểm tra mật khẩu
+        const isMatch = await bcrypt.compare(password, customer.password);
 
-      if (!isMatch) {
-          throw new Error('Invalid password');
-      }
+        if (!isMatch) {
+            throw new Error('Invalid password');
+        }
 
-      // Tạo token
-      const token = jwt.sign({ id: customer._id, email: customer.email }, SECRET_KEY, { expiresIn: '1h' });
+        // Tạo token
+        const token = jwt.sign({ id: customer._id, email: customer.email }, SECRET_KEY, { expiresIn: '1h' });
 
-      return { token, customer };
-  } catch (error) {
-      throw new Error('Error logging in customer: ' + error.message);
-  }
+        return { token, customer };
+    } catch (error) {
+        throw new Error('Error logging in customer: ' + error.message);
+    }
 };
+
 // Cập nhật thông tin chi tiết của khách hàng theo ID
 exports.updateCustomerById = async (customerId, updatedData) => {
     try {
@@ -115,6 +119,7 @@ exports.deleteCustomer = async (customerId) => {
         throw new Error('Error deleting customer: ' + error.message);
     }
 };
+
 // Lấy danh sách toàn bộ khách hàng
 exports.getAllCustomers = async () => {
     try {
@@ -124,6 +129,7 @@ exports.getAllCustomers = async () => {
         throw new Error('Error fetching customers: ' + error.message);
     }
 };
+
 // Lấy thông tin chi tiết của khách hàng theo ID
 exports.getCustomerById = async (customerId) => {
     try {
@@ -137,6 +143,21 @@ exports.getCustomerById = async (customerId) => {
     }
 };
 
+// Tìm kiếm khách hàng theo tên
+exports.searchCustomers = async function (query) {
+    try {
+        // Tìm kiếm theo tên khách hàng, không liên quan đến _id
+        const customers = await Customer.find({
+            name: { $regex: query, $options: 'i' }  // Tìm kiếm tên theo query với lựa chọn không phân biệt chữ hoa/thường
+        });
+
+        return customers;
+    } catch (error) {
+        throw new Error('Error searching customers: ' + error.message);
+    }
+};
+
+// Cập nhật trạng thái của khách hàng (active/blocked)
 exports.updateCustomerStatus = async (customerId) => {
     // Tìm khách hàng theo ID
     const customer = await Customer.findById(customerId);
@@ -157,16 +178,16 @@ exports.updateCustomerStatus = async (customerId) => {
 
     return customer;
 };
+
 // Hàm lọc khách hàng theo tên
-  exports.getByName = async function (name) {
-      try {
-          // Tìm khách hàng theo tên
-          // Thêm \ trước dấu ngoặc để đảm bảo các ký tự đặc biệt không gây lỗi
-          const regexName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
-          const customers = await Customer.find({ name: new RegExp(regexName, 'i') }); // Sử dụng RegExp để tìm kiếm không phân biệt chữ hoa chữ thường
-          return customers;
-      } catch (error) {
-          throw new Error('Error fetching customers by name: ' + error.message);
-      }
-  };
-  
+exports.getByName = async function (name) {
+    try {
+        // Tìm khách hàng theo tên
+        // Thêm \ trước dấu ngoặc để đảm bảo các ký tự đặc biệt không gây lỗi
+        const regexName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
+        const customers = await Customer.find({ name: new RegExp(regexName, 'i') }); // Sử dụng RegExp để tìm kiếm không phân biệt chữ hoa chữ thường
+        return customers;
+    } catch (error) {
+        throw new Error('Error fetching customers by name: ' + error.message);
+    }
+};

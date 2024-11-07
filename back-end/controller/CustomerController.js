@@ -86,3 +86,12 @@ exports.getByName = async (name) => {
       throw new Error('Error fetching customers by name: ' + error.message);
     }
   };
+//   / tìm kiếm theo tiêu đề
+exports.searchCustomers = async (query) => {
+  try {
+      const customers = await customerService.searchCustomers(query);
+      return customers;
+  } catch (error) {
+      throw new Error('Error searching customers: ' + error.message);
+  }
+};

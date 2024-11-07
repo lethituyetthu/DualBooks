@@ -4,6 +4,37 @@ const customerController = require('../controller/CustomerController');
 const authenticateCustomer = require('../middlewares/authCustomer'); // Import middleware xác thực khách hàng
 const authenticateAdmin = require('../middlewares/auth');
 
+// API tìm kiếm khách hàng theo tên
+router.get('/name/:name', async (req, res) => {
+  const name = req.params.name;
+  try {
+      const result = await customerController.getByName(name);
+      if (result.length > 0) {
+          res.status(200).json(result);
+      } else {
+          res.status(404).json({ error: `No customers found for name ${name}` });
+      }
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+});
+
+// API tìm kiếm khách hàng theo query
+router.get('/search', async (req, res) => {
+  const query = req.query.query;
+
+  try {
+      const result = await customerController.searchCustomers(query);
+      if (result.length > 0) {
+          res.status(200).json(result);
+      } else {
+          res.status(404).json({ message: 'No customers found' });
+      }
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+});
+
 // POST /api/customers/register - Đăng ký khách hàng mới
 router.post('/register', async (req, res) => {
   const customerData = req.body;
@@ -15,6 +46,7 @@ router.post('/register', async (req, res) => {
       res.status(500).json({ error: error.message });
   }
 });
+
 // POST /api/customers/login - Đăng nhập khách hàng
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -26,6 +58,7 @@ router.post('/login', async (req, res) => {
       res.status(401).json({ error: error.message });
   }
 });
+
 // PUT /api/customers/:id - Cập nhật thông tin khách hàng
 router.put('/:id', async (req, res) => {
   const customerId = req.params.id;
@@ -42,7 +75,18 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-  
+// PUT /api/customers/:id/status - Chỉnh sửa trạng thái hoạt động của khách hàng
+router.put('/:id/status', async (req, res) => {
+  const customerId = req.params.id;
+
+  try {
+      const updatedCustomer = await customerController.updateCustomer(customerId);
+      res.status(200).json({ message: 'Customer status updated successfully', data: updatedCustomer });
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+});
+
 // DELETE /api/customers/:id - Xóa khách hàng (chỉ admin được xóa)
 router.delete('/:id', async (req, res) => {
   const customerId = req.params.id; // Lấy ID khách hàng từ URL
@@ -54,17 +98,9 @@ router.delete('/:id', async (req, res) => {
       res.status(500).json({ error: error.message });
   }
 });
-// GET /api/customers - Lấy danh sách toàn bộ khách hàng
-router.get('/', async (req, res) => {
-  try {
-      const customers = await customerController.getAllCustomers();
-      res.status(200).json(customers);
-  } catch (error) {
-      res.status(500).json({ error: error.message });
-  }
-});
+
 // GET /api/customers/:id - Lấy thông tin chi tiết của khách hàng
-router.get('/:id' , async (req, res) => {
+router.get('/:id', async (req, res) => {
   const customerId = req.params.id;
 
   try {
@@ -74,30 +110,19 @@ router.get('/:id' , async (req, res) => {
       }
       res.status(200).json(customer);
   } catch (error) {
+    console.error('Lỗi khi gửi yêu cầu:', error);
       res.status(500).json({ error: error.message });
   }
 });
-// API chỉnh sửa trạng thái hoạt động của khách hàng
-// Route để cập nhật trạng thái khách hàng
-router.put('/:id/status', customerController.updateStatus);
-router.get('/name/:name', async function(req, res, next) {
-    console.log('GET /customers/name/:name endpoint hit');
-    const name = req.params.name;
-    try {
-        // Gọi hàm từ controller để lấy khách hàng theo tên
-        const result = await customerController.getByName(name);
-  
-        if (result.length > 0) {
-            console.log(`Customers fetched successfully for name ${name}:`, result);
-            res.status(200).json(result);
-        } else {
-            console.log(`No Customers found for name ${name}`);
-            res.status(404).json({ error: `No Customers found for name ${name}` });
-        }
-    } catch (error) {
-        console.error(`Error fetching Customers for name ${name}:`, error.message);
-        res.status(500).json({ error: error.message });
-    }
-  });
+
+// GET /api/customers - Lấy danh sách toàn bộ khách hàng
+router.get('/', async (req, res) => {
+  try {
+      const customers = await customerController.getAllCustomers();
+      res.status(200).json(customers);
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+});
 
 module.exports = router;

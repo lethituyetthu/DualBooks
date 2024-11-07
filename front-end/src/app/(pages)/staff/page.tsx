@@ -7,6 +7,7 @@ import ProductList from "./component/productList";
 import { useRouter } from "next/navigation";
 import { Books } from "@/app/types/Books";
 import SearchProduct from "@/components/ui/searchProduct_byName";
+import CheckoutModal from "./component/checkoutModal";
 
 interface CartItem {
   id: string;
@@ -16,24 +17,25 @@ interface CartItem {
 }
 
 const Staff: React.FC = () => {
+  const router = useRouter();
+  const { books, loading, error, searchBooks, searchBooksById } =
+    useFetchBook();
 
-const router = useRouter()
-  const { books, loading, error, searchBooks, fetchDetail } = useFetchBook();
-  
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchId, setSearchId] = useState(""); // State for searching by ID
+  const [searchId, setSearchId] = useState(""); 
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     const adminInfo = localStorage.getItem("admin");
 
     if (!adminInfo) {
-      router.push("/login_admin"); 
+      router.push("/login_admin");
     } else {
       const admin = JSON.parse(adminInfo);
-      if (admin.role !== "staff") {
-        alert("bạn không được phân quyền vào Staff")
-        router.push("/login_admin"); 
+      if (admin.role !== "Staff") {
+        alert("bạn không được phân quyền vào Staff");
+        router.push("/login_admin");
       }
     }
   }, [router]);
@@ -44,9 +46,7 @@ const router = useRouter()
 
       if (existingItem) {
         return prevItems.map((item) =>
-          item.id === book.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+          item.id === book.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
         return [
@@ -79,6 +79,25 @@ const router = useRouter()
     return <div className="text-center text-lg text-red-600">Lỗi: {error}</div>;
   }
 
+  const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      alert("Giỏ hàng trống");
+      return;
+    }
+
+    // Thực hiện logic xử lý thanh toán, ví dụ gửi thông tin lên server
+    console.log("Danh sách sản phẩm:",cartItems,"tổng tiền:",totalPrice,"tổng số lượng sản phẩm",totalQuantity);
+    setShowModal(true);
+    // Ví dụ: gửi cartItems lên server
+    // fetch("/api/checkout", { 
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(cartItems),
+    // });
+
+
+  };
+
   const handleDelete = (id: string) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
@@ -88,12 +107,12 @@ const router = useRouter()
     searchBooks(term);
   };
 
-const handleSearchByIdChange = (id: string) => {
-  setSearchId(id);
-  if (id) {
-    fetchDetail(id); // Tự động tìm kiếm chi tiết khi có ID
-  }
-};
+  const handleSearchByIdChange = async (id: string) => {
+    setSearchId(id);
+    if (id) {
+      await searchBooksById(id); // Sử dụng hàm mới để tìm theo ID và cập nhật `books`
+    }
+  };
 
   return (
     <div className="flex">
@@ -129,15 +148,9 @@ const handleSearchByIdChange = (id: string) => {
             type="text"
             placeholder="Tìm kiếm theo ID"
             value={searchId}
-            onChange={(e) => setSearchId(e.target.value)}
+            onChange={(e) => handleSearchByIdChange(e.target.value)}
             className="border rounded-md px-3 py-2 ml-2"
           />
-          {/* {/* <button
-            onClick={handleSearchById}
-            className="bg-primary-400 text-white px-4 py-2 ml-2 rounded-md hover:bg-primary-300 transition-colors"
-          > 
-            Tìm ID
-          </button> */}
         </div>
 
         <div className="grid grid-cols-3 gap-4 max-h-[calc(100vh-230px)] overflow-y-auto">
@@ -146,10 +159,14 @@ const handleSearchByIdChange = (id: string) => {
           ))}
         </div>
 
-        <button className="w-full mt-4 py-2 bg-[#A05D3A] text-white rounded-lg hover:bg-[#8C4C2F] transition-colors">
+        <button
+          className="w-full mt-4 py-2 bg-[#A05D3A] text-white rounded-lg hover:bg-[#8C4C2F] transition-colors"
+          onClick={handleCheckout}
+        >
           Thanh Toán
         </button>
       </div>
+      {showModal && (<CheckoutModal cartItems={cartItems} totalPrice={totalPrice} totalQuantity={totalQuantity} onClose={()=> setShowModal(false )}/>)}
     </div>
   );
 };

@@ -2,20 +2,34 @@ const express = require('express');
 const router = express.Router();
 const orderController = require('../controller/OrderController');
 const orderItemController = require('../controller/OrderItemController');
+
 // Route: Tạo một đơn hàng mới
 router.post('/', async (req, res) => {
     try {
         // Lấy dữ liệu từ body của request
-        const { customer_id, order_date, order_status, payment_status, total_amount, shipping_address } = req.body;
-
-        // Gọi controller để tạo đơn hàng
-        const newOrder = await orderController.createOrder({
+        const { 
             customer_id, 
+            staff_id, // Thêm trường staff_id cho đơn hàng offline
             order_date, 
             order_status, 
             payment_status, 
             total_amount, 
-            shipping_address
+            shipping_address, 
+            order_type, // Thêm trường order_type để xác định đơn hàng online hoặc offline
+            customer_feedback // Thêm trường customer_feedback cho đánh giá của khách hàng
+        } = req.body;
+
+        // Gọi controller để tạo đơn hàng
+        const newOrder = await orderController.createOrder({
+            customer_id, 
+            staff_id,
+            order_date, 
+            order_status, 
+            payment_status, 
+            total_amount, 
+            shipping_address,
+            order_type,
+            customer_feedback
         });
 
         // Trả về phản hồi thành công
@@ -30,12 +44,18 @@ router.post('/', async (req, res) => {
 router.get('/:orderId', orderController.getOrderDetail);
 // Route để thêm chi tiết đơn hàng
 router.post('/:orderId/order-items', orderItemController.addOrderItem);
-// Route: Lấy danh sách toàn bộ đơn hàng
 router.get('/', async (req, res) => {
     try {
         // Gọi controller để lấy danh sách đơn hàng
-        await orderController.getAllOrders(req, res);
+        const orders = await orderController.getAllOrders();
+        
+        // Trả về danh sách đơn hàng
+        res.status(200).json({
+            message: 'Retrieved all orders successfully',
+            data: orders
+        });
     } catch (error) {
+        // Trả về lỗi nếu có
         res.status(500).json({ error: error.message });
     }
 });

@@ -22,7 +22,7 @@ const Header: React.FC = () => {
         <h2 className="text-white text-2xl mx-4">Đơn Hàng</h2>
       </div>
 
-      {/* Search and Icons */}
+      {/* {/* Search and Icons
       <div className="flex items-center w-[25%] justify-between">
         <div className="w-[300px]">
           <input
@@ -34,14 +34,14 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-4">
           <a className="text-white" href="/" aria-label="Thông báo">
             <i className="fas fa-bell" aria-hidden="true"></i>{" "}
-            {/* Biểu tượng thông báo */}
+             Biểu tượng thông báo 
           </a>
           <a className="text-white" href="/" aria-label="Cài đặt">
             <i className="fas fa-cog" aria-hidden="true"></i>{" "}
-            {/* Biểu tượng cài đặt */}
+        Biểu tượng cài đặt 
           </a>
         </div>
-      </div>
+      </div> */}
 
       {/* User Menu */}
 

@@ -35,7 +35,7 @@ exports.loginAdmin = async (req, res) => {
 exports.getAllAdmins = async (req, res) => {
     try {
         const admins = await adminService.getAllAdmins();
-        res.status(200).json(admins);
+        res.status(200).json( admins );
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

@@ -16,6 +16,14 @@ const FeetBack = () => {
       comment:
         "Sách có nội dung rất hấp dẫn, cách viết dễ hiểu và logic. Đặc biệt là những ví dụ trong sách giúp tôi dễ dàng hình dung và nắm bắt kiến thức nhanh chóng. Đây là cuốn sách tuyệt vời cho bất kỳ ai muốn nâng cao kỹ năng lập trình.",
       rating: 5,
+    }
+    ,
+    {
+      name: "Lê Thị B",
+      time: "2 ngày trước",
+      comment:
+        "Sách có nội dung rất hấp dẫn, cách viết dễ hiểu và logic. Đặc biệt là những ví dụ trong sách giúp tôi dễ dàng hình dung và nắm bắt kiến thức nhanh chóng. Đây là cuốn sách tuyệt vời cho bất kỳ ai muốn nâng cao kỹ năng lập trình.",
+      rating: 5,
     },
   ];
 
@@ -25,7 +33,7 @@ const FeetBack = () => {
         Đánh Giá Của Khách Hàng
       </h2>
 
-      <div>
+      <div className="max-h-[350px] overflow-y-auto">
         {feedbacks.map((feedback, index) => (
           <div
             key={index}

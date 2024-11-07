@@ -1,15 +1,20 @@
 const OrderModel = require('../models/OrderModel');
+const Customer = require('../models/CustomerModel');
 
 // Tạo một đơn hàng mới
 exports.createOrder = async (orderData) => {
     try {
+        // Khởi tạo đơn hàng mới với các trường đã cung cấp
         const newOrder = new OrderModel({
-            customer_id: orderData.customer_id, // ID khách hàng
+            customer_id: orderData.order_type === 'online' ? orderData.customer_id : undefined, // ID khách hàng cho đơn hàng online
+            staff_id: orderData.order_type === 'offline' ? orderData.staff_id : undefined, // ID nhân viên cho đơn hàng offline
             order_date: orderData.order_date || Date.now(), // Ngày đặt hàng, mặc định là ngày hiện tại nếu không có
             order_status: orderData.order_status || 'Chờ xác nhận', // Trạng thái đơn hàng, mặc định là 'Chờ xác nhận'
             payment_status: orderData.payment_status || 'Chưa thanh toán', // Trạng thái thanh toán, mặc định là 'Chưa thanh toán'
             total_amount: orderData.total_amount, // Tổng số tiền
-            shipping_address: orderData.shipping_address // Địa chỉ giao hàng
+            shipping_address: orderData.shipping_address || "Đường số 3. CVPM Quang Trung, Quận 12", // Địa chỉ giao hàng, mặc định nếu không có
+            order_type: orderData.order_type, // Loại đơn hàng: online hoặc offline
+            customer_feedback: orderData.customer_feedback // Đánh giá của khách hàng
         });
 
         // Lưu đơn hàng vào cơ sở dữ liệu
@@ -50,10 +55,20 @@ exports.getOrderById = async (orderId) => {
 exports.getAllOrders = async () => {
     try {
         // Tìm và trả về toàn bộ danh sách đơn hàng
-        const orders = await OrderModel.find().populate('customer_id'); // Tham chiếu tới bảng `Customer`
-        return orders;
+        const orders = await OrderModel.find().populate('customer_id'); // Tìm tất cả và populate customer_id
+
+        return orders; // Trả về danh sách đơn hàng
     } catch (error) {
         throw new Error('Error fetching orders: ' + error.message);
+    }
+};
+
+exports.getCustomerById = async (customerId) => {
+    try {
+        return await Customer.findById(customerId).select('name email phone');
+    } catch (error) {
+        console.error('Lỗi khi lấy thông tin khách hàng:', error);
+        throw error;
     }
 };
 exports.getOrdersByUpdateDate = async (date) => {

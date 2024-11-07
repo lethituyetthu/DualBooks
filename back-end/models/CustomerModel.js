@@ -11,5 +11,6 @@ const CustomerSchema = new Schema({
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now }
 });
-
+// Tạo chỉ mục tìm kiếm văn bản cho trường `name` (để cải thiện hiệu suất tìm kiếm theo tên)
+CustomerSchema.index({ name: 'text' });
 module.exports = mongoose.model('Customer', CustomerSchema);

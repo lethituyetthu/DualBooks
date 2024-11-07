@@ -167,7 +167,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
         />
         <InputField
           label="Mô tả"
-          type="text"
+          type="teẫ"
           name="description"
           placeholder="Nhập mô tả sản phẩm"
           value={formData.description}

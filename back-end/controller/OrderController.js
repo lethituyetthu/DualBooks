@@ -1,8 +1,28 @@
 const orderService = require('../service/OrderService');
+const customerService = require('../service/CustomerService ');
 
 // Tạo một đơn hàng mới
 exports.createOrder = async (orderData) => {
     try {
+        // Kiểm tra và xác thực dữ liệu đầu vào (nếu cần)
+        const { order_type } = orderData;
+
+        // Nếu order_type là 'offline', đảm bảo staff_id được cung cấp
+        if (order_type === 'offline' && !orderData.staff_id) {
+            throw new Error('Staff ID is required for offline orders.');
+        }
+
+        // Nếu order_type là 'online', đảm bảo customer_id và shipping_address được cung cấp
+        if (order_type === 'online') {
+            if (!orderData.customer_id) {
+                throw new Error('Customer ID is required for online orders.');
+            }
+            // Nếu không có địa chỉ giao hàng, sử dụng địa chỉ mặc định
+            if (!orderData.shipping_address) {
+                orderData.shipping_address = "Đường số 3. CVPM Quang Trung, Quận 12"; // Địa chỉ mặc định
+            }
+        }
+
         // Gọi service để tạo đơn hàng với các dữ liệu từ request body
         const newOrder = await orderService.createOrder(orderData);
         return newOrder; // Trả về dữ liệu của đơn hàng mới tạo
@@ -21,43 +41,93 @@ exports.getOrderDetail = async (req, res) => {
         if (!order) {
             return res.status(404).json({ message: 'Order not found' });
         }
-        res.json(order);
+
+        // Định dạng dữ liệu đơn hàng ban đầu
+        const formattedOrder = {
+            id: order._id,
+            orderType: order.order_type,
+            staffId: order.staff_id,
+            orderDate: order.order_date,
+            orderStatus: order.order_status,
+            paymentStatus: order.payment_status,
+            shippingAddress: order.shipping_address,
+            totalAmount: order.total_amount,
+            customerFeedback: order.customer_feedback,
+            orderItems: order.orderItems.map(item => ({
+                id: item._id,
+                bookId: item.book_id._id,
+                bookTitle: item.book_id.title, // Ví dụ trường title từ book_id
+                quantity: item.quantity,
+                price: item.price
+            }))
+        };
+
+        // Kiểm tra nếu là đơn hàng trực tuyến, bổ sung thông tin khách hàng
+        if (order.order_type === 'online' && order.customer_id) {
+            const customer = await orderService.getCustomerById(order.customer_id);
+            if (customer) {
+                formattedOrder.customerInfo = {
+                    id: customer._id,
+                    name: customer.name,
+                    email: customer.email,
+                    phone: customer.phone
+                };
+            } else {
+                return res.status(404).json({ message: 'Customer not found' });
+            }
+        }
+
+        res.json(formattedOrder);
     } catch (error) {
         console.error('Lỗi khi lấy chi tiết đơn hàng:', error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
-// Lấy toàn bộ danh sách đơn hàng với thông tin chi tiết của khách hàng
-exports.getAllOrders = async (req, res) => {
-    try {
-        // Gọi service để lấy danh sách đơn hàng và populate thông tin khách hàng
-        const orders = await orderService.getAllOrdersWithCustomerDetails();
-        
-        // Định dạng lại dữ liệu trước khi trả về
-        const formattedOrders = orders.map((order) => ({
-            id: order._id, // Lấy ObjectId của đơn hàng
-            customer: {
-                id: order.customer_id._id, // ID khách hàng
-                name: order.customer_id.name, // Tên khách hàng
-                email: order.customer_id.email, // Email khách hàng
-                address: order.customer_id.address, // Địa chỉ khách hàng
-                phone: order.customer_id.phone // Số điện thoại khách hàng
-            },
-            order_date: order.order_date,
-            order_status: order.order_status,
-            payment_status: order.payment_status,
-            shipping_address: order.shipping_address,
-            total_amount: order.total_amount,
-            created_at: order.createdAt, // Lấy thời gian tạo đơn hàng
-            updated_at: order.updatedAt  // Lấy thời gian cập nhật đơn hàng
-        }));
 
-        // Trả về danh sách đơn hàng đã được định dạng
-        res.status(200).json(formattedOrders);
+
+// Lấy toàn bộ danh sách đơn hàng với thông tin chi tiết của khách hàng
+exports.getAllOrders = async () => {
+    try {
+        // Gọi service để lấy danh sách đơn hàng
+        const orders = await orderService.getAllOrders(); // Gọi hàm từ service
+
+        // Định dạng lại dữ liệu trước khi trả về
+        const formattedOrders = orders.map((order) => {
+            const baseOrder = {
+                id: order._id,
+                order_date: order.order_date,
+                order_status: order.order_status,
+                payment_status: order.payment_status,
+                shipping_address: order.shipping_address || "Địa chỉ cửa hàng", // Địa chỉ mặc định
+                total_amount: order.total_amount,
+                created_at: order.createdAt,
+                updated_at: order.updatedAt
+            };
+
+            // Nếu đơn hàng là trực tuyến, bổ sung thông tin khách hàng
+            if (order.order_type === 'online' && order.customer_id) {
+                return {
+                    ...baseOrder,
+                    customer: {
+                        id: order.customer_id._id,
+                        name: order.customer_id.name,
+                        email: order.customer_id.email,
+                        address: order.customer_id.address,
+                        phone: order.customer_id.phone
+                    }
+                };
+            }
+
+            return baseOrder; // Trả về đơn hàng cơ bản cho đơn hàng ngoại tuyến
+        });
+
+        return formattedOrders; // Trả về danh sách đơn hàng đã được định dạng
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        throw new Error('Error fetching orders: ' + error.message);
     }
 };
+
+
 exports.getOrdersByUpdateDate = async (req, res, date) => {
     try {
         // Gọi service để lấy danh sách đơn hàng theo ngày cập nhật

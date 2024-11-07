@@ -74,7 +74,7 @@ const ReviewForm = () => {
         <div>
           <button
             type="submit"
-            className="w-full p-2 bg-primary-400 text-white font-semibold rounded-sm hover:bg-primary-300 transition duration-200"
+            className="w-full p-2 bg-primary-400 text-white  rounded-sm hover:bg-primary-300 transition duration-200"
           >
             Gửi Đánh Giá
           </button>
