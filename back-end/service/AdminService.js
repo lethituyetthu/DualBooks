@@ -17,7 +17,6 @@ exports.registerAdmin = async (adminData) => {
 
         // Tạo admin mới (mật khẩu sẽ được mã hóa bởi middleware pre-save)
         const newAdmin = new Admin({
-            id: adminData.id,
             username: adminData.username,
             email: adminData.email,
             password: adminData.password, // Mật khẩu chưa mã hóa

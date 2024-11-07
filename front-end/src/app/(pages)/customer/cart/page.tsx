@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation"; // Correct router import
+import { useRouter } from "next/navigation";
 
 type CartItem = {
   id: string;
@@ -26,10 +26,10 @@ const excludedCategories = [
 const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [discountCode, setDiscountCode] = useState<string>("");
+  const [shippingMethod, setShippingMethod] = useState<string>("standard"); // Standard or express shipping
+  const [shippingFee, setShippingFee] = useState<number>(30000); // Initial shipping fee
   const [discountAmount, setDiscountAmount] = useState<number>(0);
   const [isDetailVisible, setIsDetailVisible] = useState<boolean>(false);
-  const shippingFee = 30;
-
   const router = useRouter(); // Initialize useRouter
 
   // Load cart items from localStorage
@@ -47,7 +47,7 @@ const CheckoutPage = () => {
     );
   };
 
-  // Tính tổng tiền hàng
+  // Calculate total price of items in the cart
   const calculateTotal = () => {
     return cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
@@ -55,46 +55,62 @@ const CheckoutPage = () => {
     );
   };
 
-  // Tính tổng tiền cuối cùng
-  const calculateGrandTotal = () => {
-    const total = calculateTotal();
-    return total - discountAmount + shippingFee;
-  };
-
-  // Áp dụng mã giảm giá dựa trên điều kiện
+  // Apply discount code based on conditions
   const applyDiscountCode = () => {
     const total = calculateTotal();
+    let discount = 0;
+
     if (hasExcludedItems()) {
-      setDiscountAmount(0); // Không áp dụng giảm giá cho các danh mục bị loại trừ
+      discount = 0; // No discount applied for excluded categories
     } else {
+      // Giảm giá theo mã
       if (discountCode === "DISCOUNT10" && total >= 130000) {
-        setDiscountAmount(10000); // Giảm 10,000 VNĐ
+        discount = 10000; // Giảm 10,000 VND
       } else if (discountCode === "DISCOUNT20" && total >= 280000) {
-        setDiscountAmount(20000); // Giảm 20,000 VNĐ
+        discount = 20000; // Giảm 20,000 VND
       } else if (discountCode === "DISCOUNT50" && total >= 550000) {
-        setDiscountAmount(50000); // Giảm 50,000 VNĐ
+        discount = 50000; // Giảm 50,000 VND
       } else if (discountCode === "DISCOUNT100" && total >= 1100000) {
-        setDiscountAmount(100000); // Giảm 100,000 VNĐ
+        discount = 100000; // Giảm 100,000 VND
       } else {
-        setDiscountAmount(0); // Không có mã hợp lệ
+        discount = 0; // Mã không hợp lệ
       }
     }
+
+    // Cập nhật giảm giá
+    setDiscountAmount(discount);
   };
 
-  // Xử lý khi thay đổi số lượng sản phẩm
+  // Calculate grand total including shipping and discount
+  const calculateGrandTotal = () => {
+    const total = calculateTotal();
+    return total - discountAmount + shippingFee; // Tổng tiền - Giảm giá + Phí giao hàng
+  };
+
+  // Handle shipping method change
+  const handleShippingMethodChange = (method: string) => {
+    setShippingMethod(method);
+    // Set shipping fee based on the chosen method
+    const fee = method === "express" ? 50000 : 30000; // Example fees
+    setShippingFee(fee);
+  };
+
+  // Handle quantity change for items in the cart
   const handleQuantityChange = (id: string, newQuantity: number) => {
     const updatedItems = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: newQuantity } : item
     );
     setCartItems(updatedItems);
     localStorage.setItem("cart", JSON.stringify(updatedItems));
+    applyDiscountCode(); // Cập nhật lại giảm giá khi thay đổi số lượng
   };
 
-  // Xử lý khi xóa sản phẩm khỏi giỏ hàng
+  // Handle removing items from the cart
   const handleRemoveItem = (id: string) => {
     const updatedItems = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedItems);
     localStorage.setItem("cart", JSON.stringify(updatedItems));
+    applyDiscountCode(); // Cập nhật lại giảm giá khi xóa sản phẩm
   };
 
   // Toggle discount details visibility
@@ -115,7 +131,7 @@ const CheckoutPage = () => {
   return (
     <div className="max-w-[1200px] m-auto p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Cột bên trái: Sản phẩm trong giỏ hàng */}
+        {/* Left column: Products in the cart */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Giỏ hàng</h2>
           {cartItems.length === 0 ? (
@@ -125,18 +141,18 @@ const CheckoutPage = () => {
               <div key={item.id} className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   <Image
-                    src={`/uploads/books/${item.cover_image}`}
+                    src={`http://localhost:3200/uploads/books/${item.cover_image}`} // Corrected line
                     alt={item.title}
-                    width={80}
-                    height={100}
-                    className="object-cover"
+                    width={200}  // Width size
+                    height={300} // Height size
+                    className="object-cover mb-4" 
                   />
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold">{item.title}</h3>
                     <p>{(item.price * 1000).toLocaleString("vi-VN")} đ</p>
                   </div>
                 </div>
-
+            
                 <div className="flex items-center">
                   <button
                     className="px-2 py-1 bg-gray-300 rounded-l"
@@ -152,7 +168,7 @@ const CheckoutPage = () => {
                   >
                     +
                   </button>
-
+            
                   <button
                     className="ml-4 text-red-500 hover:text-red-700"
                     onClick={() => handleRemoveItem(item.id)}
@@ -162,24 +178,51 @@ const CheckoutPage = () => {
                 </div>
               </div>
             ))
+            
           )}
         </div>
 
-        {/* Cột bên phải: Thông tin đơn hàng */}
+        {/* Right column: Order information */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Thông tin đơn hàng</h2>
           <div className="border-b border-gray-300 pb-4">
             <p>Thành tiền: {(calculateTotal() * 1000).toLocaleString("vi-VN")} đ</p>
-            <p>Phí giao hàng: {(shippingFee * 1000).toLocaleString("vi-VN")} đ</p>
+            <p>Phí giao hàng: {shippingFee.toLocaleString("vi-VN")} đ</p>
             <p>Giảm giá: {(discountAmount * 1000).toLocaleString("vi-VN")} đ</p>
           </div>
           <div className="border-t border-gray-300 pt-4 mb-4">
             <p className="text-lg font-semibold">
-              Tổng tiền: {(calculateGrandTotal() * 1000).toLocaleString("vi-VN")} đ
+              Tổng tiền: {calculateGrandTotal().toLocaleString("vi-VN")} đ
             </p>
           </div>
 
-          {/* Mã giảm giá */}
+          {/* Shipping method selection */}
+          <div className="mb-4">
+            <h3 className="font-semibold">Chọn phương thức giao hàng:</h3>
+            <label>
+              <input
+                type="radio"
+                value="standard"
+                checked={shippingMethod === "standard"}
+                onChange={() => handleShippingMethodChange("standard")}
+                className="mr-2"
+              />
+              Giao hàng tiêu chuẩn (30,000 đ)
+            </label>
+            <br />
+            <label>
+              <input
+                type="radio"
+                value="express"
+                checked={shippingMethod === "express"}
+                onChange={() => handleShippingMethodChange("express")}
+                className="mr-2"
+              />
+              Giao hàng nhanh (50,000 đ)
+            </label>
+          </div>
+
+          {/* Discount code input */}
           <div className="flex items-center mb-4">
             <input
               type="text"
@@ -196,41 +239,40 @@ const CheckoutPage = () => {
             </button>
           </div>
 
-          {/* Nút xem chi tiết mã giảm giá */}
           <button
             onClick={toggleDiscountDetails}
-            className="w-full bg-gray-200 text-black px-6 py-2 rounded-lg mb-4"
+            className="text-blue-500 hover:underline"
           >
-            {isDetailVisible ? "Ẩn chi tiết mã giảm giá" : "Xem chi tiết mã giảm giá"}
+            {isDetailVisible ? "Ẩn chi tiết giảm giá" : "Xem chi tiết giảm giá"}
           </button>
+
+          {/* Discount details */}
           {isDetailVisible && (
-            <div className="border p-4 bg-gray-100">
+            <div className="mt-4 p-4 border border-gray-300">
               <p>Mã giảm giá:</p>
               <ul>
-                <li>Giảm 10,000 đ cho đơn hàng từ 130,000 đ</li>
-                <li>Giảm 20,000 đ cho đơn hàng từ 280,000 đ</li>
-                <li>Giảm 50,000 đ cho đơn hàng từ 550,000 đ</li>
-                <li>Giảm 100,000 đ cho đơn hàng từ 1,100,000 đ</li>
+                <li>DISCOUNT10: Giảm 10,000 đ cho đơn hàng từ 130,000 đ</li>
+                <li>DISCOUNT20: Giảm 20,000 đ cho đơn hàng từ 280,000 đ</li>
+                <li>DISCOUNT50: Giảm 50,000 đ cho đơn hàng từ 550,000 đ</li>
+                <li>DISCOUNT100: Giảm 100,000 đ cho đơn hàng từ 1,100,000 đ</li>
               </ul>
-              <p>Điều kiện: Không áp dụng cho Ngoại Văn, Manga, v.v.</p>
             </div>
           )}
 
-          {/* Nút quay về trang sản phẩm */}
-          <button
-            onClick={goToProductPage}
-            className="w-full bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-700 mt-4"
-          >
-            Quay về trang sản phẩm
-          </button>
-
-          {/* Nút đặt hàng */}
-          <button
-            onClick={handlePlaceOrder}
-            className="w-full bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-700 mt-4"
-          >
-            Đặt hàng
-          </button>
+          <div className="flex justify-between mt-4">
+            <button
+              onClick={goToProductPage}
+              className="px-4 py-2 bg-gray-300 rounded-lg"
+            >
+              Quay lại
+            </button>
+            <button
+              onClick={handlePlaceOrder}
+              className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-700"
+            >
+              Đặt hàng
+            </button>
+          </div>
         </div>
       </div>
     </div>

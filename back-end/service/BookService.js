@@ -88,6 +88,7 @@ exports.updateBook = async function (id, updatedData) {
 
       // Cập nhật sách trong cơ sở dữ liệu
       const updatedBook = await bookModel.findByIdAndUpdate(id, updatedData, { new: true, runValidators: true });
+      console.log('Updated book:', updatedBook);
       return updatedBook;
   } catch (error) {
       throw new Error('Error updating book: ' + error.message);
@@ -142,5 +143,18 @@ exports.getFeaturedProducts = async () => {
     return featuredProducts;
   } catch (error) {
     throw new Error('Error fetching featured products: ' + error.message);
+  }
+};
+// Hàm lấy danh sách 5 cuốn sách mới nhất
+exports.getLatestBooks = async () => {
+  try {
+    // Lấy danh sách sách theo ngày tạo mới nhất
+    const latestBooks = await bookModel.find({})
+      .sort({ createdAt: -1 }) // Sắp xếp theo ngày tạo giảm dần (mới nhất lên trước)
+      .limit(5); // Giới hạn kết quả trả về 5 cuốn sách
+
+    return latestBooks;
+  } catch (error) {
+    throw new Error('Error fetching latest books: ' + error.message);
   }
 };

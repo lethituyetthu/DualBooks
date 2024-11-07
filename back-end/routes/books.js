@@ -124,7 +124,16 @@ router.get('/sortedByPrice', async function(req, res, next) {
       res.status(500).json({ error: error.message });
   }
 });
-
+// Endpoint lấy danh sách sách mới nhất
+// GET /books/latest
+router.get('/new', async (req, res) => {
+    try {
+      // Gọi controller để xử lý yêu cầu
+      await bookController.getLatestBooks(req, res);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
 // Endpoint xem chi tiết sách theo ID
 router.get('/:id', async function(req, res, next) {
   console.log('GET /books/:id endpoint hit');
@@ -181,12 +190,12 @@ router.put(
     authenticateAdmin,
     uploadBooks.single('cover_image'), // Sử dụng Multer để xử lý tải lên hình ảnh (nếu có)
     [
-        body('title').optional().notEmpty().withMessage('Title không được để trống'),
-        body('author').optional().notEmpty().withMessage('Author không được để trống'),
-        body('category').optional().notEmpty().withMessage('Category không được để trống'),
-        body('description').optional().notEmpty().withMessage('Description không được để trống'),
-        body('price').optional().isFloat({ gt: 0 }).withMessage('Price phải là số dương'),
-        body('stock').optional().isInt({ gt: -1 }).withMessage('Stock phải là số nguyên không âm'),
+        // body('title').optional().notEmpty().withMessage('Title không được để trống'),
+        // body('author').optional().notEmpty().withMessage('Author không được để trống'),
+        // body('category').optional().notEmpty().withMessage('Category không được để trống'),
+        // body('description').optional().notEmpty().withMessage('Description không được để trống'),
+        // body('price').optional().isFloat({ gt: 0 }).withMessage('Price phải là số dương'),
+        // body('stock').optional().isInt({ gt: -1 }).withMessage('Stock phải là số nguyên không âm'),
         body('categoryID').optional().isMongoId().withMessage('categoryID phải là ObjectId hợp lệ'),
         body('cover_image').optional().isString().withMessage('cover_image phải là chuỗi')
     ],
@@ -198,7 +207,6 @@ router.put(
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             // Nếu có lỗi validation, trả về lỗi cho client
-            // Nếu Multer đã tải lên file, cần xóa file đó để tránh lưu trữ không cần thiết
             if (req.file) {
                 fs.unlinkSync(path.join(__dirname, '../uploads/books', req.file.filename));
             }
@@ -206,37 +214,36 @@ router.put(
         }
 
         try {
-            // Nếu có tệp tin hình ảnh được tải lên, cập nhật trường cover_image
-            if (req.file) {
-                updatedData.cover_image = req.file.filename;
-            }
-
-            const updatedBook = await bookController.updateBook(bookId, updatedData);
-
-            if (updatedBook) {
-                // Nếu có tệp tin mới được tải lên và có hình ảnh cũ, xóa hình ảnh cũ
-                if (req.file && updatedBook.cover_image !== 'default.jpg') {
-                    // Tìm sách hiện tại để lấy tên file hình ảnh cũ
-                    const currentBook = await bookController.getBookById(bookId);
-                    if (currentBook && currentBook.cover_image && currentBook.cover_image !== 'default.jpg') {
-                        const oldImagePath = path.join(__dirname, '../uploads/books', currentBook.cover_image);
-                        if (fs.existsSync(oldImagePath)) {
-                            fs.unlinkSync(oldImagePath);
-                        }
-                    }
-                }
-
-                res.status(200).json(updatedBook);
-            } else {
-                // Nếu không tìm thấy sách với id đã cho, xóa file hình ảnh mới (nếu có) để tránh lưu trữ không cần thiết
+            // Tìm sách hiện tại để lấy tên file hình ảnh cũ
+            const currentBook = await bookController.getBookById(bookId);
+            if (!currentBook) {
+                // Nếu không tìm thấy sách, xóa file ảnh mới tải lên (nếu có) và trả về lỗi
                 if (req.file) {
                     fs.unlinkSync(path.join(__dirname, '../uploads/books', req.file.filename));
                 }
-                res.status(404).json({ error: 'Book not found' });
+                return res.status(404).json({ error: 'Book not found' });
             }
+
+            // Nếu có tệp tin hình ảnh được tải lên, cập nhật trường cover_image
+            if (req.file) {
+                updatedData.cover_image = req.file.filename;
+
+                // Nếu có ảnh cũ và ảnh cũ không phải là 'default.jpg', xóa ảnh cũ
+                if (currentBook.cover_image && currentBook.cover_image !== 'default.jpg') {
+                    const oldImagePath = path.join(__dirname, '../uploads/books', currentBook.cover_image);
+                    if (fs.existsSync(oldImagePath)) {
+                        fs.unlinkSync(oldImagePath);
+                    }
+                }
+            }
+
+            // Gọi controller để cập nhật sách
+            const updatedBook = await bookController.updateBook(bookId, updatedData);
+
+            res.status(200).json(updatedBook);
         } catch (error) {
             console.error('Error updating book:', error.message);
-            // Nếu có tệp tin mới được tải lên, xóa file đó để tránh lưu trữ không cần thiết
+            // Nếu có lỗi, xóa file ảnh vừa tải lên (nếu có)
             if (req.file) {
                 fs.unlinkSync(path.join(__dirname, '../uploads/books', req.file.filename));
             }
@@ -262,4 +269,5 @@ router.delete('/:id',authenticateAdmin, async (req, res, next) => {
   }
 });
 
+  
 module.exports = router;

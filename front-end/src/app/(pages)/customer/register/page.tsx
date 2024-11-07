@@ -1,136 +1,136 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import Link from "next/link";
+import React, { useState } from "react";
+import InputField from "../component/input";
+import useFetchCustomer from "../../../hook/useFetchCustomer";
 
 interface FormData {
-    name: string;
-    email: string;
-    password: string;
-}
-
-interface Errors {
-    name?: string;
-    email?: string;
-    password?: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  password: string;
 }
 
 const RegisterPage = () => {
-    const [formData, setFormData] = useState<FormData>({
-        name: '',
-        email: '',
-        password: '',
+  const { register, errors, successMessage } = useFetchCustomer();
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    password: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
+  };
 
-    const [errors, setErrors] = useState<Errors>({});
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await register(formData);
+  };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
+  return (
+    <div className="flex justify-between p-8 max-w-4xl mx-auto">
+      {/* Left Side - Register Form */}
+      <div className="flex-1 p-8 flex flex-col items-center border border-gray-300 rounded-lg shadow-md bg-white">
+        <h2 className="text-3xl font-bold mb-6 text-primary-600 font-itim">
+          Đăng Ký
+        </h2>
+        <form className="flex flex-col w-full mb-6" onSubmit={handleSubmit}>
+          {/* Name Field */}
+          <InputField
+            type="text"
+            name="name"
+            placeholder="Tên"
+            value={formData.name}
+            onChange={handleChange}
+            error={errors.name}
+          />
 
-    const validateForm = () => {
-        const newErrors: Errors = {}; 
+          {/* Email Field */}
+          <InputField
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            error={errors.email}
+          />
 
-        if (!formData.name) {
-            newErrors.name = "Tên không được để trống";
-        }
-        if (!formData.email) {
-            newErrors.email = "Email không được để trống";
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = "Email không hợp lệ";
-        }
-        if (!formData.password) {
-            newErrors.password = "Mật khẩu không được để trống";
-        }
+          {/* Phone Field */}
+          <InputField
+            type="text"
+            name="phone"
+            placeholder="Số điện thoại"
+            value={formData.phone}
+            onChange={handleChange}
+            error={errors.phone}
+          />
 
-        return newErrors;
-    };
+          {/* Address Field */}
+          <InputField
+            type="text"
+            name="address"
+            placeholder="Địa chỉ nhận hàng"
+            value={formData.address}
+            onChange={handleChange}
+            error={errors.address}
+          />
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        const validationErrors = validateForm();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-        } else {
-            console.log('Form data submitted:', formData);
-            setFormData({
-                name: '',
-                email: '',
-                password: '',
-            });
-            setErrors({});
-        }
-    };
+          {/* Password Field */}
+          <InputField
+            type="password"
+            name="password"
+            placeholder="Mật khẩu"
+            value={formData.password}
+            onChange={handleChange}
+            error={errors.password}
+          />
 
-    return (
-        <div className="flex justify-between p-8 max-w-4xl mx-auto">
-            {/* Left Side - Register Form */}
-            <div className="flex-1 p-8 flex flex-col items-center border border-gray-300 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-6 text-primary-600">Đăng Ký</h2>
-                <form className="flex flex-col w-full mb-6" onSubmit={handleSubmit}>
-                    {/* Name Field */}
-                    <input 
-                        type="text" 
-                        name="name"
-                        placeholder="Tên" 
-                        className="p-3 mb-1 border rounded-md border-[#F2B05E]" 
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
-                    {errors.name && <p className="text-red-500 text-sm mb-4">{errors.name}</p>}
-                    
-                    {/* Email Field */}
-                    <input 
-                        type="email" 
-                        name="email"
-                        placeholder="Email" 
-                        className="p-3 mb-1 border rounded-md border-[#F2B05E]" 
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
-                    {errors.email && <p className="text-red-500 text-sm mb-4">{errors.email}</p>}
-                    
-                    {/* Password Field */}
-                    <input 
-                        type="password" 
-                        name="password"
-                        placeholder="Mật khẩu" 
-                        className="p-3 mb-1 border rounded-md border-[#F2B05E]" 
-                        value={formData.password}
-                        onChange={handleChange}
-                    />
-                    {errors.password && <p className="text-red-500 text-sm mb-4">{errors.password}</p>}
+          <button className="p-3 bg-primary-400 text-white rounded-sm hover:bg-opacity-90">
+            Đăng Ký Ngay
+          </button>
+        </form>
 
-                    <button className="p-3 bg-primary-400 text-white rounded-full hover:bg-opacity-90">
-                        Đăng Ký Ngay
-                    </button>
-                </form>
-                <p className="mb-4">Hoặc sử dụng tài khoản</p>
-                <div className="flex space-x-4">
-                    <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
-                        Facebook
-                    </button>
-                    <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
-                        Twitter
-                    </button>
-                    <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
-                        Instagram
-                    </button>
-                </div>
-            </div>
+        {/* Success Message */}
+        {successMessage && <p className="text-green-500">{successMessage}</p>}
 
-            {/* Right Side - "HELLO" message */}
-            <div className="flex-1 p-8 flex flex-col items-center justify-center rounded-lg shadow-md text-center bg-primary-400">
-                <h2 className="text-2xl font-bold mb-4 text-white">HELLO</h2>
-                <p className="mb-6 text-white">Nếu bạn đã có tài khoản, hãy đăng nhập tại đây</p>
-                <button className="p-3 bg-light-100 text-dark-700 rounded-full hover:bg-opacity-90">
-                    Tham Gia Ngay
-                </button>
-            </div>
+        <p className="mb-4">Hoặc sử dụng tài khoản</p>
+        <div className="flex space-x-4">
+          <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
+            Facebook
+          </button>
+          <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
+            Twitter
+          </button>
+          <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
+            Instagram
+          </button>
         </div>
-    );
+      </div>
+
+      {/* Right Side - "HELLO" message */}
+      <div className="flex-1 p-8 flex flex-col items-center justify-center rounded-lg shadow-md text-center bg-primary-400">
+        <h2 className="text-3xl font-itim font-bold mb-4 text-white">HELLO</h2>
+        <p className="mb-6 text-white">
+          Nếu bạn đã có tài khoản, hãy đăng nhập tại đây
+        </p>
+        <Link
+          href={"/customer/login"}
+          className="p-3 bg-light-100 text-dark-700 rounded-sm hover:bg-opacity-90"
+        >
+          Tham Gia Ngay
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default RegisterPage;

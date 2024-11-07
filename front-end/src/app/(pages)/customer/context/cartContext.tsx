@@ -1,6 +1,5 @@
-// context/CartContext.tsx
 import { createContext, useState, ReactNode, useContext } from "react";
-import { typeBook } from "../hook/useFetchBook"; // Sử dụng typeBook nếu đó là type sản phẩm
+import { typeBook } from "@/app/hook/useFetchBook"; // Đảm bảo đúng đường dẫn
 
 interface CartItem extends typeBook {
   quantity: number;
@@ -17,7 +16,6 @@ const CartContext = createContext<CartContextProps | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
-console.log(cart);
 
   const addToCart = (product: typeBook, quantity: number) => {
     setCart((prevCart) => {

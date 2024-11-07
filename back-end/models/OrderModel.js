@@ -1,43 +1,15 @@
+// models/OrderModel.js
+
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
 
+const orderSchema = new mongoose.Schema({
+    id: { type: String, required: true }, // Order ID
+    customer_id: { type: String, required: true }, // Customer ID
+    order_date: { type: Date, default: Date.now }, // Date of the order
+    status: { type: String, default: 'Đang xử lý' }, // Order status
+    total_amount: { type: Number, required: true }, // Total order amount
+    shipping_address: { type: String, required: true } // Shipping address
+}, { timestamps: true });
 
-const orderSchema = new Schema({
-    id: {
-      type: Number,
-      required: true,
-      unique: true,
-    },
-    customer_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Customer', // Tham chiếu đến bảng khách hàng
-      required: true,
-    },
-    order_date: {
-      type: Date,
-      default: Date.now,
-    },
-    order_status: {
-      type: String,
-      enum: ['Chờ xác nhận', 'Đã xác nhận', 'Đang giao hàng', 'Hoàn thành', 'Đã hủy'],
-      default: 'Chờ xác nhận',
-      required: true, // NOT NULL
-    },
-    payment_status: {
-      type: String,
-      enum: ['Chưa thanh toán', 'Đang xử lý thanh toán', 'Đã thanh toán', 'Thanh toán thất bại'],
-      default: 'Chưa thanh toán',
-      required: true, // NOT NULL
-    },
-    shipping_address: {
-      type: String,
-      required: true,
-    },
-    total_amount: {
-      type: Number,
-      required: true,
-    },
-  });
-  
-  module.exports = mongoose.model('Order', orderSchema);
+const OrderModel = mongoose.model('Order', orderSchema);
+module.exports = OrderModel;
