@@ -22,7 +22,7 @@ exports.loginCustomer = async (req, res) => {
 // Cập nhật thông tin khách hàng
 exports.updateCustomer = async (customerId, customerData) => {
     try {
-        const updatedCustomer = await customerService.updateCustomer(customerId, customerData);
+        const updatedCustomer = await customerService.updateCustomerStatus(customerId, customerData);
         return updatedCustomer;
     } catch (error) {
         throw new Error('Error updating customer: ' + error.message);
@@ -59,4 +59,39 @@ exports.getCustomerById = async (customerId) => {
     } catch (error) {
         throw new Error('Error fetching customer: ' + error.message);
     }
+};
+// Controller để cập nhật trạng thái khách hàng
+exports.updateStatus = async (req, res) => {
+    try {
+        const customerId = req.params.id;
+
+        // Gọi service để cập nhật trạng thái khách hàng
+        const updatedCustomer = await customerService.updateCustomerStatus(customerId);
+
+        res.status(200).json({
+            message: 'Status updated successfully',
+            customer: updatedCustomer
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+// Hàm lấy khách hàng theo tên
+exports.getByName = async (name) => {
+    try {
+      // Gọi hàm từ service để lấy khách hàng theo tên
+      const customers = await customerService.getByName(name);
+      return customers;
+    } catch (error) {
+      throw new Error('Error fetching customers by name: ' + error.message);
+    }
+  };
+//   / tìm kiếm theo tiêu đề
+exports.searchCustomers = async (query) => {
+  try {
+      const customers = await customerService.searchCustomers(query);
+      return customers;
+  } catch (error) {
+      throw new Error('Error searching customers: ' + error.message);
+  }
 };

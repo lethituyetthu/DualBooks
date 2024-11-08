@@ -6,13 +6,28 @@ const { SECRET_KEY } = require('../config'); // Đảm bảo bạn có file conf
 // Hàm đăng ký admin mới
 exports.registerAdmin = async (adminData) => {
     try {
+        // Kiểm tra xem có trường nào không được điền
+        const requiredFields = ['username', 'email', 'password', 'user_img', 'role'];
+        for (const field of requiredFields) {
+            if (!adminData[field]) {
+                throw new Error(`Bạn chưa nhập  "${field}" .`);
+            }
+        }
+
         // Kiểm tra xem email hoặc username đã tồn tại chưa
         const existingAdmin = await Admin.findOne({ 
-            $or: [{ email: adminData.email }, { username: adminData.username }, { id: adminData.id }]
+            $or: [{ email: adminData.email }, { username: adminData.username }]
         });
 
         if (existingAdmin) {
-            throw new Error('Admin with given email, username, or id already exists');
+            throw new Error('Tên người dùng và mật khẩu đã tồn tại');
+        }
+
+  
+        // Kiểm tra quy tắc đặt mật khẩu
+        const passwordRegex = /^[A-Za-z\d]{6}$/; // Chính xác 6 ký tự, chỉ cho phép chữ cái và số
+        if (!passwordRegex.test(adminData.password)) {
+            throw new Error('Mật khẩu phải dài chính xác 6 ký tự và chỉ chứa chữ cái và số');
         }
 
         // Tạo admin mới (mật khẩu sẽ được mã hóa bởi middleware pre-save)
@@ -67,5 +82,71 @@ exports.getAllAdmins = async () => {
         return admins;
     } catch (error) {
         throw new Error('Error fetching admins: ' + error.message);
+    }
+};
+
+exports.updateAdmin = async (id, updateData) => {
+    try {
+        // Kiểm tra xem admin có tồn tại không
+        const admin = await Admin.findById(id);
+        if (!admin) {
+            throw new Error('Admin không tồn tại');
+        }
+
+        // Nếu có cập nhật mật khẩu, mã hóa lại mật khẩu
+        if (updateData.password) {
+            const salt = await bcrypt.genSalt(10);
+            updateData.password = await bcrypt.hash(updateData.password, salt);
+        }
+
+        // Cập nhật admin với dữ liệu mới
+        Object.assign(admin, updateData);
+        admin.updated_at = new Date(); // Cập nhật thời gian cập nhật
+
+        await admin.save();
+        return admin;
+    } catch (error) {
+        throw new Error('Error updating admin: ' + error.message);
+    }
+};
+// Hàm xóa admin theo ID trong service
+exports.deleteAdmin = async (adminId) => {
+    try {
+        // Tìm và xóa admin theo ID
+        const deletedAdmin = await Admin.findByIdAndDelete(adminId);
+        return deletedAdmin; // Trả về admin đã xóa (nếu có)
+    } catch (error) {
+        throw new Error('Error deleting admin: ' + error.message);
+    }
+};
+// Hàm lọc admin theo role
+exports.getByRole = async function (role) {
+    try {
+        const admins = await Admin.find({ role: role }); // Tìm admin theo role
+        return admins;
+    } catch (error) {
+        throw new Error('Error fetching admins by role: ' + error.message);
+    }
+};
+
+// Hàm lấy danh sách người dùng theo tên
+exports.getAdminsByName = async (name) => {
+    try {
+        // Thêm \ trước dấu ngoặc để đảm bảo các ký tự đặc biệt không gây lỗi
+        const regexName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const admins = await Admin.find({ username: { $regex: regexName, $options: 'i' } }); // Tìm kiếm không phân biệt chữ hoa chữ thường
+        return admins;
+    } catch (error) {
+        throw new Error('Error fetching admins: ' + error.message);
+    }
+};
+
+// Service: Lấy thông tin chi tiết của một admin
+exports.getAdminById = async (id) => {
+    try {
+        const admin = await Admin.findById(id).select('-password'); // Loại bỏ trường mật khẩu khỏi kết quả
+        return admin;
+    } catch (error) {
+        throw new Error('Error fetching admin: ' + error.message);
     }
 };

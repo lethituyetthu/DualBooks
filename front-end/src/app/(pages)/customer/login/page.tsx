@@ -1,101 +1,69 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
+import InputField from "../../../../components/ui/input";
+import useFetchCustomer from "../../../hook/useFetchCustomer";
 
 interface LoginFormData {
   email: string;
   password: string;
-  rememberMe: boolean;
+  
 }
 
-interface LoginErrors {
-  email?: string;
-  password?: string;
-}
 
 const LoginPage = () => {
+
+  const {login, errors, successMessage} = useFetchCustomer()
+
+
   const [formData, setFormData] = useState<LoginFormData>({
     email: "",
     password: "",
-    rememberMe: false,
   });
 
-  const [errors, setErrors] = useState<LoginErrors>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [e.target.name]: e.target.value,
     });
   };
 
-  const validateForm = () => {
-    const newErrors: LoginErrors = {};
-
-    if (!formData.email) {
-      newErrors.email = "Email không được để trống";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email không hợp lệ";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Mật khẩu không được để trống";
-    }
-
-    return newErrors;
-  };
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      console.log("Login form data submitted:", formData);
-      setFormData({
-        email: "",
-        password: "",
-        rememberMe: false,
-      });
-      setErrors({});
-    }
+    login(formData)
   };
 
   return (
     <div className="flex justify-between p-8 max-w-4xl mx-auto">
       {/* Left Side - Login Form */}
-      <div className="flex-1 p-8 flex flex-col items-center border border-gray-300 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-6 text-primary-600">Đăng Nhập</h2>
+      <div className="flex-1 p-8 flex flex-col items-center border border-gray-300 rounded-lg shadow-md bg-white">
+        <h2 className="text-3xl font-bold mb-6 text-primary-600 font-itim">Đăng Nhập</h2>
+        {successMessage && <p>{successMessage}</p>}
         <form className="flex flex-col w-full mb-6" onSubmit={handleSubmit}>
           {/* Email Field */}
-          <input
+          <InputField
             type="email"
             name="email"
             placeholder="Email"
-            className="p-3 mb-1 border rounded-md border-[#F2B05E]"
             value={formData.email}
             onChange={handleChange}
+            error={errors.email}
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm mb-4">{errors.email}</p>
-          )}
 
           {/* Password Field */}
-          <input
+          <InputField
             type="password"
             name="password"
             placeholder="Mật khẩu"
-            className="p-3 mb-1 border rounded-md border-[#F2B05E]"
             value={formData.password}
             onChange={handleChange}
+            error={errors.password}
           />
-          {errors.password && (
-            <p className="text-red-500 text-sm mb-4">{errors.password}</p>
-          )}
-
           {/* Remember Me Checkbox */}
-          <div className="flex items-center mb-4">
+          {/* <div className="flex items-center mb-4">
             <input
               type="checkbox"
               name="rememberMe"
@@ -104,7 +72,7 @@ const LoginPage = () => {
               className="mr-2"
             />
             <label htmlFor="rememberMe">Ghi nhớ tôi</label>
-          </div>
+          </div> */}
 
           {/* Forgot Password */}
           <p className="mb-4 text-right text-primary-600 cursor-pointer hover:underline">
@@ -112,7 +80,7 @@ const LoginPage = () => {
           </p>
 
           {/* Submit Button */}
-          <button className="p-3 bg-primary-400 text-white rounded-full hover:bg-opacity-90">
+          <button className="p-3 bg-primary-400 text-white rounded-sm hover:bg-opacity-90">
             Đăng Nhập
           </button>
         </form>
@@ -120,18 +88,18 @@ const LoginPage = () => {
 
       {/* Right Side - Join DUALS BOOKS */}
       <div className="flex-1 p-8 flex flex-col items-center justify-center rounded-lg shadow-md text-center bg-primary-400">
-        <h2 className="text-2xl font-bold mb-4 text-white">
+        <h2 className="text-2xl font-bold mb-4 text-white font-itim">
           Tham Gia cùng DUALS BOOKS
         </h2>
         <p className="mb-6 text-white">
           Nếu bạn chưa có tài khoản, hãy đăng ký ngay.
         </p>
-        <a
+        <Link
           href="/customer/register"
-          className="p-3 bg-primary-100 text-dark-700 rounded-full hover:bg-opacity-90"
+          className="p-3 bg-light-100 text-dark-700 rounded-sm  hover:bg-opacity-90"
         >
           Đăng Ký Ngay Bây Giờ
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 
-import useFetchCategory from "../hook/useFetchCategory";
+import useFetchCategory from "../../../hook/useFetchCategory";
 import {
   Carousel,
   CarouselContent,
@@ -14,14 +14,14 @@ import {
 import Image from "next/image";
 
 export default function Showcategory() {
-  const { cate, error, loading } = useFetchCategory();
+  const { cate ,error, loading } = useFetchCategory();
 
-  if (loading) {
-    return <div className="text-center">Loading...</div>; // Hiển thị thông báo khi đang tải
+  if (loading){
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div className="text-red-500 text-center">Error: {error}</div>; // Hiển thị thông báo lỗi
+    return <div>Error: {error}</div>;
   }
 
   return (
@@ -31,23 +31,23 @@ export default function Showcategory() {
           {cate.map((item) => (
             <CarouselItem
               key={item.id}
-              className="w-10 bg-light-100 basis-1/3 flex justify-between mx-[30px] rounded-[8px] p-0 hover:shadow-lg hover:shadow-primary-400 transition-all duration-300 ease-in-out"
+              className=" w-10  bg-white rounded-lg shadow basis-1/3 flex  justify-between mx-[30px] p-0 hover:shadow-lg hover:shadow-primary-400 transition-all duration-300 ease-in-out "
             >
-              <div className="w-[60%] flex flex-col justify-between py-[20px] pl-10">
-                <h4 className="text-[23px] font-bold h-[60px] overflow-hidden text-ellipsis line-clamp-2">
+              <div className="w-[60%]  flex flex-col justify-between py-[35px] pl-10">
+                <h4 className="text-[23px] font-bold h-[35px] overflow-hidden text-ellipsis font-itim text-primary-400 line-clamp-1">
                   {item.name}
                 </h4>
-                <p className="text-[16px] h-[50px] my-3 overflow-hidden text-ellipsis line-clamp-2 mr-7">
+                <p className="text-[16px] h-[50px] my-1 overflow-hidden text-ellipsis line-clamp-2 mr-7">
                   {item.description}
                 </p>
                 <Link
                   href={"#"}
-                  className="text-[20px] flex items-center hover:underline transition duration-500 h-[40px] text-primary-700 font-bold"
+                  className="text-[20px] flex items-center hover:underline transition duration-500  text-primary-700 font-bold"
                 >
                   Xem ngay
                 </Link>
               </div>
-              <div className="py-[40px] pr-[25px] w-[40%]">
+              <div className="py-[40px] pr-[25px] w-[40%] ">
                 <Image
                   src={`http://localhost:3200/uploads/categories/${item.cate_image}`}
                   width={50}
@@ -55,7 +55,7 @@ export default function Showcategory() {
                   objectFit="cover"
                   layout="responsive"
                   alt={item.name}
-                  className="object-cover"
+                  className="object-cover "
                 />
               </div>
             </CarouselItem>

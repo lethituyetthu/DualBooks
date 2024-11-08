@@ -1,25 +1,38 @@
 const bookService = require("../service/BookService");
+
 exports.getAll = async () => {
   try {
     const books = await bookService.getAll();
-    return books.map((p) => ({
-      id: p._id,
-      title: p.title,
-      author: p.author,     // Thêm trường author
-      category: p.category, // Thêm trường category
-      categoryID: p.categoryID, // Chuyển đổi ObjectId thành chuỗi
-      description: p.description,
-      price: p.price,
-      stock: p.stock,       // Thêm trường stock
-      cover_image: p.cover_image, // Thêm trường cover_image
-      created_at: p.created_at,   // Thêm trường created_at
-      updated_at: p.updated_at
+
+    // Định dạng dữ liệu trước khi trả về
+    const formattedBooks = books.map((book) => ({
+      id: book._id, 
+      title: book.title,
+      author: book.author,
+      category: book.categoryID ? {
+          id: book.categoryID._id, // ID danh mục
+          name: book.categoryID.name // Tên danh mục
+      } : null, // Nếu không có categoryID, trả về null
+      publisher: book.publisherID ? {
+          id: book.publisherID._id, // ID nhà xuất bản
+          name: book.publisherID.name // Tên nhà xuất bản
+      } : null, // Nếu không có publisherID, trả về null
+      description: book.description,
+      price: book.price,
+      stock: book.stock,
+      cover_image: book.cover_image,
+      created_at: book.created_at,   // Thêm trường created_at
+      updated_at: book.updated_at
     }));
+
+    // Trả về danh sách sách đã được định dạng
+    return formattedBooks; // Đảm bảo trả về danh sách đã định dạng
   } catch (error) {
-    throw error;
+    throw new Error('Error fetching books: ' + error.message);
   }
-  ;
 };
+
+
 
 // Hàm lấy sách theo thể loại
 exports.getByCategory = async (categoryID) => {
@@ -40,6 +53,17 @@ exports.getByAuthor = async (author) => {
     return books;
   } catch (error) {
     throw new Error('Error fetching books by author: ' + error.message);
+  }
+};
+// Định nghĩa hàm getByTitle để lấy sách theo tên
+exports.getByTitle = async (title) => {
+  try {
+    // Gọi hàm từ service để lấy sách theo tên từ database
+    const books = await bookService.getByTitle(title);
+    return books; // Trả về danh sách sách từ service
+  } catch (error) {
+    // Ném lỗi nếu xảy ra vấn đề trong quá trình lấy sách
+    throw new Error('Error fetching books by title: ' + error.message);
   }
 };
 // Hàm lấy sách và sắp xếp theo giá

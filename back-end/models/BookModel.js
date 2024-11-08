@@ -49,8 +49,19 @@ const bookSchema = new mongoose.Schema({
     ref: 'Category', // Tham chiếu đến model Category
     required: true
   },
-  views: { type: Number, default: 0 }, // Số lượt xem
-  sales: { type: Number, default: 0 }, // Số lượng sản phẩm đã bán
+  publisherID: {
+    type: Schema.Types.ObjectId,
+    ref: 'Publisher', // Tham chiếu đến model Publisher
+    required: true
+  },
+  views: { 
+    type: Number, 
+    default: 0 
+  }, // Số lượt xem
+  sales: { 
+    type: Number, 
+    default: 0 
+  }, // Số lượng sản phẩm đã bán
 });
 
 // Tạo model từ schema

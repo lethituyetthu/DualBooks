@@ -3,10 +3,18 @@ const categoryModel = require('../models/CategoryModel');
 const fs = require('fs');
 const path = require('path');
 
-exports.getAll = async ()=>{
-    //select * form products
-    const products = await bookModel.find({});
-    return products;
+
+exports.getAll = async () => {
+  try {
+    // Tìm tất cả các sách và populate thông tin từ bảng Category và Publisher
+    const books = await bookModel.find()
+      .populate('categoryID', 'name') // Populate danh mục
+      .populate('publisherID', 'name'); // Populate nhà xuất bản
+
+    return books;
+  } catch (error) {
+    throw new Error('Error fetching books: ' + error.message);
+  }
 };
 // Hàm lọc sách theo thể loại
 exports.getByCategoryID = async function (categoryID) {
@@ -28,6 +36,20 @@ exports.getByAuthor = async function (author) {
       throw new Error('Error fetching books by author: ' + error.message);
   }
 };
+// Hàm getByTitle để tìm sách theo tên
+exports.getByTitle = async function (title) {
+  try {
+      // Thêm \ trước dấu ngoặc để đảm bảo các ký tự đặc biệt không gây lỗi
+      const regexTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
+      const books = await bookModel.find({
+          title: { $regex: new RegExp(regexTitle, 'i') }
+      });
+      return books;
+  } catch (error) {
+      throw new Error('Error fetching books by title: ' + error.message);
+  }
+};
+
 // Hàm lấy sách và sắp xếp theo giá
 exports.getAllSortedByPrice = async function (sortOrder = 'asc') {
   try {
