@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-const ProfileCardStaff = ({ name, role, date, img, email }) => {
+const ProfileCardStaff = ({ name, role, date, img, email, onDelete, onEdit }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const formatDateTime = (dateString) => {
@@ -27,7 +27,7 @@ const ProfileCardStaff = ({ name, role, date, img, email }) => {
         src={`http://localhost:3200/uploads/admins/${img}`}
         alt={`${name} profile`}
       />
-      <h2 className="text-xl  max-w-44 mx-auto">{name}</h2>
+      <h2 className="text-xl uppercase max-w-44 mx-auto">{name}</h2>
       <p className="text-gray-500">{role}</p>
       <p className="text-gray-500">{email}</p>
       <p className="text-gray-400 mt-2">{formatDateTime(date)}</p>
@@ -35,13 +35,13 @@ const ProfileCardStaff = ({ name, role, date, img, email }) => {
       {isHovered && (
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-opacity-75 bg-light-300 rounded-sm flex gap-4 p-2">
           <button
-            /* onClick={onEdit} */
+            onClick={onEdit}
             className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
           >
             Sửa
           </button>
           <button
-            /* onClick={onDelete} */
+            onClick={onDelete}
             className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
           >
             Xóa

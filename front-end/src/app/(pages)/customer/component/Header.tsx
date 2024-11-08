@@ -64,8 +64,8 @@ export default function Header() {
   const list3: any = [
     { title: "trang chủ", link: "/customer" },
     { title: "sản phẩm", link: "/customer/products" },
-    { title: "giới thiệu", link: "/customer/Gioithieu" },
-    { title: "liên hệ", link: "/customer/Lienhe" },
+    { title: "giới thiệu", link: "/customer" },
+    { title: "liên hệ", link: "/customer" },
   ];
 
   // icon giỏ hàng & yêu thích

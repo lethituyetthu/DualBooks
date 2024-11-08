@@ -2,9 +2,10 @@
   "_id": {
     "$oid": "66d57256afc8a51793d73227"
   },
-
+  "id": 1,
   "title": "Búp Sen Xanh (Tái Bản 2020)",
   "author": "Sơn Tùng",
+  "category": "Thiếu nhi",
   "description": "Có thể xếp “Búp Sen Xanh” vào nhóm tác phẩm văn học dành cho thiếu nhi và là tác phẩm nổi tiếng nhất viết về chủ tịch Hồ Chí Minh trong suốt thời thơ ấu cho đến khi rời Việt Nam sang Pháp.\\n\\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...\"",
   "price": 52.56,
   "stock": 100,
@@ -21,9 +22,10 @@
   "_id": {
     "$oid": "66d57256afc8a51793d73228"
   },
-
+  "id": 2,
   "title": "Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019)",
   "author": "Luis Sepúlveda",
+  "category": "Thiếu nhi",
   "description": "Chuyện con mèo dạy hải âu bay là kiệt tác dành cho thiếu nhi của nhà văn Chi Lê nổi tiếng Luis Sepúlveda – tác giả của cuốn Lão già mê đọc truyện tình đã bán được 18 triệu bản khắp thế giới. Tác phẩm không chỉ là một câu chuyện ấm áp, trong sáng, dễ thương về loài vật mà còn chuyển tải thông điệp về trách nhiệm với môi trường, về sự sẻ chia và yêu thương cũng như ý nghĩa của những nỗ lực – “Chỉ những kẻ dám mới có thể bay”.\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...",
   "price": 39.2,
   "stock": 100,
@@ -40,9 +42,10 @@
   "_id": {
     "$oid": "66d57256afc8a51793d73229"
   },
-
+  "id": 3,
   "title": "Chú Mèo Nhiều Tên",
   "author": "Katie Harnett",
+  "category": "Thiếu nhi",
   "description": "Chú mèo ở phố Ngàn Hoa có vô số cái tên, mỗi người gọi chú một kiểu. Ai cũng yêu chú cả. Nhưng có một ngôi nhà trên phố chú chưa từng ghé chân…\n\nCuốn sách tranh tuyệt vời này kể câu chuyện ngọt ngào và đáng nhớ về tình cảm láng giềng, tình bạn… mà không ai trong chúng ta quên được.",
   "price": 39.2,
   "stock": 100,
@@ -59,9 +62,10 @@
   "_id": {
     "$oid": "66d57256afc8a51793d7322a"
   },
-
+  "id": 4,
   "title": "Chuyện Của Áng Mây",
   "author": "Katie Harnett",
+  "category": "Thiếu nhi",
   "description": "Đám mây nhỏ cô đơn biết mấy. Giá cậu tìm được ai đó yêu thích những cơn mưa!\n\nMột ngày nọ, cậu đi ngang qua cô chủ tiệm hoa lúc nào cũng buồn rầu… Liệu họ có tìm thấy ở nhau những điều mình trông đợi?\n\nMột câu chuyện ấm lòng về những cảm xúc và tình bạn bất ngờ…",
   "price": 28.05,
   "stock": 100,
@@ -78,9 +82,10 @@
   "_id": {
     "$oid": "66d57256afc8a51793d7322b"
   },
-
+  "id": 5,
   "title": "Bà Ơi, Về Với Cháu!",
   "author": "Sue Limb, Grégoire Mabire",
+  "category": "Thiếu nhi",
   "description": "Cha mẹ Bessie thường xuyên bận rộn, nhưng may mắn thay… ở đây có Bà. Bà luôn dành thời gian cho Bessie.\n\nNhững cảm xúc mà \"Bà ơi, về với cháu!\" mang lại vô cùng chân thực và xúc động, khiến người đọc bồi hồi da diết nhớ lại những năm tháng thơ bé bên bà - một trong những người phụ nữ quan trọng nhất trong cuộc đời.\n\nCùng đọc \"Bà ơi, về với cháu!\" bằng tất cả lòng biết ơn và trân trọng nhé!",
   "price": 29.75,
   "stock": 100,
@@ -97,9 +102,10 @@
   "_id": {
     "$oid": "66d5ac5590db775ed89c8df7"
   },
-
+  "id": 6,
   "title": "Toán 12 - Tập 1 (Chân Trời) (Chuẩn)",
   "author": "Nhiều Tác Giả",
+  "category": "Giáo khoa - Tham khảo ",
   "description": "Sách biên soạn theo chương trình giáo dục phổ thông mới. Các kiến thức trong sách được chủ yếu xuất phát từ những tình huống của cuộc sống quanh ta và trở lại giúp ta giải quyết những vấn đề của cuộc sống. Vì thế, khi học Toán theo cuốn sách này, các em sẽ cảm nhận được rằng, Toán học thật là gần gũi.",
   "price": 14,
   "stock": 100,
@@ -119,9 +125,10 @@
   "_id": {
     "$oid": "66d5ae3684632959c4685045"
   },
-
+  "id": 7,
   "title": "Tiếng Anh 12 Friends Global - Student Book",
   "author": "Nhiều Tác Giả",
+  "category": "Giáo khoa - Tham khảo ",
   "description": "Tiếng Anh 12 Friends Global - Student Book\n\nMỤC LỤC\n\nUnit I. Introduction\n\nUnit 1. Relationships\n\nUnit 2. Problems\n\nUnit 3. Customs and tradition\n\nUnit 4. Holidays and tourism\n\nUnit 5. Careers\n\nUnit 6. Health\n\nUnit 7. Media\n\nUnit 8. Change the world",
   "price": 99,
   "stock": 100,
@@ -141,9 +148,10 @@
   "_id": {
     "$oid": "66e5335b2a019adbc7cbf5c6"
   },
-
+  "id": 8,
   "title": "Tiếng Anh 12 Friends Global - Workbook",
   "author": "Nhiều Tác Giả",
+  "category": "Giáo khoa - Tham khảo ",
   "description": "Với phương châm “Developing a global outlook – Vươn tầm thế giới”, Sách giáo khoa Tiếng Anh 12 Friends Global góp phần nâng cao chất lượng hoạt động giáo dục toàn diện về năng lực, phẩm chất, kĩ năng giúp các em phát triển và hội nhập trong thời đại mới. Nội dung các bài nghe, bài đọc hấp dẫn, phù hợp đặc điểm học sinh lớp 12 với mục tiêu phát triển năng lực ngôn ngữ và năng lực giao tiếp.\n\n",
   "price": 79,
   "stock": 100,
@@ -165,9 +173,10 @@
   "_id": {
     "$oid": "66e533ca526475c476d285b8"
   },
-
+  "id": 9,
   "title": "Ngữ Văn 12 - Tập 2 (Chân Trời) (Chuẩn)",
   "author": "Nhiều Tác Giả",
+  "category": "Giáo khoa - Tham khảo ",
   "description": "Với cách thể hiện phong phú và lôi cuốn, hình thức trình bày hấp dẫn và thân thiện, cuốn sách được biên soạn theo định hướng phát triển phẩm chất và năng lực học sinh. Các kiến thức trong sách sẽ đến với các em học sinh một cách tự nhiên, bắt nguồn từ thực tế đời sống và giúp các em biết cách giải quyết những vấn đề đặt ra trong cuộc sống",
   "price": 19,
   "stock": 100,
@@ -189,9 +198,10 @@
   "_id": {
     "$oid": "66e53413526475c476d285ba"
   },
-
+  "id": 10,
   "title": "Tin Học 12 - Định Hướng Tin Học Ứng Dụng (Kết Nối) (Chuẩn)",
   "author": "Nhiều Tác Giả",
+  "category": "Giáo khoa - Tham khảo ",
   "description": "Sách cung cấp cho các em những kiến thức chuyên sâu, bổ ích, lí thú và thiết thực, giúp các em hình thành kĩ năng thực hành, kĩ năng vận dụng kiến thức đã học, ứng dụng tin học vào giải quyết vấn đề thực tế.",
   "price": 21,
   "stock": 100,
@@ -213,8 +223,10 @@
   "_id": {
     "$oid": "66e534ab526475c476d285bc"
   },
+  "id": 11,
   "title": "Góc Nhỏ Có Nắng",
   "author": "Little Rainbow",
+  "category": "Văn học ",
   "description": "- Với 30 chủ đề tô màu phong phú đa dạng, mỗi bức tranh như là một lời thủ thỉ tâm tình gửi đến bạn\n\n- Thư giãn và chữa lành: Với những hình ảnh đẹp mắt và đơn giản, tô màu sẽ là một phương pháp hiệu quả giúp bạn chữa lành và nuôi dưỡng tâm hồn\n\n- Khám phá sự sáng tạo: Bạn đừng ngại vẽ thêm, tô thêm màu sắc để thể hiện cảm xúc của riêng mình\n\n- Chất liệu giấy dày, mịn, đẹp sẽ đem đến cho bạn trải nghiệm tô màu thú vị",
   "price": 54.4,
   "stock": 100,
@@ -236,9 +248,10 @@
   "_id": {
     "$oid": "66e53504526475c476d285be"
   },
-
+  "id": 12,
   "title": "Sưởi Ấm Mặt Trời - Phần Tiếp Theo Của Cây Cam Ngọt Của Tôi",
   "author": "Joses Mauro De Vasconcelos",
+  "category": "Văn học ",
   "description": "Zezé, cậu bé tinh nghịch siêu hạng đồng thời cũng đáng yêu bậc nhất ngày ngào giờ đã thoát khỏi cuộc sống nghèo khó, cũng không còn phải chịu cảnh bị đánh đập thường xuyên như trong quá khứ. Cậu đã chuyển đến Natal sống cùng gia đình cha đỡ đầu, được học ở một ngôi trường tốt, dần dần tiến bộ cả về mặt trí tuệ lẫn thể chất. Nhưng nỗi đau mất mát vẫn đè nặng lên trái tim cậu và Zezé vẫn là một cậu nhóc “ hầu như lúc nào cũng buồn”, thậm chí “có lẽ là một trong những cậu nhóc buồn nhất quả đất”.\n\n",
   "price": 124.8,
   "stock": 100,
@@ -260,9 +273,10 @@
   "_id": {
     "$oid": "66e5355b526475c476d285c0"
   },
-
+  "id": 13,
   "title": "Cây Cam Ngọt Của Tôi",
   "author": "Joses Mauro De Vasconcelos",
+  "category": "Văn học ",
   "description": "Hãy làm quen với Zezé, cậu bé tinh nghịch siêu hạng đồng thời cũng đáng yêu bậc nhất, với ước mơ lớn lên trở thành nhà thơ cổ thắt nơ bướm. Chẳng phải ai cũng công nhận khoản “đáng yêu” kia đâu nhé. Bởi vì, ở cái xóm ngoại ô nghèo ấy, nỗi khắc khổ bủa vây đã che mờ mắt người ta trước trái tim thiện lương cùng trí tưởng tượng tuyệt vời của cậu bé con năm tuổi.\n\n",
   "price": 84.24,
   "stock": 100,
@@ -284,9 +298,10 @@
   "_id": {
     "$oid": "66e535b0526475c476d285c2"
   },
-
+  "id": 14,
   "title": "Nhà Giả Kim (Tái Bản 2020)",
   "author": "Paulo Coelho",
+  "category": "Văn học ",
   "description": "Tiểu thuyết Nhà giả kim của Paulo Coelho như một câu chuyện cổ tích giản dị, nhân ái, giàu chất thơ, thấm đẫm những minh triết huyền bí của phương Đông. Trong lần xuất bản đầu tiên tại Brazil vào năm 1988, sách chỉ bán được 900 bản. Nhưng, với số phận đặc biệt của cuốn sách dành cho toàn nhân loại, vượt ra ngoài biên giới quốc gia, Nhà giả kim đã làm rung động hàng triệu tâm hồn, trở thành một trong những cuốn sách bán chạy nhất mọi thời đại, và có thể làm thay đổi cuộc đời người đọc.\n\n",
   "price": 61.62,
   "stock": 100,
@@ -308,9 +323,10 @@
   "_id": {
     "$oid": "66e5360d526475c476d285c4"
   },
-
+  "id": 15,
   "title": "25 Độ Âm",
   "author": "Thảo Trang",
+  "category": "Văn học",
   "description": "Di cư và nhập cảnh trái phép luôn là vấn đề nhức nhối của nhân loại trong hàng thập kỉ tồn tại và phát triển. Mặc dù các quốc gia đã đưa ra rất nhiều lời cảnh tỉnh và siết chặt an ninh cùng nhiều hình thức trừng phạt mạnh tay, nhưng vấn nạn này chưa bao giờ được giải quyết triệt để, thậm chí thủ đoạn của bọn tội phạm vượt biên còn ngày càng tinh vi và ngoan cố hơn. Chúng ta hẳn không thể nào quên được sự kiện kinh hoàng, gây rúng động toàn thế giới cách đây 5 năm: 1h20ph sáng ngày 23/10/2019, cảnh sát Anh quốc đã phát hiện ra thi thể của 39 người Việt tử vong trong một chiếc xe container đông lạnh. Họ đều là những con người tham gia vào chuyến hành trình vượt biên trái phép và bỏ mạng ngay trước giây phút tưởng chừng đã đặt chân được đến miền đất hứa.",
   "price": 123.24,
   "stock": 100,
@@ -332,9 +348,10 @@
   "_id": {
     "$oid": "66e536ac526475c476d285c7"
   },
-
+  "id": 16,
   "title": "Tư Duy Ngược",
   "author": "Nguyễn Anh Dũng",
+  "category": "Tâm lý - Kỹ năng sống",
   "description": "Chúng ta thực sự có hạnh phúc không? Chúng ta có đang sống cuộc đời mình không? Chúng ta có dám dũng cảm chiến thắng mọi khuôn mẫu, định kiến, đi ngược đám đông để khẳng định bản sắc riêng của mình không?. Có bao giờ bạn tự hỏi như thế, rồi có câu trả lời cho chính mình?\n\n",
   "price": 69.5,
   "stock": 100,
@@ -356,9 +373,10 @@
   "_id": {
     "$oid": "66e536ed526475c476d285c9"
   },
-
+  "id": 17,
   "title": "Tư Duy Mở",
   "author": "Nguyễn Anh Dũng",
+  "category": "Tâm lý - Kỹ năng sống",
   "description": "Con người đang sống trong thời đại công nghệ, khi mọi thứ thay đổi chóng mặt, điều đó đòi hỏi chúng ta phải linh hoạt trong cách tư duy để bắt kịp xu hướng toàn cầu. Hay nói cách khác, chúng ta cần có một tư duy mở để đón nhận và khai phá kiến thức mới, bởi nếu chúng ta cứ khăng khăng giữ định kiến của mình thì sự phát triển sẽ đi vào ngõ cụt.\n\n",
   "price": 69,
   "stock": 100,
@@ -380,9 +398,10 @@
   "_id": {
     "$oid": "66e53749526475c476d285cb"
   },
-
+  "id": 18,
   "title": "Khéo Ăn Nói Sẽ Có Được Thiên Hạ (Tái Bản 2022)",
   "author": "Trác Nhã",
+  "category": "Tâm lý - Kỹ năng sống",
   "description": "Trong xã hội thông tin hiện đại, sự im lặng không còn là vàng nữa, nếu không biết cách giao tiếp thì dù là vàng cũng sẽ bị chôn vùi. Trong cuộc đời một con người, từ xin việc đến thăng tiến, từ tình yêu đến hôn nhân, từ tiếp thị cho đến đàm phán, từ xã giao đến làm việc… không thể không cần đến kĩ năng và khả năng giao tiếp. Khéo ăn khéo nói thì đi đâu, làm gì cũng gặp thuận lợi. Không khéo ăn nói, bốn bề đều là trở ngại khó khăn.\n\n\n",
   "price": 84.5,
   "stock": 100,
@@ -404,9 +423,10 @@
   "_id": {
     "$oid": "66e537a9526475c476d285cd"
   },
-
+  "id": 19,
   "title": "Sức Mạnh Tiềm Thức (Tái Bản 2021)",
   "author": "Joseph Murphyc",
+  "category": "Tâm lý - Kỹ năng sống",
   "description": "Là một trong những quyển sách về nghệ thuật sống nhận được nhiều lời ngợi khen và bán chạy nhất mọi thời đại, Sức Mạnh Tiềm Thức đã giúp hàng triệu độc giả trên thế giới đạt được những mục tiêu quan trọng trong đời chỉ bằng một cách đơn giản là thay đổi tư duy.",
   "price": 89.6,
   "stock": 100,
@@ -428,9 +448,10 @@
   "_id": {
     "$oid": "66e5382a526475c476d285cf"
   },
-
+  "id": 20,
   "title": "38 Bức Thư Rockefeller Viết Cho Con Trai",
   "author": "Thanh Hương",
+  "category": "Tâm lý - Kỹ năng sống",
   "description": "NGƯỜI SỐNG TRÊN ĐỜI, NHƯ THẾ NÀO LÀ THIỆN, LẠI NHƯ THẾ NÀO LÀ ÁC? THẾ NÀO LÀ SỰ THIÊN LỆCH, MÀ THẾ NÀO MỚI LÀ CHÍNH ĐÍNH?\nCó người khởi tâm ác mà thực ra lại là làm việc thiện. Nhưng nhà kia giàu có lắm, gặp năm mất mùa, dân cùng cực phải cướp thóc lúa ở chợ ngay giữa ban ngày. Người kia báo với tri huyện, nhưng tri huyện không xử lý việc ấy.",
   "price": 69,
   "stock": 100,
@@ -452,9 +473,10 @@
   "_id": {
     "$oid": "66ef5d2eaf9af43bb23ed4ae"
   },
-
+  "id": 21,
   "title": "Những Chuyện Lạ Ở Tokyo\n",
   "author": "Haruki Murakami",
+  "category": "Văn học",
   "description": "Thất lạc người thân, sinh ly tử biệt, lãng quên tên họ... Những con người đột nhiên đánh mất điều quý giá rồi sa chân vào một góc đô thị - một thế giới tràn đầy sự trùng hợp và bất ngờ. Lữ khách tình cờ đưa ta lần theo ánh sáng nhạt mờ trong trái tim người chỉnh đàn cô độc, Vịnh Hanalei họa nên cuộc sống của một người mẹ có đứa con trai bỏ mạng nơi biển cả xứ xa... Ở thế giới mà ta đã quen, có những điểm mù xuất hiện trong khoảnh khắc, số phận bí ẩn của những người mất hút vào những điểm mù ấy được thuật lại trong năm câu chuyện này.",
   "price": 88,
   "stock": 100,
@@ -476,8 +498,10 @@
   "_id": {
     "$oid": "66ef843b1b051c0fe567b157"
   },
+  "id": 22,
   "title": "Những Chuyện Lạ Ở Tokyo\n",
   "author": "Haruki Murakami",
+  "category": "Văn học",
   "description": "Thất lạc người thân, sinh ly tử biệt, lãng quên tên họ... Những con người đột nhiên đánh mất điều quý giá rồi sa chân vào một góc đô thị - một thế giới tràn đầy sự trùng hợp và bất ngờ. Lữ khách tình cờ đưa ta lần theo ánh sáng nhạt mờ trong trái tim người chỉnh đàn cô độc, Vịnh Hanalei họa nên cuộc sống của một người mẹ có đứa con trai bỏ mạng nơi biển cả xứ xa... Ở thế giới mà ta đã quen, có những điểm mù xuất hiện trong khoảnh khắc, số phận bí ẩn của những người mất hút vào những điểm mù ấy được thuật lại trong năm câu chuyện này.",
   "price": 88,
   "stock": 100,

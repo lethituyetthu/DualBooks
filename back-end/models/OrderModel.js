@@ -45,10 +45,10 @@ const orderSchema = new Schema({
         type: Number,
         required: true,
     },
-    total_quantity: {
+    total_quantity: {  // Trường mới để lưu tổng số lượng đơn hàng
         type: Number,
-        default: 0,
         required: true,
+        default: 0  // Mặc định là 0, có thể cập nhật khi thêm các mặt hàng vào đơn hàng
     },
     orderItems: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -58,6 +58,10 @@ const orderSchema = new Schema({
         type: String,
         enum: ['online', 'offline'],
         required: true,
+
+
+
+        
     },
     customer_feedback: {
         type: String,

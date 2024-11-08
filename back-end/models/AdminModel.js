@@ -41,6 +41,7 @@ const AdminSchema = new Schema({
         type: Date, 
         default: Date.now 
     }
+    
 });
 
 // Middleware trước khi lưu để mã hóa mật khẩu

@@ -4,7 +4,7 @@ import useFetchBook from "@/app/hook/useFetchBook";
 import Link from "next/link";
 
 export default function Product({ product, getCategoryName, formatDateTime }) {
-  const { deleteBook } = useFetchBook();
+  const { deleteBook,books } = useFetchBook();
   
   const handleDelete = () => {
     if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {

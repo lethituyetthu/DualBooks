@@ -1,12 +1,15 @@
-import React, { useState, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState, useCallback } from 'react';
+// import { useRouter } from "next/navigation";
 interface typeCustomer {
-  id?:string;
-  name?: string;
-  email: string;
-  phone?: string;
-  address?: string;
-  password?: string;
+  _id: string; // ID là thuộc tính bắt buộc
+  name?: string; // Bắt buộc
+  email?: string; // Bắt buộc
+  password?: string; // Bắt buộc, có thể xóa nếu không cần
+  phone?: string; // Bắt buộc
+  address?: string; // Bắt buộc
+  status?: 'active' | 'blocked'; // Trạng thái là thuộc tính bắt buộc
+  created_at?: string; // Bắt buộc, hoặc có thể dùng Date
+  updated_at?: string; // Bắt buộc, hoặc có thể dùng Date
 }
 
 interface Errors {
@@ -16,14 +19,29 @@ interface Errors {
   address?: string;
   password?: string;
 }
+// function isCustomerArray(data: unknown): data is typeCustomer[] {
+//   if (!Array.isArray(data)) return false;
+
+//   return data.every(item => 
+//     typeof item._id === 'string' &&
+//     typeof item.name === 'string' &&
+//     typeof item.email === 'string' &&
+//     (typeof item.password === 'string' || item.password === undefined) &&
+//     typeof item.phone === 'string' &&
+//     typeof item.address === 'string' &&
+//     (item.status === 'active' || item.status === 'blocked') &&
+//     (typeof item.created_at === 'string' || item.created_at instanceof Date) &&
+//     (typeof item.updated_at === 'string' || item.updated_at instanceof Date)
+//   );
+// }
 
 export default function useFetchCustomer() {
-  const route = useRouter()
-  const [errors, setErrors] = useState<Errors>({});
-  const [successMessage, setSuccessMessage] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false); // Trạng thái loading
+  // const route = useRouter()
   const [customers, setCustomers] = useState<typeCustomer[]>([]); // Danh sách khách hàng
+  const [loading, setLoading] = useState<boolean>(false); // Trạng thái loading
+  const [errors, setErrors] = useState<Errors>({});
   const [error, setError] = useState<string | null>(null); // Lỗi
+  const [successMessage, setSuccessMessage] = useState<string>("");
 
   const validateForm = (formData: typeCustomer, isLogin = false) => {
     const newErrors: Errors = {};
@@ -200,28 +218,28 @@ export default function useFetchCustomer() {
     }
   };
 
-  // Fetch all customers
-  const fetchCustomers = async () => {
-    setLoading(true); // Bắt đầu quá trình loading
-    try {
-      const response = await fetch('http://localhost:3200/customers');
-      if (!response.ok) {
-        throw new Error('Mã lỗi: ' + response.status);
-      }
-      const data = await response.json();
-      setCustomers(data); // Cập nhật danh sách khách hàng
-    } catch (err) {
-      setError(err.message); // Cập nhật lỗi
-    } finally {
-      setLoading(false); // Kết thúc loading
+ // Hàm lấy tất cả dữ liệu khách hàng
+ const fetchCustomers = useCallback(async () => {
+  setLoading(true);
+  try {
+    const response = await fetch("http://localhost:3200/customers");
+    if (!response.ok) {
+      throw new Error("Lỗi khi lấy dữ liệu khách hàng!");
     }
-  };
+    const data = await response.json();
+    setCustomers(data);
+  } catch (err) {
+    setError((err as Error).message);
+  } finally {
+    setLoading(false);
+  }
+}, []);
 
-  // Delete customer
-  const deleteCustomer = async (id: string) => {
+   // Hàm xóa khách hàng
+   const deleteCustomer = useCallback(async (id: string) => {
     const confirmed = window.confirm("Bạn có chắc chắn muốn xóa khách hàng này?");
     if (confirmed) {
-      setLoading(true); // Bắt đầu loading
+      setLoading(true);
       try {
         const response = await fetch(`http://localhost:3200/customers/${id}`, {
           method: 'DELETE',
@@ -234,15 +252,75 @@ export default function useFetchCustomer() {
           throw new Error('Không thể xóa khách hàng: ' + response.status);
         }
 
-        alert("đã xoá thành công khách hàng")
-        await fetchCustomers()
+        alert("Đã xóa thành công khách hàng");
+        // Cập nhật danh sách khách hàng
+        setCustomers(prevCustomers => prevCustomers.filter(customer => customer._id !== id));
+        setSuccessMessage("Xóa khách hàng thành công");
       } catch (err) {
-        setError(err.message);
+        setError((err as Error).message);
       } finally {
-        setLoading(false); // Kết thúc loading
+        setLoading(false);
+      }
+    }
+  }, []);
+  const searchCustomersByName = async (term: string) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`http://localhost:3200/customers/search?query=${term}`);
+      if (!response.ok) {
+        throw new Error("Lỗi khi tìm kiếm khách hàng theo tên!");
+      }
+      const data = await response.json();
+      console.log("Dữ liệu khách hàng:", data);  // Kiểm tra dữ liệu trả về
+      setCustomers(data);  // Cập nhật trạng thái customers
+      setError(null); // Xóa lỗi trước đó (nếu có)
+    } catch (err) {
+      setError((err as Error).message);
+      console.error("Lỗi khi tìm kiếm khách hàng theo tên:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const toggleCustomerStatus = async (id: string) => {
+    const customer = customers.find(c => c._id === id);
+    if (!customer) return;
+
+    const newStatus = customer.status === 'active' ? 'blocked' : 'active';
+    const confirmed = window.confirm(`Bạn có chắc chắn muốn chuyển trạng thái từ "${customer.status}" sang "${newStatus}" không?`);
+
+    if (confirmed) {
+      try {
+        const response = await fetch(`http://localhost:3200/customers/${id}/status`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ status: newStatus }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Không thể cập nhật trạng thái: ' + response.status);
+        }
+
+        const updatedCustomer = await response.json();
+        setCustomers(customers.map(customer =>
+          customer._id === id ? updatedCustomer.customer : customer
+        ));
+      } catch (err) {
+        setError((err as Error).message);
       }
     }
   };
+
+  useEffect(() => {
+    fetchCustomers();
+  }, [fetchCustomers]);
+//  // Kiểm tra trạng thái và dữ liệu
+//  useEffect(() => {
+//   console.log('Loading:', loading);
+//   console.log('Customers:', customers);
+//   console.log('Error:', error);
+// }, [loading, customers, error]);
 
   return {
     fetchCustomer,
@@ -257,5 +335,7 @@ export default function useFetchCustomer() {
     loading,
     customers,
     error,
+    searchCustomersByName, // Trả về hàm tìm kiếm theo tên
+    toggleCustomerStatus,
   };
 }

@@ -7,7 +7,7 @@ exports.addOrderItem = async (req, res) => {
     const { book_id, quantity, price } = req.body;
 
     try {
-        // Tạo OrderItem mới
+        // Tạo OrderItem mới và giảm số lượng tồn kho
         const newOrderItem = await orderItemService.createOrderItem(orderId, book_id, quantity, price);
 
         // Cập nhật Order để thêm OrderItem vào mảng orderItems
