@@ -35,11 +35,24 @@ exports.loginAdmin = async (req, res) => {
 exports.getAllAdmins = async (req, res) => {
     try {
         const admins = await adminService.getAllAdmins();
-        res.status(200).json( admins );
+        res.status(200).json({ data: admins });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
+// Controller: Lấy thông tin chi tiết của một admin
+exports.getAdminById = async (req, res) => {
+    try {
+        const admin = await adminService.getAdminById(req.params.id);
+        if (!admin) {
+            return res.status(404).json({ message: 'Không tìm thấy admin' });
+        }
+        res.status(200).json({ data: admin });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 exports.updateAdmin = async (req, res) => {
     const adminId = req.params.id;
     const updateData = req.body;
@@ -98,16 +111,4 @@ exports.getAdminsByName = async (req, res) => {
     }
 };
 
-// Controller: Lấy thông tin chi tiết của một admin
-exports.getAdminById = async (req, res) => {
-    try {
-        const admin = await adminService.getAdminById(req.params.id);
-        if (!admin) {
-            return res.status(404).json({ message: 'Không tìm thấy admin' });
-        }
-        res.status(200).json({ data: admin });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
 

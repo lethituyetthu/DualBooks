@@ -15,6 +15,7 @@ var customersRouter = require('./routes/customer');
 var ordersRouter = require('./routes/orders');
 var orderItemsRouter = require('./routes/orderItems');
 var adminRouter = require('./routes/admin');
+const reviewsRouter = require('./routes/reviews');
 // khai báo cor
 const cors = require('cors');
 const PORT = process.env.PORT || 3200;
@@ -60,6 +61,7 @@ app.use('/customers',customersRouter);
 app.use('/publishers', publishersRouter); 
 app.use('/orders',ordersRouter);
 app.use('/admins', adminRouter);
+app.use('/reviews', reviewsRouter);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`http://localhost:${PORT}/books`);

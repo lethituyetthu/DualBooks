@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const bookController = require('../controller/BookController');
+const reviewController = require('../controller/reviewController')
 const uploadBooks = require('../middlewares/uploadBooks');
 const fs = require('fs');
 const path = require('path');
 const { body, validationResult } = require('express-validator');
 const authenticateAdmin = require('../middlewares/auth');
+const authenticateCustomer = require('../middlewares/authCustomer'); // Import middleware xác thực khách hàng
+
 // Routers for API
 // Get books listing
 // http://localhost:3000/books
@@ -27,7 +30,6 @@ router.get('/', async function(req, res, next) {
     }
 });
 
-module.exports = router;
 
 // Tìm kiếm sách theo từ khóa
 router.get('/search', async (req, res, next) => {
@@ -159,28 +161,35 @@ router.get('/new', async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   });
-// Endpoint xem chi tiết sách theo ID
+// Route để lấy chi tiết sách theo ID
 router.get('/:id', async function(req, res, next) {
-  console.log('GET /books/:id endpoint hit');
-  // Lấy tham số ID từ URL
-  const bookId = req.params.id;
-  try {
-      // Gọi hàm từ controller để lấy chi tiết sách
-      const result = await bookController.getBookById(bookId);
-
-      if (result) {
-          console.log('Book fetched successfully:', result);
-          res.status(200).json(result);
-      } else {
-          console.log('Book not found');
-          res.status(404).json({ error: 'Book not found' });
-      }
-  } catch (error) {
-      console.error('Error fetching Book by ID:', error.message);
+    console.log('GET /books/:id endpoint hit');
+    const bookId = req.params.id; // Lấy ID từ URL params
+  
+    try {
+      const result = await bookController.getBookDetailsById(bookId);
+  
+      console.log('Book details fetched successfully:', result);
+      res.status(200).json(result);  // Gửi phản hồi thành công
+    } catch (error) {
+      console.error('Error fetching book details:', error.message);
       res.status(500).json({ error: error.message });
-  }
-});
-
+    }
+  });
+  // Route để tăng số lượt xem của sách theo ID
+router.patch('/:id/views', async function(req, res, next) {
+    console.log('PATCH /books/:id/views endpoint hit');
+    const bookId = req.params.id;
+  
+    try {
+      const result = await bookController.incrementBookViews(bookId);
+      console.log('Book views incremented successfully:', result);
+      res.status(200).json(result);  // Trả về số lượt xem mới
+    } catch (error) {
+      console.error('Error incrementing book views:', error.message);
+      res.status(500).json({ error: error.message });
+    }
+  });
 // Endpoint tạo sách mới với hình ảnh
 // POST /api/books
 router.post('/', authenticateAdmin, uploadBooks.single('cover_image'), async (req, res, next) => {
@@ -295,6 +304,11 @@ router.delete('/:id',
       res.status(500).json({ error: error.message });
   }
 });
+// Route để thêm đánh giá vào sách
+router.post('/:bookId/reviews', reviewController.addReview);
+// Route để sửa bài đánh giá, cần xác thực khách hàng trước khi cập nhật
+router.put('/:bookId/reviews/:reviewId', authenticateCustomer, reviewController.updateReview);
+// Route để xóa bài đánh giá, cần xác thực khách hàng trước khi xóa
+router.delete('/:bookId/reviews/:reviewId', authenticateCustomer, reviewController.deleteReview);
 
-  
 module.exports = router;

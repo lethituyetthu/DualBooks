@@ -7,9 +7,14 @@ exports.createOrder = async (orderData) => {
         // Kiểm tra và xác thực dữ liệu đầu vào (nếu cần)
         const { order_type } = orderData;
 
-        // Nếu order_type là 'offline', đảm bảo staff_id được cung cấp
-        if (order_type === 'offline' && !orderData.staff_id) {
-            throw new Error('Staff ID is required for offline orders.');
+        // Nếu order_type là 'offline', đảm bảo staff_id được cung cấp và đặt trạng thái mặc định
+        if (order_type === 'offline') {
+            if (!orderData.staff_id) {
+                throw new Error('Staff ID is required for offline orders.');
+            }
+            // Thiết lập trạng thái đơn hàng và trạng thái thanh toán cho đơn hàng offline
+            orderData.order_status = 'Hoàn thành';
+            orderData.payment_status = 'Đã thanh toán';
         }
 
         // Nếu order_type là 'online', đảm bảo customer_id và shipping_address được cung cấp
@@ -31,6 +36,7 @@ exports.createOrder = async (orderData) => {
         throw new Error('Error creating order: ' + error.message);
     }
 };
+
 
 
 // Controller để lấy chi tiết đơn hàng
@@ -100,7 +106,6 @@ exports.getAllOrders = async () => {
                 payment_status: order.payment_status,
                 shipping_address: order.shipping_address || "Địa chỉ cửa hàng", // Địa chỉ mặc định
                 total_amount: order.total_amount,
-                order_type: order.order_type,
                 created_at: order.createdAt,
                 updated_at: order.updatedAt
             };
@@ -197,5 +202,55 @@ exports.getOrdersByShippingAddress = async (req, res, address) => {
         res.status(500).json({ error: error.message });
     }
 };
+exports.getOrdersByStatus = async (status) => {
+    try {
+        // Gọi service để lấy danh sách đơn hàng theo trạng thái
+        const orders = await orderService.getOrdersByStatus(status);
+
+        // Kiểm tra xem có đơn hàng nào không
+        if (orders.length === 0) {
+            throw new Error('Không tìm thấy đơn hàng nào với trạng thái này.');
+        }
+
+        // Định dạng dữ liệu trước khi trả về
+        return orders.map((order) => ({
+            id: order._id,
+            customer: order.customer_id,
+            staff: order.staff_id,
+            order_date: order.order_date,
+            order_status: order.order_status,
+            payment_status: order.payment_status,
+            shipping_address: order.shipping_address,
+            total_amount: order.total_amount,
+            total_quantity: order.total_quantity,
+            created_at: order.createdAt,
+            updated_at: order.updatedAt,
+        }));
+    } catch (error) {
+        throw new Error('Error fetching orders by status: ' + error.message);
+    }
+};
+
+// Controller để xóa đơn hàng theo orderId
+exports.deleteOrder = async (req, res) => {
+    const { orderId } = req.params; // Lấy orderId từ tham số URL
+    try {
+        // Gọi service để xóa đơn hàng
+        const deletedOrder = await orderService.deleteOrder(orderId);
+
+        if (!deletedOrder) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        // Trả về phản hồi thành công
+        res.status(200).json({ message: 'Order deleted successfully' });
+    } catch (error) {
+        console.error('Lỗi khi xóa đơn hàng:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
+
+
 
 

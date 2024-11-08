@@ -1,5 +1,6 @@
 const bookModel = require('../models/BookModel');
 const categoryModel = require('../models/CategoryModel');
+const reviewModel = require('../models/ReviewModel')
 const fs = require('fs');
 const path = require('path');
 
@@ -63,16 +64,40 @@ exports.getAllSortedByPrice = async function (sortOrder = 'asc') {
     throw new Error('Error fetching books sorted by price: ' + error.message);
   }
 };
-// Hàm tìm sách theo ID
-exports.getBookById = async function (id) {
+exports.getBookDetailsById = async (id) => {
   try {
+    // Tìm sách theo id và populate thông tin về category, publisher, và reviews
+    const book = await bookModel.findById(id)
+      .populate('categoryID', 'name')  // Populate thông tin danh mục
+      .populate('publisherID', 'name')  // Populate thông tin nhà xuất bản
+      .populate('reviews')  // Populate thông tin reviews
+      .exec();
+
+    if (!book) {
+      throw new Error('Book not found');
+    }
+
+    // Trả về dữ liệu sách đã populate
+    return book;
+  } catch (error) {
+    throw new Error('Error fetching book details: ' + error.message);
+  }
+};
+exports.incrementBookViews = async (id) => {
+  try {
+    // Tìm sách theo id
     const book = await bookModel.findById(id);
     if (!book) {
       throw new Error('Book not found');
     }
-    return book;
+
+    // Tăng số lượt xem lên 1
+    book.views += 1;
+    await book.save();
+
+    return { id: book._id, views: book.views };  // Trả về id và số lượt xem mới
   } catch (error) {
-    throw new Error('Error fetching book by ID: ' + error.message);
+    throw new Error('Error incrementing book views: ' + error.message);
   }
 };
 // Hàm tạo sách mới

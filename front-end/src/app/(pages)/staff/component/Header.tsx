@@ -1,19 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import UserMenu from "./UserMenu";
 import Image from "next/image";
 import logo from "@/app/publics/img/logo/logo cua thu-06.png";
 
 const Header: React.FC = () => {
-  const [admin, setAdmin] = useState<{ username?: string } | null>(null); 
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const adminToken = JSON.parse(localStorage.getItem("admin") || "{}");
-      setAdmin(adminToken);
-    }
-  }, []);
   return (
     <header className="bg-primary-400 p-4 flex justify-between items-center">
       {/* Logo and Navigation */}
@@ -22,7 +13,7 @@ const Header: React.FC = () => {
         <h2 className="text-white text-2xl mx-4">Đơn Hàng</h2>
       </div>
 
-      {/* {/* Search and Icons
+      {/* Search and Icons */}
       <div className="flex items-center w-[25%] justify-between">
         <div className="w-[300px]">
           <input
@@ -34,18 +25,19 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-4">
           <a className="text-white" href="/" aria-label="Thông báo">
             <i className="fas fa-bell" aria-hidden="true"></i>{" "}
-             Biểu tượng thông báo 
+            {/* Biểu tượng thông báo */}
           </a>
           <a className="text-white" href="/" aria-label="Cài đặt">
             <i className="fas fa-cog" aria-hidden="true"></i>{" "}
-        Biểu tượng cài đặt 
+            {/* Biểu tượng cài đặt */}
           </a>
         </div>
-      </div> */}
+      </div>
 
       {/* User Menu */}
-
-      <UserMenu userName={admin?.username||"guest"}/>
+      
+        <UserMenu />
+     
     </header>
   );
 };

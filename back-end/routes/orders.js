@@ -6,60 +6,35 @@ const orderItemController = require('../controller/OrderItemController');
 // Route: Tạo một đơn hàng mới
 router.post('/', async (req, res) => {
     try {
-        // Lấy dữ liệu từ body của request
         const { 
-            customer_id, 
-            staff_id, // Thêm trường staff_id cho đơn hàng offline
-            order_date, 
-            order_status, 
-            payment_status, 
-            total_amount, 
-            total_quantity, 
-            shipping_address, 
-            payment_method,
-            order_type, // Thêm trường order_type để xác định đơn hàng online hoặc offline
-            customer_feedback // Thêm trường customer_feedback cho đánh giá của khách hàng
+            customer_id, staff_id, order_date, order_status, payment_status, 
+            total_amount, total_quantity, shipping_address, order_type, 
+            customer_feedback, payment_method 
         } = req.body;
 
         // Gọi controller để tạo đơn hàng
         const newOrder = await orderController.createOrder({
-            customer_id, 
-            staff_id,
-            order_date, 
-            order_status, 
-            payment_status, 
-            total_amount, 
-            total_quantity, 
-            shipping_address,
-            payment_method,
-            order_type,
-            customer_feedback
+            customer_id, staff_id, order_date, order_status, payment_status, 
+            total_amount, total_quantity, shipping_address, order_type, 
+            customer_feedback, payment_method
         });
 
         // Trả về phản hồi thành công
-        res.status(201).json({ message: 'Order created successfully', newOrder });
+        res.status(201).json({ message: 'Order created successfully', data: newOrder });
     } catch (error) {
-        // Trả về lỗi nếu có
         res.status(500).json({ error: error.message });
     }
 });
 
-// Định nghĩa route để lấy chi tiết đơn hàng
-router.get('/:orderId', orderController.getOrderDetail);
-
-// Route để thêm chi tiết đơn hàng
-router.post('/:orderId/order-items', orderItemController.addOrderItem);
-
-
+// Route để lấy danh sách tất cả đơn hàng
 router.get('/', async (req, res) => {
     try {
-        // Gọi controller để lấy danh sách đơn hàng
         const orders = await orderController.getAllOrders();
-        
-        // Trả về danh sách đơn hàng
-        res.status(200).json( orders);
+        res.status(200).json({
+            message: 'Retrieved all orders successfully',
+            data: orders
+        });
     } catch (error) {
-        // Trả về lỗi nếu có
         res.status(500).json({ error: error.message });
     }
 });
@@ -83,5 +58,33 @@ router.get('/filter-by-address/:address', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+// Route: Lọc đơn hàng theo trạng thái
+router.get('/filter-by-status/:status', async (req, res) => {
+    try {
+       // Giải mã tham số trạng thái từ URL
+       const status = decodeURIComponent(req.params.status);
+
+       // Lấy đơn hàng theo trạng thái
+       const orders = await orderController.getOrdersByStatus(status);
+
+       res.status(200).json({
+           message: `Retrieved orders with status ${status}`,
+           data: orders
+       });
+   } catch (error) {
+       // Trả về lỗi nếu có
+       res.status(500).json({ error: error.message });
+   }
+});
+
+
+// Route để thêm chi tiết đơn hàng
+router.post('/:orderId/order-items', orderItemController.addOrderItem);
+
+// Route để xóa đơn hàng theo orderId
+router.delete('/:orderId', orderController.deleteOrder);
+
+// Định nghĩa route để lấy chi tiết đơn hàng
+router.get('/:orderId', orderController.getOrderDetail);
 
 module.exports = router;

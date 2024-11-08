@@ -5,7 +5,6 @@ import useFetchCategory from "@/app/hook/useFetchCategory";
 import Product from "../../component/product";
 import Link from "next/link";
 import { useState } from "react";
-import SearchProduct from "@/components/ui/searchProduct_byName";
 
 const ProductList = () => {
   const { books, loading, error, searchBooks } = useFetchBook();
@@ -32,9 +31,15 @@ const ProductList = () => {
   };
 
   // Hàm xử lý thay đổi ô tìm kiếm
-  const handleSearchChange = (term: string) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const term = event.target.value;
     setSearchTerm(term);
-    searchBooks(term);
+    if (term.trim()) {
+      searchBooks(term);
+    } else {
+     
+      searchBooks(""); 
+    }
   };
 
   if (loading) return <p>Loading...</p>;
@@ -46,9 +51,12 @@ const ProductList = () => {
         <h1 className="text-2xl font-bold">Sản Phẩm</h1>
         <div className="flex items-center">
           {/* Ô tìm kiếm sản phẩm */}
-          <SearchProduct
-            searchTerm={searchTerm}
-            onSearchChange={handleSearchChange}
+          <input
+            type="text"
+            placeholder="Tìm kiếm sản phẩm theo tên..."
+            className="border border-gray-300 rounded px-4 py-2 mr-4"
+            value={searchTerm}
+            onChange={handleSearchChange} // Hàm xử lý thay đổi khi người dùng nhập
           />
           <Link
             href={"/admin/addPro"}
@@ -63,8 +71,7 @@ const ProductList = () => {
         <table className="min-w-full text-left text-sm">
           <thead className="bg-gray-100">
             <tr>
-              <th className="px-6 py-4 text-nowrap">Hình ảnh</th>{" "}
-              {/* Thêm cột Hình ảnh */}
+              <th className="px-6 py-4 text-nowrap">Hình ảnh</th> {/* Thêm cột Hình ảnh */}
               <th className="px-6 py-4 text-nowrap">Tiêu đề</th>
               <th className="px-6 py-4 text-nowrap">Tác giả</th>
               <th className="px-6 py-4 text-nowrap">Danh mục</th>

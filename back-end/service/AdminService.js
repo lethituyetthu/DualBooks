@@ -84,6 +84,16 @@ exports.getAllAdmins = async () => {
         throw new Error('Error fetching admins: ' + error.message);
     }
 };
+// Service: Lấy thông tin chi tiết của một admin
+exports.getAdminById = async (id) => {
+    try {
+        const admin = await Admin.findById(id).select('-password'); // Loại bỏ trường mật khẩu khỏi kết quả
+        return admin;
+    } catch (error) {
+        throw new Error('Error fetching admin: ' + error.message);
+    }
+};
+
 
 exports.updateAdmin = async (id, updateData) => {
     try {
@@ -141,12 +151,3 @@ exports.getAdminsByName = async (name) => {
     }
 };
 
-// Service: Lấy thông tin chi tiết của một admin
-exports.getAdminById = async (id) => {
-    try {
-        const admin = await Admin.findById(id).select('-password'); // Loại bỏ trường mật khẩu khỏi kết quả
-        return admin;
-    } catch (error) {
-        throw new Error('Error fetching admin: ' + error.message);
-    }
-};
