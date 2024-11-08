@@ -100,6 +100,7 @@ exports.getAllOrders = async () => {
                 payment_status: order.payment_status,
                 shipping_address: order.shipping_address || "Địa chỉ cửa hàng", // Địa chỉ mặc định
                 total_amount: order.total_amount,
+                order_type: order.order_type,
                 created_at: order.createdAt,
                 updated_at: order.updatedAt
             };

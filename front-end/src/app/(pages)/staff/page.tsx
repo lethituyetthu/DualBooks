@@ -23,8 +23,8 @@ const Staff: React.FC = () => {
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchId, setSearchId] = useState(""); 
-  const [showModal, setShowModal] = useState(false)
+  const [searchId, setSearchId] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const adminInfo = localStorage.getItem("admin");
@@ -33,8 +33,8 @@ const Staff: React.FC = () => {
       router.push("/login_admin");
     } else {
       const admin = JSON.parse(adminInfo);
-      if (admin.role !== "Staff") {
-        alert("bạn không được phân quyền vào Staff");
+      if (admin.role !== "staff") {
+        alert("bạn không được phân quyền vào staff");
         router.push("/login_admin");
       }
     }
@@ -86,16 +86,16 @@ const Staff: React.FC = () => {
     }
 
     // Thực hiện logic xử lý thanh toán, ví dụ gửi thông tin lên server
-    console.log("Danh sách sản phẩm:",cartItems,"tổng tiền:",totalPrice,"tổng số lượng sản phẩm",totalQuantity);
+    console.log(
+      "Danh sách sản phẩm:",
+      cartItems,
+      "tổng tiền:",
+      totalPrice,
+      "tổng số lượng sản phẩm",
+      totalQuantity
+    );
     setShowModal(true);
-    // Ví dụ: gửi cartItems lên server
-    // fetch("/api/checkout", { 
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(cartItems),
-    // });
-
-
+  
   };
 
   const handleDelete = (id: string) => {
@@ -166,7 +166,14 @@ const Staff: React.FC = () => {
           Thanh Toán
         </button>
       </div>
-      {showModal && (<CheckoutModal cartItems={cartItems} totalPrice={totalPrice} totalQuantity={totalQuantity} onClose={()=> setShowModal(false )}/>)}
+      {showModal && (
+        <CheckoutModal
+          cartItems={cartItems}
+          totalPrice={totalPrice}
+          totalQuantity={totalQuantity}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 };

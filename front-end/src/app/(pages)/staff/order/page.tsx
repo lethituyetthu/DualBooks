@@ -1,98 +1,79 @@
-import React from "react";
-
+"use client";
+import React, { useEffect, useState } from "react";
+import useFetchOrder from "@/app/hook/useFetchOder";
+import OderItem from "../component/oderItem";
 const OrderManagement = () => {
+  const { getAllOrders, orders, loading, error } = useFetchOrder();
+  const [filterType, setFilterType] = useState<"all" | "online" | "offline">(
+    "all"
+  );
 
+  console.log(orders);
   const headers = [
     "Mã Đơn Hàng",
     "Ngày Đặt Hàng",
     "Khách Hàng",
     "Tổng Tiền",
     "Trạng Thái Thanh Toán",
-    "Trạng Thái Đơn Hàng"
+    "Trạng Thái Đơn Hàng",
   ];
 
-  const orders = [
-    {
-      orderId: "#AHAQ68",
-      date: "23/09/2022",
-      customerName: "Jacob Marcus",
-      total: "520.000đ",
-      paymentStatus: {
-        text: "Đã Thanh Toán",
-        color: "bg-green-500"
-      },
-      orderStatus: {
-        text: "Hoàn Thành",
-        bgColor: "bg-green-100",
-        textColor: "text-green-700"
-      }
-    },
-    {
-      orderId: "#BHRZ52",
-      date: "24/09/2022",
-      customerName: "Sarah Connor",
-      total: "430.000đ",
-      paymentStatus: {
-        text: "Chưa Thanh Toán",
-        color: "bg-purple-500"
-      },
-      orderStatus: {
-        text: "Đã Gửi",
-        bgColor: "bg-blue-100",
-        textColor: "text-blue-700"
-      }
-    },
-    {
-      orderId: "#TXP12A",
-      date: "25/09/2022",
-      customerName: "John Doe",
-      total: "300.000đ",
-      paymentStatus: {
-        text: "Đã Huỷ",
-        color: "bg-red-500"
-      },
-      orderStatus: {
-        text: "Đã Huỷ",
-        bgColor: "bg-red-100",
-        textColor: "text-red-700"
-      }}
-    // Add more orders as needed
+  useEffect(() => {
+    getAllOrders(); // Fetch all orders on component mount
+  }, []);
+
+  // Filter orders based on filterType state
+  const filteredOrders = Array.isArray(orders)
+    ? orders.filter((order) => {
+        if (filterType === "all") return true;
+        return order.order_type === filterType;
+      })
+    : [];
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  const filters = [
+    { title: "All Orders", type: "all" },
+    { title: "Online Orders", type: "online" },
+    { title: "Offline Orders", type: "offline" },
   ];
   return (
-        <table className="w-full border-collapse border bg-white">
-          <thead>
-            <tr>
-              {headers.map((header, index) => (
-            <th key={index} className="border p-4">
-              {header}
-            </th>
-          ))}
-            </tr>
-          </thead>
-          <tbody>
-          {orders.map((order, index) => (
-          <tr key={index}>
-            <td className="border p-4 text-blue-500 cursor-pointer">
-              {order.orderId}
-            </td>
-            <td className="border p-4">{order.date}</td>
-            <td className="border p-4">{order.customerName}</td>
-            <td className="border p-4">{order.total}</td>
-            <td className="border p-4">
-              <span className="flex items-center space-x-2">
-                <span className={`w-3 h-3 ${order.paymentStatus.color} rounded-full`}></span>
-                <span>{order.paymentStatus.text}</span>
-              </span>
-            </td>
-            <td className="border p-4">
-              <span className={`px-3 py-1 text-sm font-medium ${order.orderStatus.textColor} ${order.orderStatus.bgColor} rounded-full`}>
-                {order.orderStatus.text}
-              </span>
-            </td>
-          </tr>
+    <div>
+      <div className="mb-4">
+        {filters.map((filter) => (
+          <button
+            key={filter.type}
+            onClick={() =>
+              setFilterType(filter.type as "all" | "online" | "offline")
+            }
+            className={`mr-2 p-2 rounded-sm  ${
+              filterType === filter.type
+                ? "bg-primary-400 text-white"
+                : "bg-white"
+            }`}
+          >
+            {filter.title}
+          </button>
         ))}
-          </tbody>
-        </table>
+      </div>
+      <table className="w-full border-collapse border bg-white">
+        <thead>
+          <tr>
+            {headers.map((header, index) => (
+              <th key={index} className="border p-4">
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {filteredOrders.map((order, index) => (
+            <OderItem order={order} index={index} />
+            
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

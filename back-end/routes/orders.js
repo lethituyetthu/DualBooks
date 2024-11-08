@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
             total_amount, 
             total_quantity, 
             shipping_address, 
+            payment_method,
             order_type, // Thêm trường order_type để xác định đơn hàng online hoặc offline
             customer_feedback // Thêm trường customer_feedback cho đánh giá của khách hàng
         } = req.body;
@@ -30,12 +31,13 @@ router.post('/', async (req, res) => {
             total_amount, 
             total_quantity, 
             shipping_address,
+            payment_method,
             order_type,
             customer_feedback
         });
 
         // Trả về phản hồi thành công
-        res.status(201).json({ message: 'Order created successfully', data: newOrder });
+        res.status(201).json({ message: 'Order created successfully', newOrder });
     } catch (error) {
         // Trả về lỗi nếu có
         res.status(500).json({ error: error.message });
@@ -44,6 +46,7 @@ router.post('/', async (req, res) => {
 
 // Định nghĩa route để lấy chi tiết đơn hàng
 router.get('/:orderId', orderController.getOrderDetail);
+
 // Route để thêm chi tiết đơn hàng
 router.post('/:orderId/order-items', orderItemController.addOrderItem);
 
@@ -54,10 +57,7 @@ router.get('/', async (req, res) => {
         const orders = await orderController.getAllOrders();
         
         // Trả về danh sách đơn hàng
-        res.status(200).json({
-            message: 'Retrieved all orders successfully',
-            data: orders
-        });
+        res.status(200).json( orders);
     } catch (error) {
         // Trả về lỗi nếu có
         res.status(500).json({ error: error.message });

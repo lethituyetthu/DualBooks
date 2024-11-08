@@ -27,7 +27,7 @@ const ProfileCardStaff = ({ name, role, date, img, email }) => {
         src={`http://localhost:3200/uploads/admins/${img}`}
         alt={`${name} profile`}
       />
-      <h2 className="text-xl uppercase max-w-44 mx-auto">{name}</h2>
+      <h2 className="text-xl  max-w-44 mx-auto">{name}</h2>
       <p className="text-gray-500">{role}</p>
       <p className="text-gray-500">{email}</p>
       <p className="text-gray-400 mt-2">{formatDateTime(date)}</p>

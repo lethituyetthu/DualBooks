@@ -13,7 +13,7 @@ export default function AdminPage() {
       router.push("/login_admin"); 
     } else {
       const admin = JSON.parse(adminInfo);
-      if (admin.role !== "Admin") {
+      if (admin.role !== "admin") {
         alert("bạn không được phân quyền vào Admin")
         router.push("/login_admin"); 
       }

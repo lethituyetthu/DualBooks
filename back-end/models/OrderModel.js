@@ -30,6 +30,12 @@ const orderSchema = new Schema({
         default: 'Chưa thanh toán',
         required: true,
     },
+    payment_method: { // Trường mới để lưu phương thức thanh toán
+        type: String,
+        enum: ['Tiền mặt', 'Chuyển khoản'],
+        default: 'Tiền mặt', // Mặc định là tiền mặt khi tạo đơn hàng mới
+        required: true,
+    },
     shipping_address: {
         type: String,
         required: function() { return this.order_type === 'online'; }, // địa chỉ giao hàng chỉ bắt buộc cho đơn hàng online

@@ -1,6 +1,7 @@
 import Image from "next/image";
-import React, {  useEffect, useState } from "react";
-import logo from "@/app/publics/ma_qr.png"
+import React, { useEffect, useState } from "react";
+import logo from "@/app/publics/ma_qr.png";
+import useFetchOrder from "@/app/hook/useFetchOder";
 interface typeCheckout {
   cartItems: {
     id: string;
@@ -21,9 +22,9 @@ const CheckoutModal: React.FC<typeCheckout> = ({
 }) => {
   const [paymentMethod, setPaymentMethod] = useState<string>("");
   const [adminId, setAdminId] = useState(null);
-
+  const {addOrder, addOrderItem, getOrderDetail} =useFetchOrder()
   useEffect(() => {
-    const adminData  = localStorage.getItem("admin");
+    const adminData = localStorage.getItem("admin");
     if (adminData) {
       const admin = JSON.parse(adminData);
       if (admin && admin.id) {
@@ -31,26 +32,50 @@ const CheckoutModal: React.FC<typeCheckout> = ({
       }
     }
   }, []);
-  
+
   const handlePaymentChange = (method: string) => {
     setPaymentMethod(method);
   };
 
-  const handlePayment = () =>{
+  const handlePayment = async () => {
+    if (!paymentMethod) {
+      alert("Vui lòng chọn phương thức thanh toán.");
+      return;
+    }
     const orderData = {
       orderItems: cartItems,
-      totalPrice,
       total_amount: totalPrice,
       total_quantity: totalQuantity,
-      oderDate: new Date(),
+      order_date: new Date(),
       order_status: "Hoàn thành",
-      payment_status:"Đã thanh toán",
-      order_type: 'offline',
+      payment_status: "Đã thanh toán",
+      payment_method: paymentMethod,
+      order_type: "offline",
       staff_id: adminId,
     };
     console.log("Danh sách sản phẩm thanh toán:", orderData);
+    try {
+      const response  = await addOrder(orderData);
+    console.log('Order created successfully with ID:', response);
+    const orderId = response.newOrder._id;
+    console.log(orderId)
+    // Thêm từng sản phẩm vào chi tiết đơn hàng
+    for (const item of cartItems) {
+      const orderItemData = {
+        book_id: item.id,
+        quantity: item.quantity,
+        price: item.price,
+      };
+      await addOrderItem(orderId, orderItemData);  // Thêm chi tiết đơn hàng theo order_id
+    }
+    console.log('Order created successfully with items:', orderId);
+    alert("thanh toán thành công")
+    onClose()
+    } catch (err) {
+      console.error('Failed to create order:', err);
+    }
+  };
 
-  }
 
   return (
     <div className="fixed inset-0 flex items-stretch justify-end bg-black bg-opacity-50 z-50">
@@ -89,9 +114,13 @@ const CheckoutModal: React.FC<typeCheckout> = ({
                   <td className="py-3 text-nowrap">
                     {(item.price * 1000).toLocaleString("vi-VN")}
                   </td>
-                  <td className="py-3 text-nowrap text-center">x{item.quantity}</td>
+                  <td className="py-3 text-nowrap text-center">
+                    x{item.quantity}
+                  </td>
                   <td className="py-3 text-right text-nowrap ">
-                    {(item.price * item.quantity * 1000).toLocaleString("vi-VN")}
+                    {(item.price * item.quantity * 1000).toLocaleString(
+                      "vi-VN"
+                    )}
                   </td>
                 </tr>
               ))}
@@ -121,7 +150,7 @@ const CheckoutModal: React.FC<typeCheckout> = ({
                 type="radio"
                 name="payment"
                 value="cash"
-                onChange={() => handlePaymentChange("cash")}
+                onChange={() => handlePaymentChange("Tiền mặt")}
               />
               <span>Tiền mặt</span>
             </label>
@@ -130,7 +159,7 @@ const CheckoutModal: React.FC<typeCheckout> = ({
                 type="radio"
                 name="payment"
                 value="transfer"
-                onChange={() => handlePaymentChange("transfer")}
+                onChange={() => handlePaymentChange("Chuyển khoản")}
               />
               <span>Chuyển khoản</span>
             </label>
@@ -138,17 +167,21 @@ const CheckoutModal: React.FC<typeCheckout> = ({
         </div>
 
         {/* Hiển thị mã QR khi chọn "Chuyển khoản" */}
-        {paymentMethod === "transfer" && (
+        {paymentMethod === "Chuyển khoản" && (
           <div className="mt-4 text-center">
-            <p className="text-primary-600 font-semibold">Quét mã QR để thanh toán</p>
-            <Image 
+            <p className="text-primary-600 font-semibold">
+              Quét mã QR để thanh toán
+            </p>
+            <Image
               width={500}
               height={400}
               src={logo}
               alt="Mã QR thanh toán"
               className="mx-auto mt-2 w-40 h-40"
             />
-            <p className="text-gray-600 text-sm mt-2">Vui lòng quét mã để thanh toán qua ví MoMo.</p>
+            <p className="text-gray-600 text-sm mt-2">
+              Vui lòng quét mã để thanh toán qua ví MoMo.
+            </p>
           </div>
         )}
 

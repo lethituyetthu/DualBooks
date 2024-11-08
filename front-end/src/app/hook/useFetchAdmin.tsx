@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+
 interface typeAdmin {
   id: string;
   username: string;
@@ -13,6 +14,7 @@ interface typeAdmin {
 export default function useFetchAdmin() {
   const [admin, setAdmin] = useState<typeAdmin[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // Để lưu lỗi nếu có
   const router = useRouter();
 
   useEffect(() => {
@@ -25,7 +27,6 @@ export default function useFetchAdmin() {
         }
 
         const result: typeAdmin[] = await resAll.json();
-        /*      console.log("Fetched admin data:", result); // Kiểm tra dữ liệu */
         setAdmin(result);
       } catch (error) {
         console.error("Error:", error);
@@ -35,7 +36,39 @@ export default function useFetchAdmin() {
     fetchData();
   }, []);
 
+  // Hàm validate cho các trường
+  const validatePassword = (password: string) => {
+    return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password);
+  };
+
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validateUsername = (username: string) => {
+    return username.length >= 3;
+  };
+
   const addStaff = async (staffData: FormData) => {
+    const username = staffData.get("username") as string;
+    const email = staffData.get("email") as string;
+    const password = staffData.get("password") as string;
+
+    if (!validateUsername(username)) {
+      setErrorMessage("Tên đăng nhập phải có ít nhất 3 ký tự");
+      return { error: "Tên đăng nhập phải có ít nhất 3 ký tự" };
+    }
+
+    if (!validateEmail(email)) {
+      setErrorMessage("Email không hợp lệ");
+      return { error: "Email không hợp lệ" };
+    }
+
+    if (!validatePassword(password)) {
+      setErrorMessage("Mật khẩu phải có ít nhất 6 ký tự và bao gồm cả chữ và số");
+      return { error: "Mật khẩu phải có ít nhất 6 ký tự và bao gồm cả chữ và số" };
+    }
+
     try {
       const response = await fetch("http://localhost:3200/admins/register", {
         method: "POST",
@@ -59,8 +92,9 @@ export default function useFetchAdmin() {
     }
   };
 
-  // Login function
   const login = async (email: string, password: string) => {
+    
+
     try {
       const response = await fetch("http://localhost:3200/admins/login", {
         method: "POST",
@@ -76,7 +110,6 @@ export default function useFetchAdmin() {
       }
 
       const data = await response.json();
-
       alert("đăng nhập thành công");
 
       localStorage.setItem("token", data.token);
@@ -90,8 +123,9 @@ export default function useFetchAdmin() {
       localStorage.setItem("admin", JSON.stringify(adminInfo));
 
       setIsAuthenticated(true);
+      setErrorMessage(null); // Reset lỗi khi đăng nhập thành công
 
-      if (data.admin.role === "Staff") {
+      if (data.admin.role === "staff") {
         router.push("/staff");
       } else {
         router.push("/admin");
@@ -100,6 +134,7 @@ export default function useFetchAdmin() {
       return data;
     } catch (error) {
       console.error("Login error:", error);
+      setErrorMessage(error.message);
       return { error: error.message };
     }
   };
@@ -107,11 +142,10 @@ export default function useFetchAdmin() {
   // Logout
   const logout = () => {
     localStorage.removeItem("admin");
-    router.push("/login_admin")
+    router.push("/login_admin");
+    setIsAuthenticated(false);
     console.log("Đã đăng xuất");
   };
 
-  
-
-  return { admin, addStaff, login, isAuthenticated, logout};
+  return { admin, addStaff, login, isAuthenticated, logout, errorMessage };
 }

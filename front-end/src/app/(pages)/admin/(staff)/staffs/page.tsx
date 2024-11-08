@@ -5,7 +5,6 @@ import useFetchAdmin from "@/app/hook/useFetchAdmin";
 import Link from "next/link";
 const App = () => {
   const { admin } = useFetchAdmin();
-  console.log(admin)
   return (
     <div className="p-6 min-h-screen">
       <div className="mb-6 flex justify-between items-center">
