@@ -59,7 +59,7 @@ const CheckoutPaymentPage = () => {
     //   alert("Không tìm thấy thông tin khách hàng. Vui lòng đăng nhập.");
     //   return;
     // }
-    const customerId = 2;
+    const customerId = "66d56b60afc8a51793d731fd";
 
     // Create order object
     const order = {
@@ -72,6 +72,7 @@ const CheckoutPaymentPage = () => {
       ) - discountAmount, // Apply discount
       paymentMethod: selectedPayment,
       shipping_address: shippingAddress,
+      order_type:"online",
       status: "Đã thanh toán",
     };
 
@@ -88,7 +89,7 @@ const CheckoutPaymentPage = () => {
       setCartItems([]);
 
       // Redirect to order success page (optional)
-      router.push("/order-success");
+      router.push("/");
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         console.error("Lỗi khi gửi đơn hàng:", error.response.data);

@@ -19,13 +19,36 @@ interface typeBook {
   price: number;
   cover_image: string;
   author: string;
-  categoryID: string; // assuming each book has a category ID
 }
 
 interface Category {
   _id?: { $oid?: string };
   name: string;
 }
+
+const addToWishlist = (product: Product) => {
+  const existingWishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+
+  // Check if the product already exists in the wishlist
+  const isProductInWishlist = existingWishlist.some(
+    (item: Product) => item.id === product.id
+  );
+
+  if (isProductInWishlist) {
+    alert("Sản phẩm đã có trong danh sách yêu thích!");
+    return; // Exit the function if the product is already in the wishlist
+  }
+
+  // Add the product to the wishlist array
+  const updatedWishlist = [...existingWishlist, product];
+
+  // Save the updated wishlist back to localStorage
+  localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+
+  alert("Sản phẩm đã được thêm vào danh sách yêu thích!");
+};
+
+
 
 const ProductPage = () => {
   const { books, loading, error } = useFetchBook();
@@ -46,18 +69,15 @@ const ProductPage = () => {
         price: book.price,
         image: book.cover_image,
         author: book.author,
-        categoryID: book.categoryID, // added categoryID to each product
       }));
       setFilteredProducts(mappedProducts);
     }
   }, [books]);
 
   const handleFilter = () => {
-    // Lấy giá trị tối thiểu và tối đa, chuyển thành bội số của 1000
-    const min = Math.ceil((parseInt(minPrice) || 0) / 1000) * 1000; // Làm tròn lên bội số của 1000
-    const max = Math.floor((parseInt(maxPrice) || Infinity) / 1000) * 1000; // Làm tròn xuống bội số của 1000
-  
-    // Lọc sản phẩm theo giá và các điều kiện khác
+    const min = parseInt(minPrice) || 0;
+    const max = parseInt(maxPrice) || Infinity;
+
     const filtered = filteredProducts.filter((product) => {
       return (
         product.price >= min &&
@@ -66,40 +86,13 @@ const ProductPage = () => {
         product.author.toLowerCase().includes(author.toLowerCase())
       );
     });
-  
+
     setFilteredProducts(filtered);
   };
-  
 
   const handleCategoryChange = (categoryId: string) => {
     setSelectedCategory(categoryId);
-
-    if (categoryId) {
-      // Filter books by the selected category
-      const filteredByCategory = books.filter(
-        (book: typeBook) => book.categoryID === categoryId
-      );
-      setFilteredProducts(
-        filteredByCategory.map((book: typeBook) => ({
-          id: book.id,
-          name: book.title,
-          price: book.price,
-          image: book.cover_image,
-          author: book.author,
-        }))
-      );
-    } else {
-      // If no category is selected, show all products
-      setFilteredProducts(
-        books.map((book: typeBook) => ({
-          id: book.id,
-          name: book.title,
-          price: book.price,
-          image: book.cover_image,
-          author: book.author,
-        }))
-      );
-    }
+    // Implement filtering logic for selected category
   };
 
   const handleShowAll = () => {
@@ -163,50 +156,42 @@ const ProductPage = () => {
 
           {/* Price Filter */}
           <div className="border p-4 bg-white rounded-lg shadow">
-  <h2 className="text-lg font-bold mb-4">Lọc Giá</h2>
-  <div className="mb-4">
-    <label className="block mb-1">Giá tối thiểu:</label>
-    <input
-      type="number"
-      value={minPrice}
-      onChange={(e) => {
-        // Đảm bảo nhập giá trị là bội số của 1000
-        const value = Math.ceil(parseInt(e.target.value || "0") / 1000) * 1000;
-        setMinPrice(value.toString());
-      }}
-      className="border rounded p-2 w-full"
-    />
-  </div>
-  <div className="mb-4">
-    <label className="block mb-1">Giá tối đa:</label>
-    <input
-      type="number"
-      value={maxPrice}
-      onChange={(e) => {
-        // Đảm bảo nhập giá trị là bội số của 1000
-        const value = Math.floor(parseInt(e.target.value || "Infinity") / 1000) * 1000;
-        setMaxPrice(value.toString());
-      }}
-      className="border rounded p-2 w-full"
-    />
-  </div>
-  <div className="mb-4">
-    <label className="block mb-1">Từ khóa:</label>
-    <input
-      type="text"
-      value={keyword}
-      onChange={(e) => setKeyword(e.target.value)}
-      className="border rounded p-2 w-full"
-    />
-  </div>
-  <button
-    onClick={handleFilter}
-    className="bg-primary-400 hover:bg-primary-300 text-white py-2 px-4 rounded w-full mt-4"
-  >
-    Lọc sản phẩm
-  </button>
-</div>
-
+            <h2 className="text-lg font-bold mb-4">Lọc Giá</h2>
+            <div className="mb-4">
+              <label className="block mb-1">Giá tối thiểu:</label>
+              <input
+                type="number"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+                className="border rounded p-2 w-full"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-1">Giá tối đa:</label>
+              <input
+                type="number"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+                className="border rounded p-2 w-full"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-1">Từ khóa:</label>
+              <input
+                type="text"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+                className="border rounded p-2 w-full"
+              />
+            </div>
+            
+            <button
+              onClick={handleFilter}
+              className="bg-primary-400 hover:bg-primary-300 text-white py-2 px-4 rounded w-full mt-4"
+            >
+              Lọc sản phẩm
+            </button>
+          </div>
         </div>
 
         {/* Product grid */}
@@ -220,37 +205,44 @@ const ProductPage = () => {
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => (
                   <div
-                    key={product.id}
-                    className="border p-4 flex flex-col items-center justify-between"
+                  key={product.id}
+                  className="relative border p-4 flex flex-col items-center justify-between"
+                >
+                  {/* Heart Icon */}
+                  <button
+                    className="absolute top-2 left-2 text-gray-500 hover:text-red-500"
+                    onClick={() => addToWishlist(product)} // Function to handle adding to wishlist
                   >
-                    <Link href={`/customer/product/${product.id}`}>
-                      <Image
-                        src={`http://localhost:3200/uploads/books/${product.image}`}
-                        alt={product.name}
-                        width={300}
-                        height={200}
-                        className="object-cover mb-4"
-                      />
-                      <h3
-                        className="text-lg font-semibold mb-2"
-                        style={{ height: "56px", overflow: "hidden" }}
-                      >
-                        {product.name}
-                      </h3>
-                      <p
-                        className="text-gray-500"
-                        style={{ height: "56px", overflow: "hidden" }}
-                      >
-                        {product.author}
-                      </p>
-                      <div
-                        className="text-primary-400 text-2xl font-bold mb-4"
-                        style={{ height: "56px" }}
-                      >
-                        {(product.price * 1000).toLocaleString("vi-VN") + "đ"}
-                      </div>
-                    </Link>
-                  </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                    </svg>
+                  </button>
+                
+                  <Link href={`/customer/product/${product.id}`}>
+                    <Image
+                      src={`http://localhost:3200/uploads/books/${product.image}`}
+                      alt={product.name}
+                      width={300}
+                      height={200}
+                      className="object-cover mb-4"
+                    />
+                    <h3 className="text-lg font-semibold mb-2" style={{ height: "56px", overflow: "hidden" }}>
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-500" style={{ height: "56px", overflow: "hidden" }}>
+                      {product.author}
+                    </p>
+                    <div className="text-primary-400 text-2xl font-bold mb-4" style={{ height: "56px" }}>
+                      {(product.price * 1000).toLocaleString("vi-VN") + "đ"}
+                    </div>
+                  </Link>
+                </div>
+                
                 ))
               ) : (
                 <p>Không có sản phẩm nào.</p>

@@ -6,8 +6,21 @@ const OrderModel = require('../models/OrderModel'); // Ensure this is correctly 
 // Route: Tạo một đơn hàng mới
 router.post('/', async (req, res) => {
     try {
-        const { id, customer_id, order_date, status, total_amount, shipping_address } = req.body;
-        const newOrder = await orderController.createOrder({ id, customer_id, order_date, status, total_amount, shipping_address });
+        const { 
+           id, customer_id, staff_id, order_date, order_status, payment_status, 
+            total_amount, total_quantity, shipping_address, order_type, 
+            customer_feedback, payment_method 
+        } = req.body;
+
+        // Gọi controller để tạo đơn hàng
+        const newOrder = await orderController.createOrder({
+            id,
+            customer_id, staff_id, order_date, order_status, payment_status, 
+            total_amount, total_quantity, shipping_address, order_type, 
+            customer_feedback, payment_method
+        });
+
+        // Trả về phản hồi thành công
         res.status(201).json({ message: 'Order created successfully', data: newOrder });
     } catch (error) {
         res.status(500).json({ error: error.message });

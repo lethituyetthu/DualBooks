@@ -15,6 +15,7 @@ var customersRouter = require('./routes/customer');
 var ordersRouter = require('./routes/orders');
 var orderItemsRouter = require('./routes/orderItems'); // Import routervar app = express();
 var adminRouter = require('./routes/admin');
+
 // khai báo cor
 const cors = require('cors');
 
@@ -37,6 +38,7 @@ app.use('/uploads/categories', express.static(path.join(__dirname, 'uploads/cate
 // Cấu hình đường dẫn tĩnh cho thư mục uploads/books
 app.use('/uploads/books', express.static(path.join(__dirname, 'uploads/books')));
 // Middleware để cấu hình CORS
+
 app.use(cors({
   origin: 'http://localhost:3000',
   methods: 'GET, POST, PUT, DELETE',
@@ -58,6 +60,7 @@ app.use('/customers',customersRouter);
 app.use('/orders',ordersRouter);
 app.use('/orders', orderItemsRouter);
 app.use('/admins', adminRouter);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`http://localhost:${PORT}/books`);
