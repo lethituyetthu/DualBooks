@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useState, useCallback } from 'react';
 // import { useRouter } from "next/navigation";
 interface typeCustomer {
@@ -10,6 +11,16 @@ interface typeCustomer {
   status?: 'active' | 'blocked'; // Trạng thái là thuộc tính bắt buộc
   created_at?: string; // Bắt buộc, hoặc có thể dùng Date
   updated_at?: string; // Bắt buộc, hoặc có thể dùng Date
+=======
+import React, { useState, useCallback } from "react";
+
+interface typeCustomer {
+  name?: string;
+  email: string;
+  phone?: string;
+  address?: string;
+  password?: string;
+>>>>>>> origin/nhathuy
 }
 
 interface Errors {
@@ -19,6 +30,7 @@ interface Errors {
   address?: string;
   password?: string;
 }
+<<<<<<< HEAD
 // function isCustomerArray(data: unknown): data is typeCustomer[] {
 //   if (!Array.isArray(data)) return false;
 
@@ -41,6 +53,11 @@ export default function useFetchCustomer() {
   const [loading, setLoading] = useState<boolean>(false); // Trạng thái loading
   const [errors, setErrors] = useState<Errors>({});
   const [error, setError] = useState<string | null>(null); // Lỗi
+=======
+
+export default function useFetchCustomer() {
+  const [errors, setErrors] = useState<Errors>({});
+>>>>>>> origin/nhathuy
   const [successMessage, setSuccessMessage] = useState<string>("");
 
   const validateForm = (formData: typeCustomer, isLogin = false) => {
@@ -201,23 +218,37 @@ export default function useFetchCustomer() {
         },
         body: JSON.stringify(formData),
       });
+<<<<<<< HEAD
       console.log(formData);
+=======
+      console.log(formData)
+>>>>>>> origin/nhathuy
       if (!response.ok) {
         const errorData = await response.json();
         setErrors({ email: errorData.message });
         return;
+<<<<<<< HEAD
       } else {
         const data = await response.json();
+=======
+      }else{
+        const data= await response.json();
+>>>>>>> origin/nhathuy
         console.log("Cập nhật thông tin thành công");
         setSuccessMessage(data.message);
         setErrors({});
       }
+<<<<<<< HEAD
+=======
+     
+>>>>>>> origin/nhathuy
     } catch (error) {
       console.error("Đã xảy ra lỗi khi cập nhật thông tin khách hàng:", error);
       setErrors({ email: "Đã xảy ra lỗi không xác định." });
     }
   };
 
+<<<<<<< HEAD
  // Hàm lấy tất cả dữ liệu khách hàng
  const fetchCustomers = useCallback(async () => {
   setLoading(true);
@@ -325,10 +356,15 @@ export default function useFetchCustomer() {
   return {
     fetchCustomer,
     fetchCustomers,
+=======
+  return {
+    fetchCustomer,
+>>>>>>> origin/nhathuy
     edit,
     register,
     login,
     logout,
+<<<<<<< HEAD
     deleteCustomer,
     errors,
     successMessage,
@@ -339,3 +375,9 @@ export default function useFetchCustomer() {
     toggleCustomerStatus,
   };
 }
+=======
+    errors,
+    successMessage,
+  };
+}
+>>>>>>> origin/nhathuy

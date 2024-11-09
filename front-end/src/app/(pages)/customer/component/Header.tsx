@@ -3,7 +3,16 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "@/app/publics/img/logo/01.png";
 import Link from "next/link";
+<<<<<<< HEAD
 import NameToken from "./NameToken";
+=======
+<<<<<<<< HEAD:front-end/src/app/(pages)/customer/component/header/Header.tsx
+import NameToken from "../NameToken";
+========
+import NameToken from "./NameToken";
+
+>>>>>>>> origin/nhathuy:front-end/src/app/(pages)/customer/component/Header.tsx
+>>>>>>> origin/nhathuy
 export default function Header() {
   const [customer, setCustomer] = useState<any>(null);
 
@@ -63,9 +72,21 @@ export default function Header() {
   // menu
   const list3: any = [
     { title: "trang chủ", link: "/customer" },
+<<<<<<< HEAD
     { title: "sản phẩm", link: "/customer/products" },
     { title: "giới thiệu", link: "/customer" },
     { title: "liên hệ", link: "/customer" },
+=======
+<<<<<<<< HEAD:front-end/src/app/(pages)/customer/component/header/Header.tsx
+    { title: "sản phẩm", link: "/customer" },
+    { title: "giới thiệu", link: "/customer" },
+    { title: "liên hệ", link: "/customer" },
+========
+    { title: "sản phẩm", link: "/customer/products" },
+    { title: "giới thiệu", link: "/customer/gioithieu" },
+    { title: "liên hệ", link: "/customer/ lienhe" },
+>>>>>>>> origin/nhathuy:front-end/src/app/(pages)/customer/component/Header.tsx
+>>>>>>> origin/nhathuy
   ];
 
   // icon giỏ hàng & yêu thích
@@ -88,6 +109,10 @@ export default function Header() {
           />
         </svg>
       ),
+<<<<<<< HEAD
+=======
+      link: "/customer/cart",
+>>>>>>> origin/nhathuy
     },
     {
       id: 2,
@@ -107,6 +132,10 @@ export default function Header() {
           />
         </svg>
       ),
+<<<<<<< HEAD
+=======
+      link: "/customer/white",
+>>>>>>> origin/nhathuy
     },
   ];
 
@@ -122,7 +151,15 @@ export default function Header() {
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="menu w-full ">
+=======
+<<<<<<<< HEAD:front-end/src/app/(pages)/customer/component/header/Header.tsx
+      <div className="menu w-full h-[130px]">
+========
+      <div className="menu w-full ">
+>>>>>>>> origin/nhathuy:front-end/src/app/(pages)/customer/component/Header.tsx
+>>>>>>> origin/nhathuy
         {/* header thông tin liên hệ */}
 
         <div className="flex justify-evenly text-light-100 items-center h-[50px] bg-primary-400 w-full pr-[5rem] ">
@@ -211,6 +248,7 @@ export default function Header() {
           </ul>
           <ul className="flex w-[30%] justify-end">
             {listIcon.map((e) => {
+<<<<<<< HEAD
               return (
                 <li
                   key={e.id}
@@ -219,6 +257,15 @@ export default function Header() {
                   <a href="#">{e.icon}</a>
                 </li>
               );
+=======
+             return (
+              <li key={e.id} className="rounded-full border border-solid border-dark-800 p-2 m-3">
+                <Link href={e.link}>
+                  {e.icon}
+                </Link>
+              </li>
+            );
+>>>>>>> origin/nhathuy
             })}
           </ul>
         </nav>

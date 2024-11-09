@@ -4,6 +4,10 @@ import { useEffect } from "react";
 import Image from "next/image";
 import useFetchBook from "../../../../hook/useFetchBook"; // Hook lấy dữ liệu sách
 import BookDetail from "../../component/bookDetail";
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/nhathuy
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -22,7 +26,11 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
 
   useEffect(() => {
     fetchDetail(id);
+<<<<<<< HEAD
   }, [id]);
+=======
+  }, [id, fetchDetail]); // Thêm fetchDetail vào mảng phụ thuộc
+>>>>>>> origin/nhathuy
 
   if (loading) return <p>Đang tải...</p>;
   if (error) return <p>Lỗi: {error}</p>;
@@ -66,6 +74,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Cột bên trái: Hình ảnh sản phẩm */}
           <div className="flex justify-center">
+<<<<<<< HEAD
             <Image
               src={`http://localhost:3200/uploads/books/${cover_image}`}
               alt={title}
@@ -74,6 +83,19 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
               className="object-cover mb-4"
             />
           </div>
+=======
+  <Image
+  src={`http://localhost:3200/uploads/books/${cover_image}`}
+  alt={title}
+  width={200}  // Kích thước chiều rộng
+  height={300} // Kích thước chiều cao
+  className="object-cover mb-4" 
+/>
+
+</div>
+
+
+>>>>>>> origin/nhathuy
 
           {/* Cột bên phải: Thông tin chi tiết sản phẩm */}
           <div>
@@ -81,7 +103,10 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
             <p>
               <strong>Tác giả:</strong> {author}
             </p>
+<<<<<<< HEAD
             {/* <p><strong>Dịch giả:</strong> {translator || "Không có"}</p> */}
+=======
+>>>>>>> origin/nhathuy
             <p>
               <strong>Thể loại:</strong> {categoryID}
             </p>

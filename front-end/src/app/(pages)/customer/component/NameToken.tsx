@@ -5,6 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+<<<<<<< HEAD
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -18,13 +19,39 @@ export default function NameToken({ customer }: { customer: any }) {
   const handleLogout = () => {
     logout();
     
+=======
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+import useFetchCustomer from "../../../hook/useFetchCustomer";
+
+// Định nghĩa kiểu cho customer
+interface Customer {
+  name: string;
+  // Các thuộc tính khác của customer nếu cần
+}
+
+interface NameTokenProps {
+  customer: Customer;
+}
+
+export default function NameToken({ customer }: NameTokenProps) {
+  const { logout } = useFetchCustomer();
+
+  const handleLogout = () => {
+    logout();
+>>>>>>> origin/nhathuy
     window.location.href = "/customer";
   };
 
   return (
     <li>
       <DropdownMenu>
+<<<<<<< HEAD
         <DropdownMenuTrigger className="">
+=======
+        <DropdownMenuTrigger>
+>>>>>>> origin/nhathuy
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -50,9 +77,13 @@ export default function NameToken({ customer }: { customer: any }) {
             </DropdownMenuItem>
           </Link>
           <DropdownMenuItem>Lịch sử đơn hàng</DropdownMenuItem>
+<<<<<<< HEAD
 
           <DropdownMenuSeparator />
 
+=======
+          <DropdownMenuSeparator />
+>>>>>>> origin/nhathuy
           <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

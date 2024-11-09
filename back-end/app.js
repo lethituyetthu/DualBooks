@@ -15,7 +15,6 @@ var customersRouter = require('./routes/customer');
 var ordersRouter = require('./routes/orders');
 var orderItemsRouter = require('./routes/orderItems');
 var adminRouter = require('./routes/admin');
-const reviewsRouter = require('./routes/reviews');
 // khai báo cor
 const cors = require('cors');
 const PORT = process.env.PORT || 3200;
@@ -46,14 +45,10 @@ app.use(cors({
 app.options('*', cors());
 
 //kết nối db
-const connection = mongoose.connect('mongodb://localhost:27017/DA_TN', {})
-    .then(() => {
-        console.log('>>>>>>> DB đã kết nối thành công!!!!');
-    })
-    .catch(err => {
-        console.error('>>>>>>>> DB error: ', err);
-    });
-
+const connection = mongoose.connect('mongodb://localhost:27017/DA_TN',{
+})
+.then(()=> console.log('>>>>>>> DB đã kết nối thành công!!!!'))
+.catch(err=> console.log('>>>>>>>> DB error: ',err));
 app.use('/', indexRouter);
 app.use('/books',booksRouter);
 app.use('/categories',categoriesRouter);
@@ -61,7 +56,6 @@ app.use('/customers',customersRouter);
 app.use('/publishers', publishersRouter); 
 app.use('/orders',ordersRouter);
 app.use('/admins', adminRouter);
-app.use('/reviews', reviewsRouter);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`http://localhost:${PORT}/books`);
@@ -81,22 +75,8 @@ app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/admins/register`);
   console.log(`http://localhost:${PORT}/admins/login`);
   console.log(`http://localhost:${PORT}/admins`);
-  console.log(`http://localhost:${PORT}/admins`);
-  console.log(`http://localhost:${PORT}/admins`);
-  console.log(`http://localhost:${PORT}/admins/update/67092bf9461bcc185950c10f`);
 
-  console.log(`http://localhost:${PORT}/uploads/books/1728314210371-331872765.webp`);
-  console.log(`http://localhost:${PORT}/uploads/categories/1727923378988-394065473.webp`);
 
-  console.log(`http://localhost:${PORT}/customers/register`);
-  console.log(`http://localhost:${PORT}/customers/login`);
-  console.log(`http://localhost:${PORT}/customers`);
-  console.log(`http://localhost:${PORT}/customers/6707f3aee55fb28d5793988f`);
-  console.log(`http://localhost:${PORT}/customers/status/6707f3aee55fb28d5793988f`);
-
-  console.log(`http://localhost:${PORT}/orders`);
-  console.log(`http://localhost:${PORT}/orders/filter-by-date/2024-10-23`);
-  console.log(`http://localhost:${PORT}/orders/filter-by-address/TP.HCM`);
 
 });
 

@@ -22,7 +22,11 @@ exports.loginCustomer = async (req, res) => {
 // Cập nhật thông tin khách hàng
 exports.updateCustomer = async (customerId, customerData) => {
     try {
+<<<<<<< HEAD
         const updatedCustomer = await customerService.updateCustomerStatus(customerId, customerData);
+=======
+        const updatedCustomer = await customerService.updateCustomer(customerId, customerData);
+>>>>>>> origin/nhathuy
         return updatedCustomer;
     } catch (error) {
         throw new Error('Error updating customer: ' + error.message);
@@ -59,6 +63,7 @@ exports.getCustomerById = async (customerId) => {
     } catch (error) {
         throw new Error('Error fetching customer: ' + error.message);
     }
+<<<<<<< HEAD
 };
 // Controller để cập nhật trạng thái khách hàng
 exports.updateStatus = async (req, res) => {
@@ -94,4 +99,6 @@ exports.searchCustomers = async (query) => {
   } catch (error) {
       throw new Error('Error searching customers: ' + error.message);
   }
+=======
+>>>>>>> origin/nhathuy
 };
