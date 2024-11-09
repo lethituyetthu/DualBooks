@@ -158,30 +158,6 @@ router.get('/new', async (req, res) => {
       // Gọi controller để xử lý yêu cầu
       await bookController.getLatestBooks(req, res);
     } catch (error) {
-<<<<<<< HEAD
-=======
-      res.status(500).json({ error: error.message });
-    }
-  });
-// Endpoint xem chi tiết sách theo ID
-router.get('/:id', async function(req, res, next) {
-  console.log('GET /books/:id endpoint hit');
-  // Lấy tham số ID từ URL
-  const bookId = req.params.id;
-  try {
-      // Gọi hàm từ controller để lấy chi tiết sách
-      const result = await bookController.getBookById(bookId);
-
-      if (result) {
-          console.log('Book fetched successfully:', result);
-          res.status(200).json(result);
-      } else {
-          console.log('Book not found');
-          res.status(404).json({ error: 'Book not found' });
-      }
-  } catch (error) {
-      console.error('Error fetching Book by ID:', error.message);
->>>>>>> origin/nhathuy
       res.status(500).json({ error: error.message });
     }
   });
@@ -335,5 +311,4 @@ router.put('/:bookId/reviews/:reviewId', authenticateCustomer, reviewController.
 // Route để xóa bài đánh giá, cần xác thực khách hàng trước khi xóa
 router.delete('/:bookId/reviews/:reviewId', authenticateCustomer, reviewController.deleteReview);
 
-  
 module.exports = router;

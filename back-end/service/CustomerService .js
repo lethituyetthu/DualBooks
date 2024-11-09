@@ -2,10 +2,7 @@ const Customer = require('../models/CustomerModel');
 const bcrypt = require('bcrypt'); // Để mã hóa mật khẩu
 const jwt = require('jsonwebtoken'); // Để tạo token
 const { SECRET_KEY } = require('../config');
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/nhathuy
 // Hàm kiểm tra định dạng email
 const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -89,20 +86,12 @@ exports.loginCustomer = async (email, password) => {
         // Tạo token
         const token = jwt.sign({ id: customer._id, email: customer.email }, SECRET_KEY, { expiresIn: '1h' });
 
-<<<<<<< HEAD
         return { token, customer };
     } catch (error) {
         throw new Error('Error logging in customer: ' + error.message);
     }
 };
 
-=======
-      return { token, customer };
-  } catch (error) {
-      throw new Error('Error logging in customer: ' + error.message);
-  }
-};
->>>>>>> origin/nhathuy
 // Cập nhật thông tin chi tiết của khách hàng theo ID
 exports.updateCustomerById = async (customerId, updatedData) => {
     try {
@@ -130,10 +119,7 @@ exports.deleteCustomer = async (customerId) => {
         throw new Error('Error deleting customer: ' + error.message);
     }
 };
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/nhathuy
 // Lấy danh sách toàn bộ khách hàng
 exports.getAllCustomers = async () => {
     try {
@@ -143,10 +129,7 @@ exports.getAllCustomers = async () => {
         throw new Error('Error fetching customers: ' + error.message);
     }
 };
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/nhathuy
 // Lấy thông tin chi tiết của khách hàng theo ID
 exports.getCustomerById = async (customerId) => {
     try {
@@ -160,7 +143,6 @@ exports.getCustomerById = async (customerId) => {
     }
 };
 
-<<<<<<< HEAD
 // Tìm kiếm khách hàng theo tên
 exports.searchCustomers = async function (query) {
     try {
@@ -209,22 +191,3 @@ exports.getByName = async function (name) {
         throw new Error('Error fetching customers by name: ' + error.message);
     }
 };
-=======
-exports.updateCustomerStatus = async (customerId, status) => {
-    try {
-        // Tìm kiếm khách hàng theo ID
-        const customer = await Customer.findById(customerId);
-        if (!customer) {
-            throw new Error('Customer not found');
-        }
-
-        // Cập nhật trạng thái mới
-        customer.status = status;
-        await customer.save(); // Lưu lại thay đổi vào cơ sở dữ liệu
-
-        return customer;
-    } catch (error) {
-        throw new Error('Error updating customer status: ' + error.message);
-    }
-};
->>>>>>> origin/nhathuy

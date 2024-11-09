@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 
 interface typeBook {
-=======
-import { useEffect, useState, useCallback } from "react";
-
-// Cập nhật typeBook trong useFetchBook.ts
-export interface typeBook {
->>>>>>> origin/nhathuy
   id: string;
   title: string;
   author: string;
@@ -18,7 +11,6 @@ export interface typeBook {
   cover_image: string;
   created_at: string;
   updated_at: string;
-<<<<<<< HEAD
 }
 
 interface Error {
@@ -33,11 +25,6 @@ interface Error {
   created_at: string;
   updated_at: string;
 }
-=======
-  sales: number;  // Thêm dòng này nếu dữ liệu sales tồn tại cho mỗi sách
-}
-
->>>>>>> origin/nhathuy
 
 export default function useFetchBook() {
   const [detailBook, setDetailBook] = useState<typeBook | null>(null);
@@ -50,7 +37,6 @@ export default function useFetchBook() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-<<<<<<< HEAD
         const resHot = await fetch("http://localhost:3200/books/hot");
         if (!resHot.ok) {
           throw new Error("Lỗi khi lấy sách nổi bật!!!");
@@ -73,28 +59,6 @@ export default function useFetchBook() {
         setBooks(resultAll);
       } catch (error) {
         setError(error.message);
-=======
-        // Fetch hot books
-        const resHot = await fetch('http://localhost:3200/books/hot');
-        if (!resHot.ok) throw new Error("Error fetching hot books");
-        const resultHot = await resHot.json();
-        setHotBooks(resultHot);
-
-        // Fetch new books
-        const resNew = await fetch('http://localhost:3200/books/new');
-        if (!resNew.ok) throw new Error("Error fetching new books");
-        const resultNew = await resNew.json();
-        setNewBooks(resultNew);
-
-        // Fetch all books
-        const resAll = await fetch('http://localhost:3200/books');
-        if (!resAll.ok) throw new Error("Error fetching all books");
-        const resultAll = await resAll.json();
-        setBooks(resultAll);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError((error as Error).message);
->>>>>>> origin/nhathuy
       } finally {
         setLoading(false);
       }
@@ -103,7 +67,6 @@ export default function useFetchBook() {
     fetchData();
   }, []);
 
-<<<<<<< HEAD
   const addBooks = async (bookData: FormData) => {
     try {
       const response = await fetch("http://localhost:3200/books", {
@@ -170,24 +133,10 @@ export default function useFetchBook() {
       const result = await res.json();
       setDetailBook(result);
     } catch (error) {
-=======
-  const fetchDetail = useCallback(async (id: string) => {
-    setLoading(true);
-    setDetailBook(null); // Reset detailBook on fetch
-    setError(null); // Reset error on fetch
-    try {
-      const res = await fetch(`http://localhost:3200/books/${id}`);
-      if (!res.ok) throw new Error("Error fetching book details");
-      const result = await res.json();
-      setDetailBook(result);
-    } catch (error) {
-      console.error("Error fetching book details:", error);
->>>>>>> origin/nhathuy
       setError((error as Error).message);
     } finally {
       setLoading(false);
     }
-<<<<<<< HEAD
   };
 
   const searchBooks = async (term: string) => {
@@ -225,9 +174,4 @@ export default function useFetchBook() {
     deleteBook,
     searchBooks
   };
-=======
-  }, []);
-
-  return { hotBooks, books, newBooks, fetchDetail, detailBook, loading, error };
->>>>>>> origin/nhathuy
 }

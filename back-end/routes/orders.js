@@ -1,31 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const orderController = require('../controller/OrderController');
-<<<<<<< HEAD
 const orderItemController = require('../controller/OrderItemController');
-=======
-const OrderModel = require('../models/OrderModel'); // Ensure this is correctly imported
->>>>>>> origin/nhathuy
 
 // Route: Tạo một đơn hàng mới
 router.post('/', async (req, res) => {
     try {
         const { 
-<<<<<<< HEAD
             customer_id, staff_id, order_date, order_status, payment_status, 
-=======
-           id, customer_id, staff_id, order_date, order_status, payment_status, 
->>>>>>> origin/nhathuy
             total_amount, total_quantity, shipping_address, order_type, 
             customer_feedback, payment_method 
         } = req.body;
 
         // Gọi controller để tạo đơn hàng
         const newOrder = await orderController.createOrder({
-<<<<<<< HEAD
-=======
-            id,
->>>>>>> origin/nhathuy
             customer_id, staff_id, order_date, order_status, payment_status, 
             total_amount, total_quantity, shipping_address, order_type, 
             customer_feedback, payment_method
@@ -38,7 +26,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
 // Route để lấy danh sách tất cả đơn hàng
 router.get('/', async (req, res) => {
     try {
@@ -47,19 +34,11 @@ router.get('/', async (req, res) => {
             message: 'Retrieved all orders successfully',
             data: orders
         });
-=======
-// Route: Lấy danh sách tất cả đơn hàng
-router.get('/', async (req, res) => {
-    try {
-        const orders = await OrderModel.find();
-        res.status(200).json({ data: orders });
->>>>>>> origin/nhathuy
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-<<<<<<< HEAD
 // Route: Lọc đơn hàng theo ngày cập nhật
 router.get('/filter-by-date/:date', async (req, res) => {
     try {
@@ -108,6 +87,4 @@ router.delete('/:orderId', orderController.deleteOrder);
 // Định nghĩa route để lấy chi tiết đơn hàng
 router.get('/:orderId', orderController.getOrderDetail);
 
-=======
->>>>>>> origin/nhathuy
 module.exports = router;

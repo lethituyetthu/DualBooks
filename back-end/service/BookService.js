@@ -204,8 +204,4 @@ exports.getLatestBooks = async () => {
   } catch (error) {
     throw new Error('Error fetching latest books: ' + error.message);
   }
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> origin/nhathuy

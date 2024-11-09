@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-<<<<<<< HEAD
 import InputField from "../../../../components/ui/input";
-=======
-import InputField from "../component/input";
->>>>>>> origin/nhathuy
 import useFetchCustomer from "../../../hook/useFetchCustomer";
 
 interface FormData {
@@ -18,11 +14,7 @@ interface FormData {
 }
 
 const RegisterPage = () => {
-<<<<<<< HEAD
   const { register, errors } = useFetchCustomer();
-=======
-  const { register, errors, successMessage } = useFetchCustomer();
->>>>>>> origin/nhathuy
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -32,10 +24,7 @@ const RegisterPage = () => {
     password: "",
   });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/nhathuy
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -43,19 +32,12 @@ const RegisterPage = () => {
     });
   };
 
-<<<<<<< HEAD
   
  const handleSubmit = async (e:React.FormEvent)=>{
     e.preventDefault();
 
     await register(formData)
  }
-=======
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await register(formData);
-  };
->>>>>>> origin/nhathuy
 
   return (
     <div className="flex justify-between p-8 max-w-4xl mx-auto">
@@ -119,13 +101,6 @@ const RegisterPage = () => {
             Đăng Ký Ngay
           </button>
         </form>
-<<<<<<< HEAD
-=======
-
-        {/* Success Message */}
-        {successMessage && <p className="text-green-500">{successMessage}</p>}
-
->>>>>>> origin/nhathuy
         <p className="mb-4">Hoặc sử dụng tài khoản</p>
         <div className="flex space-x-4">
           <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">

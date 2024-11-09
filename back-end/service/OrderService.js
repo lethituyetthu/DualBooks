@@ -7,10 +7,6 @@ exports.createOrder = async (orderData) => {
     try {
         // Khởi tạo đơn hàng mới với các trường đã cung cấp
         const newOrder = new OrderModel({
-<<<<<<< HEAD
-=======
-            id: orderData.id,
->>>>>>> origin/nhathuy
             customer_id: orderData.order_type === 'online' ? orderData.customer_id : undefined, // ID khách hàng cho đơn hàng online
             staff_id: orderData.order_type === 'offline' ? orderData.staff_id : undefined, // ID nhân viên cho đơn hàng offline
             order_date: orderData.order_date || Date.now(), // Ngày đặt hàng, mặc định là ngày hiện tại nếu không có
@@ -30,7 +26,6 @@ exports.createOrder = async (orderData) => {
     } catch (error) {
         throw new Error('Error creating order: ' + error.message);
     }
-<<<<<<< HEAD
 };
 
 // Lấy toàn bộ danh sách đơn hàng và populate thông tin chi tiết của khách hàng
@@ -148,6 +143,3 @@ exports.deleteOrder = async (orderId) => {
 
 
 
-=======
-};
->>>>>>> origin/nhathuy
