@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 interface BookDetailProps {
@@ -7,6 +7,7 @@ interface BookDetailProps {
   price: number;
   cover_image: string;
   stock: number;
+  id: string; // Assuming each product has an `id`
 }
 
 const BookDetail = ({
@@ -15,9 +16,32 @@ const BookDetail = ({
   price,
   cover_image,
   stock,
+  id,
 }: BookDetailProps) => {
   const [quantity, setQuantity] = useState(1);
   const [notification, setNotification] = useState<string | null>(null);
+  const [viewCount, setViewCount] = useState<number>(0);
+  
+  // To track if the component is mounted to avoid double-increments in development mode
+  const hasMounted = useRef(false);
+
+  useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true; // Mark as mounted on first render
+      return;
+    }
+
+    // Retrieve the current view count for this specific product from localStorage
+    const currentViewCount = localStorage.getItem(`viewCount_${id}`);
+    let newViewCount = currentViewCount ? parseInt(currentViewCount) : 0;
+
+    // Increment the view count by 1 for this product
+    newViewCount += 1;
+
+    // Update the view count in state and localStorage
+    setViewCount(newViewCount);
+    localStorage.setItem(`viewCount_${id}`, newViewCount.toString());
+  }, [id]); // Depend on `id` to trigger when the product changes
 
   const handleIncrease = () => {
     setQuantity((prev) => prev + 1);
@@ -112,6 +136,11 @@ const BookDetail = ({
         <div className="flex items-center mb-4">
           <span className="text-green-600 mr-4">Miễn phí vận chuyển</span>
           <span className="text-red-500">Chính hãng 100%</span>
+        </div>
+
+        {/* View Count */}
+        <div className="mb-4 text-sm text-gray-500">
+          Lượt xem: {viewCount}
         </div>
 
         {/* Action Buttons */}

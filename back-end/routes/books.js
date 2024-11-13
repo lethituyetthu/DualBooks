@@ -182,7 +182,46 @@ router.post('/', authenticateAdmin, uploadBooks.single('cover_image'), async (re
         res.status(500).json({ error: error.message });
     }
 });
-
+ 
+// Endpoint lấy danh sách sách mới nhất
+// GET /books/latest
+router.get('/new', async (req, res) => {
+    try {
+      // Gọi controller để xử lý yêu cầu
+      await bookController.getLatestBooks(req, res);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+// Route để lấy chi tiết sách theo ID
+router.get('/:id', async function(req, res, next) {
+    console.log('GET /books/:id endpoint hit');
+    const bookId = req.params.id; // Lấy ID từ URL params
+  
+    try {
+      const result = await bookController.getBookDetailsById(bookId);
+  
+      console.log('Book details fetched successfully:', result);
+      res.status(200).json(result);  // Gửi phản hồi thành công
+    } catch (error) {
+      console.error('Error fetching book details:', error.message);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  // Route để tăng số lượt xem của sách theo ID
+router.patch('/:id/views', async function(req, res, next) {
+    console.log('PATCH /books/:id/views endpoint hit');
+    const bookId = req.params.id;
+  
+    try {
+      const result = await bookController.incrementBookViews(bookId);
+      console.log('Book views incremented successfully:', result);
+      res.status(200).json(result);  // Trả về số lượt xem mới
+    } catch (error) {
+      console.error('Error incrementing book views:', error.message);
+      res.status(500).json({ error: error.message });
+    }
+  });
 // Endpoint cập nhật thông tin một cuốn sách
 // PUT /api/books/:id
 router.put(

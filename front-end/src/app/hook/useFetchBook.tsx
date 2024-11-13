@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 
-// Cập nhật typeBook trong useFetchBook.ts
+// Định nghĩa type cho Book
 export interface typeBook {
   id: string;
   title: string;
@@ -12,9 +12,8 @@ export interface typeBook {
   cover_image: string;
   created_at: string;
   updated_at: string;
-  sales: number;  // Thêm dòng này nếu dữ liệu sales tồn tại cho mỗi sách
+  sales: number;  // Nếu dữ liệu sales có tồn tại
 }
-
 
 export default function useFetchBook() {
   const [detailBook, setDetailBook] = useState<typeBook | null>(null);
@@ -27,25 +26,22 @@ export default function useFetchBook() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch hot books
         const resHot = await fetch('http://localhost:3200/books/hot');
-        if (!resHot.ok) throw new Error("Error fetching hot books");
+        if (!resHot.ok) throw new Error("Lỗi khi tải danh sách sách hot");
         const resultHot = await resHot.json();
         setHotBooks(resultHot);
 
-        // Fetch new books
         const resNew = await fetch('http://localhost:3200/books/new');
-        if (!resNew.ok) throw new Error("Error fetching new books");
+        if (!resNew.ok) throw new Error("Lỗi khi tải danh sách sách mới");
         const resultNew = await resNew.json();
         setNewBooks(resultNew);
 
-        // Fetch all books
         const resAll = await fetch('http://localhost:3200/books');
-        if (!resAll.ok) throw new Error("Error fetching all books");
+        if (!resAll.ok) throw new Error("Lỗi khi tải toàn bộ sách");
         const resultAll = await resAll.json();
         setBooks(resultAll);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Lỗi khi tải dữ liệu:", error);
         setError((error as Error).message);
       } finally {
         setLoading(false);
@@ -57,15 +53,21 @@ export default function useFetchBook() {
 
   const fetchDetail = useCallback(async (id: string) => {
     setLoading(true);
-    setDetailBook(null); // Reset detailBook on fetch
-    setError(null); // Reset error on fetch
+    setDetailBook(null);
+    setError(null);
     try {
+      // Gọi API để lấy chi tiết sách
       const res = await fetch(`http://localhost:3200/books/${id}`);
-      if (!res.ok) throw new Error("Error fetching book details");
+      if (!res.ok) throw new Error("Lỗi khi tải chi tiết sách");
       const result = await res.json();
       setDetailBook(result);
+
+      // Gọi API để tăng số lượt xem
+      await fetch(`http://localhost:3200/books/${id}/increase-view`, {
+        method: 'POST',
+      });
     } catch (error) {
-      console.error("Error fetching book details:", error);
+      console.error("Lỗi khi tải chi tiết sách hoặc tăng số lượt xem:", error);
       setError((error as Error).message);
     } finally {
       setLoading(false);
