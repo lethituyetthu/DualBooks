@@ -11,12 +11,11 @@ const ProductList = () => {
   const { books, loading, error, searchBooks } = useFetchBook();
   const { cate } = useFetchCategory();
   const [searchTerm, setSearchTerm] = useState("");
+  
+  console.log(books)
 
   // Lấy tên danh mục theo ID
-  const getCategoryName = (categoryId) => {
-    const category = cate.find((cat) => cat.id === categoryId);
-    return category ? category.name : "Không xác định"; // Nếu không tìm thấy danh mục
-  };
+  
 
   // Định dạng thời gian
   const formatDateTime = (dateString) => {
@@ -79,7 +78,7 @@ const ProductList = () => {
               <Product
                 key={product.id}
                 product={product}
-                getCategoryName={getCategoryName}
+              
                 formatDateTime={formatDateTime}
               />
             ))}

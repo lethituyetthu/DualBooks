@@ -95,7 +95,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
       
       formDataToSend.append('cover_image', cover_image);  
     }
-    const response = await updateBook(id,formDataToSend);
+const response = await updateBook(id,formDataToSend);
     if (response && response.error) {
       alert("lỗi khi chỉnh sửa sản phẩm !!!")
     } else {
@@ -191,7 +191,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
                 alt="Preview"
                 className=" object-cover"
               />
-            </div>
+</div>
           )}
         </div>
 

@@ -26,7 +26,7 @@ const Staff: React.FC = () => {
   const [searchId, setSearchId] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const adminInfo = localStorage.getItem("admin");
 
     if (!adminInfo) {
@@ -38,7 +38,7 @@ const Staff: React.FC = () => {
         router.push("/login_admin");
       }
     }
-  }, [router]);
+  }, [router]); */
 
   const addToCart = (book: Books) => {
     setCartItems((prevItems) => {

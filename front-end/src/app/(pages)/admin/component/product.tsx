@@ -3,8 +3,8 @@ import React from "react";
 import useFetchBook from "@/app/hook/useFetchBook";
 import Link from "next/link";
 
-export default function Product({ product, getCategoryName, formatDateTime }) {
-  const { deleteBook } = useFetchBook();
+export default function Product({ product, formatDateTime }) {
+  const { deleteBook,books } = useFetchBook();
   
   const handleDelete = () => {
     if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
@@ -29,7 +29,7 @@ export default function Product({ product, getCategoryName, formatDateTime }) {
       </td>
       <td className="px-6 py-4">{product.title}</td>
       <td className="px-6 py-4 text-nowrap">{product.author}</td>
-      <td className="px-6 py-4">{getCategoryName(product.categoryID)}</td>
+      <td className="px-6 py-4">{(product.category.name)}</td>
       <td className="px-6 py-4 text-nowrap"> {(product.price * 1000).toLocaleString("vi-VN") + " đ"}</td>
       <td className="px-6 py-4">{product.stock}</td>
       <td className="px-6 py-4">{formatDateTime(product.updated_at)}</td>

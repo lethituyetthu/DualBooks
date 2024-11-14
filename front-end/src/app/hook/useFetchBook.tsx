@@ -134,7 +134,7 @@ export default function useFetchBook() {
   const searchBooks = async (term: string) => {
     try {
       const res = await fetch(
-        `http://localhost:3200/books/search?query=${term}`
+        `http://localhost:3200/books/title/${term}`
       );
 
       // Kiểm tra phản hồi từ API

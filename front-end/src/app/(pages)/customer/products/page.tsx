@@ -46,7 +46,7 @@ const ProductPage = () => {
     <div className="max-w-[1200px] m-auto relative">
       <div className="flex">
         {/* Sidebar */}
-        <div className="w-1/4 p-4 bg-light-100">
+        <div className="w-1/4 p-4 bg-gray-100">
           <h2 className="text-lg font-bold mb-4">Nhóm Sản Phẩm</h2>
           <div className="mb-4">
             <label className="block mb-1">Giá tối thiểu:</label>
@@ -81,14 +81,14 @@ const ProductPage = () => {
           ) : error ? (
             <p>Error: {error}</p>
           ) : (
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-3 gap-6">
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => {
                   const imageUrl = `http://localhost:3200/uploads/books/${product.image}`; // Đường dẫn tới hình ảnh
                   return (
                     <div
                       key={product.id}
-                      className="border p-4 flex flex-col items-center justify-between bg-white"
+                      className="border p-4 flex flex-col items-center justify-between"
                     >
                       <Link href={`/customer/product/${product.id}`} className="text-center"> {/* Chuyển className vào đây */}
                         <Image

@@ -5,7 +5,7 @@ import useFetchAdmin from "@/app/hook/useFetchAdmin";
 import { useRouter } from "next/navigation";
 const AddStaff = () => {
   const route = useRouter();
-  const { addStaff,errorMessage } = useFetchAdmin();
+  const { addStaff } = useFetchAdmin();
   const [formData, setFormData] = useState({
     username: "", // Thay đổi từ 'name' thành 'username'
     email: "",
@@ -36,7 +36,7 @@ const AddStaff = () => {
     if (selectedFile) {
       staffData.append("user_img", selectedFile);
     }
-console.log(staffData)
+
     const result = await addStaff(staffData);
     console.log(result);
     if (!result.error) {
@@ -51,7 +51,7 @@ console.log(staffData)
     <div className="flex justify-center items-center max-h-screen mt-[40px]">
       <div className="w-full max-w-4xl bg-white p-8 shadow-lg rounded-lg">
         <h2 className="text-2xl font-semibold mb-6">Nhân viên mới</h2>
-        {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
+
         <div className="flex flex-col items-center mb-6">
           <div className="bg-gray-200 rounded-full h-20 w-20 flex items-center justify-center mb-2">
             <i className="fas fa-camera text-gray-500"></i>

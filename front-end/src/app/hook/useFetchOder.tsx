@@ -7,27 +7,26 @@ interface OrderItem {
 }
 
 interface Order {
-  id:string;
   customer_id?: string;
-  staff_id?: string;
-  order_date: Date;
-  order_status:
+  staffId: string;
+  orderDate: Date;
+  orderStatus:
     | "Chờ xác nhận"
     | "Đã xác nhận"
     | "Đang giao hàng"
     | "Hoàn thành"
     | "Đã hủy";
-  payment_status:
+  paymentStatus:
     | "Chưa thanh toán"
     | "Đang xử lý thanh toán"
     | "Đã thanh toán"
     | "Thanh toán thất bại";
-  payment_method: "Tiền mặt" | "Chuyển khoản";
-  shipping_address?: string;
-  total_amount: number;
-  total_quantity: number;
-  order_type: "online" | "offline";
-  customer_feedback?: string;
+  paymentMethod: "Tiền mặt" | "Chuyển khoản";
+  shippingAddress?: string;
+  totalAmount: number;
+  totalQuantity: number;
+  orderType: "online" | "offline";
+  customerFeedback?: string;
 }
 
 export default function useFetchOrder() {

@@ -34,9 +34,7 @@ const App = () => {
             role={e.role}
             date={e.created_at}
             email={e.email}
-            img={e.user_img}
-
-          />
+            img={e.user_img} onDelete={undefined} onEdit={undefined}          />
         ))}
       </div>
     </div>

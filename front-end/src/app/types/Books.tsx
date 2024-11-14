@@ -11,4 +11,4 @@ export interface Books {
     sales: number;             // Số lượng sách đã bán
     created_at: Date;          // Ngày tạo bản ghi sách
     updated_at: Date;          // Ngày cập nhật bản ghi sách
-}
+}   

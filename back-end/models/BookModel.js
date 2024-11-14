@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const bookSchema = new mongoose.Schema({
   id: {
     type: Number,
-    required: true,
     unique: true
   },
   title: {
@@ -18,7 +17,6 @@ const bookSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: true
   },
   description: {
     type: String,
@@ -52,7 +50,7 @@ const bookSchema = new mongoose.Schema({
   publisherID: {
     type: Schema.Types.ObjectId,
     ref: 'Publisher', // Tham chiếu đến model Publisher
-    required: true
+  
   },
   views: { 
     type: Number, 
@@ -62,6 +60,10 @@ const bookSchema = new mongoose.Schema({
     type: Number, 
     default: 0 
   }, // Số lượng sản phẩm đã bán
+  reviews: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Review' // Tham chiếu đến model Review
+  }] // Mảng chứa các ID của các đánh giá
 });
 
 // Tạo model từ schema
