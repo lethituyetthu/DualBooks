@@ -6,7 +6,7 @@ interface Error {
   _id?: string;
   title?: string;
   author?: string;
-  categoryID?: string;
+  category?: string;
   description?: string;
   price?: number;
   stock?: number;
@@ -106,7 +106,7 @@ export default function useFetchBook() {
 
       const updateBook = await res.json();
 
-      console.log(updateBook);
+      console.log(bookData);
 
       return updateBook;
     } catch (error) {

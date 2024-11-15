@@ -12,7 +12,6 @@ const ProductList = () => {
   const { cate } = useFetchCategory();
   const [searchTerm, setSearchTerm] = useState("");
   
-  console.log(books)
 
   // Lấy tên danh mục theo ID
   

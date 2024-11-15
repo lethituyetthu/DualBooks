@@ -117,7 +117,7 @@ exports.updateBook = async function (id, updatedData) {
       // Nếu cover_image được cung cấp và khác với hình ảnh hiện tại, xử lý việc xóa hình ảnh cũ
       if (updatedData.cover_image) {
           // Tìm sách hiện tại để lấy tên file hình ảnh cũ
-          const currentBook = await bookModel.findById(id);
+          const currentBook = await bookModel.findById(id).populate('categoryID', 'name');
           if (!currentBook) {
               throw new Error('Book not found');
           }
