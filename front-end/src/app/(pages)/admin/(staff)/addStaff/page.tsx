@@ -10,7 +10,7 @@ const AddStaff = () => {
     username: "", // Thay đổi từ 'name' thành 'username'
     email: "",
     password: "",
-    role: "staff", // Mặc định là Nhân Viên
+    role: "Staff", // Mặc định là Nhân Viên
   });
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -48,7 +48,7 @@ const AddStaff = () => {
   };
 
   return (
-    <div className="flex justify-center items-center max-h-screen mt-[40px]">
+    <div className="flex justify-center items-center max-h-screen mt-[15px]">
       <div className="w-full max-w-4xl bg-white p-8 shadow-lg rounded-lg">
         <h2 className="text-2xl font-semibold mb-6">Nhân viên mới</h2>
 

@@ -53,12 +53,12 @@ export default function Page() {
           <table className="w-full table-auto border-separate border-spacing-0 rounded-tl-xl rounded-tr-lg">
       <thead>
         <tr className="bg-[#AF683E] text-left text-white border border-white rounded-tl-lg rounded-tr-lg">
-          <th className="p-4 border border-white">Mã Đơn Hàng</th>
+          <th className="p-4 border border-white text-nowrap">Mã Đơn Hàng</th>
           <th className="p-4 border border-white">Khách Hàng</th>
           <th className="p-4 border border-white">Ngày Đặt</th>
           <th className="p-4 border border-white">Địa Chỉ</th>
           <th className="p-4 border border-white">Tổng Tiền</th>
-          <th className="p-4 border border-white">Trạng Thái</th>
+          <th className="p-4 border border-white text-nowrap">Trạng Thái</th>
           <th className="p-4 text-right border border-white rounded-tr-lg"></th>
         </tr>
       </thead>

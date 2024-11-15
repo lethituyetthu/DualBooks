@@ -47,7 +47,7 @@ exports.getAdminById = async (req, res) => {
         if (!admin) {
             return res.status(404).json({ message: 'Không tìm thấy admin' });
         }
-        res.status(200).json({ data: admin });
+        res.status(200).json( admin     );
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
