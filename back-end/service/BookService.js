@@ -44,8 +44,7 @@ exports.getByTitle = async function (title) {
       const regexTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
       const books = await bookModel.find({
           title: { $regex: new RegExp(regexTitle, 'i') }
-      }) .populate('categoryID', 'name') // Populate danh mục
-      .populate('publisherID', 'name');
+      });
       return books;
   } catch (error) {
       throw new Error('Error fetching books by title: ' + error.message);
@@ -117,7 +116,7 @@ exports.updateBook = async function (id, updatedData) {
       // Nếu cover_image được cung cấp và khác với hình ảnh hiện tại, xử lý việc xóa hình ảnh cũ
       if (updatedData.cover_image) {
           // Tìm sách hiện tại để lấy tên file hình ảnh cũ
-          const currentBook = await bookModel.findById(id).populate('categoryID', 'name');
+          const currentBook = await bookModel.findById(id);
           if (!currentBook) {
               throw new Error('Book not found');
           }

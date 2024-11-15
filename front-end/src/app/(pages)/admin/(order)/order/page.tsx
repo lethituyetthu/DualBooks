@@ -58,7 +58,7 @@ export default function Page() {
           <th className="p-4 border border-white">Ngày Đặt</th>
           <th className="p-4 border border-white">Địa Chỉ</th>
           <th className="p-4 border border-white">Tổng Tiền</th>
-          <th className="p-4 border border-white ">Trạng Thái</th>
+          <th className="p-4 border border-white text-nowrap">Trạng Thái</th>
           <th className="p-4 text-right border border-white rounded-tr-lg"></th>
         </tr>
       </thead>

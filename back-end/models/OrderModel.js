@@ -57,7 +57,11 @@ const orderSchema = new Schema({
     order_type: {
         type: String,
         enum: ['online', 'offline'],
-        required: true, 
+        required: true,
+
+
+
+        
     },
     customer_feedback: {
         type: String,

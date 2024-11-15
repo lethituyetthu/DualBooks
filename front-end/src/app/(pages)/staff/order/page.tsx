@@ -75,7 +75,7 @@ const OrderManagement = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="flex max-h-screen">
+    <div className="flex">
       <SidebarOrder
         searchId={searchId}
         setSearchId={setSearchId}
