@@ -140,7 +140,7 @@ const BookDetail = ({
 
         {/* View Count */}
         <div className="mb-4 text-sm text-gray-500">
-          Lượt xem: {viewCount}
+         Tăng Lượt xem: {viewCount}
         </div>
 
         {/* Action Buttons */}
