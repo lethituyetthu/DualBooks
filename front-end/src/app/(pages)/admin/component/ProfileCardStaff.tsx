@@ -66,7 +66,7 @@ const ProfileCardStaff: React.FC<ProfileCardProps> = ({
       />
 
       {/* Hiển thị tên admin */}
-      <h2 className="text-xl max-w-44 mx-auto text-nowrap">{name}</h2>
+      <h2 className="text-xl max-w-44 mx-auto">{name}</h2>
 
       {/* Hiển thị vai trò với màu sắc nổi bật */}
       <p
