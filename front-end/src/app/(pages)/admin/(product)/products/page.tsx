@@ -59,7 +59,7 @@ const ProductList = () => {
 
       <div className="bg-white shadow-md rounded overflow-hidden">
         <table className="min-w-full text-left text-sm">
-          <thead className="bg-gray-100">
+          <thead className="bg-primary-400 text-light-50">
             <tr>
               <th className="px-6 py-4 text-nowrap">Hình ảnh</th>{" "}
               {/* Thêm cột Hình ảnh */}

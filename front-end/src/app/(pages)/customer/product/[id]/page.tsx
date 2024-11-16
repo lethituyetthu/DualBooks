@@ -15,25 +15,44 @@ import {
 import Rating from "../../component/rating";
 import FeetBack from "../../component/feetback";
 import ReviewForm from "../../component/reviewForm";
+import ProductListByCate from "../../component/productListByCate";
+import ProductInfo from "../../component/productInfo";
 
 const ProductDetailPage = ({ params }: { params: { id: string } }) => {
   const { id } = params;
-  const { detailBook, fetchDetail, loading, error } = useFetchBook(); // Hook lấy dữ liệu sách
+  const {
+    detailBook,
+    fetchDetail,
+    loading,
+    error,
+    categoryBook,
+    searchBookByCate,
+
+  } = useFetchBook(); // Hook lấy dữ liệu sách
 
   useEffect(() => {
     fetchDetail(id);
   }, [id]);
+
+  // Fetch sản phẩm cùng danh mục khi detailBook được cập nhật
+  useEffect(() => {
+    if (detailBook?.category?.id) {
+      searchBookByCate(detailBook.category.id);
+    }
+  }, [detailBook]);
+
+  const flattenedCategoryBook = categoryBook.flat();
 
   if (loading) return <p>Đang tải...</p>;
   if (error) return <p>Lỗi: {error}</p>;
   if (!detailBook) return <p>Không tìm thấy sản phẩm</p>;
 
   // Destructure dữ liệu sách
-  const { title, description, price, cover_image, stock, author, categoryID } =
+  const { title, description, price, cover_image, stock, author, category } =
     detailBook;
 
   return (
-    <div className="max-w-[1200px] m-auto ">
+    <div className="max-w-[1200px] m-auto bg-light-50">
       <Breadcrumb className="py-[30px]">
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -41,7 +60,9 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/components">{categoryID}</BreadcrumbLink>
+            <BreadcrumbLink href="/components">
+              {detailBook.category.name}
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -62,47 +83,16 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
       <div className="mt-[40px] text-sm ">
         <h1 className="text-xl mb-4 bg-primary-400 text-light-100 py-5 pl-3 rounded-sm font-itim">
           MÔ TẢ SẢN PHẨM
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Cột bên trái: Hình ảnh sản phẩm */}
-          <div className="flex justify-center">
-            <Image
-              src={`http://localhost:3200/uploads/books/${cover_image}`}
-              alt={title}
-              width={200}
-              height={300}
-              className="object-cover mb-4"
-            />
-          </div>
+</h1>
+        <ProductInfo
+          title={title}
+          cover_image={cover_image}
+          author={author}
+          categoryName={category.name}
+          price={price}
+          description={description}
+        />
 
-          {/* Cột bên phải: Thông tin chi tiết sản phẩm */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4">Thông tin sản phẩm</h2>
-            <p>
-              <strong>Tác giả:</strong> {author}
-            </p>
-            {/* <p><strong>Dịch giả:</strong> {translator || "Không có"}</p> */}
-            <p>
-              <strong>Thể loại:</strong> {categoryID}
-            </p>
-            <p>
-              <strong>Kích thước:</strong> 13x20 cm
-            </p>
-            <p>
-              <strong>Nhà xuất bản:</strong> Nhà xuất bản Trẻ
-            </p>
-            <p>
-              <strong>Thương hiệu:</strong> DualBooks
-            </p>
-            <p>
-              <strong>Giá bìa:</strong>{" "}
-              {(price * 1000).toLocaleString("vi-VN") + " đ"}
-            </p>
-            <p>
-              <strong>Ngày phát hành:</strong> 2022-10-15
-            </p>
-          </div>
-        </div>
         {/* Giới thiệu cuốn sách */}
         <div className="mt-4 w-full px-5">
           <h2 className="text-lg font-semibold mb-2">Giới thiệu sách</h2>
@@ -122,6 +112,13 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
             <FeetBack />
           </div>
         </div>
+      </div>
+
+      <div className=" text-sm">
+        <h1 className="text-2xl px-10 uppercase font-semibold  py-6  text-primary-400 bg-light-50 text-center font-itim border-primary-400 border-b-2">
+        Những cuốn sách cùng chủ đề bạn không nên bỏ lỡ
+        </h1>
+        <ProductListByCate products={flattenedCategoryBook} />
       </div>
     </div>
   );

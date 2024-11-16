@@ -52,7 +52,7 @@ const ProfileCardStaff: React.FC<ProfileCardProps> = ({
 
   return (
     <div
-      className="bg-gray-50 p-6 rounded-sm shadow-md flex flex-col items-center w-52 relative"
+      className="bg-white p-6 rounded-sm shadow-md flex flex-col items-center w-52 relative"
       onMouseEnter={() => setIsHovered(true)} // Hiển thị nút khi hover
       onMouseLeave={() => setIsHovered(false)} // Ẩn nút khi không hover
     >

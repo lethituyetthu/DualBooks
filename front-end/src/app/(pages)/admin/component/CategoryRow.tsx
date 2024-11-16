@@ -2,7 +2,6 @@
     import Image from "next/image";
 
     export default function CategoryRow({ category, onEditClick, onDeleteClick }) {
-        console.log(category)
     return (
         <tr className="odd:bg-[#FAE6D0]">
         <td className="p-4 border-b">

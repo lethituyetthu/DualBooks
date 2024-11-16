@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ProductListByCate = ({ products }) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 py-7 px-20 ">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 py-7 boder border-gray-100">
       {products.slice(0, 5).map((book) => (
         <div key={book._id } className="border p-4 rounded-sm shadow-sm bg-white">
           <Image
