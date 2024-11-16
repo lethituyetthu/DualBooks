@@ -75,6 +75,7 @@ exports.getCustomerById = async (customerId) => {
         throw error;
     }
 };
+//orderService
 exports.getOrdersByUpdateDate = async (date) => {
     try {
         // Chuyển đổi ngày thành định dạng ISO cho MongoDB
@@ -139,29 +140,6 @@ exports.deleteOrder = async (orderId) => {
     } catch (error) {
         console.error('Lỗi khi xóa đơn hàng:', error);
         throw error;
-    }
-};
-exports.cancelOrder = async (orderId) => {
-    try {
-        // Tìm đơn hàng theo orderId
-        const order = await OrderModel.findById(orderId);
-
-        if (!order) {
-            throw new Error('Order not found');
-        }
-
-        // Kiểm tra trạng thái đơn hàng
-        if (order.order_status !== 'Chờ xác nhận') {
-            throw new Error('Only orders with "Chờ xác nhận" status can be cancelled');
-        }
-
-        // Cập nhật trạng thái đơn hàng thành "Đã hủy"
-        order.order_status = 'Đã hủy';
-        const updatedOrder = await order.save();
-
-        return updatedOrder; // Trả về đơn hàng sau khi đã cập nhật
-    } catch (error) {
-        throw new Error('Error cancelling order: ' + error.message);
     }
 };
 

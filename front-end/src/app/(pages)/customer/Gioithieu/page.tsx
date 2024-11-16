@@ -2,7 +2,7 @@ import React from "react";
 
 const DualBooksPage = () => {
   return (
-    <div className="min-h-screen bg-light-50 max-w-[1300px] mx-auto" >
+    <div className="min-h-screen bg-light-50 max-w-[1300px] mx-auto pb-10" >
       <nav className="flex items-center space-x-2 text-sm text-gray-600 p-4">
         <a href="/customer" className="hover:text-gray-900">
           Trang chủ

@@ -71,7 +71,7 @@ export default function useFetchAdmin() {
       }
 
       const data = await response.json();
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("token_admin", data.token);
       localStorage.setItem("admin", JSON.stringify({
         id: data.admin._id,
         email: data.admin.email,
@@ -81,7 +81,7 @@ export default function useFetchAdmin() {
 
       setIsAuthenticated(true);
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      data.admin.role === "Staff" ? router.push("/staff") : router.push("/admin");
+      data.admin.role === "staff" ? router.push("/staff") : router.push("/admin");
       
       return data;
     } catch (error) {

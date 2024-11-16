@@ -75,7 +75,7 @@ const OrderManagement = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="flex">
+    <div className="flex min-h-screen">
       <SidebarOrder
         searchId={searchId}
         setSearchId={setSearchId}
@@ -118,7 +118,7 @@ const OrderManagement = () => {
           <thead>
             <tr>
               {headers.map((header, index) => (
-                <th key={index} className="border p-4">
+                <th key={index} className="border p-4 text-nowrap">
                   {header}
                 </th>
               ))}

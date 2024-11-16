@@ -13,7 +13,7 @@ export default function BookCard({ book }:{ book: any }) {
         className="mb-4 w-full h-40 object-cover rounded-md object-top"
       />
       <Link
-        href={"/"}
+        href={`/customer/product/${book.id}`}
         className="text-sm font-semibold text-center h-10 font-inter overflow-hidden text-ellipsis line-clamp-2"
       >
         {book.title}

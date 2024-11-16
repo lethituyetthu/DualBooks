@@ -58,6 +58,7 @@ exports.getOrderDetail = async (req, res) => {
             paymentStatus: order.payment_status,
             shippingAddress: order.shipping_address,
             totalAmount: order.total_amount,
+            totalQuantity: order.total_quantity,
             customerFeedback: order.customer_feedback,
             orderItems: order.orderItems.map(item => ({
                 id: item._id,
@@ -102,8 +103,8 @@ exports.getAllOrders = async () => {
             const baseOrder = {
                 id: order._id,
                 order_date: order.order_date,
-                order_status: order.order_status,
                 order_type: order.order_type,
+                order_status: order.order_status,
                 payment_status: order.payment_status,
                 shipping_address: order.shipping_address || "Địa chỉ cửa hàng", // Địa chỉ mặc định
                 total_amount: order.total_amount,
@@ -135,6 +136,7 @@ exports.getAllOrders = async () => {
 };
 
 
+//orderController//
 exports.getOrdersByUpdateDate = async (req, res, date) => {
     try {
         // Gọi service để lấy danh sách đơn hàng theo ngày cập nhật
@@ -219,7 +221,6 @@ exports.getOrdersByStatus = async (status) => {
             customer: order.customer_id,
             staff: order.staff_id,
             order_date: order.order_date,
-            order_type: order.order_type,
             order_status: order.order_status,
             payment_status: order.payment_status,
             shipping_address: order.shipping_address,
@@ -249,20 +250,6 @@ exports.deleteOrder = async (req, res) => {
     } catch (error) {
         console.error('Lỗi khi xóa đơn hàng:', error);
         res.status(500).json({ message: 'Internal Server Error' });
-    }
-};
-exports.cancelOrder = async (req, res) => {
-    const { orderId } = req.params;
-
-    try {
-        // Gọi hàm từ service để hủy đơn hàng
-        const updatedOrder = await orderService.cancelOrder(orderId);
-        res.status(200).json({
-            message: 'Order has been cancelled successfully',
-            data: updatedOrder
-        });
-    } catch (error) {
-        res.status(400).json({ error: error.message });
     }
 };
 

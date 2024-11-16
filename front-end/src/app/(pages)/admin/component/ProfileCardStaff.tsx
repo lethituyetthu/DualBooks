@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import useFetchAdmin from "@/app/hook/useFetchAdmin";
-import Link from "next/link";
+import Link from "next/link"
 
 // Định nghĩa kiểu dữ liệu cho các props của ProfileCardStaff
 interface ProfileCardProps {
@@ -25,7 +25,6 @@ const ProfileCardStaff: React.FC<ProfileCardProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false); // Trạng thái hover để hiển thị các nút chỉnh sửa/xóa
   const { deleteAdmin } = useFetchAdmin(); // Hook để xóa admin
-
   // Hàm định dạng ngày tháng
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
@@ -43,6 +42,8 @@ const ProfileCardStaff: React.FC<ProfileCardProps> = ({
       if (response && !response.error) {
         alert("Đã xóa admin thành công."); // Thông báo thành công
         // Có thể thêm logic để làm mới danh sách admin
+        window.location.reload()
+
       } else {
         alert("Lỗi khi xóa admin!"); // Thông báo lỗi
       }
@@ -66,7 +67,7 @@ const ProfileCardStaff: React.FC<ProfileCardProps> = ({
       />
 
       {/* Hiển thị tên admin */}
-      <h2 className="text-xl max-w-44 mx-auto">{name}</h2>
+      <h2 className="text-xl max-w-44 mx-auto text-nowrap">{name}</h2>
 
       {/* Hiển thị vai trò với màu sắc nổi bật */}
       <p

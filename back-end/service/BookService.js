@@ -44,7 +44,8 @@ exports.getByTitle = async function (title) {
       const regexTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
       const books = await bookModel.find({
           title: { $regex: new RegExp(regexTitle, 'i') }
-      });
+      }) .populate('categoryID', 'name') // Populate danh mục
+      .populate('publisherID', 'name');
       return books;
   } catch (error) {
       throw new Error('Error fetching books by title: ' + error.message);

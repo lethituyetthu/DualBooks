@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const bookSchema = new mongoose.Schema({
   id: {
     type: Number,
-    required: true,
     unique: true
   },
   title: {
@@ -18,7 +17,6 @@ const bookSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: true
   },
   description: {
     type: String,

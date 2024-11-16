@@ -14,7 +14,7 @@ exports.registerAdmin = async (req, res) => {
         adminData.user_img = req.file.filename;
 
         const newAdmin = await adminService.registerAdmin(adminData);
-        res.status(201).json({ message: 'Admin registered successfully/ Đăng ký thành công', data: newAdmin });
+        res.status(201).json(  newAdmin);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -35,7 +35,7 @@ exports.loginAdmin = async (req, res) => {
 exports.getAllAdmins = async (req, res) => {
     try {
         const admins = await adminService.getAllAdmins();
-        res.status(200).json(admins);
+        res.status(200).json( admins );
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -47,7 +47,7 @@ exports.getAdminById = async (req, res) => {
         if (!admin) {
             return res.status(404).json({ message: 'Không tìm thấy admin' });
         }
-        res.status(200).json( admin );
+        res.status(200).json( admin     );
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -105,7 +105,7 @@ exports.getAdminsByName = async (req, res) => {
     try {
         const { name } = req.params; // Lấy tên từ URL parameters
         const admins = await adminService.getAdminsByName(name);
-        res.status(200).json(admins );
+        res.status(200).json({ data: admins });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

@@ -15,7 +15,7 @@ interface OderItemProps {
 const OderItem: React.FC<OderItemProps> = ({ order, onClick }) => {
   return (
     <tr>
-      <td className="border p-4 text-blue-500 cursor-pointer"  onClick={onClick}>{order.id}</td>
+      <td className="border p-4 text-blue-500 cursor-pointer"  onClick={onClick}>#...{order.id.slice(-5)}</td>
       <td className="border p-4">
       {new Date(order.order_date).toLocaleDateString("en-GB", {
     day: "2-digit",
