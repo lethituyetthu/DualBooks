@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 interface TypeCate {
+  id?: string;
   name: string;
   cate_image: string;
   description: string;
@@ -72,14 +73,11 @@ export default function useFetchCategory() {
   };
 
   // Function to update a category by ID
-  const updateCategory = async (id: string, updatedData: Partial<TypeCate>) => {
+  const updateCategory = async (id: string, updatedData:FormData) => {
     try {
       const res = await fetch(`http://localhost:3200/categories/${id}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedData),
+        body: updatedData
       });
 
       if (!res.ok) {
@@ -87,10 +85,22 @@ export default function useFetchCategory() {
       }
 
       await fetchData(); // Refetch the categories after successful update
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
     }
   };
 
-  return { cate, addCategory, deleteCategory, updateCategory, error };
+  const fetchCategoryById = async (id:string) =>{
+
+    const res = await fetch(`http://localhost:3200/categories/${id}`, {
+      method: "GET",
+    });
+
+    if (!res.ok) {
+      throw new Error("Lỗi khi lay thể loại!");
+    }
+
+  }
+
+  return { cate, addCategory, deleteCategory, updateCategory, error, fetchCategoryById };
 }
