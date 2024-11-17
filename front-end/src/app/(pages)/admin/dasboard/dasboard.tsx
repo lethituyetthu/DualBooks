@@ -1,39 +1,49 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-import useFetchOrders from "@/app/hook/useFetchOrders";
-import useFetchCustomer from "@/app/hook/useFetchCustomer";
+import useFetchOrders from "@/app/hook/useFetchOrders"; // Hook để lấy dữ liệu đơn hàng
+import useFetchCustomer from "@/app/hook/useFetchCustomer"; // Hook để lấy dữ liệu khách hàng
+import TotalStats from "./component/TotalStats"; // Component hiển thị tổng số liệu (doanh thu, đơn hàng, khách hàng)
+import DailyStats from "./component/DailyStats"; // Component hiển thị số liệu hôm nay (so sánh với hôm qua)
+import RevenueChart from "./component/RevenueChart"; // Component hiển thị biểu đồ doanh thu chi tiết
 
-Chart.register(...registerables);
+Chart.register(...registerables); // Đăng ký các thành phần cần thiết của Chart.js
 
 export default function Dashboard() {
+  // Lấy dữ liệu đơn hàng và khách hàng từ các hooks
   const { orders } = useFetchOrders();
   const { customers } = useFetchCustomer();
 
-  const [filterDate, setFilterDate] = useState("");
+  const [filterDate, setFilterDate] = useState(""); // State để lưu ngày được chọn trong bộ lọc
 
+  // Lấy ngày hôm nay dưới dạng "YYYY-MM-DD"
   const today = new Date().toISOString().split("T")[0];
+  // Tính ngày hôm qua
   const yesterday = useMemo(() => {
     const yesterdayDate = new Date();
     yesterdayDate.setDate(yesterdayDate.getDate() - 1);
     return yesterdayDate.toISOString().split("T")[0];
   }, []);
 
+  // Hàm tính toán thống kê theo ngày
   const calculateStats = (date, orders, customers) => {
+    // Lọc đơn hàng theo ngày
     const ordersOnDate = orders.filter(
       (order) => new Date(order.order_date).toISOString().split("T")[0] === date
     );
+    // Tính tổng doanh thu trong ngày
     const revenueOnDate = ordersOnDate.reduce(
       (sum, order) => sum + order.total_amount,
       0
     );
+    // Lọc khách hàng theo ngày
     const customersOnDate = customers.filter(
       (customer) =>
         new Date(customer.created_at).toISOString().split("T")[0] === date
     );
 
+    // Trả về số liệu thống kê
     return {
       orders: ordersOnDate.length,
       revenue: revenueOnDate,
@@ -41,25 +51,31 @@ export default function Dashboard() {
     };
   };
 
+  // Thống kê cho ngày hôm nay
   const todayStats = useMemo(
     () => calculateStats(today, orders, customers),
     [today, orders, customers]
   );
 
+  // Thống kê cho ngày hôm qua
   const yesterdayStats = useMemo(
     () => calculateStats(yesterday, orders, customers),
     [yesterday, orders, customers]
   );
 
+  // Tổng số đơn hàng
   const totalOrders = orders.length;
+  // Tổng doanh thu
   const totalRevenue = orders.reduce(
     (sum, order) => sum + order.total_amount,
     0
   );
+  // Tổng số khách hàng
   const totalCustomers = customers.length;
 
+  // Doanh thu theo từng ngày trong 30 ngày gần nhất
   const dailyRevenue = useMemo(() => {
-    const revenueByDay = Array(30).fill(0);
+    const revenueByDay = Array(30).fill(0); // Mảng chứa doanh thu cho từng ngày
     orders.forEach((order) => {
       const day = new Date(order.order_date).getDate();
       if (day >= 1 && day <= 30) {
@@ -69,6 +85,7 @@ export default function Dashboard() {
     return revenueByDay;
   }, [orders]);
 
+  // Dữ liệu doanh thu sau khi áp dụng bộ lọc
   const filteredData = useMemo(() => {
     if (!filterDate) return dailyRevenue;
 
@@ -82,145 +99,91 @@ export default function Dashboard() {
     return filteredRevenue;
   }, [filterDate, dailyRevenue]);
 
+  // Cấu hình dữ liệu biểu đồ
   const chartData = {
-    labels: Array.from({ length: 30 }, (_, i) => ` ${i + 1}`),
+    labels: Array.from({ length: 30 }, (_, i) => ` ${i + 1}`), // Nhãn ngày (1 - 30)
     datasets: [
       {
         label: "Doanh Thu (VNĐ)",
-        data: filteredData,
+        data: filteredData, // Dữ liệu doanh thu
         fill: false,
-        borderColor: "#954E25",
-        backgroundColor: "#954E25",
-        tension: 0.4,
-        pointRadius: 5,
-        pointHoverRadius: 8,
+        borderColor: "#954E25", // Màu viền của biểu đồ
+        backgroundColor: "#954E25", // Màu nền của điểm trên biểu đồ
+        tension: 0.4, // Độ cong của đường
+        pointRadius: 5, // Kích thước điểm
+        pointHoverRadius: 8, // Kích thước điểm khi hover
       },
     ],
   };
 
+  // Cấu hình tuỳ chọn biểu đồ
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { display: true },
+      legend: { display: true }, // Hiển thị chú thích
       tooltip: {
         callbacks: {
-          title: (tooltipItems) => ` ${tooltipItems[0].label}`,
+          title: (tooltipItems) => ` ${tooltipItems[0].label}`, // Tiêu đề tooltip
           label: (tooltipItem) =>
-            `Doanh Thu: ${(tooltipItem.raw * 1000).toLocaleString("vi-VN")} đ`,
+            `Doanh Thu: ${(tooltipItem.raw * 1000).toLocaleString("vi-VN")} đ`, // Nội dung tooltip
         },
       },
     },
     scales: {
       x: {
-        grid: { display: false },
-        title: { display: true, text: "Ngày trong tháng (30 ngày gần nhất)" },
+        grid: { display: false }, // Ẩn lưới trục X
+        title: { display: true, text: "Ngày trong tháng (30 ngày gần nhất)" }, // Tiêu đề trục X
       },
       y: {
         ticks: {
-          callback: (value) => `${(value * 1000).toLocaleString("vi-VN")} `,
+          callback: (value) => `${(value * 1000).toLocaleString("vi-VN")} `, // Định dạng tick trục Y
         },
-        title: { display: true, text: "Doanh Thu (VNĐ)" },
+        title: { display: true, text: "Doanh Thu (VNĐ)" }, // Tiêu đề trục Y
       },
     },
   };
 
+  // Dữ liệu thống kê hôm nay (hiển thị với icon và trend so với hôm qua)
   const statsData = [
     {
       label: "Doanh Thu Hôm Nay",
-      value: `${todayStats.revenue.toLocaleString("vi-VN")} VNĐ`,
-      trend: `Hôm qua: ${yesterdayStats.revenue.toLocaleString("vi-VN")} VNĐ`,
-      icon: "💰", // Icon for revenue
+      value: `${(todayStats.revenue * 1000).toLocaleString("vi-VN")} VNĐ`,
+      trend: `Hôm qua: ${(yesterdayStats.revenue * 1000).toLocaleString("vi-VN")} VNĐ`,
+      icon: "💰",
     },
     {
       label: "Đơn Hàng Hôm Nay",
       value: `${todayStats.orders} đơn`,
       trend: `Hôm qua: ${yesterdayStats.orders} đơn`,
-      icon: "📦", // Icon for orders
+      icon: "📦",
     },
     {
       label: "Khách Hàng Hôm Nay",
       value: `${todayStats.customers} khách`,
       trend: `Hôm qua: ${yesterdayStats.customers} khách`,
-      icon: "👥", // Icon for customers
+      icon: "👥",
     },
   ];
 
   return (
     <div className="p-6 min-h-screen">
-      {/* Tổng quan tổng số liệu */}
-      <div className="grid grid-cols-3 gap-4 mb-8  p-6 rounded-lg bg-white shadow-md">
-        <div>
-          <h3 className="text-2xl font-semibold text-primary-300 font-itim">
-            Tổng Doanh Thu
-          </h3>
-          <p className="text-xl font-bold text-primary-600">
-            {totalRevenue.toLocaleString("vi-VN")} VNĐ
-          </p>
-        </div>
-        <div>
-          <h3 className="text-2xl font-semibold text-primary-300 font-itim">
-            Tổng Đơn Hàng
-          </h3>
-          <p className="text-xl font-bold text-primary-600">
-            {totalOrders} đơn
-          </p>
-        </div>
-        <div>
-          <h3 className="text-2xl font-semibold text-primary-300 font-itim">
-            Tổng Khách Hàng
-          </h3>
-          <p className="text-xl font-bold text-primary-600">
-            {totalCustomers} khách
-          </p>
-        </div>
-      </div>
+      {/* Hiển thị tổng số liệu */}
+      <TotalStats
+        totalRevenue={totalRevenue}
+        totalOrders={totalOrders}
+        totalCustomers={totalCustomers}
+      />
 
-      {/* Thống kê theo ngày */}
-      <div className="grid grid-cols-3 gap-4 mb-8">
-        {statsData.map((stat, i) => (
-          <div
-            key={i}
-            className="bg-white shadow-md rounded-lg p-6 flex items-center justify-between "
-          >
-            <div className="flex flex-col justify-between">
-              <div className="flex items-center">
-                <h3 className="text-lg text-gray-500 font-semibold">
-                  {stat.label}
-                </h3>
-              </div>
-              <div className="mt-4">
-                <p className="text-2xl font-bold text-gray-800">{stat.value}</p>
-                <p className="text-sm text-primary-600">{stat.trend}</p>
-              </div>
-            </div>
-            <span className="text-7xl mr-3 ">{stat.icon}</span>{" "}
-            {/* Render icon */}
-          </div>
-        ))}
-      </div>
+      {/* Hiển thị số liệu hôm nay */}
+      <DailyStats statsData={statsData} />
 
-      {/* Biểu đồ doanh thu */}
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-primary-600 font-itim">
-            Doanh Thu Chi Tiết
-          </h2>
-          <div className="mb-6 bg-white rounded-sm flex items-center space-x-3">
-            <label className="block text-gray-700 font-medium">
-              Lọc theo ngày
-            </label>
-            <input
-              type="date"
-              className="px-3 py-2 border rounded focus:outline-none"
-              onChange={(e) => setFilterDate(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="relative h-72">
-          <Line data={chartData} options={chartOptions} />
-        </div>
-      </div>
+      {/* Hiển thị biểu đồ doanh thu */}
+      <RevenueChart
+        chartData={chartData}
+        chartOptions={chartOptions}
+        setFilterDate={setFilterDate}
+      />
     </div>
   );
 }
