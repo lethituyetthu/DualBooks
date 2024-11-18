@@ -50,8 +50,7 @@ const CheckoutPaymentPage = () => {
       (total, item) => total + item.price * item.quantity ,
       0
     );
-  };
-
+};
   const calculateTotalQuantity = (): number => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
@@ -103,7 +102,7 @@ const CheckoutPaymentPage = () => {
       status: "Chờ xác nhận",
     };
 
-    console.log("Đơn hàng được gửi:", order);
+    console.log("Đơn hàng được gửi:", (calculateTotal()+shippingFee));
 
     try {
       const response = await addOrder(order);
@@ -235,7 +234,7 @@ const CheckoutPaymentPage = () => {
           <div className="flex justify-between mt-4 text-gray-800">
             <strong>Tổng cộng:</strong>
             <strong>
-              {((calculateTotal() + shippingFee)*1000).toLocaleString("vi-VN")} đ
+            {((calculateTotal() + shippingFee) * 1000).toLocaleString("vi-VN")} đ
             </strong>
           </div>
 

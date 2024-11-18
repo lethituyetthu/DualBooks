@@ -33,7 +33,7 @@ const OderItem: React.FC<OderItemProps> = ({ order, onClick }) => {
     "N/A"
   )}</td>
       <td className="border p-4 text-nowrap">
-        {(order.total_amount * 1000).toLocaleString("vi-VN") + "đ"}
+        {(order.total_amount*1000).toLocaleString("vi-VN") + "đ"}
       </td>
       <td className="border p-4 text-nowrap">
         <span className="flex items-center space-x-2">
