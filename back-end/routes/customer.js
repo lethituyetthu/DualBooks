@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
 
   try {
       const newCustomer = await customerController.registerCustomer(customerData);
-      res.status(201).json(newCustomer );
+      res.status(201).json({ message: 'Customer registered successfully', data: newCustomer });
   } catch (error) {
       res.status(500).json({ error: error.message });
   }

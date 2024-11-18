@@ -89,6 +89,7 @@ export default function useFetchCustomer() {
       } else {
         const data = await response.json();
         return data; // Return customer data
+        
       }
     } catch (error) {
       console.error("Đã xảy ra lỗi:", error);

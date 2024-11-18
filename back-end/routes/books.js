@@ -10,7 +10,7 @@ const authenticateAdmin = require('../middlewares/auth');
 const authenticateCustomer = require('../middlewares/authCustomer'); // Import middleware xác thực khách hàng
 
 // Routers for API
-// Get books listing
+// Lấy tất cả danh sách 
 // http://localhost:3000/books
 router.get('/', async function(req, res, next) {
     console.log('GET /books endpoint hit');
@@ -104,7 +104,6 @@ router.get('/title/:title', async function(req, res, next) {
             console.log(`No Books found for title ${title}`);
             res.status(404).json({ error: `No Books found for title ${title}` }); // Trả về lỗi 404
         }
-        
     } catch (error) {
         // Log và trả về lỗi 500 nếu xảy ra lỗi trong quá trình lấy sách
         console.error(`Error fetching Books for title ${title}:`, error.message);
@@ -193,7 +192,7 @@ router.patch('/:id/views', async function(req, res, next) {
   });
 // Endpoint tạo sách mới với hình ảnh
 // POST /api/books
-router.post('/', uploadBooks.single('cover_image'), async (req, res, next) => {
+router.post('/', authenticateAdmin, uploadBooks.single('cover_image'), async (req, res, next) => {
     console.log('POST /books endpoint hit');
     try {
         // Lấy dữ liệu sách từ body của request

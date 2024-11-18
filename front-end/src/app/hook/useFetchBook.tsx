@@ -6,7 +6,7 @@ interface Error {
   _id?: string;
   title?: string;
   author?: string;
-  category?: string;
+  categoryID?: string;
   description?: string;
   price?: number;
   stock?: number;

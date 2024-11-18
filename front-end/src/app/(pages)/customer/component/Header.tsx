@@ -4,6 +4,7 @@ import Image from "next/image";
 import logo from "@/app/publics/img/logo/01.png";
 import Link from "next/link";
 import NameToken from "./NameToken";
+
 export default function Header() {
   const [customer, setCustomer] = useState<any>(null);
 
@@ -64,8 +65,8 @@ export default function Header() {
   const list3: any = [
     { title: "trang chủ", link: "/customer" },
     { title: "sản phẩm", link: "/customer/products" },
-    { title: "giới thiệu", link: "/customer/Gioithieu" },
-    { title: "liên hệ", link: "/customer/Lienhe" },
+    { title: "giới thiệu", link: "/customer/gioithieu" },
+    { title: "liên hệ", link: "/customer/ lienhe" },
   ];
 
   // icon giỏ hàng & yêu thích
@@ -88,6 +89,7 @@ export default function Header() {
           />
         </svg>
       ),
+      link: "/customer/cart",
     },
     {
       id: 2,
@@ -107,6 +109,7 @@ export default function Header() {
           />
         </svg>
       ),
+      link: "/customer/white",
     },
   ];
 
@@ -211,14 +214,13 @@ export default function Header() {
           </ul>
           <ul className="flex w-[30%] justify-end">
             {listIcon.map((e) => {
-              return (
-                <li
-                  key={e.id}
-                  className="rounded-full border border-solid border-dark-800 p-2 m-3"
-                >
-                  <a href="#">{e.icon}</a>
-                </li>
-              );
+             return (
+              <li key={e.id} className="rounded-full border border-solid border-dark-800 p-2 m-3">
+                <Link href={e.link}>
+                  {e.icon}
+                </Link>
+              </li>
+            );
             })}
           </ul>
         </nav>

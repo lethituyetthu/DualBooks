@@ -1,38 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function BookCard({ book }:{ book: any }) {
+interface Book {
+  title: string;
+  author: string;
+  price: number;
+  cover_image: string;
+}
+
+interface BookCardProps {
+  book: Book;
+  updateCartCount: () => void; // Hàm để cập nhật số lượng giỏ hàng
+}
+
+const BookCard: React.FC<BookCardProps> = ({ book, updateCartCount }) => {
+  const [notification, setNotification] = useState<string | null>(null);
+
+  const handleAddToCart = () => {
+    const product = {
+      title: book.title,
+      author: book.author,
+      price: book.price,
+      cover_image: book.cover_image,
+    };
+
+    const existingCart = localStorage.getItem("cart");
+    const cart: Array<{
+      title: string;
+      author: string;
+      price: number;
+      cover_image: string;
+      quantity: number;
+    }> = existingCart ? JSON.parse(existingCart) : [];
+
+    const existingProductIndex = cart.findIndex(
+      (item) => item.title === product.title
+    );
+
+    if (existingProductIndex !== -1) {
+      setNotification("Sản phẩm đã có trong giỏ hàng!");
+    } else {
+      cart.push({ ...product, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      setNotification("Sản phẩm đã thêm vào giỏ hàng!");
+      updateCartCount(); // Cập nhật số lượng giỏ hàng khi thêm sản phẩm
+    }
+
+    setTimeout(() => {
+      setNotification(null);
+    }, 3000);
+  };
+
   return (
     <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all duration-300 ease-in-out">
-      <Image
-        src={`http://localhost:3200/uploads/books/${book.cover_image}`}
-        alt={book.title}
-        width={150}
-        height={150}
-        className="mb-4 w-full h-40 object-cover rounded-md object-top"
-      />
+      {/* Image Section */}
+      <div className="w-full h-40">
+       <Image
+  src={`http://localhost:3200/uploads/books/${book.cover_image}`}
+  alt={book.title}
+  width={150} // cho BookCard
+  height={150} // cho BookCard
+/>
+
+      </div>
       <Link
-        href={`/customer/product/${book.id}`}
+        href={`/books/${book.title}`}
         className="text-sm font-semibold text-center h-10 font-inter overflow-hidden text-ellipsis line-clamp-2"
       >
         {book.title}
       </Link>
-      <p className="text-sm text-gray-600 my-5   text-center">
-        {book.author}
-      </p>
+      <p className="text-sm text-gray-600 my-5 text-center">{book.author}</p>
       <div className="flex items-center justify-between space-x-2 bg-light-300 rounded-lg m-auto w-[90%]">
         <span className="text-brown-700 font-bold text-lg mx-4 text-primary-700">
-          {(book.price * 1000).toLocaleString("vi-VN") + "đ"}
+          {(book.price * 1000).toLocaleString("vi-VN") + " đ"}
         </span>
-        <button className="bg-primary-400 text-white p-2 rounded-lg hover:bg-primary-300 transition-all duration-300">
+        <button
+          onClick={handleAddToCart}
+          className="bg-primary-400 text-white p-2 rounded-lg hover:bg-primary-300 transition-all duration-300"
+          aria-label={`Add ${book.title} to cart`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-6"
+            className="w-6 h-6" // Adjust size as necessary
           >
             <path
               strokeLinecap="round"
@@ -42,6 +96,15 @@ export default function BookCard({ book }:{ book: any }) {
           </svg>
         </button>
       </div>
+
+      {/* Notification for added product */}
+      {notification && (
+        <div className="mt-2 p-2 bg-green-100 text-green-700 rounded-md text-center">
+          {notification}
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default BookCard;
