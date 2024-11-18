@@ -84,7 +84,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
   }, []);
 
   // Hàm lấy chi tiết đơn hàng từ API theo orderId
-  const fetchOrderDetail = useCallback(async (orderId: string) => {
+  const fetchOrderDetail = useCallback(async (orderId: string): Promise<void> => {
     setLoading(true);
     setError(null);
     try {
@@ -94,13 +94,13 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       }
       const result: typeOrderDetail = await response.json();
       setOrderDetail(result); // Đặt chi tiết đơn hàng vào state
-      return result
     } catch (err) {
       setError((err as Error).message);
     } finally {
       setLoading(false);
     }
   }, []);
+  
 
    // Hàm cập nhật thông tin đơn hàng
    const updateOrder = useCallback(async (orderId: string, updatedData: Partial<typeOrderDetail>) => {

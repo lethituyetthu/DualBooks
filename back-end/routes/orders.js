@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
         });
 
         // Trả về phản hồi thành công
-        res.status(201).json( newOrder );
+        res.status(201).json({ message: 'Order created successfully', data: newOrder });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
     try {
         const orders = await orderController.getAllOrders();
         res.status(200).json(
-           orders
+             orders
         );
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -66,8 +66,10 @@ router.get('/filter-by-status/:status', async (req, res) => {
        // Lấy đơn hàng theo trạng thái
        const orders = await orderController.getOrdersByStatus(status);
 
-       res.status(200).json(
-            orders);
+       res.status(200).json({
+           message: `Retrieved orders with status ${status}`,
+            orders
+       });
    } catch (error) {
        // Trả về lỗi nếu có
        res.status(500).json({ error: error.message });
@@ -83,5 +85,7 @@ router.delete('/:orderId', orderController.deleteOrder);
 
 // Định nghĩa route để lấy chi tiết đơn hàng
 router.get('/:orderId', orderController.getOrderDetail);
+// Route để hủy đơn hàng
+router.put('/cancel/:orderId', orderController.cancelOrder);
 
 module.exports = router;

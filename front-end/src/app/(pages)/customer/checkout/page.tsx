@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import axios from 'axios';
 
 type CartItem = {
   id: string;
@@ -20,7 +19,17 @@ const CheckoutPaymentPage = () => {
   const [shippingAddress, setShippingAddress] = useState<string>("");
   const [isAddressVerified, setIsAddressVerified] = useState<boolean>(false);
   const [isPaymentSuccess, setIsPaymentSuccess] = useState<boolean>(false);
+  const [customer, setCustomer] = useState<any>(null);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const customerToken = JSON.parse(
+        localStorage.getItem("customer") || "{}"
+      );
+      setCustomer(customerToken);
+    }
+  }, []);
   // Load cart items from localStorage
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
@@ -34,6 +43,8 @@ const CheckoutPaymentPage = () => {
     setSelectedPayment(method);
   };
 
+
+  // "Error creating order: Error creating order: E11000 duplicate key error collection: DATN.orders index: id_1 dup key: { id: null }"
   // Function to handle payment confirmation
   const handlePaymentConfirmation = async () => {
     if (!shippingAddress.trim()) {
@@ -53,19 +64,33 @@ const CheckoutPaymentPage = () => {
 
     // Create order object
     const order = {
+      customer_id: customer.id,
       items: cartItems,
-      totalAmount: cartItems.reduce((total, item) => total + item.price * item.quantity, 0),
+      total_amount: cartItems.reduce((total, item) => total + item.price * item.quantity, 0),
       paymentMethod: selectedPayment,
       shippingAddress,
+      order_type:"online",
       status: "Đã thanh toán", // Adjust this status as needed
     };
 
     console.log("Đơn hàng sẽ được gửi đến API:", order);
 
     try {
-      // Send order to API
-      const response = await axios.post("http://localhost:3200/orders", order);
-      console.log("Đơn hàng đã được lưu:", response.data);
+      // Send order to API using fetch
+      const response = await fetch("http://localhost:3200/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      });
+
+      if (!response.ok) {
+        throw new Error("Có lỗi xảy ra khi gửi đơn hàng.");
+      }
+
+      const responseData = await response.json();
+      console.log("Đơn hàng đã được lưu:", responseData);
 
       // Save order in localStorage
       localStorage.setItem("order", JSON.stringify(order));
@@ -80,11 +105,7 @@ const CheckoutPaymentPage = () => {
       // Redirect to order success page (optional)
       // router.push('/order-success'); // Uncomment this line if you have an order success page
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        console.error("Lỗi khi gửi đơn hàng:", error.response.data);
-      } else {
-        console.error("Lỗi không phải từ Axios:", error);
-      }
+      console.error("Lỗi khi thanh toán:", error);
       alert("Có lỗi xảy ra khi thanh toán. Vui lòng thử lại.");
     }
   };
@@ -93,6 +114,7 @@ const CheckoutPaymentPage = () => {
   const handleBackToCart = () => {
     router.push("/customer/cart");
   };
+  
 
   // Function to verify the address
   const verifyAddress = () => {
@@ -239,28 +261,25 @@ const CheckoutPaymentPage = () => {
             className="w-full border p-2 mb-4"
           />
 
-          {/* Total Price */}
-          <h4 className="font-bold text-lg mb-2">
-            Tổng tiền: {(cartItems.reduce((total, item) => total + item.price * item.quantity, 0)).toLocaleString("vi-VN")} đ
-          </h4>
+          <div className="flex justify-between items-center">
+            <span>Tổng cộng:</span>
+            <span>
+              {cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toLocaleString("vi-VN")} đ
+            </span>
+          </div>
 
           {/* Place Order Button */}
           <button
-            className="w-full bg-primary text-white p-2 rounded"
             onClick={handlePaymentConfirmation}
+            className="w-full py-3 bg-primary text-white rounded mt-4"
           >
             Đặt hàng
           </button>
-        </div>
-      </div>
+          <div>
+          <button onClick={handleBackToCart}>Quay lại giỏ hàng</button>
+          </div>
 
-      <div className="flex justify-center">
-        <button
-          className="text-gray-500"
-          onClick={handleBackToCart}
-        >
-          Quay lại giỏ hàng
-        </button>
+        </div>
       </div>
     </div>
   );

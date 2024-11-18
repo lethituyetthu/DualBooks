@@ -27,3 +27,6 @@ const authenticateCustomer = (req, res, next) => {
 };
 
 module.exports = authenticateCustomer;
+
+
+
