@@ -3,12 +3,12 @@ import React from 'react';
 const Sidebar = () => {
   // Định nghĩa mảng menu
   const menu = [
-    { icon: <i className="fas fa-chart-bar text-xl mr-4"></i>, title: "Thống kê", link: "/admin/thong-ke" },
-    { icon: <i className="fas fa-list text-xl mr-4"></i>, title: "Danh Mục", link: "/admin/danh-muc" },
+    { icon: <i className="fas fa-chart-bar text-xl mr-4"></i>, title: "Thống kê", link: "/admin" },
+    { icon: <i className="fas fa-list text-xl mr-4"></i>, title: "Danh Mục", link: "/admin/category" },
     { icon: <i className="fas fa-book text-xl mr-4"></i>, title: "Sản phẩm", link: "/admin/products" },
     { icon: <i className="fas fa-user text-xl mr-4"></i>, title: "Nhân viên", link: "/admin/staffs" },
     { icon: <i className="fas fa-users text-xl mr-4"></i>, title: "Khách hàng", link: "/admin/customer" },
-    { icon: <i className="fas fa-building text-xl mr-4"></i>, title: "Nhà xuất bản", link: "/admin/nha-xuat-ban" },
+   // { icon: <i className="fas fa-building text-xl mr-4"></i>, title: "Nhà xuất bản", link: "/admin/nha-xuat-ban" },
     { icon: <i className="fas fa-boxes text-xl mr-4"></i>, title: "Đơn hàng", link: "/admin/order" }, // Thêm mục "Đơn hàng"
   ];
 

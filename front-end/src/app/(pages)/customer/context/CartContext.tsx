@@ -1,13 +1,12 @@
-import { createContext, useState, ReactNode, useContext } from "react";
-import { typeBook } from "@/app/hook/useFetchBook"; // Đảm bảo đúng đường dẫn
-
-interface CartItem extends typeBook {
+/* import { createContext, useState, ReactNode, useContext } from "react";
+import { Books } from "@/app/types/Books";
+interface CartItem extends Books {
   quantity: number;
 }
 
 interface CartContextProps {
   cart: CartItem[];
-  addToCart: (product: typeBook, quantity: number) => void;
+  addToCart: (product: Books, quantity: number) => void;
   removeFromCart: (id: string) => void;
   clearCart: () => void;
 }
@@ -17,7 +16,7 @@ const CartContext = createContext<CartContextProps | undefined>(undefined);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  const addToCart = (product: typeBook, quantity: number) => {
+  const addToCart = (product: Books, quantity: number) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
       if (existingItem) {
@@ -53,3 +52,4 @@ export const useCart = () => {
   }
   return context;
 };
+ */

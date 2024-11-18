@@ -80,7 +80,7 @@ const EditStaff = ({ params }: { params: { id: string } }) => {
 
     const response = await updateAdmin(id, formDataToSend);
     if (response && response.error) {
-      alert("Error updating admin!");
+      alert(" Lỗi khi cập nhật thông tin nhân viên");
     } else {
       alert("cập nhật thông tin nhân viên hoàn tất");
       router.push("/admin/staffs");

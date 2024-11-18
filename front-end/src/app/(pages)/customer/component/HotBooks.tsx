@@ -42,9 +42,7 @@ export default function HotBooks() {
           <BookCard key={index} book={book} updateCartCount={updateCartCount} />
         ))}
       </div>
-      <div className="text-center mt-4">
-        <span className="font-bold text-lg">Số lượng trong giỏ: {cartCount}</span>
-      </div>
+  
     </div>
   );
 }

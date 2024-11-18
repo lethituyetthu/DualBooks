@@ -36,13 +36,13 @@ export interface typeOrderDetail {
 // Định nghĩa kiểu dữ liệu cho đơn hàng tổng quát (không bao gồm chi tiết sản phẩm)
 export interface typeOrder {
   id: string;
-  orderType: string;
-  orderDate: string;
-  orderStatus: string;
-  paymentStatus: string;
-  shippingAddress: string;
-  totalAmount: number;
-  totalQuantity: number;
+  order_type: string;
+  order_date: string;
+  order_status: string;
+  payment_status: string;
+  shipping_address: string;
+  total_amount: number;
+  total_quantity: number;
 
 }
 

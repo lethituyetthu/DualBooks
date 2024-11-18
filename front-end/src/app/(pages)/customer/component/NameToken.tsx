@@ -25,6 +25,8 @@ export default function NameToken({ customer }: NameTokenProps) {
 
   const handleLogout = () => {
     logout();
+    localStorage.removeItem("cart"); 
+    localStorage.removeItem("token");
     window.location.href = "/customer";
   };
 

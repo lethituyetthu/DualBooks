@@ -6,9 +6,8 @@ import useFetchBook from "@/app/hook/useFetchBook";
 import InputField from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 
-
 const AddProduct = () => {
-  const route = useRouter()
+  const route = useRouter();
   const { cate } = useFetchCategory();
   const { addBooks, errors } = useFetchBook();
   const [formData, setFormData] = useState({
@@ -38,28 +37,35 @@ const AddProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, author, categoryID, price, stock, cover_image, description } = formData;
-  
+    const {
+      title,
+      author,
+      categoryID,
+      price,
+      stock,
+      cover_image,
+      description,
+    } = formData;
+
     if (!title || !author || !categoryID || !price || !stock || !description) {
       console.error("Tất cả các trường đều bắt buộc");
       return;
     }
-  
+
     const formDataToSend = new FormData();
-    formDataToSend.append('title', title);
-    formDataToSend.append('author', author);
-    formDataToSend.append('categoryID', categoryID);
-    formDataToSend.append('price', price);
-    formDataToSend.append('stock', stock);
-    formDataToSend.append('description', description);
-    
-    if(cover_image){
-      
-      formDataToSend.append('cover_image', cover_image);  
+    formDataToSend.append("title", title);
+    formDataToSend.append("author", author);
+    formDataToSend.append("categoryID", categoryID);
+    formDataToSend.append("price", price);
+    formDataToSend.append("stock", stock);
+    formDataToSend.append("description", description);
+
+    if (cover_image) {
+      formDataToSend.append("cover_image", cover_image);
     }
-    
+
     const response = await addBooks(formDataToSend);
-  
+
     if (response && response.error) {
       // Xử lý lỗi nếu có
     } else {
@@ -73,13 +79,10 @@ const AddProduct = () => {
         description: "",
       });
 
-      alert("thêm sản phẩm thành công ")
-      route.push("/admin/products")
-
+      alert("thêm sản phẩm thành công ");
+      route.push("/admin/products");
     }
   };
-  
-  
 
   return (
     <div className="p-6">

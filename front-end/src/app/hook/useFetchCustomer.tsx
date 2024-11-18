@@ -157,6 +157,8 @@ export default function useFetchCustomer() {
           id: data.customer._id,
           email: data.customer.email,
           name: data.customer.name,
+          address:data.customer.address,
+          phone:data.customer.phone
         };
         localStorage.setItem("customer", JSON.stringify(customerInfo));
 

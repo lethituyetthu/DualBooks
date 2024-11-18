@@ -7,7 +7,20 @@ import NameToken from "./NameToken";
 
 export default function Header() {
   const [customer, setCustomer] = useState<any>(null);
+  const [cartCount, setCartCount] = useState<number>(0); // State for cart count
 
+  // Hàm cập nhật số lượng sản phẩm trong giỏ hàng
+  const updateCartCount = () => {
+    const existingCart = localStorage.getItem("cart");
+    const cart = existingCart ? JSON.parse(existingCart) : [];
+    const totalCount = cart.reduce(
+      (sum: number, item: { quantity: number }) => sum + item.quantity,
+      0
+    );
+    setCartCount(totalCount);
+  };
+
+  // Load thông tin customer và số lượng sản phẩm trong giỏ hàng khi component mount
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -16,9 +29,28 @@ export default function Header() {
       );
       setCustomer(customerToken);
     }
+
+    updateCartCount(); // Cập nhật số lượng sản phẩm trong giỏ hàng
   }, []);
 
-  // số đt và email
+  // Cập nhật số lượng sản phẩm trong giỏ hàng khi localStorage thay đổi
+  useEffect(() => {
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === "cart") {
+        updateCartCount();
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+  useEffect(() => {
+    console.log("Số lượng sản phẩm trong giỏ hàng:", cartCount);
+  }, [cartCount]);
+  // Số điện thoại và email
   const list: any = [
     {
       icon: (
@@ -60,57 +92,12 @@ export default function Header() {
     },
   ];
 
- 
-  // menu
+  // Menu
   const list3: any = [
     { title: "trang chủ", link: "/customer" },
     { title: "sản phẩm", link: "/customer/products" },
     { title: "giới thiệu", link: "/customer/gioithieu" },
-    { title: "liên hệ", link: "/customer/ lienhe" },
-  ];
-
-  // icon giỏ hàng & yêu thích
-  const listIcon: any = [
-    {
-      id: 1,
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="size-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-          />
-        </svg>
-      ),
-      link: "/customer/cart",
-    },
-    {
-      id: 2,
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="size-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-          />
-        </svg>
-      ),
-      link: "/customer/white",
-    },
+    { title: "liên hệ", link: "/customer/lienhe" },
   ];
 
   return (
@@ -126,8 +113,7 @@ export default function Header() {
       </div>
 
       <div className="menu w-full ">
-        {/* header thông tin liên hệ */}
-
+        {/* Header thông tin liên hệ */}
         <div className="flex justify-evenly text-light-100 items-center h-[50px] bg-primary-400 w-full pr-[5rem] ">
           <ul className="flex w-[60%]">
             {list.map((e) => {
@@ -141,6 +127,7 @@ export default function Header() {
               );
             })}
           </ul>
+        
           <ul className="flex w-[30%] justify-between pr-4">
             <li>
               <Link
@@ -166,9 +153,7 @@ export default function Header() {
             </li>
 
             {customer ? (
-             
-                <NameToken customer = {customer} />
-            
+              <NameToken customer={customer} />
             ) : (
               <li>
                 <Link
@@ -195,8 +180,7 @@ export default function Header() {
             )}
           </ul>
         </div>
-
-        {/* header menu & giỏ hàng */}
+        {/* Header menu & giỏ hàng */}
         <nav className="flex h-[80px] bg-white items-center w-full justify-evenly pr-[5rem]">
           <ul className="flex w-[60%] justify-start">
             {list3.map((e) => {
@@ -213,15 +197,31 @@ export default function Header() {
             })}
           </ul>
           <ul className="flex w-[30%] justify-end">
-            {listIcon.map((e) => {
-             return (
-              <li key={e.id} className="rounded-full border border-solid border-dark-800 p-2 m-3">
-                <Link href={e.link}>
-                  {e.icon}
-                </Link>
-              </li>
-            );
-            })}
+            {/* Icon giỏ hàng */}
+            <li className="rounded-full border border-solid border-dark-800 p-2 m-3 relative">
+              <Link href="/customer/cart">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                  />
+                </svg>
+              </Link>
+              {/* Hiển thị số lượng sản phẩm */}
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </li>
           </ul>
         </nav>
       </div>

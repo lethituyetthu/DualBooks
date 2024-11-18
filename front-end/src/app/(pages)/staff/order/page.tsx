@@ -46,6 +46,7 @@ const OrderManagement = () => {
     }
   };
 
+  console.log(orders)
   const headers = [
     "Mã Đơn Hàng",
     "Ngày Đặt Hàng",
@@ -56,7 +57,7 @@ const OrderManagement = () => {
   ];
 
   const filterOrders = () => {
-    return orders.filter((order) => {
+    return orders?    .filter((order) => {
       const matchesFilterType = filterType === "all" || order.order_type === filterType;
       const matchesSearchId = !searchId || order.id.includes(searchId);
       
@@ -75,7 +76,7 @@ const OrderManagement = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="flex">
+    <div className="flex min-h-screen">
       <SidebarOrder
         searchId={searchId}
         setSearchId={setSearchId}
@@ -111,21 +112,21 @@ const OrderManagement = () => {
         </div>
 
         {/* Hiển thị thông báo nếu không có đơn hàng nào khớp */}
-      {filteredOrders.length === 0 ? (
+      {filteredOrders?.length === 0 ? (
         <p>Không có đơn hàng trùng với các điều kiện lọc</p>
       ) : (
         <table className="w-full border-collapse border bg-white">
           <thead>
             <tr>
               {headers.map((header, index) => (
-                <th key={index} className="border p-4">
+                <th key={index} className="border p-4 text-nowrap">
                   {header}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {filteredOrders.map((order) => (
+            {filteredOrders?.map((order) => (
               <OderItem order={order} key={order.id} onClick={() => handleSearchById(order.id)} />
             ))}
           </tbody>

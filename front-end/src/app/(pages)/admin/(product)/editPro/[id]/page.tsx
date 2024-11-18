@@ -8,14 +8,14 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const EditProduct = ({ params }: { params: { id: string } }) => {
-  const route = useRouter()
+  const route = useRouter();
   const { cate } = useFetchCategory();
   const { id } = params; // Lấy giá trị 'id' từ params
   const { fetchDetail, detailBook, updateBook } = useFetchBook();
   const [formData, setFormData] = useState({
     title: "",
     author: "",
-    categoryID: "",
+    category: "",
     price: "",
     stock: "",
     description: "",
@@ -34,7 +34,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
       setFormData({
         title: detailBook.title,
         author: detailBook.author,
-        categoryID: detailBook.categoryID,
+        category: detailBook.category.name,
         price: detailBook.price.toString(),
         stock: detailBook.stock.toString(),
         description: detailBook.description,
@@ -44,8 +44,10 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
     }
   }, [detailBook]);
 
+  console.log(detailBook?.category.name);
+
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -69,42 +71,32 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
     e.preventDefault();
     console.log(formData);
 
-    const {
-      title,
-      author,
-      categoryID,
-      price,
-      stock,
-      cover_image,
-      description,
-    } = formData;
+    const { title, author, category, price, stock, cover_image, description } =
+      formData;
 
-    if (!title || !author || !categoryID || !price || !stock || !description) {
+    if (!title || !author || !category || !price || !stock || !description) {
       console.error("Tất cả các trường đều bắt buộc");
       return;
     }
 
     const formDataToSend = new FormData();
-    formDataToSend.append('title', title);
-    formDataToSend.append('author', author);
-    formDataToSend.append('categoryID', categoryID);
-    formDataToSend.append('price', price);
-    formDataToSend.append('stock', stock);
-    formDataToSend.append('description', description);
-    if(cover_image){
-      
-      formDataToSend.append('cover_image', cover_image);  
+    formDataToSend.append("title", title);
+    formDataToSend.append("author", author);
+    formDataToSend.append("category", category);
+    formDataToSend.append("price", price);
+    formDataToSend.append("stock", stock);
+    formDataToSend.append("description", description);
+    if (cover_image) {
+      formDataToSend.append("cover_image", cover_image);
     }
-const response = await updateBook(id,formDataToSend);
+    const response = await updateBook(id, formDataToSend);
     if (response && response.error) {
-      alert("lỗi khi chỉnh sửa sản phẩm !!!")
+      alert("lỗi khi chỉnh sửa sản phẩm !!!");
     } else {
-      alert("cập nhật sản phẩm thành công")
-      route.push("/admin/products")
+      alert("cập nhật sản phẩm thành công");
+      route.push("/admin/products");
     }
   };
-  
-  
 
   if (!detailBook) return <div>Loading...</div>;
 
@@ -133,15 +125,15 @@ const response = await updateBook(id,formDataToSend);
         <div className="mb-4">
           <label className="block text-sm font-medium">Danh mục</label>
           <select
-            name="categoryID"
-            value={formData.categoryID}
+            name="category"
+            value={formData.category}
             onChange={handleInputChange}
             className="mt-1 block w-full border px-3 py-2 rounded"
             required
           >
             <option value="">Chọn danh mục</option>
             {cate.map((category) => (
-              <option key={category.id} value={category.id}>
+              <option key={category.id} value={category.name}>
                 {category.name}
               </option>
             ))}
@@ -165,15 +157,21 @@ const response = await updateBook(id,formDataToSend);
           onChange={handleInputChange}
           isRequired={true}
         />
-        <InputField
-          label="Mô tả"
-          type="teẫ"
-          name="description"
-          placeholder="Nhập mô tả sản phẩm"
-          value={formData.description}
-          onChange={handleInputChange}
-          isRequired={true}
-        />
+        <div className="mb-4">
+          <label htmlFor="description" className="block text-sm font-medium">
+            Mô tả
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Nhập mô tả sản phẩm"
+            value={formData.description}
+            onChange={handleInputChange}
+            rows={4} 
+            className="mt-1 block w-full border px-3 py-2 rounded"
+            required
+          />
+        </div>
         <div className="mb-4">
           <label className="block text-sm font-medium">Hình ảnh bìa</label>
           <input
@@ -191,7 +189,7 @@ const response = await updateBook(id,formDataToSend);
                 alt="Preview"
                 className=" object-cover"
               />
-</div>
+            </div>
           )}
         </div>
 
