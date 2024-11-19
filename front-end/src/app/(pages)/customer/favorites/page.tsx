@@ -11,12 +11,12 @@ interface Product {
   author: string;
 }
 
-const Wishlist = () => {
+const Favorites = () => {
   const [wishlist, setWishlist] = useState<Product[]>([]);
   const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
-    const storedWishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    const storedWishlist = JSON.parse(localStorage.getItem("favorites") || "[]");
     setWishlist(storedWishlist);
   }, []);
 
@@ -124,4 +124,4 @@ const Wishlist = () => {
   );
 };
 
-export default Wishlist;
+export default Favorites;

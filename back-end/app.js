@@ -40,7 +40,7 @@ app.use('/uploads/publishers', express.static(path.join(__dirname, 'uploads/publ
 
 app.use(cors({
   origin: 'http://localhost:3000',
-  methods: 'GET, POST, PUT, DELETE, OPTIONS', // Đảm bảo thêm OPTIONS
+  methods: 'GET, POST, PUT,PATCH, DELETE, OPTIONS', // Đảm bảo thêm OPTIONS
   allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control'] // Thêm 'Cache-Control'
 }))
 app.options('*', cors());

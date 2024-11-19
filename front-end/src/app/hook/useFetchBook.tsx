@@ -6,7 +6,7 @@ interface Error {
   _id?: string;
   title?: string;
   author?: string;
-  categoryID?: string;
+  category?: string;
   description?: string;
   price?: number;
   stock?: number;
@@ -102,7 +102,7 @@ export default function useFetchBook() {
 
       if (!res.ok) {
         throw new Error(" lỗi khi cập nhật dữ liệu");
-      }
+}
 
       const updateBook = await res.json();
 
@@ -123,6 +123,10 @@ export default function useFetchBook() {
       } */
       const result = await res.json();
       setDetailBook(result);
+
+      await fetch(`http://localhost:3200/books/${id}/views`, {
+        method: "PATCH",
+      });
       return result;
     } catch (error) {
       setError((error as Error).message);
@@ -181,6 +185,19 @@ export default function useFetchBook() {
       );
     }
   };
+
+ /*  const bookViews = async (bookId: string) => {
+    try {
+      
+      if (!response.ok) {
+        throw new Error(`Failed to increment views for book ID ${bookId}`);
+      }
+      console.log(`Views incremented for book ID ${bookId}`);
+    } catch (error) {
+      console.error("Error incrementing book views:", error.message);
+    }
+  }; */
+  
 
   return {
     updateBook,

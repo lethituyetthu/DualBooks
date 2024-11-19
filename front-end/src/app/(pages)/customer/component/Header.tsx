@@ -7,37 +7,46 @@ import NameToken from "./NameToken";
 
 export default function Header() {
   const [customer, setCustomer] = useState<any>(null);
-  const [cartCount, setCartCount] = useState<number>(0); // State for cart count
+  const [cartCount, setCartCount] = useState<number>(0); // Số lượng sản phẩm trong giỏ hàng
+  const [favoriteCount, setFavoriteCount] = useState<number>(0); // Số lượng sản phẩm yêu thích
 
-  // Hàm cập nhật số lượng sản phẩm trong giỏ hàng
-  const updateCartCount = () => {
-    const existingCart = localStorage.getItem("cart");
-    const cart = existingCart ? JSON.parse(existingCart) : [];
-    const totalCount = cart.reduce(
-      (sum: number, item: { quantity: number }) => sum + item.quantity,
-      0
-    );
-    setCartCount(totalCount);
+  // Helper: Lấy số lượng sản phẩm từ localStorage
+  const getCountFromLocalStorage = (key: string): number => {
+    const existingData = localStorage.getItem(key);
+    if (existingData) {
+      const parsedData = JSON.parse(existingData);
+      if (key === "cart") {
+        return parsedData.reduce(
+          (sum: number, item: { quantity: number }) => sum + item.quantity,
+          0
+        );
+      }
+      return parsedData.length; // Với "favorites", chỉ cần độ dài mảng
+    }
+    return 0;
   };
 
-  // Load thông tin customer và số lượng sản phẩm trong giỏ hàng khi component mount
+  // Hàm cập nhật toàn bộ trạng thái
+  const updateCounts = () => {
+    setCartCount(getCountFromLocalStorage("cart"));
+    setFavoriteCount(getCountFromLocalStorage("favorites"));
+  };
+
+  // Load thông tin customer và cập nhật trạng thái khi component mount
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      const customerToken = JSON.parse(
-        localStorage.getItem("customer") || "{}"
-      );
+      const customerToken = JSON.parse(localStorage.getItem("customer") || "{}");
       setCustomer(customerToken);
     }
-
-    updateCartCount(); // Cập nhật số lượng sản phẩm trong giỏ hàng
+    updateCounts();
   }, []);
 
-  // Cập nhật số lượng sản phẩm trong giỏ hàng khi localStorage thay đổi
+  // Lắng nghe thay đổi trong localStorage để cập nhật số lượng
   useEffect(() => {
     const handleStorageChange = (event: StorageEvent) => {
-      if (event.key === "cart") {
-        updateCartCount();
+      if (event.key === "cart" || event.key === "favorites") {
+        updateCounts();
       }
     };
 
@@ -47,11 +56,9 @@ export default function Header() {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
-  useEffect(() => {
-    console.log("Số lượng sản phẩm trong giỏ hàng:", cartCount);
-  }, [cartCount]);
-  // Số điện thoại và email
-  const list: any = [
+
+  // Danh sách liên hệ
+  const contactList = [
     {
       icon: (
         <svg
@@ -92,8 +99,7 @@ export default function Header() {
     },
   ];
 
-  // Menu
-  const list3: any = [
+  const menuList = [
     { title: "trang chủ", link: "/customer" },
     { title: "sản phẩm", link: "/customer/products" },
     { title: "giới thiệu", link: "/customer/gioithieu" },
@@ -101,104 +107,70 @@ export default function Header() {
   ];
 
   return (
-    <div className="flex h-auto ">
-      <div className="relative w-[350px] mx-auto flex justify-center ">
-        {/* Lớp nền nâu */}
-        <div className="absolute inset-0 bg-primary-400 " />
-
-        {/* Logo */}
-        <div className="bg-white rounded-tr-[55px] z-10 flex justify-center w-full  py-4">
+    <div className="flex h-auto">
+      {/* Logo */}
+      <div className="relative w-[350px] mx-auto flex justify-center">
+        <div className="absolute inset-0 bg-primary-400" />
+        <div className="bg-white rounded-tr-[55px] z-10 flex justify-center w-full py-4">
           <Image src={logo} width={137} alt="DualBooks" />
         </div>
       </div>
 
-      <div className="menu w-full ">
+      <div className="menu w-full">
         {/* Header thông tin liên hệ */}
-        <div className="flex justify-evenly text-light-100 items-center h-[50px] bg-primary-400 w-full pr-[5rem] ">
+        <div className="flex justify-evenly text-light-100 items-center h-[50px] bg-primary-400 w-full pr-[5rem]">
           <ul className="flex w-[60%]">
-            {list.map((e) => {
-              return (
-                <li
-                  key={e.title}
-                  className="flex justify-between w-auto ml-[20px]"
-                >
-                  {e.icon && e.icon} <p className="ml-2">{e.title}</p>
-                </li>
-              );
-            })}
+            {contactList.map((e) => (
+              <li key={e.title} className="flex justify-between w-auto ml-[20px]">
+                {e.icon} <p className="ml-2">{e.title}</p>
+              </li>
+            ))}
           </ul>
-        
+
+          {/* Support and Login */}
           <ul className="flex w-[30%] justify-between pr-4">
             <li>
               <Link
                 href={`/`}
                 className="flex justify-between w-auto capitalize hover:text-dark-600 transition-transform duration-300"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
-                  />
-                </svg>{" "}
-                <p className="ml-2">Hỗ Trợ Trực Tuyến</p>
+                <p>Hỗ Trợ Trực Tuyến</p>
               </Link>
             </li>
-
             {customer ? (
               <NameToken customer={customer} />
             ) : (
               <li>
                 <Link
                   href={`/customer/login`}
-                  className="flex justify-between w-auto capitalize hover:text-dark-600 transition-transform duration-300"
+                  className="capitalize hover:text-dark-600"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="size-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                    />
-                  </svg>{" "}
-                  <p className="ml-2">Đăng nhập</p>
+                  <p>Đăng nhập</p>
                 </Link>
               </li>
             )}
           </ul>
         </div>
-        {/* Header menu & giỏ hàng */}
+
+        {/* Header menu & icons */}
         <nav className="flex h-[80px] bg-white items-center w-full justify-evenly pr-[5rem]">
           <ul className="flex w-[60%] justify-start">
-            {list3.map((e) => {
-              return (
-                <li
-                  key={e.title}
-                  className="mx-6 h-[100%] hover:text-dark-400 hover:scale-110 transition-transform duration-300"
-                >
-                  <Link href={e.link} className="capitalize text-lg h-[100%]">
-                    <p>{e.title}</p>
-                  </Link>
-                </li>
-              );
-            })}
+            {menuList.map((e) => (
+              <li
+                key={e.title}
+                className="mx-6 h-[100%] hover:text-dark-400 hover:scale-110 transition-transform duration-300"
+              >
+                <Link href={e.link} className="capitalize text-lg">
+                  <p>{e.title}</p>
+                </Link>
+              </li>
+            ))}
           </ul>
-          <ul className="flex w-[30%] justify-end">
-            {/* Icon giỏ hàng */}
-            <li className="rounded-full border border-solid border-dark-800 p-2 m-3 relative">
+
+          {/* Icons */}
+          <ul className="flex w-[30%] justify-end items-center">
+            {/* Cart Icon */}
+            <li className="rounded-full border p-2 m-3 relative">
               <Link href="/customer/cart">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -215,10 +187,34 @@ export default function Header() {
                   />
                 </svg>
               </Link>
-              {/* Hiển thị số lượng sản phẩm */}
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {cartCount}
+                </span>
+              )}
+            </li>
+
+            {/* Favorites Icon */}
+            <li className="rounded-full border p-2 m-3 relative">
+              <Link href="/customer/favorites">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  />
+                </svg>
+              </Link>
+              {favoriteCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {favoriteCount}
                 </span>
               )}
             </li>

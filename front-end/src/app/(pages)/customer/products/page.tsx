@@ -27,25 +27,17 @@ interface Category {
 }
 
 const addToWishlist = (product: Product) => {
-  const existingWishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+  const existingFavorites = localStorage.getItem("favorites");
+  const favorites = existingFavorites ? JSON.parse(existingFavorites) : [];
 
-  // Check if the product already exists in the wishlist
-  const isProductInWishlist = existingWishlist.some(
-    (item: Product) => item.id === product.id
-  );
-
-  if (isProductInWishlist) {
-    alert("Sản phẩm đã có trong danh sách yêu thích!");
-    return; // Exit the function if the product is already in the wishlist
+  // Kiểm tra nếu sản phẩm đã tồn tại trong danh sách yêu thích
+  if (!favorites.some((item: Product) => item.id === product.id)) {
+    favorites.push(product); // Thêm sản phẩm vào danh sách
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    alert("Sản phẩm đã được thêm vào danh sách yêu thích!");
+  } else {
+    alert("Sản phẩm này đã có trong danh sách yêu thích!");
   }
-
-  // Add the product to the wishlist array
-  const updatedWishlist = [...existingWishlist, product];
-
-  // Save the updated wishlist back to localStorage
-  localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-
-  alert("Sản phẩm đã được thêm vào danh sách yêu thích!");
 };
 
 

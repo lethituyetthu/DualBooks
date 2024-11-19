@@ -6,9 +6,12 @@ export interface Books {
     price: number;             // Giá của sách
     stock: number;             // Số lượng sách có sẵn
     cover_image: string;       // Tên hoặc đường dẫn của ảnh bìa sách
-    categoryID: string;        // ID của danh mục sách thuộc về
+    category: {
+        name: string;
+        id:string
+    };        // ID của danh mục sách thuộc về
     views: number;             // Số lượt xem của sách
     sales: number;             // Số lượng sách đã bán
     created_at: Date;          // Ngày tạo bản ghi sách
     updated_at: Date;          // Ngày cập nhật bản ghi sách
-}   
+}

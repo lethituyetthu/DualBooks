@@ -63,7 +63,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, updateCartCount }) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all duration-300 ease-in-out">
       {/* Hiển thị hình ảnh sản phẩm */}
-      <div className="w-full h-40">
+      <div className="w-full h-40 flex justify-center">
         <Image
           src={`http://localhost:3200/uploads/books/${book.cover_image}`}
           alt={book.title}
@@ -74,14 +74,14 @@ const BookCard: React.FC<BookCardProps> = ({ book, updateCartCount }) => {
 
       {/* Tên sách */}
       <Link
-        href={`/books/${book.title}`}
-        className="text-sm font-semibold text-center h-10 font-inter overflow-hidden text-ellipsis line-clamp-2"
+        href={`/customer/product/${book.id}`}
+        className="text-sm font-semibold text-center mt-3 my-auto  h-10 font-inter overflow-hidden text-ellipsis line-clamp-2 "
       >
         {book.title}
       </Link>
 
       {/* Tác giả */}
-      <p className="text-sm text-gray-600 my-5 text-center">{book.author}</p>
+      <p className="text-sm text-gray-600 my-3 text-center">{book.author}</p>
 
       {/* Giá và nút thêm vào giỏ hàng */}
       <div className="flex items-center justify-between space-x-2 bg-light-300 rounded-lg m-auto w-[90%]">
