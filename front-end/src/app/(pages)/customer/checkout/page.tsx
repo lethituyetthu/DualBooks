@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useFetchOrder from "@/app/hook/useFetchOder";
+import OderItem from "../../staff/component/oderItem";
+import { totalmem } from "os";
 
 type CartItem = {
-  id: string;
+  _id: string;
   title: string;
   price: number; // Giá sản phẩm
   quantity: number; // Số lượng sản phẩm
@@ -21,7 +23,7 @@ const CheckoutPaymentPage = () => {
   const [customer, setCustomer] = useState<any>(null);
   const [selectedPayment, setSelectedPayment] = useState<string>("Tiền mặt");
   const [shippingMethod, setShippingMethod] = useState<string>("standard");
-  const [shippingFee, setShippingFee] = useState<number>(30000);
+  const [shippingFee, setShippingFee] = useState<number>(30);
   const [shippingAddress, setShippingAddress] = useState<string>("");
   const [isAddressVerified, setIsAddressVerified] = useState<boolean>(false);
   const [isPaymentSuccess, setIsPaymentSuccess] = useState<boolean>(false);
@@ -47,10 +49,10 @@ const CheckoutPaymentPage = () => {
 
   const calculateTotal = (): number => {
     return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity ,
+      (total, item) => total + item.price * item.quantity,
       0
     );
-};
+  };
   const calculateTotalQuantity = (): number => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   };
@@ -85,15 +87,20 @@ const CheckoutPaymentPage = () => {
       return;
     }
 
+    if (!shippingMethod) {
+      alert("Vui lòng chọn phương thức vận chuyển.");
+      return;
+    }
+
     if (cartItems.length === 0) {
       alert("Giỏ hàng trống. Vui lòng thêm sản phẩm vào giỏ hàng.");
       return;
     }
-
+    const totalAmount = (calculateTotal() + shippingFee)
     const order = {
       customer_id: customer?.id,
       cartItems,
-      total_amount: calculateTotal() + shippingFee,
+      total_amount:totalAmount ,
       total_quantity: calculateTotalQuantity(),
       payment_method: selectedPayment,
       shipping_address: shippingAddress,
@@ -102,12 +109,14 @@ const CheckoutPaymentPage = () => {
       status: "Chờ xác nhận",
     };
 
-    console.log("Đơn hàng được gửi:", (calculateTotal()+shippingFee));
+    console.log("Đơn hàng được gửi:", calculateTotal() + shippingFee);
 
     try {
       const response = await addOrder(order);
-      console.log(response)
+      console.log(response);
       const orderId = response.data._id;
+
+      console.log("odr", cartItems);
 
       for (const item of cartItems) {
         const orderItemData = {
@@ -234,7 +243,10 @@ const CheckoutPaymentPage = () => {
           <div className="flex justify-between mt-4 text-gray-800">
             <strong>Tổng cộng:</strong>
             <strong>
-            {((calculateTotal() + shippingFee) * 1000).toLocaleString("vi-VN")} đ
+              {((calculateTotal() + shippingFee) * 1000).toLocaleString(
+                "vi-VN"
+              )}{" "}
+              đ
             </strong>
           </div>
 

@@ -17,7 +17,6 @@ import FeetBack from "../../component/feetback";
 import ReviewForm from "../../component/reviewForm";
 import ProductListByCate from "../../component/productListByCate";
 import ProductInfo from "../../component/productInfo";
-
 const ProductDetailPage = ({ params }: { params: { id: string } }) => {
   const { id } = params;
 
@@ -40,7 +39,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
       searchBookByCate(detailBook.category.id);
     }
   }, [detailBook]);
-
+console.log(detailBook)
   const flattenedCategoryBook = categoryBook.flat();
 
   if (loading) return <p>Đang tải...</p>;
@@ -48,9 +47,16 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
   if (!detailBook) return <p>Không tìm thấy sản phẩm</p>;
 
   // Destructure dữ liệu sách
-  const { title, description, price, cover_image, stock, author, category,view } =
-    detailBook;
-  console.log(detailBook)
+  const {
+    title,
+    description,
+    price,
+    cover_image,
+    stock,
+    author,
+    category,
+    views,
+  } = detailBook;
   return (
     <div className="max-w-[1200px] m-auto bg-light-50">
       <Breadcrumb className="py-[30px]">
@@ -73,12 +79,13 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
 
       {/* Phần thông tin sản phẩm */}
       <BookDetail
+        id={id}
         title={title}
         description={description}
         price={price}
         cover_image={cover_image}
         stock={stock}
-        view={view}
+        views={views}
       />
       {/* Phần MÔ TẢ SẢN PHẨM - Nhỏ lại */}
       <div className="mt-[40px] text-sm ">

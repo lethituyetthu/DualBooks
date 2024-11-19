@@ -102,7 +102,7 @@ export default function useFetchBook() {
 
       if (!res.ok) {
         throw new Error(" lỗi khi cập nhật dữ liệu");
-}
+      }
 
       const updateBook = await res.json();
 
@@ -121,12 +121,13 @@ export default function useFetchBook() {
       /*   if (!res.ok) {
         throw new Error("Lỗi khi lấy thông tin chi tiết sản phẩm");
       } */
-      const result = await res.json();
-      setDetailBook(result);
-
+      
       await fetch(`http://localhost:3200/books/${id}/views`, {
         method: "PATCH",
       });
+      const result = await res.json();
+      setDetailBook(result);
+      console.log(result)
       return result;
     } catch (error) {
       setError((error as Error).message);
@@ -137,9 +138,7 @@ export default function useFetchBook() {
 
   const searchBooks = async (term: string) => {
     try {
-      const res = await fetch(
-        `http://localhost:3200/books/title/${term}`
-      );
+      const res = await fetch(`http://localhost:3200/books/title/${term}`);
 
       // Kiểm tra phản hồi từ API
       if (res.ok) {
@@ -186,7 +185,7 @@ export default function useFetchBook() {
     }
   };
 
- /*  const bookViews = async (bookId: string) => {
+  /*  const bookViews = async (bookId: string) => {
     try {
       
       if (!response.ok) {
@@ -197,7 +196,6 @@ export default function useFetchBook() {
       console.error("Error incrementing book views:", error.message);
     }
   }; */
-  
 
   return {
     updateBook,

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import OderItem from "../(pages)/staff/component/oderItem";
 
 interface OrderItem {
   book_id: string;
@@ -9,23 +10,23 @@ interface OrderItem {
 interface Order {
   customer_id?: string;
   staffId: string;
-  orderDate: Date;
-  orderStatus:
+  order_date: Date;
+  order_status:
     | "Chờ xác nhận"
     | "Đã xác nhận"
     | "Đang giao hàng"
     | "Hoàn thành"
     | "Đã hủy";
-  paymentStatus:
+  payment_status:
     | "Chưa thanh toán"
     | "Đang xử lý thanh toán"
     | "Đã thanh toán"
     | "Thanh toán thất bại";
-  paymentMethod: "Tiền mặt" | "Chuyển khoản";
-  shippingAddress?: string;
-  totalAmount: number;
-  totalQuantity: number;
-  orderType: "online" | "offline";
+  payment_method: "Tiền mặt" | "Chuyển khoản";
+  shipping_address?: string;
+  total_amount: number;
+  total_quantity: number;
+  order_type: "online" | "offline";
   customerFeedback?: string;
 }
 
@@ -52,6 +53,7 @@ export default function useFetchOrder() {
       }
 
       const data = await response.json();
+      console.log(data)
       return data;
     } catch (err: any) {
       setError(err.message);
@@ -64,6 +66,8 @@ export default function useFetchOrder() {
   const addOrderItem = async (orderId: string, orderItemData: OrderItem) => {
     setLoading(true);
     setError(null);
+    console.log(orderId)
+
     try {
       const response = await fetch(
         `http://localhost:3200/orders/${orderId}/order-items`,
@@ -75,6 +79,7 @@ export default function useFetchOrder() {
           body: JSON.stringify(orderItemData),
         }
       );
+
 
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);

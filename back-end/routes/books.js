@@ -192,7 +192,7 @@ router.patch('/:id/views', async function(req, res, next) {
   });
 // Endpoint tạo sách mới với hình ảnh
 // POST /api/books
-router.post('/', authenticateAdmin, uploadBooks.single('cover_image'), async (req, res, next) => {
+router.post('/', uploadBooks.single('cover_image'), async (req, res, next) => {
     console.log('POST /books endpoint hit');
     try {
         // Lấy dữ liệu sách từ body của request

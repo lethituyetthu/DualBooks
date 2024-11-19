@@ -15,25 +15,36 @@ interface OderItemProps {
 const OderItem: React.FC<OderItemProps> = ({ order, onClick }) => {
   return (
     <tr>
-      <td className="border p-4 text-blue-500 cursor-pointer"  onClick={onClick}>#...{order.id.slice(-5)}</td>
-      <td className="border p-4">
-      {new Date(order.order_date).toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  })}
+      <td className="border p-4 text-blue-500 cursor-pointer" onClick={onClick}>
+        #...{order.id.slice(-5)}
       </td>
-      <td className="border p-4"> {order.customer ? (
-    <>
-      <p><strong>Tên:</strong> {order.customer.name}</p>
-      <p><strong>Địa chỉ:</strong> {order.customer.address}</p>
-      <p><strong>Điện thoại:</strong> {order.customer.phone}</p>
-    </>
-  ) : (
-    "N/A"
-  )}</td>
+      <td className="border p-4">
+        {new Date(order.order_date).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        })}
+      </td>
+      <td className="border p-4">
+        {" "}
+        {order.customer? (
+          <>
+            <p>
+              <strong>Tên:</strong> {order.customer.name}
+            </p>
+            <p>
+              <strong>Địa chỉ:</strong> {order.customer.address}
+            </p>
+            <p>
+              <strong>Điện thoại:</strong> {order.customer.phone}
+            </p>
+          </>
+        ) : (
+          "N/A"
+        )}
+      </td>
       <td className="border p-4 text-nowrap">
-        {(order.total_amount*1000).toLocaleString("vi-VN") + "đ"}
+        {(order.total_amount * 1000).toLocaleString("vi-VN") + "đ"}
       </td>
       <td className="border p-4 text-nowrap">
         <span className="flex items-center space-x-2">

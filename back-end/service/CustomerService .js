@@ -80,7 +80,7 @@ exports.loginCustomer = async (email, password) => {
         const isMatch = await bcrypt.compare(password, customer.password);
 
         if (!isMatch) {
-            throw new Error('Invalid password');
+            throw new Error('sai mật khẩu');
         }
 
         // Tạo token

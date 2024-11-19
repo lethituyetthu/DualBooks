@@ -11,6 +11,7 @@ const OrderManagement = () => {
     orders,
     loading,
     error,
+    orderDetail,
     fetchOrders,
     fetchOrderDetail,
     fetchOrdersByDate,
@@ -27,26 +28,32 @@ const OrderManagement = () => {
     fetchOrders();
   }, [fetchOrders]);
 
-  const handleSearchById = async (orderId) => {
-    const result = await fetchOrderDetail(orderId);
-    setSelectedOrder(result || null);
+  const handleSearchById = async (orderId: string) => {
+    try {
+      console.log("Fetching details for order ID:", orderId);
+      await fetchOrderDetail(orderId);
+
+      setSelectedOrder(orderDetail);
+    } catch (error) {
+      console.error("Error fetching order detail:", error);
+      alert("Đã xảy ra lỗi khi lấy chi tiết đơn hàng.");
+    }
   };
 
-  const handleSearchByDate = async (date) => {
+  const handleSearchByDate = async (date: string) => {
     if (date) {
       await fetchOrdersByDate(date);
       setSelectedDate(date);
     }
   };
 
-  const handleSearchByStatus = async (status) => {
+  const handleSearchByStatus = async (status: string) => {
     if (status) {
       await fetchOrdersByStatus(status);
       setSelectedStatus(status);
     }
   };
 
-  console.log(orders)
   const headers = [
     "Mã Đơn Hàng",
     "Ngày Đặt Hàng",
@@ -57,23 +64,25 @@ const OrderManagement = () => {
   ];
 
   const filterOrders = () => {
-    return orders?    .filter((order) => {
-      const matchesFilterType = filterType === "all" || order.order_type === filterType;
+    return orders.filter((order) => {
+      const matchesFilterType =
+        filterType === "all" || order.order_type === filterType;
+
       const matchesSearchId = !searchId || order.id.includes(searchId);
-      
+
       const orderDate = new Date(order.order_date).toISOString().split("T")[0];
       const matchesDate = !selectedDate || orderDate === selectedDate;
-      
-      const matchesStatus = !selectedStatus || order.order_status === selectedStatus;
-      
-      return matchesFilterType && matchesSearchId && matchesDate && matchesStatus;
+
+      const matchesStatus =
+        !selectedStatus || order.order_status === selectedStatus;
+
+      return (
+        matchesFilterType && matchesSearchId && matchesDate && matchesStatus
+      );
     });
   };
 
   const filteredOrders = filterOrders();
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="flex min-h-screen">
@@ -93,48 +102,67 @@ const OrderManagement = () => {
         <div className="mb-4">
           <button
             onClick={() => setFilterType("all")}
-            className={`mr-2 p-2 rounded-sm ${filterType === "all" ? "bg-primary-400 text-white" : "bg-white"}`}
+            className={`mr-2 p-2 rounded-sm ${
+              filterType === "all" ? "bg-primary-400 text-white" : "bg-white"
+            }`}
           >
             All Orders
           </button>
           <button
             onClick={() => setFilterType("online")}
-            className={`mr-2 p-2 rounded-sm ${filterType === "online" ? "bg-primary-400 text-white" : "bg-white"}`}
+            className={`mr-2 p-2 rounded-sm ${
+              filterType === "online" ? "bg-primary-400 text-white" : "bg-white"
+            }`}
           >
             Online Orders
           </button>
           <button
             onClick={() => setFilterType("offline")}
-            className={`mr-2 p-2 rounded-sm ${filterType === "offline" ? "bg-primary-400 text-white" : "bg-white"}`}
+            className={`mr-2 p-2 rounded-sm ${
+              filterType === "offline"
+                ? "bg-primary-400 text-white"
+                : "bg-white"
+            }`}
           >
             Offline Orders
           </button>
         </div>
 
-        {/* Hiển thị thông báo nếu không có đơn hàng nào khớp */}
-      {filteredOrders?.length === 0 ? (
-        <p>Không có đơn hàng trùng với các điều kiện lọc</p>
-      ) : (
-        <table className="w-full border-collapse border bg-white">
-          <thead>
-            <tr>
-              {headers.map((header, index) => (
-                <th key={index} className="border p-4 text-nowrap">
-                  {header}
-                </th>
+        {/* Hiển thị trạng thái tải */}
+        {loading ? (
+          <p className="text-center text-lg text-primary-600 font-semibold">
+            Đang tải...
+          </p>
+        ) : filteredOrders.length === 0 ? (
+          <p>Không có đơn hàng trùng với các điều kiện lọc</p>
+        ) : (
+          <table className="w-full border-collapse border bg-white">
+            <thead>
+              <tr>
+                {headers.map((header, index) => (
+                  <th key={index} className="border p-4 text-nowrap">
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filteredOrders.map((order) => (
+                <OderItem
+                  order={order}
+                  key={order.id}
+                  onClick={() => handleSearchById(order.id)}
+                />
               ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredOrders?.map((order) => (
-              <OderItem order={order} key={order.id} onClick={() => handleSearchById(order.id)} />
-            ))}
-          </tbody>
-        </table>
-      )}
+            </tbody>
+          </table>
+        )}
 
         {selectedOrder && (
-          <OrderDetailModal order={selectedOrder} onClose={() => setSelectedOrder(null)} />
+          <OrderDetailModal
+            order={selectedOrder}
+            onClose={() => setSelectedOrder(null)}
+          />
         )}
       </div>
     </div>

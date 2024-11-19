@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import useAddToCart from "@/app/hook/useAddToCard";
 
 interface Book {
   _id: string;
@@ -12,53 +13,11 @@ interface Book {
 
 interface BookCardProps {
   book: Book;
-  updateCartCount: () => void; // Hàm để cập nhật số lượng giỏ hàng
+  updateCartCount: () => void;
 }
 
 const BookCard: React.FC<BookCardProps> = ({ book, updateCartCount }) => {
-  const handleAddToCart = () => {
-    const customerToken = localStorage.getItem("customer");
-
-    // Kiểm tra khách hàng đã đăng nhập
-    if (!customerToken) {
-      alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
-      return; // Ngăn không cho thêm vào giỏ hàng
-    }
-
-    // Thông tin sản phẩm cần thêm
-    const product = {
-      id: book.id,
-      title: book.title,
-      author: book.author,
-      price: book.price,
-      cover_image: book.cover_image,
-    };
-
-    // Lấy giỏ hàng từ localStorage
-    const existingCart = localStorage.getItem("cart");
-    const cart = existingCart ? JSON.parse(existingCart) : [];
-
-    // Kiểm tra sản phẩm đã tồn tại hay chưa
-    const existingProductIndex = cart.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (existingProductIndex !== -1) {
-      // Nếu sản phẩm đã tồn tại, tăng số lượng
-      cart[existingProductIndex].quantity += 1;
-      alert(`Đã tăng số lượng sản phẩm trong giỏ hàng! Số lượng hiện tại: ${cart[existingProductIndex].quantity}`);
-    } else {
-      // Thêm sản phẩm vào giỏ hàng
-      cart.push({ ...product, quantity: 1 });
-      alert("Sản phẩm đã được thêm vào giỏ hàng!");
-    }
-
-    // Lưu giỏ hàng vào localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Cập nhật số lượng giỏ hàng
-    updateCartCount();
-  };
+  const addToCart = useAddToCart(updateCartCount);
 
   return (
     <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all duration-300 ease-in-out">
@@ -67,15 +26,15 @@ const BookCard: React.FC<BookCardProps> = ({ book, updateCartCount }) => {
         <Image
           src={`http://localhost:3200/uploads/books/${book.cover_image}`}
           alt={book.title}
-          width={150} // Kích thước hình ảnh
-          height={150} // Kích thước hình ảnh
+          width={150}
+          height={150}
         />
       </div>
 
       {/* Tên sách */}
       <Link
         href={`/customer/product/${book.id}`}
-        className="text-sm font-semibold text-center mt-3 my-auto  h-10 font-inter overflow-hidden text-ellipsis line-clamp-2 "
+        className="text-sm font-semibold text-center mt-3 my-auto h-10 font-inter overflow-hidden text-ellipsis line-clamp-2"
       >
         {book.title}
       </Link>
@@ -92,7 +51,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, updateCartCount }) => {
 
         {/* Nút thêm vào giỏ hàng */}
         <button
-          onClick={handleAddToCart}
+          onClick={() => addToCart(book)}
           className="bg-primary-400 text-white p-2 rounded-lg hover:bg-primary-300 transition-all duration-300"
           aria-label={`Thêm ${book.title} vào giỏ hàng`}
         >

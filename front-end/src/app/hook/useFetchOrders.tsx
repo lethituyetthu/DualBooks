@@ -21,15 +21,15 @@ export interface typeCustomer {
 // Định nghĩa kiểu dữ liệu cho chi tiết đơn hàng
 export interface typeOrderDetail {
   id: string;
-  orderType: string;
-  orderDate: string;
-  orderStatus: string;
-  paymentStatus: string;
-  shippingAddress: string;
-  totalAmount: number;
-  totalQuantity: number;
-  customerFeedback: string | null;
-  orderItems: typeOrderItem[];
+  order_type: string;
+  order_date: string;
+  order_status: string;
+  payment_status: string;
+  shipping_address: string;
+  total_amount: number;
+  total_quantity: number;
+  customer_feedback: string | null;
+  order_items: typeOrderItem[];
   customerInfo?: typeCustomer;
 }
 
@@ -75,6 +75,8 @@ export default function useFetchOrders(): UseFetchOrdersResult {
         throw new Error("Lỗi khi lấy dữ liệu đơn hàng!");
       }
       const result = await response.json();
+
+      console.log(result)
       setOrders(result); // Đặt dữ liệu đơn hàng vào state
     } catch (err) {
       setError((err as Error).message);
@@ -92,7 +94,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       if (!response.ok) {
         throw new Error("Lỗi khi lấy chi tiết đơn hàng!");
       }
-      const result: typeOrderDetail = await response.json();
+      const result = await response.json();
       setOrderDetail(result); // Đặt chi tiết đơn hàng vào state
     } catch (err) {
       setError((err as Error).message);
@@ -137,10 +139,9 @@ export default function useFetchOrders(): UseFetchOrdersResult {
     setLoading(true);
     setError(null);
     try {
-      const encodedStatus = encodeURIComponent(status); // Mã hóa trạng thái
 
       // Lấy danh sách đơn hàng theo trạng thái
-      const response = await fetch(`http://localhost:3200/orders/filter-by-status/${encodedStatus}`);
+      const response = await fetch(`http://localhost:3200/orders/filter-by-status/${status}`);
       if (!response.ok) {
         throw new Error("Lỗi khi lấy dữ liệu đơn hàng theo trạng thái!");
       }

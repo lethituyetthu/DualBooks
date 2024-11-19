@@ -51,14 +51,15 @@ exports.getOrderDetail = async (req, res) => {
         // Định dạng dữ liệu đơn hàng ban đầu
         const formattedOrder = {
             id: order._id,
-            orderType: order.order_type,
-            staffId: order.staff_id,
-            orderDate: order.order_date,
-            orderStatus: order.order_status,
-            paymentStatus: order.payment_status,
-            shippingAddress: order.shipping_address,
-            totalAmount: order.total_amount,
-            customerFeedback: order.customer_feedback,
+            order_type: order.order_type,
+            staff_id: order.staff_id,
+            order_date: order.order_date,
+            order_status: order.order_status,
+            payment_status: order.payment_status,
+            shipping_address: order.shipping_address,
+            total_amount: order.total_amount,
+            total_quantity: order.total_quantity,
+            customer_feedback: order.customer_feedback,
             orderItems: order.orderItems.map(item => ({
                 id: item._id,
                 bookId: item.book_id._id,
@@ -102,10 +103,12 @@ exports.getAllOrders = async () => {
             const baseOrder = {
                 id: order._id,
                 order_date: order.order_date,
+                order_type: order.order_type,
                 order_status: order.order_status,
                 payment_status: order.payment_status,
                 shipping_address: order.shipping_address || "Địa chỉ cửa hàng", // Địa chỉ mặc định
                 total_amount: order.total_amount,
+                total_quantity: order.total_quantity,
                 created_at: order.createdAt,
                 updated_at: order.updatedAt
             };

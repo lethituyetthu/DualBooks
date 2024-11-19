@@ -30,7 +30,7 @@ const CartItems: React.FC<CartItemListProps> = ({
 
   return (
     <div className="space-y-6 h-96 overflow-hidden overflow-y-auto">
-      {cartItems.map((item) => (
+      {cartItems?.map((item) => (
         <div
           key={item.id}
           className="flex items-center bg-white shadow rounded-lg p-4"

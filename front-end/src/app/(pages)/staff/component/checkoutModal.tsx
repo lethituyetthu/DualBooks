@@ -56,8 +56,8 @@ const CheckoutModal: React.FC<typeCheckout> = ({
     console.log("Danh sách sản phẩm thanh toán:", orderData);
     try {
       const response  = await addOrder(orderData);
-    console.log('Order created successfully with ID:', response);
-    const orderId = response._id;
+    console.log('Order created successfully with ID:', response.data);
+    const orderId = response.data._id;
     console.log(orderId)
     // Thêm từng sản phẩm vào chi tiết đơn hàng
     for (const item of cartItems) {
