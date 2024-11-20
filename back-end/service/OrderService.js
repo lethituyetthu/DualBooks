@@ -164,6 +164,22 @@ exports.cancelOrder = async (orderId) => {
         throw new Error('Error cancelling order: ' + error.message);
     }
 };
+// Service: Lấy danh sách đơn hàng theo ID khách hàng
+exports.getOrdersByCustomerId = async (customerId) => {
+    try {
+        // Tìm các đơn hàng theo ID khách hàng
+        const orders = await OrderModel.find({
+            customer_id: customerId // Tìm theo customer_id
+        }).populate('customer_id', 'name email address phone'); // Lấy thông tin khách hàng
+
+        return orders; // Trả về danh sách đơn hàng
+    } catch (error) {
+        throw new Error('Error fetching orders: ' + error.message); // Xử lý lỗi
+    }
+};
+
+
+
 
 
 

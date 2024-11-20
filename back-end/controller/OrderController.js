@@ -263,6 +263,36 @@ exports.cancelOrder = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+// Controller: Lọc đơn hàng theo ID khách hàng
+exports.getOrdersByCustomerId = async (req, res, customerId) => {
+    try {
+        // Gọi service để lấy danh sách đơn hàng theo ID khách hàng
+        const orders = await orderService.getOrdersByCustomerId(customerId);
+        
+        // Kiểm tra danh sách đơn hàng
+        if (orders.length === 0) {
+            return res.status(404).json({ message: 'Không có đơn hàng nào được tìm thấy cho khách hàng này.' });
+        }
+
+        // Định dạng lại dữ liệu đơn hàng trước khi trả về
+        const formattedOrders = orders.map((order) => ({
+            id: order._id,
+            order_date: order.order_date,
+            order_status: order.order_status,
+            payment_status: order.payment_status,
+            shipping_address: order.shipping_address,
+            total_amount: order.total_amount,
+            total_quantity: order.total_quantity,
+            order_items: order.orderItems, // Nếu cần chi tiết sản phẩm
+            created_at: order.createdAt,
+            updated_at: order.updatedAt
+        }));
+
+        res.status(200).json(formattedOrders); // Trả về danh sách đơn hàng
+    } catch (error) {
+        res.status(500).json({ error: error.message }); // Xử lý lỗi
+    }
+};
 
 
 

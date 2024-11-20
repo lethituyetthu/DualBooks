@@ -96,8 +96,8 @@ export default function Header() {
   const list3: any = [
     { title: "trang chủ", link: "/customer" },
     { title: "sản phẩm", link: "/customer/products" },
-    { title: "giới thiệu", link: "/customer/gioithieu" },
-    { title: "liên hệ", link: "/customer/lienhe" },
+    { title: "giới thiệu", link: "/customer/Gioithieu" },
+    { title: "liên hệ", link: "/customer/Lienhe" },
   ];
 
   return (

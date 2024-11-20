@@ -40,13 +40,13 @@ app.use('/uploads/publishers', express.static(path.join(__dirname, 'uploads/publ
 
 app.use(cors({
   origin: 'http://localhost:3000',
-  methods: 'GET, POST, PUT, DELETE, OPTIONS', // Đảm bảo thêm OPTIONS
+  methods: 'GET, POST, PUT, DELETE,PATCH, OPTIONS', // Đảm bảo thêm OPTIONS
   allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control'] // Thêm 'Cache-Control'
 }))
 app.options('*', cors());
 
 //kết nối db
-const connection = mongoose.connect('mongodb://localhost:27017/DA_TN', {})
+const connection = mongoose.connect('mongodb://localhost:27017/DATN', {})
     .then(() => {
         console.log('>>>>>>> DB đã kết nối thành công!!!!');
     })
@@ -93,10 +93,13 @@ app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/customers`);
   console.log(`http://localhost:${PORT}/customers/6707f3aee55fb28d5793988f`);
   console.log(`http://localhost:${PORT}/customers/status/6707f3aee55fb28d5793988f`);
+  
 
   console.log(`http://localhost:${PORT}/orders`);
   console.log(`http://localhost:${PORT}/orders/filter-by-date/2024-10-23`);
   console.log(`http://localhost:${PORT}/orders/filter-by-address/TP.HCM`);
+  console.log(`http://localhost:${PORT}/orders/filter-by-customer/67286e8c684247600f9a8f48`);
+
 
 });
 

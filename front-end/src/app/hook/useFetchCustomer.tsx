@@ -37,6 +37,11 @@ interface Errors {
 
 export default function useFetchCustomer() {
   // const route = useRouter()
+  const [customerInfo, setCustomerInfo] = useState(() => {
+    // Lấy thông tin khách hàng từ localStorage nếu có
+    const storedCustomer = localStorage.getItem("customer");
+    return storedCustomer ? JSON.parse(storedCustomer) : null;
+  });
   const [customers, setCustomers] = useState<typeCustomer[]>([]); // Danh sách khách hàng
   const [loading, setLoading] = useState<boolean>(false); // Trạng thái loading
   const [errors, setErrors] = useState<Errors>({});
@@ -128,8 +133,8 @@ export default function useFetchCustomer() {
     }
   };
 
-  // Login
-  const login = async (formData: typeCustomer) => {
+   // Hàm đăng nhập
+   const login = useCallback(async (formData: typeCustomer) => {
     const validateErrors = validateForm(formData, true);
 
     if (Object.keys(validateErrors).length > 0) {
@@ -138,6 +143,7 @@ export default function useFetchCustomer() {
     }
 
     try {
+      setLoading(true); // Bắt đầu loading
       const response = await fetch("http://localhost:3200/customers/login", {
         method: "POST",
         headers: {
@@ -145,31 +151,35 @@ export default function useFetchCustomer() {
         },
         body: JSON.stringify(formData),
       });
+
       if (!response.ok) {
         const errorData = await response.json();
         setErrors({ email: errorData.message });
       } else {
         const data = await response.json();
 
+        // Lưu token và thông tin khách hàng vào localStorage
         localStorage.setItem("token", data.token);
 
-        const customerInfo = {
+        const customer = {
           id: data.customer._id,
           email: data.customer.email,
           name: data.customer.name,
-          address:data.customer.address,
-          phone:data.customer.phone
         };
-        localStorage.setItem("customer", JSON.stringify(customerInfo));
+        localStorage.setItem("customer", JSON.stringify(customer));
+
+        // Lưu thông tin khách hàng vào state
+        setCustomerInfo(customer);
 
         setSuccessMessage("Đăng nhập thành công");
         setErrors({});
-        window.location.href = "/customer";
       }
     } catch (error) {
       console.error("Đã xảy ra lỗi:", error);
+    } finally {
+      setLoading(false); // Kết thúc loading
     }
-  };
+  }, []);
 
   // Logout
   const logout = () => {
@@ -337,6 +347,7 @@ export default function useFetchCustomer() {
     successMessage,
     loading,
     customers,
+    customerInfo, 
     error,
     searchCustomersByName, // Trả về hàm tìm kiếm theo tên
     toggleCustomerStatus,

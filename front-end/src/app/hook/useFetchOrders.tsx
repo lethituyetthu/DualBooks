@@ -36,13 +36,13 @@ export interface typeOrderDetail {
 // Định nghĩa kiểu dữ liệu cho đơn hàng tổng quát (không bao gồm chi tiết sản phẩm)
 export interface typeOrder {
   id: string;
-  order_type: string;
-  order_date: string;
-  order_status: string;
-  payment_status: string;
-  shipping_address: string;
-  total_amount: number;
-  total_quantity: number;
+  orderType: string;
+  orderDate: string;
+  orderStatus: string;
+  paymentStatus: string;
+  shippingAddress: string;
+  totalAmount: number;
+  totalQuantity: number;
 
 }
 
@@ -55,8 +55,9 @@ export interface UseFetchOrdersResult {
   fetchOrders: () => Promise<void>;
   fetchOrderDetail: (orderId: string) => Promise<void>;
   updateOrder: (orderId: string, updatedData: Partial<typeOrderDetail>) => Promise<void>;
-  fetchOrdersByStatus: (status: string) => Promise<void>; // Add this line to the interface
-  fetchOrdersByDate: (status: string) => Promise<void>; // Add this line to the interface
+  fetchOrdersByStatus: (status: string) => Promise<void>; 
+  fetchOrdersByDate: (status: string) => Promise<void>; 
+  fetchOrdersByCustomerId: (customerId: string) => Promise<void>; 
 }
 
 export default function useFetchOrders(): UseFetchOrdersResult {
@@ -172,6 +173,24 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       setLoading(false);
     }
   }, []);
+  // Hàm lấy danh sách đơn hàng theo id khách hàng
+const fetchOrdersByCustomerId = useCallback(async (customerId: string) => {
+  setLoading(true);
+  setError(null);
+  try {
+    const response = await fetch(`http://localhost:3200/orders/filter-by-customer/${customerId}`);
+    if (!response.ok) {
+      throw new Error("Lỗi khi lấy dữ liệu đơn hàng theo ID khách hàng!");
+    }
+    const result = await response.json();
+    setOrders(result); // Đặt dữ liệu đơn hàng vào state
+  } catch (err) {
+    setError((err as Error).message);
+  } finally {
+    setLoading(false);
+  }
+}, []);
+
 
   // Gọi fetchOrders khi component lần đầu render
   useEffect(() => {
@@ -187,6 +206,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
     fetchOrderDetail,
     updateOrder,
     fetchOrdersByStatus,
-    fetchOrdersByDate,  // Trả về hàm fetchOrdersByStatus
+    fetchOrdersByDate,
+    fetchOrdersByCustomerId,  // Trả về hàm fetchOrdersByStatus
   };
 }
