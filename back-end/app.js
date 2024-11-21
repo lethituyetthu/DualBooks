@@ -16,6 +16,7 @@ var ordersRouter = require('./routes/orders');
 var orderItemsRouter = require('./routes/orderItems');
 var adminRouter = require('./routes/admin');
 const reviewsRouter = require('./routes/reviews');
+const favoriteBooksRoute = require('./routes/favoriteBooks');
 // khai báo cor
 const cors = require('cors');
 const PORT = process.env.PORT || 3200;
@@ -40,7 +41,7 @@ app.use('/uploads/publishers', express.static(path.join(__dirname, 'uploads/publ
 
 app.use(cors({
   origin: 'http://localhost:3000',
-  methods: 'GET, POST, PUT,PATCH, DELETE, OPTIONS', // Đảm bảo thêm OPTIONS
+  methods: 'GET, POST, PUT, DELETE,PATCH, OPTIONS', // Đảm bảo thêm OPTIONS
   allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control'] // Thêm 'Cache-Control'
 }))
 app.options('*', cors());
@@ -62,6 +63,7 @@ app.use('/publishers', publishersRouter);
 app.use('/orders',ordersRouter);
 app.use('/admins', adminRouter);
 app.use('/reviews', reviewsRouter);
+app.use('/favoriteBooks', favoriteBooksRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`http://localhost:${PORT}/books`);
@@ -97,6 +99,9 @@ app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/orders`);
   console.log(`http://localhost:${PORT}/orders/filter-by-date/2024-10-23`);
   console.log(`http://localhost:${PORT}/orders/filter-by-address/TP.HCM`);
+  console.log(`http://localhost:${PORT}/orders/filter-by-customer/67286e8c684247600f9a8f48`);
+ 
+  console.log(`http://localhost:${PORT}/favoriteBooks/67286e8c684247600f9a8f48`);
 
 });
 

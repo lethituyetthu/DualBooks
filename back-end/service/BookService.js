@@ -27,6 +27,33 @@ exports.getByCategoryID = async function (categoryID) {
       throw new Error('Error fetching books by category: ' + error.message);
   }
 };
+exports.getLowStockBooks = async () => {
+
+  try {
+
+    // Truy vấn để lấy 5 sản phẩm có số lượng tồn kho ít nhất
+
+    const lowStockBooks = await bookModel.find({ stock: { $lt: 5 } })  // Lọc các sách có stock < 5
+
+      .populate('categoryID', 'name')  // Populate thông tin danh mục (chỉ lấy trường name)
+
+      .populate('publisherID', 'name') // Populate thông tin nhà xuất bản (chỉ lấy trường name)
+
+      .sort({ stock: 1 })  // Sắp xếp theo stock tăng dần
+
+     
+
+
+
+    return lowStockBooks;
+
+  } catch (error) {
+
+    throw new Error('Error fetching low stock books: ' + error.message);
+
+  }
+
+};
 // Hàm lọc sách theo tác giả
 exports.getByAuthor = async function (author) {
   try {

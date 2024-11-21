@@ -5,6 +5,7 @@ import logo from "@/app/publics/img/logo/01.png";
 import Link from "next/link";
 import NameToken from "./NameToken";
 
+
 export default function Header() {
   const [customer, setCustomer] = useState<any>(null);
   const [cartCount, setCartCount] = useState<number>(0); // Số lượng sản phẩm trong giỏ hàng

@@ -66,7 +66,65 @@ exports.getByCategory = async (categoryID) => {
     throw new Error('Error fetching books by category: ' + error.message);
   }
 };
+exports.getLowStockBooks = async () => {
 
+  try {
+
+    const books = await bookService.getLowStockBooks();
+
+    
+
+    // Định dạng lại dữ liệu trước khi trả về
+
+    const formattedBooks = books.map((book) => ({
+
+      id: book._id, // ObjectId của sách
+
+      title: book.title,
+
+      author: book.author,
+
+      category: book.categoryID ? {
+
+          id: book.categoryID._id, // ID danh mục
+
+          name: book.categoryID.name // Tên danh mục
+
+      } : null, // Nếu không có categoryID, trả về null
+
+      publisher: book.publisherID ? {
+
+          id: book.publisherID._id, // ID nhà xuất bản
+
+          name: book.publisherID.name // Tên nhà xuất bản
+
+      } : null, // Nếu không có publisherID, trả về null
+
+      description: book.description,
+
+      price: book.price,
+
+      stock: book.stock,
+
+      cover_image: book.cover_image,
+
+      created_at: book.created_at,   // Thêm trường created_at
+
+      updated_at: book.updated_at
+
+    }));
+
+
+
+    return formattedBooks;
+
+  } catch (error) {
+
+    throw new Error('Error fetching low stock books: ' + error.message);
+
+  }
+
+};
 // Hàm lấy sách theo tác giả
 exports.getByAuthor = async (author) => {
   try {

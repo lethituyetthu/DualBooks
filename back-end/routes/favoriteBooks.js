@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const favoriteBooksController = require('../controller/FavoriteBookController');
 
-// Endpoint to add a book to favorites
+// Định nghĩa endpoint để thêm sách vào danh sách yêu thích
 router.post('/add', favoriteBooksController.addFavorite);
 
 // Endpoint to remove a book from favorites

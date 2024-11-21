@@ -1,18 +1,43 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import React, { useState } from "react";import Image from "next/image";
 import useFethWishList from "../../../hook/useFetchWishlist";
+
+
 interface Product {
-  _id: string;  // Thêm trường _id vào interface
+  id: string;
   name: string;
   price: number;
   cover_image: string;
   author: string;
 }
 
-const Favorites = () => {
-  const { wishlist, message, handleRemoveFromWishlist } = useFethWishList();  
+const Wishlist = () => {
+  const { wishlist, setWishlist } = useFethWishList();  // Giả sử hook này trả về wishlist
+  const [message, setMessage] = useState<string>(""); // Khai báo state cho message
+
+  const handleAddToWishlist = (product: Product) => {
+    const isProductInWishlist = wishlist.some((item) => item.id === product.id);
+
+    if (isProductInWishlist) {
+      setMessage("Sản phẩm đã có trong yêu thích.");
+      setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+    } else {
+      const updatedWishlist = [...wishlist, product];
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist)); // Lưu wishlist vào localStorage
+      setWishlist(updatedWishlist); // Cập nhật state wishlist
+      setMessage("Sản phẩm đã được thêm vào yêu thích.");
+      setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+    }
+  };
+
+  const handleRemoveFromWishlist = (productId: string) => {
+    const updatedWishlist = wishlist.filter((product) => product.id !== productId);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    setWishlist(updatedWishlist);
+    setMessage("Sản phẩm đã được xóa khỏi yêu thích.");
+    setTimeout(() => setMessage(""), 3000);
+  };
 
   return (
     <div className="max-w-[1200px] m-auto px-4 py-6">
@@ -29,14 +54,11 @@ const Favorites = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {wishlist.map((product) => (
             <div
-              key={product._id}
+              key={product.id}
               className="border p-3 relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 w-[280px]"
             >
               <button
-                 onClick={() => {
-                  console.log("Product ID to remove:", product._id);
-                  handleRemoveFromWishlist(product._id);
-                }}
+                onClick={() => handleRemoveFromWishlist(product.id)}
                 className="absolute top-2 right-2 p-1 text-gray-500 hover:text-red-500"
                 aria-label="Remove from wishlist"
               >
@@ -98,4 +120,4 @@ const Favorites = () => {
   );
 };
 
-export default Favorites;
+export default Wishlist;
