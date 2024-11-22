@@ -58,7 +58,11 @@ export default function NameToken({ customer }: NameTokenProps) {
               <p>Thông tin cá nhân</p>
             </DropdownMenuItem>
           </Link>
-          <DropdownMenuItem>Lịch sử đơn hàng</DropdownMenuItem>
+          <Link href="/customer/OrderHistory">
+            <DropdownMenuItem>
+              <p>Lịch sử đơn hàng </p>
+            </DropdownMenuItem>
+          </Link>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
         </DropdownMenuContent>

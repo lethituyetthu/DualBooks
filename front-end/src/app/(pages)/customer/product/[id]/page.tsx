@@ -39,7 +39,6 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
       searchBookByCate(detailBook.category.id);
     }
   }, [detailBook]);
-console.log(detailBook)
   const flattenedCategoryBook = categoryBook.flat();
 
   if (loading) return <p>Đang tải...</p>;
@@ -56,6 +55,7 @@ console.log(detailBook)
     author,
     category,
     views,
+    reviews,
   } = detailBook;
   return (
     <div className="max-w-[1200px] m-auto bg-light-50">
@@ -86,6 +86,7 @@ console.log(detailBook)
         cover_image={cover_image}
         stock={stock}
         views={views}
+        
       />
       {/* Phần MÔ TẢ SẢN PHẨM - Nhỏ lại */}
       <div className="mt-[40px] text-sm ">

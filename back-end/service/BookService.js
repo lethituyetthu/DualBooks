@@ -205,3 +205,30 @@ exports.getLatestBooks = async () => {
     throw new Error('Error fetching latest books: ' + error.message);
   }
 };
+//SERVICE
+exports.getLowStockBooks = async () => {
+  try {
+    // Truy vấn để lấy 5 sản phẩm có số lượng tồn kho ít nhất
+    const lowStockBooks = await bookModel.find({ stock: { $lt: 5 } })  // Lọc các sách có stock < 5
+      .populate('categoryID', 'name')  // Populate thông tin danh mục (chỉ lấy trường name)
+      .populate('publisherID', 'name') // Populate thông tin nhà xuất bản (chỉ lấy trường name)
+      .sort({ stock: 1 })  // Sắp xếp theo stock tăng dần
+     
+
+    return lowStockBooks;
+  } catch (error) {
+    throw new Error('Error fetching low stock books: ' + error.message);
+  }
+};
+exports.getOrdersByCustomerId = async (customerId) => {
+  try {
+      // Tìm các đơn hàng theo ID khách hàng
+      const orders = await OrderModel.find({
+          customer_id: customerId // Tìm theo customer_id
+      }).populate('customer_id', 'name email address phone'); // Lấy thông tin khách hàng
+      return orders; // Trả về danh sách đơn hàng
+  } catch (error) {
+      throw new Error('Error fetching orders: ' + error.message); // Xử lý lỗi
+  }
+};
+

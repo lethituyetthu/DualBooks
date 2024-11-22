@@ -372,3 +372,64 @@ exports.getLatestBooks = async (req, res) => {
     res.status(500).json({ error: 'Error fetching latest books: ' + error.message });
   }
 };
+exports.getLowStockBooks = async () => {
+  try {
+    const books = await bookService.getLowStockBooks();
+    console.log(books)
+    // Định dạng lại dữ liệu trước khi trả về
+    const formattedBooks = books.map((book) => ({
+      id: book._id, // ObjectId của sách
+      title: book.title,
+      author: book.author,
+      category: book.categoryID ? {
+          id: book.categoryID._id, // ID danh mục
+          name: book.categoryID.name // Tên danh mục
+      } : null, // Nếu không có categoryID, trả về null
+      publisher: book.publisherID ? {
+          id: book.publisherID._id, // ID nhà xuất bản
+          name: book.publisherID.name // Tên nhà xuất bản
+      } : null, // Nếu không có publisherID, trả về null
+      description: book.description,
+      price: book.price,
+      stock: book.stock,
+      cover_image: book.cover_image,
+      created_at: book.created_at,   // Thêm trường created_at
+      updated_at: book.updated_at
+    }));
+
+    return formattedBooks;
+  } catch (error) {
+    throw new Error('Error fetching low stock books: ' + error.message);
+  }
+};
+
+// Controller: Lọc đơn hàng theo ID khách hàng
+exports.getOrdersByCustomerId = async (req, res, customerId) => {
+  try {
+      // Gọi service để lấy danh sách đơn hàng theo ID khách hàng
+      const orders = await orderService.getOrdersByCustomerId(customerId);
+      
+      // Kiểm tra danh sách đơn hàng
+      if (orders.length === 0) {
+          return res.status(404).json({ message: 'Không có đơn hàng nào được tìm thấy cho khách hàng này.' });
+      }
+
+      // Định dạng lại dữ liệu đơn hàng trước khi trả về
+      const formattedOrders = orders.map((order) => ({
+          id: order._id,
+          order_date: order.order_date,
+          order_status: order.order_status,
+          payment_status: order.payment_status,
+          shipping_address: order.shipping_address,
+          total_amount: order.total_amount,
+          total_quantity: order.total_quantity,
+          order_items: order.orderItems, // Nếu cần chi tiết sản phẩm
+          created_at: order.createdAt,
+          updated_at: order.updatedAt
+      }));
+
+      res.status(200).json(formattedOrders); // Trả về danh sách đơn hàng
+  } catch (error) {
+      res.status(500).json({ error: error.message }); // Xử lý lỗi
+  }
+};

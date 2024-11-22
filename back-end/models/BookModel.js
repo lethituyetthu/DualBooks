@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 // Định nghĩa schema cho bảng Books
 const bookSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+  },
   title: {
     type: String,
     required: true

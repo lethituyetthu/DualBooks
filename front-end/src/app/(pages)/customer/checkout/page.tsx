@@ -113,7 +113,7 @@ const CheckoutPaymentPage = () => {
 
     try {
       const response = await addOrder(order);
-      console.log(response);
+      console.log(response.data);
       const orderId = response.data._id;
 
       console.log("odr", cartItems);
