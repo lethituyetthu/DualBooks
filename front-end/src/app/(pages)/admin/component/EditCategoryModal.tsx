@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 export default function EditCategoryModal({ category, setCategory, onClose, onSubmit }) {
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCategory((prev) => ({ ...prev, [name]: value }));
@@ -17,6 +18,15 @@ export default function EditCategoryModal({ category, setCategory, onClose, onSu
     formData.append("name", category.name);
     formData.append("description", category.description);
     if (category.cate_image) formData.append("cate_image", category.cate_image);
+    
+    ///console.log(category.name)
+
+    //console.log("form",formData)
+          
+    /* console.log("FormData Contents:");
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    } */
 
     onSubmit(formData);
   };

@@ -10,6 +10,8 @@ interface Error {
   description?: string;
   price?: number;
   stock?: number;
+  views?: number;
+  sales?: number;
   cover_image?: string;
   created_at: string;
   updated_at: string;

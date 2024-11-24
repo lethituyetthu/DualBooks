@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useFetchCategory from "@/app/hook/useFetchCategory";
-import { log } from "console";
 
 const AddCate = () => {
   const router = useRouter();

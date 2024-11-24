@@ -19,7 +19,7 @@ export default function CategoryTable() {
   });
 
   const route = useRouter();
-  const { cate, deleteCategory, updateCategory, fetchCategoryById  } = useFetchCategory();
+  const { cate, deleteCategory, updateCategory  } = useFetchCategory();
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
@@ -45,10 +45,11 @@ export default function CategoryTable() {
   const handleEditSubmit = async (formDataToSend) => {
 
     const response = await updateCategory(editFormData.id, formDataToSend);
+    
     if (!response) {
       alert("Cập nhật thể loại thành công!");
       setEditingCategory(null);
-      route.refresh();
+      route.push("/admin/category");
     } else {
       alert("Lỗi khi cập nhật thể loại!");
     }
@@ -87,7 +88,7 @@ export default function CategoryTable() {
       <table className="w-full border-collapse">
         <thead>
           <tr className="bg-primary-400 text-white">
-            <th className="p-4 text-left font-semibold">Hình Ảnh</th>
+            <th className="p-4 text-left font-semibold text-nowrap">Hình Ảnh</th>
             <th className="p-4 text-left font-semibold">Thể Loại</th>
             <th className="p-4 text-left font-semibold">Miêu Tả</th>
             <th className="p-4 text-left font-semibold">Thao Tác</th>

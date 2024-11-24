@@ -2,22 +2,56 @@
 
 import React, { useEffect, useState } from "react";
 import { FaWallet, FaShoppingCart } from "react-icons/fa";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
 import useFetchBook from "@/app/hook/useFetchBook";
 import useFetchOrders from "@/app/hook/useFetchOrders";
+
+// Đăng ký ChartJS components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Dashboard = () => {
   const { newBooks, lowStock } = useFetchBook();
   const { fetchOrdersByDate } = useFetchOrders();
-  const [todayOrders, setTodayOrders] = useState([]);
-  const [filterStatus, setFilterStatus] = useState("Tất cả");
-  const [filteredOrders, setFilteredOrders] = useState([]);
-  const [orderCounts, setOrderCounts] = useState({}); // Đếm số lượng đơn hàng theo trạng thái
 
+  const [todayOrders, setTodayOrders] = useState([]);
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  const [filterStatus, setFilterStatus] = useState("Tất cả");
+  const [orderCounts, setOrderCounts] = useState({});
   const [statsData, setStatsData] = useState({
     totalAmount: 0,
     orderCount: 0,
   });
+  const [weeklyRevenue, setWeeklyRevenue] = useState([]);
 
+  // Tính doanh thu hàng tuần
+  const calculateWeeklyRevenue = (orders) => {
+    const revenueByDay = Array(7).fill(0); // 7 ngày trong tuần
+    orders.forEach((order) => {
+      const orderDate = new Date(order.created_at);
+      const dayOfWeek = orderDate.getDay(); // Chủ Nhật = 0, Thứ Hai = 1, ...
+      revenueByDay[dayOfWeek] += order.total_amount;
+    });
+    return revenueByDay;
+  };
+
+  // Lấy dữ liệu đơn hàng trong ngày
   useEffect(() => {
     const fetchTodayOrders = async () => {
       const today = new Date().toISOString().split("T")[0];
@@ -26,28 +60,27 @@ const Dashboard = () => {
       if (orders) {
         setTodayOrders(orders);
 
-        // Tính toán thống kê tổng số lượng và doanh thu
+        // Tổng doanh thu và số lượng đơn hàng
         const totalAmount = orders.reduce(
           (sum, order) => sum + order.total_amount,
           0
         );
-
         const orderCount = orders.length;
 
-        setStatsData({
-          totalAmount,
-          orderCount,
-        });
+        setStatsData({ totalAmount, orderCount });
 
-        // Đếm số lượng đơn hàng theo trạng thái
+        // Doanh thu hàng tuần
+        const weeklyRevenueData = calculateWeeklyRevenue(orders);
+        setWeeklyRevenue(weeklyRevenueData);
+
+        // Số lượng đơn hàng theo trạng thái
         const counts = orders.reduce((acc, order) => {
           acc[order.order_status] = (acc[order.order_status] || 0) + 1;
           return acc;
         }, {});
         setOrderCounts(counts);
 
-        // Hiển thị tất cả khi chưa lọc
-        setFilteredOrders(orders);
+        setFilteredOrders(orders); // Hiển thị tất cả khi chưa lọc
       }
     };
     fetchTodayOrders();
@@ -64,6 +97,47 @@ const Dashboard = () => {
       setFilteredOrders(filtered);
     }
   }, [filterStatus, todayOrders]);
+
+  // Dữ liệu biểu đồ doanh thu
+  const chartData = {
+    labels: [
+      "Chủ Nhật",
+      "Thứ Hai",
+      "Thứ Ba",
+      "Thứ Tư",
+      "Thứ Năm",
+      "Thứ Sáu",
+      "Thứ Bảy",
+    ],
+    datasets: [
+      {
+        label: "Doanh thu (VNĐ)",
+        data: weeklyRevenue.map((amount) => amount * 1000), // Đổi sang VNĐ
+        backgroundColor: "#AF683E",
+        borderColor: "#AF683E",
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { position: "top" },
+      title: { display: true, text: "Thống kê doanh thu mỗi tuần" },
+    },
+    scales: {
+      y: {
+        ticks: {
+          stepSize: 200000, // Khoảng cách giữa các mốc
+          callback: (value) =>
+            `${(value).toLocaleString("vi-VN")} đ`, // Định dạng thành đơn vị VNĐ
+        },
+        beginAtZero: true, // Bắt đầu từ 0
+      },
+    },
+  };
+  
 
   const stats = [
     {
@@ -86,7 +160,7 @@ const Dashboard = () => {
     "Đã xác nhận",
     "Đang giao hàng",
     "Hoàn thành",
-    "Đã hủy"
+    "Đã hủy",
   ];
 
   return (
@@ -112,14 +186,70 @@ const Dashboard = () => {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-3 gap-6">
+
+      {/* Daily Orders Section */}
+      <div className="bg-white rounded-lg shadow p-6 mt-9">
+        <div className="flex justify-between items-center px-10 py-3">
+          <h3 className="text-lg font-semibold text-gray-700">Đơn hàng</h3>
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            className="border border-gray-300 rounded-lg py-2 px-4"
+          >
+            {statuses.map((status) => (
+              <option key={status} value={status}>
+                {status} ({orderCounts[status] || 0})
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <ul className="space-y-4 px-10 h-80 overflow-y-auto">
+          {filteredOrders.length > 0 ? (
+            filteredOrders.map((order) => (
+              <li
+                key={order.id}
+                className="flex justify-between items-center py-2 px-4 bg-white rounded-md shadow mb-2"
+              >
+                <span className="text-gray-700 font-medium">
+                  #...{order.id.slice(-5)}
+                </span>
+                <span
+                  className={`font-medium text-center ${
+                    order.order_status === "Hoàn thành"
+                      ? "text-green-700 bg-green-100"
+                      : order.order_status === "Đã hủy"
+                      ? "text-red-700 bg-red-100"
+                      : "text-blue-700 bg-blue-100"
+                  } py-1 px-2 rounded`}
+                >
+                  {order.order_status}
+                </span>
+                <span className="text-gray-600 font-medium">
+                  {order.customer?.phone || "N/A"}
+                </span>
+                <span className="text-green-500 font-semibold">
+                  {(order.total_amount * 1000).toLocaleString("vi-VN")} đ
+                </span>
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-500 text-center">
+              Không có đơn hàng cho trạng thái này.
+            </li>
+          )}
+        </ul>
+      </div>
+      <div className="mt-9 grid grid-cols-3 gap-6">
         {/* Chart Section */}
         <div className="col-span-2 bg-white rounded-lg shadow p-6">
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">Thống kê</h3>
-          <div className="h-40 w-full flex items-center justify-center">
-            <p>Biểu đồ placeholder</p>
-          </div>
+          <h3 className="text-lg font-semibold text-gray-700 mb-4">
+            Thống kê doanh thu
+          </h3>
+
+          <Bar data={chartData} options={chartOptions} />
         </div>
+
         {/* Right Sidebar */}
         <div className="space-y-6">
           {/* Low Stock Products */}
@@ -132,9 +262,7 @@ const Dashboard = () => {
                 lowStock.map((book) => (
                   <li key={book.id} className="flex justify-between">
                     <span>{book.title}</span>
-                    <span className="font-semibold text-nowrap">
-                      {book.stock}
-                    </span>
+                    <span className="font-semibold">{book.stock}</span>
                   </li>
                 ))
               ) : (
@@ -153,8 +281,8 @@ const Dashboard = () => {
             <ul className="space-y-4">
               {newBooks.map((book) => (
                 <li key={book.id} className="flex justify-between">
-                  <span>{book.title}</span>
-                  <span className="font-semibold text-nowrap">
+                  <span className="">{book.title}</span>
+                  <span className="text-nowrap font-semibold">
                     {(book.price * 1000).toLocaleString("vi-VN")} đ
                   </span>
                 </li>
@@ -162,68 +290,6 @@ const Dashboard = () => {
             </ul>
           </div>
         </div>
-      </div>
-      
-      {/* Daily Orders Section */}
-      <div className="bg-white rounded-lg shadow p-6 mt-9">
-        <div className="flex justify-between items-center px-10 py-3 ">
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">Đơn hàng</h3>
-          <select
-            value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value)}
-            className="border border-gray-300 rounded-lg py-2 px-4"
-          >
-            {statuses.map((status) => (
-              <option key={status} value={status}>
-                {status} ({orderCounts[status] || 0}) {/* Hiển thị số lượng */}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <ul className="space-y-4 px-10 h-80 overflow-y-auto">
-          {filteredOrders.length > 0 ? (
-            filteredOrders.map((order) => (
-              <li
-                key={order.id}
-                className="flex justify-between items-center py-2 px-4 bg-white rounded-md shadow mb-2"
-              >
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white">
-                    <span>👤</span>
-                  </div>
-                  <span className="ml-4 font-medium text-gray-700">
-                    #...{order.id.slice(-5)}
-                  </span>
-                </div>
-
-                <span
-                  className={` font-medium text-center w-1/6 ${
-                    order.order_status === "Hoàn thành"
-                      ? "text-green-700 bg-green-100"
-                      : order.order_status === "Đã hủy"
-                      ? "text-red-700 bg-red-100"
-                      : "text-blue-700 bg-blue-100"
-                  } py-1 px-2 rounded`}
-                >
-                  {order.order_status}
-                </span>
-
-                <span className="text-gray-600 font-medium text-center w-1/6">
-                  {order.customer?.phone || "N/A"}
-                </span>
-
-                <span className="text-green-500 font-semibold text-right w-1/6">
-                  {(order.total_amount * 1000).toLocaleString("vi-VN") || "0"} đ
-                </span>
-              </li>
-            ))
-          ) : (
-            <li className="text-gray-500 text-center">
-              Không có đơn hàng cho trạng thái này.
-            </li>
-          )}
-        </ul>
       </div>
     </div>
   );

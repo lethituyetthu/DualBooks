@@ -1,32 +1,102 @@
-
 import { useEffect, useState } from "react";
 
 interface typeCate {
   id: string;
   name: string;
-  cate_image:string;
+  cate_image: string;
   description: string;
 }
-
 
 export default function useFetchCategory() {
   const [cate, setCate] = useState<typeCate[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://localhost:3200/categories");
+      try {
+        const res = await fetch("http://localhost:3200/categories");
 
-      if (!res.ok) {
-        throw new Error("lỗi khi lấy dữ liệu !!!");
+        if (!res.ok) {
+          throw new Error("Error fetching data!!!");
+        }
+
+        const result = await res.json();
+        setCate(result);
+      } catch (error) {
+        console.error(error);
       }
-
-      const result = await res.json();
-
-      setCate(result);
     };
 
     fetchData();
   }, []);
 
-  return {cate};
+  const addCategory = async (newCategory: typeCate) => {
+    console.log(newCategory);
+    try {
+      const res = await fetch("http://localhost:3200/categories", {
+        method: "POST",
+
+        body: newCategory,
+      });
+      console.log(res);
+
+      if (res) {
+        const addedCate = await res.json();
+        setCate((prev) => [...prev, addedCate]);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const updateCategory = async (id: any, updatedCategory: typeCate) => {
+    try {
+      const res = await fetch(`http://localhost:3200/categories/${id}`, {
+        method: "PUT",
+        body: updatedCategory,
+      });
+      if (!res.ok) {
+        throw new Error("Error updating category!");
+      }
+
+      const updatedCate = await res.json();
+      setCate((prev) =>
+        prev.map((cate) => (cate.id === updatedCate.id ? updatedCate : cate))
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchCategoryById = async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3200/categories/${id}`);
+
+      if (!res.ok) {
+        throw new Error("Error fetching category by ID!");
+      }
+
+      const category = await res.json();
+      return category;
+    } catch (error) {
+      console.error(error);
+      return null; // Return null if fetching fails
+    }
+  };
+
+  const deleteCategory = async (id:string) =>{
+    try {
+      const res = await fetch(`http://localhost:3200/categories/${id}`, {
+      method: "DELETE",
+    })
+
+    if(!res.ok){
+      throw new Error(" lỗi khi xoá sp")
+    }
+    } catch (error) {
+      console.error(error);
+      
+    }
+  }
+
+  return { cate, addCategory, updateCategory, fetchCategoryById, deleteCategory};
 }

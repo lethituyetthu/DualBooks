@@ -1,7 +1,6 @@
 "use client";
 
 import useFetchBook from "@/app/hook/useFetchBook";
-import useFetchCategory from "@/app/hook/useFetchCategory";
 import Product from "../../component/product";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,9 +8,7 @@ import SearchProduct from "@/components/ui/searchProduct_byName";
 
 const ProductList = () => {
   const { books, loading, error, searchBooks } = useFetchBook();
-  const { cate } = useFetchCategory();
   const [searchTerm, setSearchTerm] = useState("");
-  
   
   // Lấy tên danh mục theo ID
   
@@ -68,6 +65,7 @@ const ProductList = () => {
               <th className="px-6 py-4 text-nowrap">Danh mục</th>
               <th className="px-6 py-4 text-nowrap">Giá</th>
               <th className="px-6 py-4 text-nowrap">Số lượng</th>
+              <th className="px-6 py-4 text-nowrap">Lượt bán</th>
               <th className="px-6 py-4 text-nowrap">Thời gian</th>
               <th className="px-6 py-4 text-nowrap">Thao tác</th>
             </tr>
