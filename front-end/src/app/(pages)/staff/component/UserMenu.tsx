@@ -22,7 +22,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ userName }) => {
   const menuList = [
     { href: "/staff", icon: <FaHome />, title: "Trang Chủ" },
     { href: "/staff/order", icon: <FaClipboardList />, title: "Đơn Hàng" },
-    { href: "/statistics", icon: <FaChartBar />, title: "Thống Kê" },
+    { href: "/staff/dasboard", icon: <FaChartBar />, title: "Thống Kê" },
     { href: "/logout", icon: <FaSignOutAlt />, title: "Đăng Xuất", className: "text-red-500", onclick: logout },
   ];
 

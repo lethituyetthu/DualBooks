@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 // Định nghĩa schema cho bảng Books
 const bookSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+  },
   title: {
     type: String,
     required: true
@@ -52,6 +55,11 @@ const bookSchema = new mongoose.Schema({
     type: Number, 
     default: 0 
   }, // Số lượt xem
+  status: {
+    type: String,
+    enum: ['visible', 'hidden'], // Chỉ nhận 'visible' hoặc 'hidden'
+    default: 'visible' // Mặc định là 'visible'
+  },
   sales: { 
     type: Number, 
     default: 0 

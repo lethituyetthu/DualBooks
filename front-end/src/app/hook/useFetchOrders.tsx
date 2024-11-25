@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 // Định nghĩa kiểu dữ liệu cho một mục trong danh sách sản phẩm của đơn hàng
 export interface typeOrderItem {
@@ -43,7 +43,6 @@ export interface typeOrder {
   shipping_address: string;
   total_amount: number;
   total_quantity: number;
-
 }
 
 // Định nghĩa kiểu trả về cho custom hook useFetchOrders
@@ -54,7 +53,10 @@ export interface UseFetchOrdersResult {
   error: string | null;
   fetchOrders: () => Promise<void>;
   fetchOrderDetail: (orderId: string) => Promise<void>;
-  updateOrder: (orderId: string, updatedData: Partial<typeOrderDetail>) => Promise<void>;
+  updateOrder: (
+    orderId: string,
+    updatedData: Partial<typeOrderDetail>
+  ) => Promise<void>;
   fetchOrdersByStatus: (status: string) => Promise<void>; // Add this line to the interface
   fetchOrdersByDate: (status: string) => Promise<void>; // Add this line to the interface
 }
@@ -76,7 +78,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       }
       const result = await response.json();
 
-      console.log(result)
+      // console.log(result)
       setOrders(result); // Đặt dữ liệu đơn hàng vào state
     } catch (err) {
       setError((err as Error).message);
@@ -86,62 +88,73 @@ export default function useFetchOrders(): UseFetchOrdersResult {
   }, []);
 
   // Hàm lấy chi tiết đơn hàng từ API theo orderId
-  const fetchOrderDetail = useCallback(async (orderId: string): Promise<void> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(`http://localhost:3200/orders/${orderId}`);
-      if (!response.ok) {
-        throw new Error("Lỗi khi lấy chi tiết đơn hàng!");
+  const fetchOrderDetail = useCallback(
+    async (orderId: string): Promise<void> => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(`http://localhost:3200/orders/${orderId}`);
+        if (!response.ok) {
+          throw new Error("Lỗi khi lấy chi tiết đơn hàng!");
+        }
+        const result = await response.json();
+        setOrderDetail(result); // Đặt chi tiết đơn hàng vào state
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
+        setLoading(false);
       }
-      const result = await response.json();
-      setOrderDetail(result); // Đặt chi tiết đơn hàng vào state
-    } catch (err) {
-      setError((err as Error).message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-  
+    },
+    []
+  );
 
-   // Hàm cập nhật thông tin đơn hàng
-   const updateOrder = useCallback(async (orderId: string, updatedData: Partial<typeOrderDetail>) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(`http://localhost:3200/orders/${orderId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedData),
-      });
+  // Hàm cập nhật thông tin đơn hàng
+  const updateOrder = useCallback(
+    async (orderId: string, updatedData: Partial<typeOrderDetail>) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(
+          `http://localhost:3200/orders/${orderId}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedData),
+          }
+        );
 
-      if (!response.ok) {
-        throw new Error("Lỗi khi cập nhật đơn hàng!");
+        if (!response.ok) {
+          throw new Error("Lỗi khi cập nhật đơn hàng!");
+        }
+
+        const result: typeOrderDetail = await response.json();
+        setOrderDetail(result);
+
+        // Cập nhật danh sách đơn hàng nếu cần
+        setOrders((prevOrders) =>
+          prevOrders.map((order) =>
+            order.id === orderId ? { ...order, ...updatedData } : order
+          )
+        );
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
+        setLoading(false);
       }
-
-      const result: typeOrderDetail = await response.json();
-      setOrderDetail(result);
-
-      // Cập nhật danh sách đơn hàng nếu cần
-      setOrders((prevOrders) =>
-        prevOrders.map((order) => (order.id === orderId ? { ...order, ...updatedData } : order))
-      );
-    } catch (err) {
-      setError((err as Error).message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-   // Hàm lấy danh sách đơn hàng theo trạng thái
-   const fetchOrdersByStatus = useCallback(async (status: string) => {
+    },
+    []
+  );
+  // Hàm lấy danh sách đơn hàng theo trạng thái
+  const fetchOrdersByStatus = useCallback(async (status: string) => {
     setLoading(true);
     setError(null);
     try {
-
       // Lấy danh sách đơn hàng theo trạng thái
-      const response = await fetch(`http://localhost:3200/orders/filter-by-status/${status}`);
+      const response = await fetch(
+        `http://localhost:3200/orders/filter-by-status/${status}`
+      );
       if (!response.ok) {
         throw new Error("Lỗi khi lấy dữ liệu đơn hàng theo trạng thái!");
       }
@@ -161,9 +174,30 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       const encodedDate = encodeURIComponent(date); // Mã hóa trạng thái
 
       // Lấy danh sách đơn hàng theo trạng thái
-      const response = await fetch(`http://localhost:3200/orders/filter-by-date/${encodedDate}`);
+      const response = await fetch(
+        `http://localhost:3200/orders/filter-by-date/${encodedDate}`
+      );
       if (!response.ok) {
         throw new Error("Lỗi khi lấy dữ liệu đơn hàng theo ngày");
+      }
+      const result = await response.json();
+      setOrders(result); // Đặt dữ liệu đơn hàng vào state\
+      return result;
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+  const fetchOrdersByCustomerId = useCallback(async (customerId: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(
+        `http://localhost:3200/orders/filter-by-customer/${customerId}`
+      );
+      if (!response.ok) {
+        throw new Error("Lỗi khi lấy dữ liệu đơn hàng theo ID khách hàng!");
       }
       const result = await response.json();
       setOrders(result); // Đặt dữ liệu đơn hàng vào state
@@ -173,7 +207,6 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       setLoading(false);
     }
   }, []);
-
   // Gọi fetchOrders khi component lần đầu render
   useEffect(() => {
     fetchOrders();
@@ -186,8 +219,9 @@ export default function useFetchOrders(): UseFetchOrdersResult {
     error,
     fetchOrders,
     fetchOrderDetail,
+    fetchOrdersByCustomerId,
     updateOrder,
     fetchOrdersByStatus,
-    fetchOrdersByDate,  // Trả về hàm fetchOrdersByStatus
+    fetchOrdersByDate, // Trả về hàm fetchOrdersByStatus
   };
 }

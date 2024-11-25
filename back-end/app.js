@@ -97,12 +97,11 @@ app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}/customers/status/6707f3aee55fb28d5793988f`);
 
   console.log(`http://localhost:${PORT}/orders`);
+  console.log(`http://localhost:${PORT}/orders/filter-by-customer/67286e8c684247600f9a8f48`);
   console.log(`http://localhost:${PORT}/orders/filter-by-date/2024-10-23`);
   console.log(`http://localhost:${PORT}/orders/filter-by-address/TP.HCM`);
-  console.log(`http://localhost:${PORT}/orders/filter-by-customer/67286e8c684247600f9a8f48`);
- 
-  console.log(`http://localhost:${PORT}/favoriteBooks/67286e8c684247600f9a8f48`);
 
+  console.log(`http://localhost:${PORT}/favoriteBooks/67286e8c684247600f9a8f48`);
 });
 
 // catch 404 and forward to error handler

@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "name": "NXB Thế Giới",
+  "address": "59 Thợ Nhuộm, Phường Cửa Nam, Quận Hoàn Kiếm, TP. Hà Nội, VN",
+  "phone": "0912572299",
+  "email": "luumyhang@gmail.com",
+  "img": "1729701862072-292012200.png",
+  "created_at": {
+    "$date": "2024-10-23T16:44:22.089Z"
+  },
+  "updated_at": {
+    "$date": "2024-10-23T16:44:22.090Z"
+  },
+  "__v": 0
+}]

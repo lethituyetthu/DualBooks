@@ -8,9 +8,12 @@ import Link from "next/link";
 
 interface Product {
   id: string;
+  _id?: string;
   name: string;
+  title?: string; // Bổ sung thuộc tính này
   price: number;
   image: string;
+  cover_image?: string; // Bổ sung thuộc tính này
   author: string;
 }
 
@@ -31,7 +34,7 @@ interface Category {
 const ProductPage = () => {
   const { books, loading, error } = useFetchBook();
   const { cate: categories }: { cate: Category[] } = useFetchCategory();
-  const { addToWishlist } = useFavoriteBooks(); // Sử dụng hàm addToWishlist từ hook
+  const {  message,wishlist,addToWishlist } = useFavoriteBooks(); // Sử dụng hàm addToWishlist từ hook
   const [minPrice, setMinPrice] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
   const [keyword, setKeyword] = useState<string>("");
@@ -39,13 +42,18 @@ const ProductPage = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
+    // Kiểm tra nếu sản phẩm đã có trong wishlist
+    const isFavorite = (productId: string) =>
+      wishlist.some((item: Product) => item.id === productId);
   useEffect(() => {
     if (books.length > 0) {
       const mappedProducts: Product[] = books.map((book: typeBook) => ({
         id: book.id,
         name: book.title,
+        title: book.title, // Cung cấp thuộc tính `title`
         price: book.price,
         image: book.cover_image,
+        cover_image: book.cover_image, // Cung cấp thuộc tính `cover_image`
         author: book.author,
       }));
       setFilteredProducts(mappedProducts);
@@ -87,9 +95,28 @@ const ProductPage = () => {
 
   return (
     <div className="max-w-[1200px] m-auto relative">
+       <nav className="flex items-center space-x-2 text-sm text-gray-600 p-4">
+        <a href="/customer" className="hover:text-gray-900">
+          Trang chủ
+        </a>
+        <span>/</span>
+        <a href="/customer/products/" className="hover:text-gray-900">
+          Sản phẩm
+        </a>
+        <span>/</span>
+        <span className="text font-semibold text-primary-400">
+        Danh sách sản phẩm
+        </span>
+      </nav>
+       {/* Thêm thông báo ở đây */}
+  {message && (
+    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-3 rounded shadow-md">
+      {message}
+    </div>
+  )}
       <div className="flex">
         {/* Sidebar */}
-        <div className="w-1/4 p-4 bg-gray-100 space-y-6">
+        <div className="w-1/4 p-4  space-y-6">
           {/* Category Filter */}
           <div className="border p-4 bg-white rounded-lg shadow">
             <div className="flex items-center justify-between mb-4">
@@ -162,7 +189,6 @@ const ProductPage = () => {
                 className="border rounded p-2 w-full"
               />
             </div>
-            
             <button
               onClick={handleFilter}
               className="bg-primary-400 hover:bg-primary-300 text-white py-2 px-4 rounded w-full mt-4"
@@ -174,21 +200,23 @@ const ProductPage = () => {
 
         {/* Product grid */}
         <div className="w-3/4 p-4">
+        
           {loading ? (
             <p>Loading...</p>
           ) : error ? (
             <p>Error: {error}</p>
           ) : (
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-4 gap-6">
+              
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => (
                   <div
                   key={product.id}
-                  className="relative border p-4 flex flex-col items-center justify-between"
+                  className= "relative border rounded-lg shadow-md p-4 bg-white flex flex-col items-center hover:shadow-lg transition-shadow duration-300"
                 >
                   {/* Heart Icon */}
                   <button
-                    className="absolute top-2 left-2 text-gray-500 hover:text-red-500"
+                   className="absolute top-3 left-3 bg-white rounded-full p-2 shadow hover:shadow-md transition text-gray-500 hover:text-red-500"
                     onClick={() => addToWishlist(product)} // Function to handle adding to wishlist
                   >
                     <svg
@@ -207,15 +235,15 @@ const ProductPage = () => {
                       alt={product.name}
                       width={300}
                       height={200}
-                      className="object-cover mb-4"
+                      className="object-cover mb-4 w-full h-[200px]"
                     />
-                    <h3 className="text-lg font-semibold mb-2" style={{ height: "56px", overflow: "hidden" }}>
+                    <h3 className="text-l font-semibold mb-2 line-clamp-2 h-[48px] text-gray-800">
                       {product.name}
                     </h3>
-                    <p className="text-gray-500" style={{ height: "56px", overflow: "hidden" }}>
+                    <p className="text-sm text-gray-500 mb-2 text-nowrap w-32 truncate mx-auto" >
                       {product.author}
                     </p>
-                    <div className="text-primary-400 text-2xl font-bold mb-4" style={{ height: "56px" }}>
+                    <div className="text-primary-500 text-xl text-primary-400 font-bold">
                       {(product.price * 1000).toLocaleString("vi-VN") + "đ"}
                     </div>
                   </Link>

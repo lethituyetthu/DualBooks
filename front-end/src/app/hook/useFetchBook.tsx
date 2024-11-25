@@ -19,6 +19,7 @@ export default function useFetchBook() {
   const [detailBook, setDetailBook] = useState<Books | null>(null);
   const [hotBooks, setHotBooks] = useState<Books[]>([]);
   const [newBooks, setNewBooks] = useState<Books[]>([]);
+  const [lowStock, setLowStock] = useState<Books[]>([]);
   const [books, setBooks] = useState<Books[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,10 +43,17 @@ export default function useFetchBook() {
         const resultNew = await resNew.json();
         setNewBooks(resultNew);
 
+        const resLowStock = await fetch("http://localhost:3200/books/low-stock");
+       
+        const resultLowStock = await resLowStock.json();
+        console.log(resultLowStock)
+        setLowStock(resultLowStock);
+
         const resAll = await fetch("http://localhost:3200/books");
         if (!resAll.ok) {
           throw new Error("Lỗi khi lấy tất cả dữ liệu sách!!!");
         }
+
         const resultAll = await resAll.json();
         setBooks(resultAll);
       } catch (error) {
@@ -127,7 +135,7 @@ export default function useFetchBook() {
       });
       const result = await res.json();
       setDetailBook(result);
-      console.log(result)
+      console.log(result.reviews)
       return result;
     } catch (error) {
       setError((error as Error).message);
@@ -198,6 +206,7 @@ export default function useFetchBook() {
   }; */
 
   return {
+    lowStock,
     updateBook,
     hotBooks,
     books,

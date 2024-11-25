@@ -145,6 +145,8 @@ router.delete('/:id',authenticateAdmin, async (req, res) => {
       res.status(500).json({ error: error.message });
   }
 });
+// Định nghĩa API PATCH để thay đổi trạng thái danh mục
+router.patch('/:id/status', categoryController.updateCategoryStatus);
 
 
 module.exports = router;

@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import useFethWishList from "../../../hook/useFetchWishlist";
+import useAddToCart from "../../../hook/useAddToCard";
+import Link from "next/link";
 interface Product {
   _id: string;  // Thêm trường _id vào interface
   name: string;
+  title: string;
   price: number;
   cover_image: string;
   author: string;
@@ -13,7 +16,21 @@ interface Product {
 
 const Favorites = () => {
   const { wishlist, message, handleRemoveFromWishlist } = useFethWishList();  
+  const [cartCount, setCartCount] = useState(0);
 
+  // Hàm cập nhật số lượng giỏ hàng
+  const updateCartCount = () => {
+    const cart = localStorage.getItem("cart");
+    const cartData = cart ? JSON.parse(cart) : [];
+    setCartCount(cartData.length);
+  };
+
+  const addToCart = useAddToCart(updateCartCount); // Tạo hook addToCart với updateCartCount
+
+  // Cập nhật giỏ hàng mỗi khi wishlist thay đổi
+  useEffect(() => {
+    updateCartCount(); // Cập nhật số lượng giỏ hàng khi component render lại hoặc wishlist thay đổi
+  }, [wishlist]);
   return (
     <div className="max-w-[1200px] m-auto px-4 py-6">
       <h1 className="text-center text-3xl font-bold mb-8 text-primary-400 font-itim">Sản phẩm yêu thích</h1>
@@ -28,6 +45,7 @@ const Favorites = () => {
       {wishlist.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {wishlist.map((product) => (
+           
             <div
               key={product._id}
               className="border p-3 relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 w-[280px]"
@@ -54,18 +72,22 @@ const Favorites = () => {
                   />
                 </svg>
               </button>
+              <Link
+            href={`/customer/product/${product._id}`} 
+            >
               <Image
                 src={`http://localhost:3200/uploads/books/${product.cover_image}`}
-                alt={product.name}
+                alt={product.title}
                 width={280}
                 height={180}
                 className="object-cover mb-4 rounded-md"
               />
+                </Link>
               <h3
                 className="text-lg font-semibold mb-2 text-center"
                 style={{ height: "56px", overflow: "hidden" }}
               >
-                {product.name}
+                {product.title}
               </h3>
               <p
                 className="text-gray-500 mb-2 text-center"
@@ -81,7 +103,10 @@ const Favorites = () => {
 
               <div className="flex justify-center">
                 <button
-                  onClick={() => handleAddToWishlist(product)}
+                  onClick={() => {
+                    console.log("Adding product to cart", product._id);
+                    addToCart(product); // Gọi hàm addToCart khi nhấp vào nút
+                  }}
                   className="bg-transparent border border-primary-600 hover:bg-primary-300 hover:text-light-100 text-primary-600 px-6 py-2 rounded"
                 >
                   Thêm vào giỏ hàng
@@ -89,6 +114,7 @@ const Favorites = () => {
               </div>
 
             </div>
+          
           ))}
         </div>
       ) : (

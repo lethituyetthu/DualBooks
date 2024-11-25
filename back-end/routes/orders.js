@@ -99,21 +99,15 @@ router.delete("/:orderId", orderController.deleteOrder);
 router.get("/:orderId", orderController.getOrderDetail);
 // Route để hủy đơn hàng
 router.put("/cancel/:orderId", orderController.cancelOrder);
+// API để xác nhận đơn hàng
+router.put('/confirm/:orderId', orderController.confirmOrder);
 // Route: Lọc đơn hàng theo ID khách hàng
-
 router.get('/filter-by-customer/:customerId', async (req, res) => {
-
   try {
-
       const { customerId } = req.params; // Lấy customerId từ URL
-
       await orderController.getOrdersByCustomerId(req, res, customerId); // Gọi controller
-
   } catch (error) {
-
       res.status(500).json({ error: error.message }); // Xử lý lỗi
-
   }
-
 });
 module.exports = router;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 
 interface Book {
   _id: string;
@@ -25,6 +25,7 @@ interface User {
   email: string;
 }
 interface Product {
+    title: ReactNode;
     id: string;
   
     _id: string;
@@ -48,6 +49,7 @@ interface FavoriteBooksResponse {
 function useFavoriteBooks() {
     const [wishlist, setWishlist] = useState<Product[]>([]);
     const [message, setMessage] = useState<string>("");
+    const [bookCount, setBookCount] = useState<number>(0); // State mới để lưu số lượng sách
   
     // Fetch dữ liệu wishlist từ API khi component mount
     useEffect(() => {
@@ -64,7 +66,11 @@ function useFavoriteBooks() {
             console.log("Dữ liệu trả về từ API: ", data);
   
             if (data && data.favoriteBooks && Array.isArray(data.favoriteBooks.books)) {
-              setWishlist(data.favoriteBooks.books); // Cập nhật wishlist với mảng sách yêu thích
+              const books = data.favoriteBooks.books;
+            setWishlist(books); // Cập nhật wishlist với mảng sách yêu thích
+            setBookCount(books.length); // Lưu số lượng sách vào state
+            console.log("Số lượng sách yêu thích: ", books.length); // Log số lượng sách
+            
             } else {
               setMessage("Không có sách yêu thích.");
             }
@@ -75,40 +81,45 @@ function useFavoriteBooks() {
           });
       }
     }, []); // Chỉ chạy một lần khi component mount
-    const addToWishlist = async (product: Product) => {
-      const customer = localStorage.getItem("customer");
-  
-      if (customer) {
-        const customerData = JSON.parse(customer);
-        const userId = customerData.id;
-        const bookId = product.id;
-  
-        try {
-          const response = await fetch("http://localhost:3200/favoriteBooks/add", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ userId, bookId }),
-          });
-  
-          if (response.ok) {
-            setWishlist((prevWishlist) => [...prevWishlist, product]);
-            setMessage("Sản phẩm đã được thêm vào danh sách yêu thích!");
-          } else {
-            const errorData = await response.json();
-            setMessage(errorData.message || "Sách này đã tồn tại trong danh sách yêu thích!");
-          }
-        } catch (error) {
-          setMessage("Có lỗi xảy ra khi thêm sản phẩm vào danh sách yêu thích!");
-        } finally {
-          setTimeout(() => setMessage(""), 3000); // Xóa thông báo sau 3 giây
-        }
+ const addToWishlist = async (product: Product) => {
+  const customer = localStorage.getItem("customer");
+
+  if (customer) {
+    const customerData = JSON.parse(customer);
+    const userId = customerData.id;
+    const bookId = product.id;
+
+    try {
+      const response = await fetch("http://localhost:3200/favoriteBooks/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId, bookId }),
+      });
+
+      if (response.ok) {
+        setWishlist((prevWishlist) => [...prevWishlist, product]); // Cập nhật wishlist ngay sau khi thêm sản phẩm
+        setMessage("Sản phẩm đã được thêm vào danh sách yêu thích!");
+       // Delay reload page after 3 seconds
+       setTimeout(() => {
+        window.location.reload(); // Làm mới trang sau 3 giây
+      }, 1000);
       } else {
-        setMessage("Vui lòng đăng nhập.");
-        setTimeout(() => setMessage(""), 3000);
+        const errorData = await response.json();
+        setMessage(errorData.message || "Sách này đã tồn tại trong danh sách yêu thích!");
       }
-    };
+    } catch (error) {
+      console.error("Lỗi khi thêm sản phẩm vào danh sách yêu thích: ", error); // Log chi tiết lỗi
+      setMessage("Có lỗi xảy ra khi thêm sản phẩm vào danh sách yêu thích!");
+    } finally {
+      setTimeout(() => setMessage(""), 3000); // Xóa thông báo sau 3 giây
+    }
+  } else {
+    setMessage("Vui lòng đăng nhập.");
+    setTimeout(() => setMessage(""), 3000);
+  }
+};
    // Thêm sản phẩm vào wishlist
    const handleAddToWishlist = (product: Product) => {
     const isProductInWishlist = wishlist.some((item) => item.id === product.id);

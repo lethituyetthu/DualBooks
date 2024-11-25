@@ -30,10 +30,10 @@ const OrderManagement = () => {
 
   const handleSearchById = async (orderId: string) => {
     try {
-      console.log("Fetching details for order ID:", orderId);
       await fetchOrderDetail(orderId);
-
+      
       setSelectedOrder(orderDetail);
+      console.log("Fetching details for order ID:", orderDetail);
     } catch (error) {
       console.error("Error fetching order detail:", error);
       alert("Đã xảy ra lỗi khi lấy chi tiết đơn hàng.");
