@@ -1,6 +1,37 @@
 const orderService = require('../service/OrderService');
 const customerService = require('../service/CustomerService ');
-
+// Hàm định dạng đơn hàng
+const formatOrder = (order) => {
+    return {
+      id: order._id,
+      order_type: order.order_type,
+      staff_id: order.staff_id,
+      order_date: order.order_date,
+      order_status: order.order_status,
+      payment_status: order.payment_status,
+      shipping_address: order.shipping_address,
+      total_amount: order.total_amount,
+      total_quantity: order.total_quantity,
+      customer_feedback: order.customer_feedback,
+      orderItems: order.orderItems.map(item => ({
+        id: item._id,
+        bookId: item.book_id._id,
+        bookTitle: item.book_id.title,
+        quantity: item.quantity,
+        price: item.price
+      }))
+    };
+  };
+  
+  // Hàm định dạng dữ liệu khách hàng (nếu có)
+  const formatCustomer = (customer) => {
+    return {
+      id: customer._id,
+      name: customer.name,
+      email: customer.email,
+      phone: customer.phone
+    };
+  };
 // Tạo một đơn hàng mới
 exports.createOrder = async (orderData) => {
     try {
@@ -47,38 +78,13 @@ exports.getOrderDetail = async (req, res) => {
         if (!order) {
             return res.status(404).json({ message: 'Order not found' });
         }
-
-        // Định dạng dữ liệu đơn hàng ban đầu
-        const formattedOrder = {
-            id: order._id,
-            order_type: order.order_type,
-            staff_id: order.staff_id,
-            order_date: order.order_date,
-            order_status: order.order_status,
-            payment_status: order.payment_status,
-            shipping_address: order.shipping_address,
-            total_amount: order.total_amount,
-            total_quantity: order.total_quantity,
-            customer_feedback: order.customer_feedback,
-            orderItems: order.orderItems.map(item => ({
-                id: item._id,
-                bookId: item.book_id._id,
-                bookTitle: item.book_id.title, // Ví dụ trường title từ book_id
-                quantity: item.quantity,
-                price: item.price
-            }))
-        };
-
+       // Định dạng dữ liệu đơn hàng ban đầu
+    const formattedOrder = formatOrder(order);
         // Kiểm tra nếu là đơn hàng trực tuyến, bổ sung thông tin khách hàng
         if (order.order_type === 'online' && order.customer_id) {
             const customer = await orderService.getCustomerById(order.customer_id);
             if (customer) {
-                formattedOrder.customerInfo = {
-                    id: customer._id,
-                    name: customer.name,
-                    email: customer.email,
-                    phone: customer.phone
-                };
+                formattedOrder.customerInfo = formatCustomer(customer);
             } else {
                 return res.status(404).json({ message: 'Customer not found' });
             }
@@ -147,25 +153,39 @@ exports.getOrdersByUpdateDate = async (req, res, date) => {
             return res.status(404).json({ message: 'Không có đơn hàng nào được tìm thấy cho ngày đã nhập.' });
         }
 
-        // Định dạng lại dữ liệu trước khi trả về
-        const formattedOrders = orders.map((order) => ({
-            id: order._id,
-            customer: order.customer_id ? {  // Kiểm tra customer_id có tồn tại không
-                id: order.customer_id._id,
-                name: order.customer_id.name,
-                email: order.customer_id.email,
-                address: order.customer_id.address,
-                phone: order.customer_id.phone
-            } : null,  // Nếu không có customer_id, trả về null hoặc một giá trị mặc định
-            order_date: order.order_date,
-            order_status: order.order_status,
-            payment_status: order.payment_status,
-            shipping_address: order.shipping_address,
-            total_amount: order.total_amount,
-            created_at: order.createdAt,
-            updated_at: order.updatedAt
-        }));
+         // Định dạng lại dữ liệu trước khi trả về
+         const formattedOrders = orders.map((order) => {
+            const baseOrder = {
+                id: order._id,
+                order_date: order.order_date,
+                order_type: order.order_type,
+                order_status: order.order_status,
+                payment_status: order.payment_status,
+                shipping_address: order.shipping_address || "Địa chỉ cửa hàng", // Địa chỉ mặc định
+                total_amount: order.total_amount,
+                total_quantity: order.total_quantity,
+                created_at: order.createdAt,
+                updated_at: order.updatedAt
+            };
 
+            // Nếu đơn hàng là trực tuyến, bổ sung thông tin khách hàng
+            if (order.order_type === 'online' && order.customer_id) {
+                return {
+                    ...baseOrder,
+                    customer: {
+                        id: order.customer_id._id,
+                        name: order.customer_id.name,
+                        email: order.customer_id.email,
+                        address: order.customer_id.address,
+                        phone: order.customer_id.phone
+                    }
+                };
+            }
+
+            return baseOrder; // Trả về đơn hàng cơ bản cho đơn hàng ngoại tuyến
+        });
+
+        // return formattedOrders; // Trả về danh sách đơn hàng đã được định dạng
         res.status(200).json(formattedOrders);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -182,24 +202,38 @@ exports.getOrdersByShippingAddress = async (req, res, address) => {
         }
 
         // Định dạng lại dữ liệu trước khi trả về
-        const formattedOrders = orders.map((order) => ({
-            id: order._id,
-            customer: {
-                id: order.customer_id._id,
-                name: order.customer_id.name,
-                email: order.customer_id.email,
-                address: order.customer_id.address,
-                phone: order.customer_id.phone
-            },
-            order_date: order.order_date,
-            order_status: order.order_status,
-            payment_status: order.payment_status,
-            shipping_address: order.shipping_address,
-            total_amount: order.total_amount,
-            created_at: order.createdAt,
-            updated_at: order.updatedAt
-        }));
+        const formattedOrders = orders.map((order) => {
+            const baseOrder = {
+                id: order._id,
+                order_date: order.order_date,
+                order_type: order.order_type,
+                order_status: order.order_status,
+                payment_status: order.payment_status,
+                shipping_address: order.shipping_address || "Địa chỉ cửa hàng", // Địa chỉ mặc định
+                total_amount: order.total_amount,
+                total_quantity: order.total_quantity,
+                created_at: order.createdAt,
+                updated_at: order.updatedAt
+            };
 
+            // Nếu đơn hàng là trực tuyến, bổ sung thông tin khách hàng
+            if (order.order_type === 'online' && order.customer_id) {
+                return {
+                    ...baseOrder,
+                    customer: {
+                        id: order.customer_id._id,
+                        name: order.customer_id.name,
+                        email: order.customer_id.email,
+                        address: order.customer_id.address,
+                        phone: order.customer_id.phone
+                    }
+                };
+            }
+
+            return baseOrder; // Trả về đơn hàng cơ bản cho đơn hàng ngoại tuyến
+        });
+
+        // return formattedOrders; // Trả về danh sách đơn hàng đã được định dạng
         res.status(200).json(formattedOrders);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -215,23 +249,42 @@ exports.getOrdersByStatus = async (status) => {
             throw new Error('Không tìm thấy đơn hàng nào với trạng thái này.');
         }
 
-        // Định dạng dữ liệu trước khi trả về
-        return orders.map((order) => ({
+      // Định dạng lại dữ liệu trước khi trả về
+      const formattedOrders = orders.map((order) => {
+        const baseOrder = {
             id: order._id,
-            customer: order.customer_id,
-            staff: order.staff_id,
             order_date: order.order_date,
+            order_type: order.order_type,
             order_status: order.order_status,
             payment_status: order.payment_status,
-            shipping_address: order.shipping_address,
+            shipping_address: order.shipping_address || "Địa chỉ cửa hàng", // Địa chỉ mặc định
             total_amount: order.total_amount,
             total_quantity: order.total_quantity,
             created_at: order.createdAt,
-            updated_at: order.updatedAt,
-        }));
-    } catch (error) {
-        throw new Error('Error fetching orders by status: ' + error.message);
-    }
+            updated_at: order.updatedAt
+        };
+
+        // Nếu đơn hàng là trực tuyến, bổ sung thông tin khách hàng
+        if (order.order_type === 'online' && order.customer_id) {
+            return {
+                ...baseOrder,
+                customer: {
+                    id: order.customer_id._id,
+                    name: order.customer_id.name,
+                    email: order.customer_id.email,
+                    address: order.customer_id.address,
+                    phone: order.customer_id.phone
+                }
+            };
+        }
+
+        return baseOrder; // Trả về đơn hàng cơ bản cho đơn hàng ngoại tuyến
+    });
+
+    return formattedOrders; // Trả về danh sách đơn hàng đã được định dạng
+} catch (error) {
+    throw new Error('Error fetching orders: ' + error.message);
+}
 };
 
 // Controller để xóa đơn hàng theo orderId
@@ -264,6 +317,24 @@ exports.cancelOrder = async (req, res) => {
         });
     } catch (error) {
         res.status(400).json({ error: error.message });
+    }
+};
+exports.confirmOrder = async (req, res) => {
+    const { orderId } = req.params; // Lấy orderId từ URL
+
+    try {
+        // Gọi service để xác nhận đơn hàng
+        const updatedOrder = await orderService.confirmOrder(orderId);
+
+        // Trả về kết quả
+        res.status(200).json({
+            message: 'Order has been confirmed successfully',
+            data: updatedOrder,
+        });
+    } catch (error) {
+        res.status(400).json({
+            error: error.message,
+        });
     }
 };
 // Controller: Lọc đơn hàng theo ID khách hàng

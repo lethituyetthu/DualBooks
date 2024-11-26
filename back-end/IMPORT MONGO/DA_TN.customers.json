@@ -1,78 +1,90 @@
 [{
   "_id": {
-    "$oid": "66d569d3afc8a51793d731e5"
+    "$oid": "67286e8c684247600f9a8f48"
   },
-  "id": 1,
-  "name": "Nguyễn Văn A",
-  "email": "nguyenvana@example.com",
-  "phone": "0912345678",
-  "address": "123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh",
-  "created_at": "2024-08-15T08:30:00Z",
-  "updated_at": "2024-08-25T10:00:00Z"
-},
-{
-  "_id": {
-    "$oid": "66d569d3afc8a51793d731e6"
-  },
-  "id": 2,
-  "name": "Trần Thị B",
-  "email": "tranthib@example.com",
-  "phone": "0987654321",
-  "address": "456 Đường Nguyễn Huệ, Quận 3, TP. Hồ Chí Minh",
-  "created_at": "2024-08-16T09:00:00Z",
-  "updated_at": "2024-08-26T11:20:00Z"
-},
-{
-  "_id": {
-    "$oid": "66d569d3afc8a51793d731e7"
-  },
-  "id": 3,
-  "name": "Lê Văn C",
-  "email": "levanc@example.com",
-  "phone": "0976543210",
-  "address": "789 Đường Cách Mạng Tháng 8, Quận 10, TP. Hồ Chí Minh",
-  "created_at": "2024-08-17T14:15:00Z",
-  "updated_at": "2024-08-27T12:30:00Z"
-},
-{
-  "_id": {
-    "$oid": "66d569d3afc8a51793d731e8"
-  },
-  "id": 4,
-  "name": "Phạm Thị D",
-  "email": "phamthid@example.com",
-  "phone": "0965432109",
-  "address": "321 Đường Trần Hưng Đạo, Quận 5, TP. Hồ Chí Minh",
-  "created_at": "2024-08-18T16:45:00Z",
-  "updated_at": "2024-08-28T13:00:00Z"
-},
-{
-  "_id": {
-    "$oid": "66d569d3afc8a51793d731e9"
-  },
-  "id": 5,
-  "name": "Bùi Văn E",
-  "email": "buivane@example.com",
-  "phone": "0934567890",
-  "address": "654 Đường Bạch Đằng, Quận Bình Thạnh, TP. Hồ Chí Minh",
-  "created_at": "2024-08-19T08:00:00Z",
-  "updated_at": "2024-08-29T09:15:00Z"
-},
-{
-  "_id": {
-    "$oid": "66ddcb8f732992723ef702e7"
-  },
-  "id": 7,
-  "name": "Tên Khách Hàng",
-  "email": "email@example.com",
-  "password": "$2b$10$ZAhd7hRLtpYP0Zysr/ftEuTPzqlKA.vV.N9Qtq1X2gQMTIhjEHhN.",
-  "phone": "012345678",
-  "address": "Địa chỉ",
+  "name": "Ngọc Hiếu ",
+  "email": "hyhaha@example.com",
+  "password": "$2b$10$RGIRpzgtmrawZkKuEscPLuVH7XJRqx8pRfYWcYaX6eBKof5FZ8RjG",
+  "phone": "0912345672",
+  "address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
+  "status": "blocked",
   "created_at": {
-    "$date": "2024-09-08T16:06:39.271Z"
+    "$date": "2024-11-04T06:49:48.136Z"
   },
   "updated_at": {
-    "$date": "2024-09-08T16:06:39.271Z"
+    "$date": "2024-11-04T06:49:48.136Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672a3ffd0ed491172cc4e4aa"
+  },
+  "name": "Lê Thu",
+  "email": "lethu2004@example.com",
+  "password": "$2b$10$n4jqJx.8CXk.cK90faCzpekflxr3KnmcT2/iOcEynR3IuAXUMhRMa",
+  "phone": "0912345673",
+  "address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
+  "status": "blocked",
+  "created_at": {
+    "$date": "2024-11-05T15:55:41.453Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-05T15:55:41.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "672b5a49af3298e0083c3832"
+  },
+  "name": "l",
+  "email": "lethu21004@example.com",
+  "password": "$2b$10$RimAG.lA/rhMcnJ9Zv0I0.SoxHFkv9dl6jJe6blpHUfabArs7jMzu",
+  "phone": "0912345671",
+  "address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
+  "status": "active",
+  "created_at": {
+    "$date": "2024-11-06T12:00:09.090Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-06T12:00:09.090Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "673862f7a3cd277e8668bc36"
+  },
+  "name": "l",
+  "email": "lethu1004@example.com",
+  "password": "$2b$10$MLEdfMqNj89MxsDztadDu.bEUt/ydhQK.hz.Lf6Xe8et2EH5xaysa",
+  "phone": "0912345670",
+  "address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
+  "status": "active",
+  "created_at": {
+    "$date": "2024-11-16T09:16:39.515Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-16T09:16:39.515Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6738637ea3cd277e8668bc6d"
+  },
+  "name": "duan",
+  "email": "hieunnps30444@gmail.com",
+  "password": "$2b$10$NdGzI8Ne53jmc15.CP7mwOeWka7TWyFufzVF0IH1u5ZEgRVO4F2i2",
+  "phone": "0947834638",
+  "address": "86/52, Đường TCH 36, Phường Tân Chánh Hiệp, Quận 12, Tp. Hồ Chí Minh",
+  "status": "active",
+  "created_at": {
+    "$date": "2024-11-16T09:18:54.972Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-16T09:18:54.972Z"
   },
   "__v": 0
 }]

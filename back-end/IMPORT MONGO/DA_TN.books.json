@@ -8,15 +8,20 @@
   "category": "Thiếu nhi",
   "description": "Có thể xếp “Búp Sen Xanh” vào nhóm tác phẩm văn học dành cho thiếu nhi và là tác phẩm nổi tiếng nhất viết về chủ tịch Hồ Chí Minh trong suốt thời thơ ấu cho đến khi rời Việt Nam sang Pháp.\\n\\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...\"",
   "price": 52.56,
-  "stock": 100,
+  "stock": 85,
   "cover_image": "1728314210371-331872765.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
-    "$date": "2024-10-07T15:16:50.379Z"
+    "$date": "2024-11-25T04:03:50.656Z"
   },
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
-  }
+  },
+  "__v": 1,
+  "reviews": [],
+  "sales": 11,
+  "views": 59,
+  "status": "hidden"
 },
 {
   "_id": {
@@ -28,15 +33,38 @@
   "category": "Thiếu nhi",
   "description": "Chuyện con mèo dạy hải âu bay là kiệt tác dành cho thiếu nhi của nhà văn Chi Lê nổi tiếng Luis Sepúlveda – tác giả của cuốn Lão già mê đọc truyện tình đã bán được 18 triệu bản khắp thế giới. Tác phẩm không chỉ là một câu chuyện ấm áp, trong sáng, dễ thương về loài vật mà còn chuyển tải thông điệp về trách nhiệm với môi trường, về sự sẻ chia và yêu thương cũng như ý nghĩa của những nỗ lực – “Chỉ những kẻ dám mới có thể bay”.\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...",
   "price": 39.2,
-  "stock": 100,
+  "stock": 98,
   "cover_image": "1728314238932-845181620.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
-    "$date": "2024-10-07T15:17:18.936Z"
+    "$date": "2024-11-25T04:04:01.902Z"
   },
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
-  }
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "review": {
+    "$oid": "66e2a7eebf0f7f001af45672"
+  },
+  "reviews": [
+    {
+      "$oid": "672cc93e63d52dfa41d7da80"
+    },
+    {
+      "$oid": "672cc96a63d52dfa41d7da87"
+    },
+    {
+      "$oid": "672cc9c563d52dfa41d7da8f"
+    },
+    {
+      "$oid": "672cdee3bdecd3bd976dca88"
+    }
+  ],
+  "sales": 2,
+  "views": 34,
+  "status": "visible"
 },
 {
   "_id": {
@@ -52,11 +80,19 @@
   "cover_image": "1728314472597-447946428.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
-    "$date": "2024-10-07T15:21:12.607Z"
+    "$date": "2024-11-25T04:05:15.139Z"
   },
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
-  }
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "__v": 1,
+  "reviews": [],
+  "sales": 0,
+  "views": 23,
+  "status": "visible"
 },
 {
   "_id": {
@@ -72,11 +108,19 @@
   "cover_image": "1728314507183-596565747.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
-    "$date": "2024-10-07T15:21:47.190Z"
+    "$date": "2024-11-25T04:04:20.089Z"
   },
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
-  }
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "__v": 1,
+  "reviews": [],
+  "sales": 0,
+  "views": 6,
+  "status": "visible"
 },
 {
   "_id": {
@@ -88,15 +132,23 @@
   "category": "Thiếu nhi",
   "description": "Cha mẹ Bessie thường xuyên bận rộn, nhưng may mắn thay… ở đây có Bà. Bà luôn dành thời gian cho Bessie.\n\nNhững cảm xúc mà \"Bà ơi, về với cháu!\" mang lại vô cùng chân thực và xúc động, khiến người đọc bồi hồi da diết nhớ lại những năm tháng thơ bé bên bà - một trong những người phụ nữ quan trọng nhất trong cuộc đời.\n\nCùng đọc \"Bà ơi, về với cháu!\" bằng tất cả lòng biết ơn và trân trọng nhé!",
   "price": 29.75,
-  "stock": 100,
+  "stock": 99,
   "cover_image": "1728314540438-621785815.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
-    "$date": "2024-10-07T15:22:20.445Z"
+    "$date": "2024-10-24T16:17:09.611Z"
   },
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
-  }
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "__v": 1,
+  "reviews": [],
+  "sales": 1,
+  "views": 2,
+  "status": "visible"
 },
 {
   "_id": {
@@ -117,9 +169,16 @@
     "$date": "2024-09-02T12:15:17.213Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:23:00.546Z"
+    "$date": "2024-10-24T16:17:24.056Z"
   },
-  "__v": 0
+  "__v": 1,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "reviews": [],
+  "sales": 0,
+  "views": 6,
+  "status": "visible"
 },
 {
   "_id": {
@@ -140,9 +199,13 @@
     "$date": "2024-09-02T12:23:18.249Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:23:20.169Z"
+    "$date": "2024-11-25T04:09:15.760Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -159,15 +222,20 @@
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
   },
-  "views": 0,
+  "views": 4,
   "sales": 0,
   "created_at": {
     "$date": "2024-09-14T06:55:23.006Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:23:47.213Z"
+    "$date": "2024-10-24T16:17:44.665Z"
   },
-  "__v": 0
+  "__v": 1,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "reviews": [],
+  "status": "visible"
 },
 {
   "_id": {
@@ -184,15 +252,20 @@
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
   },
-  "views": 0,
+  "views": 9,
   "sales": 0,
   "created_at": {
     "$date": "2024-09-14T06:57:14.222Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:24:11.515Z"
+    "$date": "2024-10-24T16:18:01.565Z"
   },
-  "__v": 0
+  "__v": 1,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "reviews": [],
+  "status": "visible"
 },
 {
   "_id": {
@@ -209,15 +282,20 @@
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
   },
-  "views": 0,
+  "views": 2,
   "sales": 0,
   "created_at": {
     "$date": "2024-09-14T06:58:27.798Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:24:32.732Z"
+    "$date": "2024-10-24T16:18:13.335Z"
   },
-  "__v": 0
+  "__v": 1,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "reviews": [],
+  "status": "visible"
 },
 {
   "_id": {
@@ -240,9 +318,13 @@
     "$date": "2024-09-14T07:00:59.183Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:25:06.081Z"
+    "$date": "2024-10-24T16:18:23.743Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -265,9 +347,13 @@
     "$date": "2024-09-14T07:02:28.896Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:26:15.722Z"
+    "$date": "2024-10-24T16:18:33.266Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -290,9 +376,13 @@
     "$date": "2024-09-14T07:03:55.350Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:26:35.646Z"
+    "$date": "2024-10-24T16:18:43.986Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -315,9 +405,13 @@
     "$date": "2024-09-14T07:05:20.142Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:26:57.234Z"
+    "$date": "2024-10-24T16:18:54.156Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -340,9 +434,13 @@
     "$date": "2024-09-14T07:06:53.371Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:27:19.136Z"
+    "$date": "2024-10-24T16:19:10.481Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -365,9 +463,13 @@
     "$date": "2024-09-14T07:09:32.615Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:27:47.465Z"
+    "$date": "2024-10-24T16:19:22.160Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -390,9 +492,13 @@
     "$date": "2024-09-14T07:10:37.002Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:28:06.174Z"
+    "$date": "2024-10-24T16:19:33.992Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -415,9 +521,13 @@
     "$date": "2024-09-14T07:12:09.608Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:28:27.003Z"
+    "$date": "2024-10-24T16:19:41.983Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -440,9 +550,13 @@
     "$date": "2024-09-14T07:13:45.544Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:28:48.913Z"
+    "$date": "2024-10-24T16:19:51.182Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
@@ -465,16 +579,20 @@
     "$date": "2024-09-14T07:15:54.072Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:30:07.192Z"
+    "$date": "2024-10-24T16:20:01.009Z"
   },
-  "__v": 0
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "status": "visible"
 },
 {
   "_id": {
     "$oid": "66ef5d2eaf9af43bb23ed4ae"
   },
   "id": 21,
-  "title": "Những Chuyện Lạ Ở Tokyo\n",
+  "title": "Những Chuyện Lạ Ở Tokyo",
   "author": "Haruki Murakami",
   "category": "Văn học",
   "description": "Thất lạc người thân, sinh ly tử biệt, lãng quên tên họ... Những con người đột nhiên đánh mất điều quý giá rồi sa chân vào một góc đô thị - một thế giới tràn đầy sự trùng hợp và bất ngờ. Lữ khách tình cờ đưa ta lần theo ánh sáng nhạt mờ trong trái tim người chỉnh đàn cô độc, Vịnh Hanalei họa nên cuộc sống của một người mẹ có đứa con trai bỏ mạng nơi biển cả xứ xa... Ở thế giới mà ta đã quen, có những điểm mù xuất hiện trong khoảnh khắc, số phận bí ẩn của những người mất hút vào những điểm mù ấy được thuật lại trong năm câu chuyện này.",
@@ -490,32 +608,11 @@
     "$date": "2024-09-21T23:56:30.354Z"
   },
   "updated_at": {
-    "$date": "2024-10-07T15:30:35.424Z"
+    "$date": "2024-11-08T16:56:03.432Z"
   },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66ef843b1b051c0fe567b157"
+  "__v": 0,
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
   },
-  "id": 22,
-  "title": "Những Chuyện Lạ Ở Tokyo\n",
-  "author": "Haruki Murakami",
-  "category": "Văn học",
-  "description": "Thất lạc người thân, sinh ly tử biệt, lãng quên tên họ... Những con người đột nhiên đánh mất điều quý giá rồi sa chân vào một góc đô thị - một thế giới tràn đầy sự trùng hợp và bất ngờ. Lữ khách tình cờ đưa ta lần theo ánh sáng nhạt mờ trong trái tim người chỉnh đàn cô độc, Vịnh Hanalei họa nên cuộc sống của một người mẹ có đứa con trai bỏ mạng nơi biển cả xứ xa... Ở thế giới mà ta đã quen, có những điểm mù xuất hiện trong khoảnh khắc, số phận bí ẩn của những người mất hút vào những điểm mù ấy được thuật lại trong năm câu chuyện này.",
-  "price": 88,
-  "stock": 100,
-  "cover_image": "1726972987811-43036230.webp",
-  "categoryID": {
-    "$oid": "66e52d1113ae0384d3444c41"
-  },
-  "views": 0,
-  "sales": 0,
-  "created_at": {
-    "$date": "2024-09-22T02:43:07.827Z"
-  },
-  "updated_at": {
-    "$date": "2024-09-22T02:43:07.827Z"
-  },
-  "__v": 0
+  "status": "visible"
 }]

@@ -19,6 +19,7 @@ const Header: React.FC = () => {
       {/* Logo and Navigation */}
       <div className="flex items-center">
         <Image src={logo} width={200} alt="logo" />
+        <h2 className="text-white text-2xl mx-4">Đơn Hàng</h2>
       </div>
 
       {/* {/* Search and Icons

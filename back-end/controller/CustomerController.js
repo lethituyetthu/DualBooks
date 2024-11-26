@@ -16,7 +16,8 @@ exports.loginCustomer = async (req, res) => {
       const { token, customer } = await customerService.loginCustomer(email, password);
       res.status(200).json({ message: 'Login successful', token, customer });
   } catch (error) {
-      res.status(401).json({ error: error.message });
+           // Trả lỗi với trường "message" để tương thích với client
+    res.status(401).json({ message: error.message });
   }
 };
 // Cập nhật thông tin khách hàng

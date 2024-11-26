@@ -164,7 +164,31 @@ exports.cancelOrder = async (orderId) => {
         throw new Error('Error cancelling order: ' + error.message);
     }
 };
+exports.confirmOrder = async (orderId) => {
+    try {
+        // Tìm đơn hàng theo orderId
+        const order = await OrderModel.findById(orderId);
 
+        // Kiểm tra nếu đơn hàng không tồn tại
+        if (!order) {
+            throw new Error('Order not found');
+        }
+
+        // Kiểm tra trạng thái đơn hàng
+        if (order.order_status !== 'Chờ xác nhận') {
+            throw new Error('Only orders with "Chờ xác nhận" status can be confirmed');
+        }
+
+        // Cập nhật trạng thái đơn hàng thành "Đã xác nhận"
+        order.order_status = 'Đã xác nhận';
+        const updatedOrder = await order.save();
+
+        // Trả về đơn hàng đã cập nhật
+        return updatedOrder;
+    } catch (error) {
+        throw new Error('Error confirming order: ' + error.message);
+    }
+};
 
 // Service: Lấy danh sách đơn hàng theo ID khách hàng
 exports.getOrdersByCustomerId = async (customerId) => {

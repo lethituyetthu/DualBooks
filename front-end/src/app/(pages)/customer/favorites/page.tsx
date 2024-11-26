@@ -1,48 +1,36 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
-
+import useFethWishList from "../../../hook/useFetchWishlist";
+import useAddToCart from "../../../hook/useAddToCard";
+import Link from "next/link";
 interface Product {
-  id: string;
+  _id: string;  // Thêm trường _id vào interface
   name: string;
+  title: string;
   price: number;
-  image: string;
+  cover_image: string;
   author: string;
 }
 
 const Favorites = () => {
-  const [wishlist, setWishlist] = useState<Product[]>([]);
-  const [message, setMessage] = useState<string>("");
+  const { wishlist, message, handleRemoveFromWishlist } = useFethWishList();  
+  const [cartCount, setCartCount] = useState(0);
 
+  // Hàm cập nhật số lượng giỏ hàng
+  const updateCartCount = () => {
+    const cart = localStorage.getItem("cart");
+    const cartData = cart ? JSON.parse(cart) : [];
+    setCartCount(cartData.length);
+  };
+
+  const addToCart = useAddToCart(updateCartCount); // Tạo hook addToCart với updateCartCount
+
+  // Cập nhật giỏ hàng mỗi khi wishlist thay đổi
   useEffect(() => {
-    const storedWishlist = JSON.parse(localStorage.getItem("favorites") || "[]");
-    setWishlist(storedWishlist);
-  }, []);
-
-  const handleAddToWishlist = (product: Product) => {
-    const isProductInWishlist = wishlist.some((item) => item.id === product.id);
-
-    if (isProductInWishlist) {
-      setMessage("Sản phẩm đã có trong yêu thích.");
-      setTimeout(() => setMessage(""), 3000);
-    } else {
-      const updatedWishlist = [...wishlist, product];
-      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-      setWishlist(updatedWishlist);
-      setMessage("Sản phẩm đã được thêm vào yêu thích.");
-      setTimeout(() => setMessage(""), 3000);
-    }
-  };
-
-  const handleRemoveFromWishlist = (productId: string) => {
-    const updatedWishlist = wishlist.filter((product) => product.id !== productId);
-    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-    setWishlist(updatedWishlist);
-    setMessage("Sản phẩm đã được xóa khỏi yêu thích.");
-    setTimeout(() => setMessage(""), 3000);
-  };
-
+    updateCartCount(); // Cập nhật số lượng giỏ hàng khi component render lại hoặc wishlist thay đổi
+  }, [wishlist]);
   return (
     <div className="max-w-[1200px] m-auto px-4 py-6">
       <h1 className="text-center text-3xl font-bold mb-8 text-primary-400 font-itim">Sản phẩm yêu thích</h1>
@@ -57,12 +45,16 @@ const Favorites = () => {
       {wishlist.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {wishlist.map((product) => (
+           
             <div
-              key={product.id}
+              key={product._id}
               className="border p-3 relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 w-[280px]"
             >
               <button
-                onClick={() => handleRemoveFromWishlist(product.id)}
+                 onClick={() => {
+                  console.log("Product ID to remove:", product._id);
+                  handleRemoveFromWishlist(product._id);
+                }}
                 className="absolute top-2 right-2 p-1 text-gray-500 hover:text-red-500"
                 aria-label="Remove from wishlist"
               >
@@ -80,18 +72,22 @@ const Favorites = () => {
                   />
                 </svg>
               </button>
+              <Link
+            href={`/customer/product/${product._id}`} 
+            >
               <Image
-                src={`http://localhost:3200/uploads/books/${product.image}`}
-                alt={product.name}
+                src={`http://localhost:3200/uploads/books/${product.cover_image}`}
+                alt={product.title}
                 width={280}
                 height={180}
                 className="object-cover mb-4 rounded-md"
               />
+                </Link>
               <h3
                 className="text-lg font-semibold mb-2 text-center"
                 style={{ height: "56px", overflow: "hidden" }}
               >
-                {product.name}
+                {product.title}
               </h3>
               <p
                 className="text-gray-500 mb-2 text-center"
@@ -107,7 +103,10 @@ const Favorites = () => {
 
               <div className="flex justify-center">
                 <button
-                  onClick={() => handleAddToWishlist(product)}
+                  onClick={() => {
+                    console.log("Adding product to cart", product._id);
+                    addToCart(product); // Gọi hàm addToCart khi nhấp vào nút
+                  }}
                   className="bg-transparent border border-primary-600 hover:bg-primary-300 hover:text-light-100 text-primary-600 px-6 py-2 rounded"
                 >
                   Thêm vào giỏ hàng
@@ -115,6 +114,7 @@ const Favorites = () => {
               </div>
 
             </div>
+          
           ))}
         </div>
       ) : (

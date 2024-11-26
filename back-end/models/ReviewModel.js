@@ -9,7 +9,7 @@ const ReviewSchema = new Schema({
     created_at: { type: Date, default: Date.now } ,// Ngày tạo đánh giá, mặc định là ngày hiện tại
     updated_at: {
         type: Date,
-        default: Date.now
+        default: Date.no
       },
 });
 

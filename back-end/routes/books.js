@@ -29,6 +29,25 @@ router.get("/", async function (req, res, next) {
     res.status(500).json({ error: error.message });
   }
 });
+// Lấy tất cả danh sách getAllvisible
+// http://localhost:3000/books
+router.get("/getAllvisible", async function (req, res, next) {
+  console.log("GET /books endpoint hit");
+  try {
+    const result = await bookController.getAllvisible();
+
+    if (result && result.length > 0) {
+      console.log("Books fetched successfully:", result);
+      res.status(200).json(result); // Gửi phản hồi thành công
+    } else {
+      console.log("No Books found");
+      res.status(404).json({ error: "No Books found" });
+    }
+  } catch (error) {
+    console.error("Error fetching Books:", error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
 
 // Tìm kiếm sách theo từ khóa
 router.get("/search", async (req, res, next) => {
@@ -331,27 +350,39 @@ router.put(
     }
   }
 );
-// Xóa một cuốn sách
-router.delete(
-  "/:id",
-  // authenticateAdmin,
-  async (req, res, next) => {
-    const bookId = req.params.id;
+// // Xóa một cuốn sách
+// router.delete(
+//   "/:id",
+//   // authenticateAdmin,
+//   async (req, res, next) => {
+//     const bookId = req.params.id;
 
-    try {
-      const deletedBook = await bookController.deleteBook(bookId);
+//     try {
+//       const deletedBook = await bookController.deleteBook(bookId);
 
-      if (deletedBook) {
-        res.status(200).json({ message: "Book deleted successfully" });
-      } else {
-        res.status(404).json({ error: "Book not found" });
-      }
-    } catch (error) {
-      console.error("Error deleting book:", error.message);
-      res.status(500).json({ error: error.message });
-    }
+//       if (deletedBook) {
+//         res.status(200).json({ message: "Book deleted successfully" });
+//       } else {
+//         res.status(404).json({ error: "Book not found" });
+//       }
+//     } catch (error) {
+//       console.error("Error deleting book:", error.message);
+//       res.status(500).json({ error: error.message });
+//     }
+//   }
+// );
+// Ẩn sách 
+router.patch("/:id/status", async (req, res) => {
+  const bookId = req.params.id;
+
+  try {
+    const result = await bookController.deleteOrHideBook(bookId);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("Error handling book:", error.message);
+    res.status(500).json({ error: error.message });
   }
-);
+});
 // Route để thêm đánh giá vào sách
 router.post("/:bookId/reviews", reviewController.addReview);
 // Route để sửa bài đánh giá, cần xác thực khách hàng trước khi cập nhật

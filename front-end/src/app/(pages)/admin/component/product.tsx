@@ -16,7 +16,6 @@ export default function Product({ product, formatDateTime }) {
     }
 
   };
-
   return (
     <tr className="border-b hover:bg-gray-50">
       <td className="px-6 py-4">
@@ -33,7 +32,6 @@ export default function Product({ product, formatDateTime }) {
       <td className="px-6 py-4">{(product.category.name)}</td>
       <td className="px-6 py-4 text-nowrap"> {(product.price * 1000).toLocaleString("vi-VN") + " đ"}</td>
       <td className="px-6 py-4">{product.stock}</td>
-      <td className="px-6 py-4">{product.sales}</td>
       <td className="px-6 py-4">{formatDateTime(product.updated_at)}</td>
       <td className="px-6 py-4 flex">
         <Link href={`/admin/editPro/${product.id}`}>
