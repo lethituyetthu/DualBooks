@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const CategorySchema = new Schema({
-    id: { type: Number },
+    id: { type: Number},
     name: { type: String, required: true },
     description: {
         type: String,
@@ -12,6 +12,11 @@ const CategorySchema = new Schema({
       cate_image: {
         type: String,
         default: 'default.jpg' // Thiết lập hình ảnh mặc định
+      },
+      status: {
+        type: String,
+        enum: ['visible', 'hidden'], // Chỉ chấp nhận hai trạng thái: 'visible' (hiện), 'hidden' (ẩn)
+        default: 'visible' // Mặc định là 'visible' (hiện)
       },
     parent_id: { type: Schema.Types.ObjectId, ref: 'Category', default: null }, // Reference to parent category
     created_at: { type: Date, default: Date.now },

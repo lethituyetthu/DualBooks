@@ -10,8 +10,6 @@ interface Error {
   description?: string;
   price?: number;
   stock?: number;
-  views?: number;
-  sales?: number;
   cover_image?: string;
   created_at: string;
   updated_at: string;
@@ -182,9 +180,9 @@ export default function useFetchBook() {
       const res = await fetch(`http://localhost:3200/books/category/${id}`);
       if (res.ok) {
         const result = await res.json();
-        // Giả sử `data` là mảng lồng như `[Array(2)]`
-        const flatData = Array.isArray(result[0]) ? result.flat() : result;
-        setCategoryBook([flatData]); // Cập nhật `books` chỉ với kết quả tìm kiếm
+        console.log(result)
+        setBooks(result);
+        console.log(categoryBook) // Cập nhật `books` chỉ với kết quả tìm kiếm
       } else {
         throw new Error("Không tìm thấy sách trong danh mục này.");
       }

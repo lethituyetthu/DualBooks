@@ -159,7 +159,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
         throw new Error("Lỗi khi lấy dữ liệu đơn hàng theo trạng thái!");
       }
       const result = await response.json();
-      setOrders(result); // Đặt dữ liệu đơn hàng vào state
+      return result;
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -207,6 +207,57 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       setLoading(false);
     }
   }, []);
+
+  const confirmOrder = async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3200/orders/confirm/${id}`, {
+        method: "PUT", // Phương thức PUT cho việc cập nhật trạng thái đơn hàng
+        headers: {
+          "Content-Type": "application/json", // Đặt header nếu API yêu cầu JSON
+        },
+      });
+  
+      if (!res.ok) {
+        // Nếu phản hồi không thành công
+        const errorData = await res.json(); // Thử lấy thông tin chi tiết lỗi từ API
+        throw new Error(
+          errorData.message || "Lỗi không xác định khi xác nhận đơn hàng"
+        );
+      }
+  
+      const result = await res.json(); // Đọc dữ liệu phản hồi (nếu có)
+      console.log("Xác nhận đơn hàng thành công:", result);
+      return result; // Trả về kết quả để sử dụng nếu cần
+    } catch (error) {
+      console.error("Lỗi khi xác nhận đơn hàng:", error);
+      throw error; // Ném lỗi để xử lý bên ngoài (nếu cần)
+    }
+  };
+  const cancelOrder = async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3200/orders/cancel/${id}`, {
+        method: "PUT", // Phương thức PUT cho việc cập nhật trạng thái đơn hàng
+        headers: {
+          "Content-Type": "application/json", // Đặt header nếu API yêu cầu JSON
+        },
+      });
+  
+      if (!res.ok) {
+        // Nếu phản hồi không thành công
+        const errorData = await res.json(); // Thử lấy thông tin chi tiết lỗi từ API
+        throw new Error(
+          errorData.message || "Lỗi không xác định khi huỷ đơn hàng"
+        );
+      }
+  
+      const result = await res.json(); // Đọc dữ liệu phản hồi (nếu có)
+      console.log("huỷ đơn hàng thành công", result);
+      return result; // Trả về kết quả để sử dụng nếu cần
+    } catch (error) {
+      console.error("Lỗi khi huỷ đơn hàng:", error);
+      throw error; // Ném lỗi để xử lý bên ngoài (nếu cần)
+    }
+  };
   // Gọi fetchOrders khi component lần đầu render
   useEffect(() => {
     fetchOrders();
@@ -220,6 +271,8 @@ export default function useFetchOrders(): UseFetchOrdersResult {
     fetchOrders,
     fetchOrderDetail,
     fetchOrdersByCustomerId,
+    confirmOrder,
+    cancelOrder,
     updateOrder,
     fetchOrdersByStatus,
     fetchOrdersByDate, // Trả về hàm fetchOrdersByStatus

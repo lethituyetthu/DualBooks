@@ -62,7 +62,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
       <Breadcrumb className="py-[30px]">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">DualBooks</BreadcrumbLink>
+            <BreadcrumbLink href="/customer">DualBooks</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>

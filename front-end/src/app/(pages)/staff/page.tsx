@@ -86,14 +86,14 @@ const Staff: React.FC = () => {
     }
 
     // Thực hiện logic xử lý thanh toán, ví dụ gửi thông tin lên server
-    console.log(
+    /* console.log(
       "Danh sách sản phẩm:",
       cartItems,
       "tổng tiền:",
       totalPrice,
       "tổng số lượng sản phẩm",
       totalQuantity
-    );
+    ); */
     setShowModal(true);
   
   };
@@ -113,7 +113,9 @@ const Staff: React.FC = () => {
       await searchBooksById(id); // Sử dụng hàm mới để tìm theo ID và cập nhật `books`
     }
   };
-
+  const clearCart = () => {
+    setCartItems([]); // Đặt lại giỏ hàng về rỗng
+  };
   return (
     <div className="flex">
       <div className="w-4/5 p-3 flex flex-col max-h-[calc(100vh-80px)]">
@@ -169,9 +171,10 @@ const Staff: React.FC = () => {
       {showModal && (
         <CheckoutModal
           cartItems={cartItems}
-          totalPrice={totalPrice}
+          totalPrice={totalPrice}   
           totalQuantity={totalQuantity}
           onClose={() => setShowModal(false)}
+          onClearCart={clearCart}
         />
       )}
     </div>

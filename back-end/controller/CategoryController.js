@@ -13,6 +13,7 @@ exports.getAll = async (req, res) => {
         cate_image: c.cate_image,
 
         parent_id: c.parent_id,  // ID của thể loại cha (nếu có)
+        status:c.status,
       }));
     } catch (error) {
         throw new Error('Error fetching categories: ' + error.message);
@@ -48,4 +49,24 @@ exports.updateCategory = async (id, categoryData) => {
  
  exports.deleteCategory = async (id) => {
     await categoryService.deleteCategory(id);
+  };
+exports.updateCategoryStatus = async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      // Gọi service để thay đổi trạng thái của danh mục
+      const updatedCategory = await categoryService.toggleCategoryStatus(id);
+  
+      if (updatedCategory) {
+        return res.status(200).json({
+          message: 'Category status updated successfully.',
+          category: updatedCategory
+        });
+      } else {
+        return res.status(404).json({ message: 'Category not found.' });
+      }
+    } catch (error) {
+      console.error('Error updating category status:', error);
+      return res.status(500).json({ error: error.message });
+    }
   };

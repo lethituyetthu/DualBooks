@@ -49,6 +49,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ userName }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  
   return (
     <div className="relative w-[13%]" ref={menuRef}>
       {/* Avatar */}

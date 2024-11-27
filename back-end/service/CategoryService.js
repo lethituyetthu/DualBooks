@@ -64,3 +64,23 @@ exports.deleteCategory = async (id) => {
 exports.delete = async (id) => {
     await categoryModel.deleteOne({ _id: id });
 };
+exports.toggleCategoryStatus = async (id) => {
+    try {
+      // Tìm danh mục theo ID
+      const category = await categoryModel.findById(id);
+  
+      if (!category) {
+        return null;  // Nếu không tìm thấy danh mục, trả về null
+      }
+  
+      // Lật trạng thái của danh mục (visible <=> hidden)
+      category.status = category.status === 'visible' ? 'hidden' : 'visible';
+  
+      // Cập nhật danh mục trong cơ sở dữ liệu
+      const updatedCategory = await category.save();
+  
+      return updatedCategory;
+    } catch (error) {
+      throw new Error('Error toggling category status: ' + error.message);
+    }
+  };

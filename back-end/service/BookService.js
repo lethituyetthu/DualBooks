@@ -3,26 +3,61 @@ const categoryModel = require('../models/CategoryModel');
 const reviewModel = require('../models/ReviewModel')
 const fs = require('fs');
 const path = require('path');
-
-
 exports.getAll = async () => {
   try {
-    // Tìm tất cả các sách và populate thông tin từ bảng Category và Publisher
+    // Truy vấn cơ sở dữ liệu, chỉ lấy danh mục có trạng thái "visible"
     const books = await bookModel.find()
-      .populate('categoryID', 'name') // Populate danh mục
-      .populate('publisherID', 'name'); // Populate nhà xuất bản
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        //match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
 
-    return books;
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = books.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
   } catch (error) {
-    throw new Error('Error fetching books: ' + error.message);
+    throw new Error("Error fetching books: " + error.message);
+  }
+};
+
+exports.getAllvisible = async () => {
+  try {
+    // Truy vấn cơ sở dữ liệu, chỉ lấy danh mục có trạng thái "visible"
+    const books = await bookModel.find({ status: "visible" })
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
+
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = books.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
+  } catch (error) {
+    throw new Error("Error fetching books: " + error.message);
   }
 };
 // Hàm lọc sách theo thể loại
 exports.getByCategoryID = async function (categoryID) {
   try {
       // Tìm sách theo thể loại
-      const books = await bookModel.find({ categoryID });
-      return books;
+      const books = await bookModel.find({ categoryID })
+       .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
+
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = books.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
   } catch (error) {
       throw new Error('Error fetching books by category: ' + error.message);
   }
@@ -31,8 +66,18 @@ exports.getByCategoryID = async function (categoryID) {
 exports.getByAuthor = async function (author) {
   try {
       // Tìm sách theo tác giả
-      const books = await bookModel.find({ author: author });
-      return books;
+      const books = await bookModel.find({ author: author })
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
+
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = books.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
   } catch (error) {
       throw new Error('Error fetching books by author: ' + error.message);
   }
@@ -44,8 +89,18 @@ exports.getByTitle = async function (title) {
       const regexTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
       const books = await bookModel.find({
           title: { $regex: new RegExp(regexTitle, 'i') }
-      });
-      return books;
+      })
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
+
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = books.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
   } catch (error) {
       throw new Error('Error fetching books by title: ' + error.message);
   }
@@ -58,8 +113,18 @@ exports.getAllSortedByPrice = async function (sortOrder = 'asc') {
     const sort = sortOrder === 'asc' ? 1 : -1;
 
     // Tìm tất cả sách và sắp xếp theo giá
-    const books = await bookModel.find().sort({ price: sort });
-    return books;
+    const books = await bookModel.find().sort({ price: sort })
+     .populate({
+      path: "categoryID", // Tham chiếu danh mục
+      match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+      select: "name", // Chỉ lấy trường tên
+    })
+    .populate("publisherID", "name"); // Populate nhà xuất bản
+
+  // Lọc sách không có danh mục hợp lệ
+  const filteredBooks = books.filter((book) => book.categoryID !== null);
+
+  return filteredBooks; // Trả về danh sách sách đã lọc
   } catch (error) {
     throw new Error('Error fetching books sorted by price: ' + error.message);
   }
@@ -141,15 +206,41 @@ exports.updateBook = async function (id, updatedData) {
       throw new Error('Error updating book: ' + error.message);
   }
 };
-// Xóa một cuốn sách
-exports.deleteBook = async function (id) {
-  try {
-      const deletedBook = await bookModel.findByIdAndDelete(id);
-      return deletedBook;
-  } catch (error) {
-      throw new Error('Error deleting book: ' + error.message);
-  }
-};
+
+//{//////////////////////////////////////////////
+  //=======Tổ hợp phục vụ xóa/ ẩn sách========//
+  exports.getBookById = async (id) => {
+    try {
+      return await bookModel.findById(id);
+    } catch (error) {
+      throw new Error('Error fetching book: ' + error.message);
+    }
+  };
+  
+  // Cập nhật trạng thái sách
+  exports.updateBookStatus = async (id, status) => {
+    try {
+      return await bookModel.findByIdAndUpdate(
+        id,
+        { status },
+        { new: true } // Trả về sách đã cập nhật
+      );
+    } catch (error) {
+      throw new Error('Error updating book status: ' + error.message);
+    }
+  };
+  // Xóa một cuốn sách
+  exports.deleteBook = async function (id) {
+    try {
+        const deletedBook = await bookModel.findByIdAndDelete(id);
+        return deletedBook;
+    } catch (error) {
+        throw new Error('Error deleting book: ' + error.message);
+    }
+  };
+  //=======Tổ hợp phục vụ xóa/ ẩn sách========//
+  //////////////////////////////////////////////////////////         }
+
 // tìm kiếm sách theo tiêu đề, tác giả, mô tả
 exports.searchBooks = async function (query) {
   try {
@@ -159,8 +250,18 @@ exports.searchBooks = async function (query) {
               { author: { $regex: query, $options: 'i' } },
               { description: { $regex: query, $options: 'i' } }
           ]
-      });
-      return books;
+      })
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
+
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = books.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
   } catch (error) {
       throw new Error('Error searching books: ' + error.message);
   }
@@ -171,9 +272,19 @@ exports.getHotProducts = async () => {
     // Lấy danh sách sản phẩm theo lượt xem giảm dần hoặc số lượng bán hàng giảm dần
     const hotProducts = await bookModel.find({})
       .sort({ views: -1 }) // Hoặc sử dụng .sort({ sales: -1 }) tùy vào yêu cầu
-      .limit(10); // Giới hạn số lượng sản phẩm hot được trả về
+      .limit(10)// Giới hạn số lượng sản phẩm hot được trả về
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
 
-    return hotProducts;
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = hotProducts.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
+    // return hotProducts;
   } catch (error) {
     throw new Error('Error fetching hot products: ' + error.message);
   }
@@ -185,9 +296,19 @@ exports.getFeaturedProducts = async () => {
     // Lấy danh sách sản phẩm theo số lượng bán giảm dần
     const featuredProducts = await bookModel.find({})
       .sort({ sales: -1 }) // Sắp xếp theo số lượng bán giảm dần
-      .limit(10); // Giới hạn số lượng sản phẩm nổi bật được trả về
+      .limit(10)// Giới hạn số lượng sản phẩm nổi bật được trả về
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
 
-    return featuredProducts;
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = featuredProducts.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
+    // return featuredProducts;
   } catch (error) {
     throw new Error('Error fetching featured products: ' + error.message);
   }
@@ -198,9 +319,19 @@ exports.getLatestBooks = async () => {
     // Lấy danh sách sách theo ngày tạo mới nhất
     const latestBooks = await bookModel.find({})
       .sort({ createdAt: -1 }) // Sắp xếp theo ngày tạo giảm dần (mới nhất lên trước)
-      .limit(5); // Giới hạn kết quả trả về 5 cuốn sách
+      .limit(5) // Giới hạn kết quả trả về 5 cuốn sách
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name"); // Populate nhà xuất bản
 
-    return latestBooks;
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = latestBooks.filter((book) => book.categoryID !== null);
+
+    return filteredBooks; // Trả về danh sách sách đã lọc
+    // return latestBooks;
   } catch (error) {
     throw new Error('Error fetching latest books: ' + error.message);
   }
@@ -210,12 +341,19 @@ exports.getLowStockBooks = async () => {
   try {
     // Truy vấn để lấy 5 sản phẩm có số lượng tồn kho ít nhất
     const lowStockBooks = await bookModel.find({ stock: { $lt: 5 } })  // Lọc các sách có stock < 5
-      .populate('categoryID', 'name')  // Populate thông tin danh mục (chỉ lấy trường name)
-      .populate('publisherID', 'name') // Populate thông tin nhà xuất bản (chỉ lấy trường name)
+      .populate({
+        path: "categoryID", // Tham chiếu danh mục
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        select: "name", // Chỉ lấy trường tên
+      })
+      .populate("publisherID", "name")// Populate nhà xuất bản
       .sort({ stock: 1 })  // Sắp xếp theo stock tăng dần
-     
+    // Lọc sách không có danh mục hợp lệ
+    const filteredBooks = lowStockBooks.filter((book) => book.categoryID !== null);
 
-    return lowStockBooks;
+    return filteredBooks; // Trả về danh sách sách đã lọc
+
+    // return lowStockBooks;
   } catch (error) {
     throw new Error('Error fetching low stock books: ' + error.message);
   }

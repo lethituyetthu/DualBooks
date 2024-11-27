@@ -2,14 +2,42 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "@/app/publics/img/logo/01.png";
+import useFetchWishlist from "../../../hook/useFetchWishlist"; // Import custom hook
 import Link from "next/link";
 import NameToken from "./NameToken";
-
+interface Customer {
+  _id: string; // ID là thuộc tính bắt buộc
+  name: string; // Bắt buộc
+  email?: string; // Bắt buộc
+  password?: string; // Bắt buộc, có thể xóa nếu không cần
+  phone?: string; // Bắt buộc
+  address?: string; // Bắt buộc
+  status?: 'active' | 'blocked'; // Trạng thái là thuộc tính bắt buộc
+  created_at?: string; // Bắt buộc, hoặc có thể dùng Date
+  updated_at?: string; // Bắt buộc, hoặc có thể dùng Date
+}
 export default function Header() {
-  const [customer, setCustomer] = useState<any>(null);
+  const [customer, setCustomer] = useState<Customer | null>(null);
   const [cartCount, setCartCount] = useState<number>(0); // Số lượng sản phẩm trong giỏ hàng
-  const [favoriteCount, setFavoriteCount] = useState<number>(0); // Số lượng sản phẩm yêu thích
+ 
+  const [bookCount, setBookCount] = useState<number>(0); // State để lưu số lượng sách
+  const [customerId, setCustomerId] = useState<string>("");
+  // Lấy customerId từ localStorage hoặc context nếu có
+  useEffect(() => {
+    const customer = localStorage.getItem("customer");
+    if (customer) {
+      const customerData = JSON.parse(customer);
+      setCustomerId(customerData.id); // Set customerId từ localStorage
+    }
+  }, []);
 
+  // Dùng custom hook để lấy dữ liệu wishlist
+  const { wishlist, message } = useFetchWishlist(customerId);
+
+  // Cập nhật số lượng sách khi wishlist thay đổi
+  useEffect(() => {
+    setBookCount(wishlist.length);
+  }, [wishlist]);
   // Helper: Lấy số lượng sản phẩm từ localStorage
   const getCountFromLocalStorage = (key: string): number => {
     const existingData = localStorage.getItem(key);
@@ -29,7 +57,7 @@ export default function Header() {
   // Hàm cập nhật toàn bộ trạng thái
   const updateCounts = () => {
     setCartCount(getCountFromLocalStorage("cart"));
-    setFavoriteCount(getCountFromLocalStorage("favorites"));
+   
   };
 
   // Load thông tin customer và cập nhật trạng thái khi component mount
@@ -212,9 +240,9 @@ export default function Header() {
                   />
                 </svg>
               </Link>
-              {favoriteCount > 0 && (
+              {bookCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {favoriteCount}
+                  {bookCount}
                 </span>
               )}
             </li>

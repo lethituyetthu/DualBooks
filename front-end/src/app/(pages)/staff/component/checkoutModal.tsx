@@ -12,6 +12,7 @@ interface typeCheckout {
   totalPrice: number;
   totalQuantity: number;
   onClose: () => void;
+  onClearCart: () => void; 
 }
 
 const CheckoutModal: React.FC<typeCheckout> = ({
@@ -19,6 +20,7 @@ const CheckoutModal: React.FC<typeCheckout> = ({
   totalPrice,
   totalQuantity,
   onClose,
+  onClearCart,  
 }) => {
   const [paymentMethod, setPaymentMethod] = useState<string>("");
   const [adminId, setAdminId] = useState(null);
@@ -53,7 +55,7 @@ const CheckoutModal: React.FC<typeCheckout> = ({
       order_type: "offline",
       staff_id: adminId,
     };
-    console.log("Danh sách sản phẩm thanh toán:", orderData);
+   // console.log("Danh sách sản phẩm thanh toán:", orderData);
     try {
       const response  = await addOrder(orderData);
     console.log('Order created successfully with ID:', response.data);
@@ -70,6 +72,7 @@ const CheckoutModal: React.FC<typeCheckout> = ({
     }
     /* console.log('Order created successfully with items:', orderData.orderItems); */
     alert("thanh toán thành công")
+    onClearCart();
     onClose()
     } catch (err) {
       console.error('Failed to create order:', err);

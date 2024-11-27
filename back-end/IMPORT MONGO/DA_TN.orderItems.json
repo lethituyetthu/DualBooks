@@ -1,70 +1,60 @@
 [{
   "_id": {
-    "$oid": "66d56b60afc8a51793d731fd"
+    "$oid": "6740e5655cddabeb4c394be6"
   },
-  "id": 1,
   "order_id": {
-    "$oid": "66d56a80afc8a51793d731f1"
+    "$oid": "6740e5655cddabeb4c394be4"
   },
   "book_id": {
     "$oid": "66d57256afc8a51793d73228"
   },
-  "quantity": 2,
-  "price": 9.99
-},
-{
-  "_id": {
-    "$oid": "66d56b60afc8a51793d731fe"
-  },
-  "id": 2,
-  "order_id": {
-    "$oid": "66d56a80afc8a51793d731f1"
-  },
-  "book_id": {
-    "$oid": "66d57256afc8a51793d73229"
-  },
   "quantity": 1,
-  "price": 11.99
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-11-22T20:11:17.847Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-22T20:11:17.847Z"
+  },
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "66d56b60afc8a51793d731ff"
+    "$oid": "6740e5655cddabeb4c394bed"
   },
-  "id": 3,
   "order_id": {
-    "$oid": "66d56a80afc8a51793d731f2"
+    "$oid": "6740e5655cddabeb4c394be4"
   },
   "book_id": {
-    "$oid": "66d57256afc8a51793d7322a"
+    "$oid": "66d57256afc8a51793d73227"
   },
-  "quantity": 3,
-  "price": 18.99
+  "quantity": 2,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-11-22T20:11:17.866Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-22T20:11:17.866Z"
+  },
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "66d56b60afc8a51793d73200"
+    "$oid": "6740e5655cddabeb4c394bf4"
   },
-  "id": 4,
   "order_id": {
-    "$oid": "66d56a80afc8a51793d731f2"
+    "$oid": "6740e5655cddabeb4c394be4"
   },
   "book_id": {
     "$oid": "66d57256afc8a51793d7322b"
   },
   "quantity": 1,
-  "price": 15.99
-},
-{
-  "_id": {
-    "$oid": "66d56b60afc8a51793d73201"
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-11-22T20:11:17.879Z"
   },
-  "id": 5,
-  "order_id": {
-    "$oid": "66d56a80afc8a51793d731f3"
+  "updatedAt": {
+    "$date": "2024-11-22T20:11:17.879Z"
   },
-  "book_id": {
-    "$oid": "66d57256afc8a51793d73228"
-  },
-  "quantity": 4,
-  "price": 9.99
+  "__v": 0
 }]

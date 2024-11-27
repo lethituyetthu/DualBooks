@@ -1,61 +1,73 @@
-const FavoriteBooks = require('../models/Favoritebooks');
-const Book = require('../models/BookModel'); // Assuming Book model exists
+const mongoose = require('mongoose');
+const FavoriteBooks = require('../models/FavoriteBooksModel');
+const Book = require('../models/BookModel'); // Nếu cần sử dụng Book trong logic
 
-// Add book to favorite
-const addFavoriteBook = async (userId, bookId) => {
+
+// Thêm sách vào danh sách yêu thích
+exports.addFavoriteBook = async (userId, bookId) => {
   try {
+    // Tìm kiếm danh sách yêu thích của người dùng
     const favorite = await FavoriteBooks.findOne({ userId });
 
     if (favorite) {
-      // Check if the book is already in the favorite list
+      // Kiểm tra xem sách đã có trong danh sách yêu thích chưa
       if (favorite.books.includes(bookId)) {
-        throw new Error('Book is already in your favorites');
+        throw new Error('Sách này đã có trong danh sách yêu thích.');
       }
 
+      // Thêm sách vào danh sách yêu thích và lưu lại
       favorite.books.push(bookId);
       await favorite.save();
       return favorite;
     } else {
+      // Nếu không có danh sách yêu thích, tạo mới và thêm sách vào
       const newFavorite = new FavoriteBooks({
         userId,
-        books: [bookId]
+        books: [bookId],
       });
       await newFavorite.save();
       return newFavorite;
     }
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message); // Ném lỗi nếu có vấn đề
   }
 };
 
 // Remove book from favorite
-const removeFavoriteBook = async (userId, bookId) => {
+exports.removeFavoriteBook = async (userObjectId, bookObjectId) => {
   try {
-    const favorite = await FavoriteBooks.findOne({ userId });
-    if (!favorite) throw new Error('No favorite books found for this user');
+    const updatedFavorites = await FavoriteBooks.findOneAndUpdate(
+      { userId: userObjectId },  // Tìm theo userObjectId đã chuyển đổi
+      { $pull: { books: bookObjectId } },  // Loại bỏ sách khỏi mảng books
+      { new: true }
+    ).populate('books');  // Đảm bảo rằng sách được liên kết đúng với model 'Book'
+    
+    // Nếu không tìm thấy danh sách yêu thích của người dùng
+    if (!updatedFavorites) {
+      throw new Error('Favorite list not found for the user');
+    }
 
-    // Remove the book from the favorite list
-    favorite.books = favorite.books.filter(book => book.toString() !== bookId);
-    await favorite.save();
-    return favorite;
+    return updatedFavorites; // Trả về danh sách yêu thích sau khi cập nhật
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error('Error removing favorite book: ' + error.message);
   }
 };
 
-// Get all favorite books for a user
-const getFavoriteBooks = async (userId) => {
+exports.getFavorites = async (userId) => {
   try {
-    const favorite = await FavoriteBooks.findOne({ userId }).populate('books');
-    if (!favorite) return [];
-    return favorite.books;
+    // Tìm danh sách yêu thích của người dùng
+    const favoriteBooks = await FavoriteBooks.findOne({ userId })
+      .populate('books')  // Populate thông tin sách từ mảng 'books'
+      .populate('userId', 'name email')  // Populate thông tin người dùng
+      .exec();
+
+    if (!favoriteBooks) {
+      throw new Error('No favorite books found for the user');
+    }
+
+    return favoriteBooks;  // Trả về danh sách sách yêu thích
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error('Error fetching favorite books: ' + error.message);
   }
 };
 
-module.exports = {
-  addFavoriteBook,
-  removeFavoriteBook,
-  getFavoriteBooks
-};

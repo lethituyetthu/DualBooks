@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
   });
 // Endpoint tạo danh mục mới với hình ảnh
 // POST /api/categories
-router.post('/', uploadCategory.single('cate_image'), async (req, res) => {
+router.post('/',authenticateAdmin, uploadCategory.single('cate_image'), async (req, res) => {
   console.log('POST /categories endpoint hit');
   try {
       const categoryData = req.body;
@@ -131,7 +131,7 @@ router.put('/:id',
 );
 
 // DELETE /api/categories/:id - Xóa một thể loại
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',authenticateAdmin, async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -145,6 +145,8 @@ router.delete('/:id', async (req, res) => {
       res.status(500).json({ error: error.message });
   }
 });
+// Định nghĩa API PATCH để thay đổi trạng thái danh mục
+router.patch('/:id/status', categoryController.updateCategoryStatus);
 
 
 module.exports = router;
