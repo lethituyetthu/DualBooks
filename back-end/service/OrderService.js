@@ -189,6 +189,61 @@ exports.confirmOrder = async (orderId) => {
         throw new Error('Error confirming order: ' + error.message);
     }
 };
+exports.markAsDelivering = async (orderId) => {
+    try {
+        // Tìm đơn hàng theo orderId
+        const order = await OrderModel.findById(orderId);
+
+        // Kiểm tra nếu đơn hàng không tồn tại
+        if (!order) {
+            throw new Error('Order not found');
+        }
+
+        // Kiểm tra trạng thái đơn hàng
+        if (order.order_status !== 'Đã xác nhận') {
+            throw new Error('Only orders with "Đã xác nhận" status can be updated to "Đang giao hàng"');
+        }
+
+        // Cập nhật trạng thái đơn hàng thành "Đang giao hàng"
+        order.order_status = 'Đang giao hàng';
+        const updatedOrder = await order.save();
+
+        // Trả về đơn hàng đã cập nhật
+        return updatedOrder;
+    } catch (error) {
+        throw new Error('Error updating order status: ' + error.message);
+    }
+};
+exports.markAsCompleted = async (orderId) => {
+    try {
+        // Tìm đơn hàng theo orderId
+        const order = await OrderModel.findById(orderId);
+
+        // Kiểm tra nếu đơn hàng không tồn tại
+        if (!order) {
+            throw new Error('Order not found');
+        }
+
+        // Kiểm tra trạng thái đơn hàng
+        if (order.order_status !== 'Đang giao hàng') {
+            throw new Error('Only orders with "Đang giao hàng" status can be updated to "Hoàn thành"');
+        }
+
+        // Cập nhật trạng thái đơn hàng thành "Hoàn thành"
+        order.order_status = 'Hoàn thành';
+
+        // Cập nhật trạng thái thanh toán thành "Đã thanh toán"
+        order.payment_status = 'Đã thanh toán';
+
+        // Lưu các thay đổi vào cơ sở dữ liệu
+        const updatedOrder = await order.save();
+
+        // Trả về đơn hàng đã cập nhật
+        return updatedOrder;
+    } catch (error) {
+        throw new Error('Error updating order status: ' + error.message);
+    }
+};
 
 // Service: Lấy danh sách đơn hàng theo ID khách hàng
 exports.getOrdersByCustomerId = async (customerId) => {

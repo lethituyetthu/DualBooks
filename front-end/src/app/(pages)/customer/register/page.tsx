@@ -68,6 +68,7 @@ const RegisterPage = () => {
       if (response.ok) {
         setIsVerified(true); // Đánh dấu email đã xác minh thành công
         setVerifyErrors("");
+        window.location.href = "/customer/login";
       } else {
         const data = await response.json();
         if (response.status === 409) {

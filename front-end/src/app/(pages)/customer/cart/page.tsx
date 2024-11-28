@@ -62,7 +62,7 @@ const CheckoutPage = () => {
 
   // Hàm điều hướng sang trang sản phẩm (nếu cần)
   const goToProductPage = () => {
-    router.push(`/customer/product`);
+    router.push(`/customer/products`);
     
   };
 

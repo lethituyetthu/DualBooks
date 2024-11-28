@@ -101,6 +101,10 @@ router.get("/:orderId", orderController.getOrderDetail);
 router.put("/cancel/:orderId", orderController.cancelOrder);
 // API để xác nhận đơn hàng
 router.put('/confirm/:orderId', orderController.confirmOrder);
+// API  chuyển trạng thái đơn hàng từ "Đã xác nhận" sang "Đang giao hàng"
+router.put('/deliver/:orderId', orderController.markAsDelivering);
+// API  chuyển trạng thái đơn hàng từ "Đang giao hàng" sang "Hoàn thành"
+router.put('/complete/:orderId', orderController.markAsCompleted);
 // Route: Lọc đơn hàng theo ID khách hàng
 router.get('/filter-by-customer/:customerId', async (req, res) => {
   try {
