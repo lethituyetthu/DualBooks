@@ -35,21 +35,22 @@ router.get('/search', async (req, res) => {
   }
 });
 
-// POST /api/customers/register - Đăng ký khách hàng mới
-router.post('/register', async (req, res) => {
-  const customerData = req.body;
-
-  try {
-      const newCustomer = await customerController.registerCustomer(customerData);
-      res.status(201).json({ message: 'Customer registered successfully', data: newCustomer });
-  } catch (error) {
-      res.status(500).json({ error: error.message });
-  }
+// API đăng ký khách hàng mới
+router.post('/register', customerController.registerCustomer);
+// API xác minh mã
+router.post('/verify', async (req, res) => {
+    try {
+        console.log('Nhận yêu cầu xác minh:', req.body); // Log toàn bộ dữ liệu yêu cầu
+        await customerController.verifyEmailCode(req, res); // Gọi controller để xác minh mã
+    } catch (error) {
+        console.error('Lỗi trong API xác minh mã:', error);
+        res.status(500).json({ error: error.message });
+    }
 });
 
 // POST /api/customers/login - Đăng nhập khách hàng
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+//   const { email, password } = req.body;
 
   try {
       const result = await customerController.loginCustomer(req, res);

@@ -67,7 +67,8 @@ exports.getAllvisible = async () => {
     // Trả về danh sách sách đã được định dạng
     return formattedBooks; // Đảm bảo trả về danh sách đã định dạng
   } catch (error) {
-    throw new Error('Error fetching books: ' + error.message);
+    console.error("Error in bookController.getAllvisible:", error.message);
+    throw new Error("Error fetching books: " + error.message);
   }
 };
 

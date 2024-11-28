@@ -1,20 +1,52 @@
 const customerService = require('../service/CustomerService ');
-
-// Đăng ký khách hàng mới
-exports.registerCustomer = async (customerData) => {
+// Xử lý đăng ký khách hàng
+exports.registerCustomer = async (req, res) => {
     try {
-        const newCustomer = await customerService.registerCustomer(customerData);
-        return newCustomer;
+        const customerData = req.body;
+        // Gọi service xử lý logic
+        const result = await customerService.registerCustomer(customerData);
+
+        // Trả về phản hồi thành công
+        res.status(201).json({ success:true,message: 'Đăng ký thành công. Vui lòng xác minh email.', data: result });
     } catch (error) {
-        throw new Error('Error registering customer: ' + error.message);
+        // Xử lý lỗi từ service
+        res.status(error.statusCode || 500).json({ success:false,error: error.message });
+    }
+};
+// Controller xác minh mã
+exports.verifyEmailCode = async (req, res) => {
+    try {
+        const { email, verificationCode } = req.body;
+
+        // Log thông tin nhận được từ client
+        console.log('Thông tin yêu cầu:', { email, verificationCode });
+
+        // Gọi service để xử lý logic xác minh mã
+        const result = await customerService.verifyCodeAndActivateUser(email, verificationCode);
+
+        // Kiểm tra kết quả và phản hồi lại client
+        if (!result.success) {
+            console.log('Kết quả xác minh:', result); // Log kết quả xác minh
+            return res.status(result.status).json({ error: result.message });
+        }
+
+        console.log('Xác minh thành công, email đã được xác nhận');
+        res.status(200).json({ message: 'Xác minh email thành công' });
+    } catch (error) {
+        console.error('Lỗi trong quá trình xác minh:', error);
+        res.status(500).json({ error: error.message });
     }
 };
 exports.loginCustomer = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-      const { token, customer } = await customerService.loginCustomer(email, password);
-      res.status(200).json({ message: 'Login successful', token, customer });
+      const { token, refreshToken, customer } = await customerService.loginCustomer(email, password);
+      res.status(200).json({
+         message: 'Login successful',
+         token,
+         refreshToken,
+         customer });
   } catch (error) {
            // Trả lỗi với trường "message" để tương thích với client
     res.status(401).json({ message: error.message });

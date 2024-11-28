@@ -8,6 +8,19 @@ const CustomerSchema = new Schema({
     phone: { type: String, required: true },
     address: { type: String, required: true },
     status: { type: String, enum: ['active', 'blocked'], default: 'active' }, // Trạng thái hoạt động của khách hàng
+    refreshToken: { type: String }, // Lưu refresh_token
+    isEmailVerified: {
+        type: Boolean,
+        default: false, // Chưa xác minh email
+    },
+    verificationCode: {
+        type: String,
+        required: false, // Chưa cần mã xác nhận khi tạo
+    },
+    verificationCodeExpiry: {
+        type: Date,
+        required: true,
+    },
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now }
 });

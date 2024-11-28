@@ -39,6 +39,7 @@ exports.getAllvisible = async () => {
 
     return filteredBooks; // Trả về danh sách sách đã lọc
   } catch (error) {
+    console.error("Error in bookService.getAllvisible:", error.message);
     throw new Error("Error fetching books: " + error.message);
   }
 };

@@ -30,7 +30,7 @@ router.get("/", async function (req, res, next) {
   }
 });
 // Lấy tất cả danh sách getAllvisible
-// http://localhost:3000/books
+// http://localhost:3000/books/getAllvisible
 router.get("/getAllvisible", async function (req, res, next) {
   console.log("GET /books endpoint hit");
   try {

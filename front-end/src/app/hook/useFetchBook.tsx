@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Books } from "../types/Books";
 
 interface Error {
+  message: string;
   _id?: string;
   title?: string;
   author?: string;
@@ -57,7 +58,7 @@ export default function useFetchBook() {
         const resultAll = await resAll.json();
         setBooks(resultAll);
       } catch (error) {
-        setError(error.message);
+        setError((error as Error).message);
       } finally {
         setLoading(false);
       }
@@ -83,21 +84,25 @@ export default function useFetchBook() {
       setBooks((prevBooks) => [...prevBooks, newBook]);
       return newBook;
     } catch (error) {
-      return { error: error.message };
+      const errorMessage = (error as Error).message; // Casting 'error' to Error
+      return { error: errorMessage };
     }
   };
 
   const deleteBook = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:3200/books/${id}`, {
+      const response = await fetch(`http://localhost:3200/books/${id}`,
+        // const response = await fetch(`http://localhost:3200/books/${id}/status`,
+         {
         method: "DELETE",
+        // method: "PATCH",
       });
       if (!response.ok) {
         throw new Error("Lỗi khi xóa sách!");
       }
       setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
     } catch (error) {
-      setError(error.message);
+      setError((error as Error).message);
     }
   };
 
@@ -157,7 +162,7 @@ export default function useFetchBook() {
       }
     } catch (error) {
       // Cập nhật lỗi với thông điệp chi tiết
-      setError(`Có lỗi xảy ra: ${error.message}`);
+      setError(`Có lỗi xảy ra: ${(error as Error).message}`);
       console.error("Lỗi khi tìm kiếm sách 1:", error); // In lỗi ra console để kiểm tra
     }
   };
@@ -171,7 +176,7 @@ export default function useFetchBook() {
         throw new Error("Không tìm thấy sách với ID này.");
       }
     } catch (error) {
-      setError(`Có lỗi xảy ra khi tìm kiếm sách theo ID: ${error.message}`);
+      setError(`Có lỗi xảy ra khi tìm kiếm sách theo ID: ${(error as Error).message}`);
     }
   };
 
@@ -188,7 +193,7 @@ export default function useFetchBook() {
       }
     } catch (error) {
       setError(
-        `Có lỗi xảy ra khi tìm kiếm sách theo danh mục: ${error.message}`
+        `Có lỗi xảy ra khi tìm kiếm sách theo danh mục: ${(error as Error).message}`
       );
     }
   };
