@@ -9,50 +9,42 @@ const PendingOrdersList = ({ orders, onUpdateStatus }) => {
           {orders.map((n) => (
             <li
               key={n.id}
-              className="flex flex-col md:flex-row items-start md:items-center justify-between bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="flex flex-col gap-4 md:flex-row md:items-center justify-between bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="text-primary-600 space-y-2">
-                <p>
-                  <strong className="block font-medium text-blue-600">
-                  </strong>{" "}
-                  {n.id}
+              <div className="space-y-2">
+                <p className="text-lg font-bold text-blue-600">
+                  Mã đơn hàng: {n.id}
                 </p>
-                <p>
-                  <strong className="block font-medium text-gray-800">
-                    Khách hàng:
-                  </strong>{" "}
+                <p className="text-sm text-gray-700">
+                  <span className="font-medium">Khách hàng:</span>{" "}
                   {n.customer.name}
                 </p>
-                <p>
-                  <strong className="block font-medium text-gray-800">
-                    Số điện thoại:
-                  </strong>{" "}
+                <p className="text-sm text-gray-700">
+                  <span className="font-medium">Số điện thoại:</span>{" "}
                   {n.customer.phone}
                 </p>
-                <p>
-                  <strong className="block font-medium text-gray-800">
-                    Địa chỉ:
-                  </strong>{" "}
+                <p className="text-sm text-gray-700">
+                  <span className="font-medium">Địa chỉ:</span>{" "}
                   {n.customer.address}
                 </p>
-                <p>
-                  <strong className="block font-medium text-gray-800">
-                    Tổng tiền:
-                  </strong>{" "}
-                  {(n.total_amount*1000).toLocaleString("vi-VN")} đ
+                <p className="text-sm text-gray-700">
+                  <span className="font-medium">Tổng tiền:</span>{" "}
+                  {(n.total_amount * 1000).toLocaleString("vi-VN")} đ
                 </p>
               </div>
-              <button
-                className="mt-4 md:mt-0 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-md transition-all duration-200"
-                onClick={() => onUpdateStatus(n.id)}
-              >
-                Xác nhận
-              </button>
+              <div className="flex-shrink-0">
+                <button
+                  className="w-full md:w-auto bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-md transition-all duration-200"
+                  onClick={() => onUpdateStatus(n.id)}
+                >
+                  Xác nhận
+                </button>
+              </div>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="text-gray-500">Không có đơn hàng cần xác nhận.</p>  
+        <p className="text-gray-500">Không có đơn hàng cần xác nhận.</p>
       )}
     </div>
   );

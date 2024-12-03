@@ -17,6 +17,7 @@ const formatOrder = (order) => {
         id: item._id,
         bookId: item.book_id._id,
         bookTitle: item.book_id.title,
+        bookImg: item.book_id.cover_image,
         quantity: item.quantity,
         price: item.price
       }))
@@ -337,6 +338,43 @@ exports.confirmOrder = async (req, res) => {
         });
     }
 };
+exports.markAsDelivering = async (req, res) => {
+    const { orderId } = req.params; // Lấy orderId từ URL
+
+    try {
+        // Gọi service để chuyển trạng thái đơn hàng
+        const updatedOrder = await orderService.markAsDelivering(orderId);
+
+        // Trả về kết quả
+        res.status(200).json({
+            message: 'Order status has been updated to "Đang giao hàng"',
+            data: updatedOrder,
+        });
+    } catch (error) {
+        res.status(400).json({
+            error: error.message,
+        });
+    }
+};
+exports.markAsCompleted = async (req, res) => {
+    const { orderId } = req.params; // Lấy orderId từ URL
+
+    try {
+        // Gọi service để chuyển trạng thái đơn hàng
+        const updatedOrder = await orderService.markAsCompleted(orderId);
+
+        // Trả về kết quả
+        res.status(200).json({
+            message: 'Order status has been updated to "Hoàn thành"',
+            data: updatedOrder,
+        });
+    } catch (error) {
+        res.status(400).json({
+            error: error.message,
+        });
+    }
+};
+
 // Controller: Lọc đơn hàng theo ID khách hàng
 exports.getOrdersByCustomerId = async (req, res, customerId) => {
     try {

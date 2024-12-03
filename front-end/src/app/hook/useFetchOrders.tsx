@@ -5,6 +5,7 @@ export interface typeOrderItem {
   id: string;
   bookId: string;
   bookTitle: string;
+  bookImg: string;
   quantity: number;
   price: number;
 }
@@ -59,6 +60,10 @@ export interface UseFetchOrdersResult {
   ) => Promise<void>;
   fetchOrdersByStatus: (status: string) => Promise<void>; // Add this line to the interface
   fetchOrdersByDate: (status: string) => Promise<void>; // Add this line to the interface
+  fetchOrdersByCustomerId:(customerId: string) => Promise<void>,
+  confirmOrder:(id:string)=> Promise<void>,
+  cancelOrder:(id:string)=> Promise<void>
+
 }
 
 export default function useFetchOrders(): UseFetchOrdersResult {
@@ -78,7 +83,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       }
       const result = await response.json();
 
-      // console.log(result)
+      //console.log(result)
       setOrders(result); // Đặt dữ liệu đơn hàng vào state
     } catch (err) {
       setError((err as Error).message);
@@ -98,6 +103,8 @@ export default function useFetchOrders(): UseFetchOrdersResult {
           throw new Error("Lỗi khi lấy chi tiết đơn hàng!");
         }
         const result = await response.json();
+
+        return result
         setOrderDetail(result); // Đặt chi tiết đơn hàng vào state
       } catch (err) {
         setError((err as Error).message);
@@ -200,6 +207,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
         throw new Error("Lỗi khi lấy dữ liệu đơn hàng theo ID khách hàng!");
       }
       const result = await response.json();
+      console.log(result)
       setOrders(result); // Đặt dữ liệu đơn hàng vào state
     } catch (err) {
       setError((err as Error).message);
@@ -218,7 +226,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       });
   
       if (!res.ok) {
-        // Nếu phản hồi không thành công
+        // Nếu phản hồi không thành công  
         const errorData = await res.json(); // Thử lấy thông tin chi tiết lỗi từ API
         throw new Error(
           errorData.message || "Lỗi không xác định khi xác nhận đơn hàng"
@@ -258,6 +266,32 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       throw error; // Ném lỗi để xử lý bên ngoài (nếu cần)
     }
   };
+
+  const deliverOrder = async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3200/orders/deliver/${id}`, {
+        method: "PUT", // Phương thức PUT cho việc cập nhật trạng thái đơn hàng
+        headers: {
+          "Content-Type": "application/json", // Đặt header nếu API yêu cầu JSON
+        },
+      });
+  
+      if (!res.ok) {
+        // Nếu phản hồi không thành công  
+        const errorData = await res.json(); 
+        throw new Error(
+          errorData.message || "Lỗi không xác định khi xác nhận giao hàng đơn hàng"
+        );
+      }
+  
+      const result = await res.json(); // Đọc dữ liệu phản hồi (nếu có)
+      console.log("Xác nhận giao hàng thành công:", result);
+      return result; // Trả về kết quả để sử dụng nếu cần
+    } catch (error) {
+      console.error("Lỗi khi xác nhận giao hàng đơn hàng:", error);
+      throw error; // Ném lỗi để xử lý bên ngoài (nếu cần)
+    }
+  };
   // Gọi fetchOrders khi component lần đầu render
   useEffect(() => {
     fetchOrders();
@@ -273,6 +307,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
     fetchOrdersByCustomerId,
     confirmOrder,
     cancelOrder,
+    deliverOrder,
     updateOrder,
     fetchOrdersByStatus,
     fetchOrdersByDate, // Trả về hàm fetchOrdersByStatus

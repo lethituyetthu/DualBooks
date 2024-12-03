@@ -24,20 +24,23 @@ export default function Dashboard() {
   }, []);
 
   const calculateStats = (date, orders, customers) => {
-    const ordersOnDate = orders?.filter(
-      (order) =>
-        order?.order_date &&
-        new Date(order.order_date).toISOString().split("T")[0] === date
-    ) || [];
+    const ordersOnDate =
+      orders?.filter(
+        (order) =>
+          order?.order_date &&
+          new Date(order.order_date).toISOString().split("T")[0] === date &&
+          order.payment_status === "Đã thanh toán"
+      ) || [];
     const revenueOnDate = ordersOnDate.reduce(
       (sum, order) => sum + (order.total_amount || 0),
       0
     );
-    const customersOnDate = customers?.filter(
-      (customer) =>
-        customer?.created_at &&
-        new Date(customer.created_at).toISOString().split("T")[0] === date
-    ) || [];
+    const customersOnDate =
+      customers?.filter(
+        (customer) =>
+          customer?.created_at &&
+          new Date(customer.created_at).toISOString().split("T")[0] === date
+      ) || [];
     return {
       orders: ordersOnDate.length,
       revenue: revenueOnDate,
@@ -56,15 +59,14 @@ export default function Dashboard() {
   );
 
   const totalOrders = orders.length;
-  const totalRevenue = orders?.reduce(
-    (sum, order) => sum + (order.total_amount || 0),
-    0
-  );
+  const totalRevenue = orders
+    ?.filter((order) => order.payment_status === "Đã thanh toán")
+    .reduce((sum, order) => sum + (order.total_amount || 0), 0);
   const totalCustomers = customers.length;
 
   const dailyRevenue = useMemo(() => {
     const revenueByDay = Array(30).fill(0);
-    orders.forEach((order) => {
+    orders?.filter((order) => order.payment_status === "Đã thanh toán").forEach((order) => {
       if (order?.order_date && order?.total_amount) {
         const day = new Date(order.order_date).getDate();
         if (day >= 1 && day <= 30) {

@@ -29,24 +29,28 @@ export default function useFetchCategory() {
     fetchData();
   }, []);
 
-  const addCategory = async (newCategory: typeCate) => {
+  const addCategory = async (newCategory: FormData) => {
     console.log(newCategory);
     try {
       const res = await fetch("http://localhost:3200/categories", {
         method: "POST",
-
-        body: newCategory,
+        body: newCategory, // Gửi trực tiếp FormData
       });
-      console.log(res);
-
-      if (res) {
-        const addedCate = await res.json();
-        setCate((prev) => [...prev, addedCate]);
+  
+      if (!res.ok) {
+        throw new Error("Lỗi khi thêm danh mục!");
       }
+  
+      const addCate = await res.json();
+      console.log(addCate);
+      setCate((prev) => [...prev, addCate]);
+
+      return addCate
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   const updateCategory = async (id: any, updatedCategory: typeCate) => {
     try {
@@ -83,20 +87,25 @@ export default function useFetchCategory() {
     }
   };
 
-  const deleteCategory = async (id:string) =>{
+  const deleteCategory = async (id: string) => {
     try {
       const res = await fetch(`http://localhost:3200/categories/${id}`, {
-      method: "DELETE",
-    })
+        method: "DELETE",
+      });
 
-    if(!res.ok){
-      throw new Error(" lỗi khi xoá sp")
-    }
+      if (!res.ok) {
+        throw new Error(" lỗi khi xoá sp");
+      }
     } catch (error) {
       console.error(error);
-      
     }
-  }
+  };
 
-  return { cate, addCategory, updateCategory, fetchCategoryById, deleteCategory};
+  return {
+    cate,
+    addCategory,
+    updateCategory,
+    fetchCategoryById,
+    deleteCategory,
+  };
 }

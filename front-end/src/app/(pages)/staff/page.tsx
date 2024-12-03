@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Books } from "@/app/types/Books";
 import SearchProduct from "@/components/ui/searchProduct_byName";
 import CheckoutModal from "./component/checkoutModal";
+import { SnackbarProvider } from "notistack";
 
 interface CartItem {
   id: string;
@@ -95,7 +96,6 @@ const Staff: React.FC = () => {
       totalQuantity
     ); */
     setShowModal(true);
-  
   };
 
   const handleDelete = (id: string) => {
@@ -117,67 +117,72 @@ const Staff: React.FC = () => {
     setCartItems([]); // Đặt lại giỏ hàng về rỗng
   };
   return (
-    <div className="flex">
-      <div className="w-4/5 p-3 flex flex-col max-h-[calc(100vh-80px)]">
-        <div className="bg-white p-6 rounded-lg shadow-md h-screen overflow-y-auto flex-grow">
-          {cartItems.map((item) => (
-            <CartItem
-              key={item.id}
-              id={item.id}
-              product={item.product}
-              quantity={item.quantity}
-              price={item.price}
-              onQuantityChange={updateCartItemQuantity}
-              onDelete={handleDelete}
+    <SnackbarProvider
+      maxSnack={3}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+    >
+      <div className="flex">
+        <div className="w-4/5 p-3 flex flex-col max-h-[calc(100vh-80px)]">
+          <div className="bg-white p-6 rounded-lg shadow-md h-screen overflow-y-auto flex-grow">
+            {cartItems.map((item) => (
+              <CartItem
+                key={item.id}
+                id={item.id}
+                product={item.product}
+                quantity={item.quantity}
+                price={item.price}
+                onQuantityChange={updateCartItemQuantity}
+                onDelete={handleDelete}
+              />
+            ))}
+          </div>
+          <div className="bg-primary-400 text-white p-6 rounded-lg shadow-md mt-4 font-semibold flex justify-between">
+            <span>Tổng tiền sản phẩm:</span>
+            <span>{totalQuantity} sản phẩm</span>
+            <span>{(totalPrice * 1000).toLocaleString("vi-VN") + " đ"}</span>
+          </div>
+        </div>
+
+        <div className="bg-white p-5 shadow-lg max-h-screen">
+          <div className="mb-5 flex">
+            <SearchProduct
+              searchTerm={searchTerm}
+              onSearchChange={handleSearchChange}
             />
-          ))}
-        </div>
-        <div className="bg-primary-400 text-white p-6 rounded-lg shadow-md mt-4 font-semibold flex justify-between">
-          <span>Tổng tiền sản phẩm:</span>
-          <span>{totalQuantity} sản phẩm</span>
-          <span>{(totalPrice * 1000).toLocaleString("vi-VN") + " đ"}</span>
-        </div>
-      </div>
 
-      <div className="bg-white p-5 shadow-lg max-h-screen">
-        <div className="mb-5 flex">
-          <SearchProduct
-            searchTerm={searchTerm}
-            onSearchChange={handleSearchChange}
+            <input
+              type="text"
+              placeholder="Tìm kiếm theo ID"
+              value={searchId}
+              onChange={(e) => handleSearchByIdChange(e.target.value)}
+              className="border rounded-md px-3 py-2 ml-2"
+            />
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 max-h-[calc(100vh-230px)] overflow-y-auto">
+            {books.map((book: Books) => (
+              <ProductList key={book.id} book={book} onAddToCart={addToCart} />
+            ))}
+          </div>
+
+          <button
+            className="w-full mt-4 py-2 bg-[#A05D3A] text-white rounded-sm hover:bg-[#8C4C2F] transition-colors"
+            onClick={handleCheckout}
+          >
+            Thanh Toán
+          </button>
+        </div>
+        {showModal && (
+          <CheckoutModal
+            cartItems={cartItems}
+            totalPrice={totalPrice}
+            totalQuantity={totalQuantity}
+            onClose={() => setShowModal(false)}
+            onClearCart={clearCart}
           />
-
-          <input
-            type="text"
-            placeholder="Tìm kiếm theo ID"
-            value={searchId}
-            onChange={(e) => handleSearchByIdChange(e.target.value)}
-            className="border rounded-md px-3 py-2 ml-2"
-          />
-        </div>
-
-        <div className="grid grid-cols-3 gap-4 max-h-[calc(100vh-230px)] overflow-y-auto">
-          {books.map((book: Books) => (
-            <ProductList key={book.id} book={book} onAddToCart={addToCart} />
-          ))}
-        </div>
-
-        <button
-          className="w-full mt-4 py-2 bg-[#A05D3A] text-white rounded-sm hover:bg-[#8C4C2F] transition-colors"
-          onClick={handleCheckout}
-        >
-          Thanh Toán
-        </button>
+        )}
       </div>
-      {showModal && (
-        <CheckoutModal
-          cartItems={cartItems}
-          totalPrice={totalPrice}   
-          totalQuantity={totalQuantity}
-          onClose={() => setShowModal(false)}
-          onClearCart={clearCart}
-        />
-      )}
-    </div>
+    </SnackbarProvider>
   );
 };
 

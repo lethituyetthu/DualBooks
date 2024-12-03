@@ -1,9 +1,8 @@
-import { execOnce } from "next/dist/shared/lib/utils";
 
 const ProductsList = ({ title, products, renderDetails }) => {
   return (
-    <div className="bg-white rounded-lg shadow p-6">
-      <h3 className="text-lg font-semibold text-gray-700 mb-4">{title}</h3>
+    <div className="bg-white rounded-lg h-[40%] shadow p-6 overflow-y-auto">
+      <h3 className="text-lg font-semibold text-gray-700 mb-4 w-[70%]">{title}</h3>
       <ul className="space-y-4">
         {products.length > 0 ? (
           products.map((product) => (

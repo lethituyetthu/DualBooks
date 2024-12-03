@@ -18,7 +18,7 @@ import RevenueChart from "./component/RevenueChart";
 import ProductsList from "./component/ProductsList";
 import OrdersList from "./component/OrdersList";
 import StatsCard from "./component/StatsCard";
-import PendingOrdersList from "./component/PendingOderList";
+import { SnackbarProvider } from "notistack";
 
 // Đăng ký ChartJS components
 ChartJS.register(
@@ -32,13 +32,13 @@ ChartJS.register(
 
 const Dashboard = () => {
   const { newBooks, lowStock } = useFetchBook();
-  const { fetchOrdersByDate, orders, fetchOrdersByStatus,confirmOrder } = useFetchOrders();
-  const [pendingOrders, setPendingOrders] = useState([]);
+  const { fetchOrdersByDate, orders, fetchOrdersByStatus } = useFetchOrders();
   const [todayOrders, setTodayOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [filterStatus, setFilterStatus] = useState("Chờ xác nhận");
   const [orderCounts, setOrderCounts] = useState({});
   const [offlineTotalAmount, setOfflineTotalAmount] = useState(0);
+  const [onlineTotalAmount, setOnlineTotalAmount] = useState(0);
   const [chartLabels, setChartLabels] = useState([]);
   const [statsData, setStatsData] = useState({
     totalAmount: 0,
@@ -61,10 +61,10 @@ const Dashboard = () => {
     // Tính doanh thu từng ngày bằng cách gọi fetchOrdersByDate
     const revenueByDay = await Promise.all(
       last7Days.map(async (day) => {
-        const dayOrders = await fetchOrdersByDate(day)  || []; // Lấy dữ liệu từng ngày
+        const dayOrders = (await fetchOrdersByDate(day)) || []; // Lấy dữ liệu từng ngày
 
         const completedOrders = dayOrders.filter(
-          (order) => order.order_status === "Hoàn thành"
+          (order) => order.payment_status === "Đã thanh toán"
         );
 
         return completedOrders.reduce(
@@ -81,80 +81,81 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchOrdersData = async () => {
       const today = new Date().toISOString().split("T")[0];
-      console.log("Hôm nay:", today);
-
-      // Lấy đơn hàng hôm nay
-      const todayOrders = await fetchOrdersByDate(today);
-      console.log("Đơn hàng hôm nay:", todayOrders);
+      const todayOrders = (await fetchOrdersByDate(today)) || []; // Đảm bảo không null
       setTodayOrders(todayOrders);
-
-      const completedOrders = todayOrders.filter(
+  
+      if (todayOrders.length === 0) {
+        // Nếu không có đơn hàng, đặt giá trị mặc định
+        setStatsData({ totalAmount: 0, orderCount: 0 });
+        setWeeklyRevenue(Array(7).fill(0)); // Doanh thu 7 ngày = 0
+        setOfflineTotalAmount(0);
+        setOnlineTotalAmount(0);
+        setOrderCounts({ "Tất cả": 0 });
+        setFilteredOrders([]);
+        setChartLabels(Array.from({ length: 7 }, (_, i) => {
+          const date = new Date();
+          date.setDate(new Date().getDate() - i);
+          return date.toISOString().split("T")[0];
+        }).reverse());
+        return;
+      }
+  
+      // Các xử lý khác nếu có đơn hàng
+      const completedOrders = todayOrders?.filter(
         (order) => order.order_status === "Hoàn thành"
       );
-      // Tính tổng tiền và số lượng đơn hàng hôm nay
-      const totalAmountToday = completedOrders.reduce(
-        (sum, order) => sum + (order.total_amount || 0),
-        0
-      );
+      const totalAmountToday = completedOrders
+        .filter((order) => order.payment_status === "Đã thanh toán")
+        .reduce((sum, order) => sum + (order.total_amount || 0), 0);
+  
       const orderCountToday = todayOrders.length;
-      setStatsData({
-        totalAmount: totalAmountToday,
-        orderCount: orderCountToday,
-      });
-
-      // Tính doanh thu 7 ngày gần nhất
-      const { revenueByDay, last7Days } = await doanh_thu_7day(
-        fetchOrdersByDate
-      );
+      setStatsData({ totalAmount: totalAmountToday, orderCount: orderCountToday });
+  
+      const { revenueByDay, last7Days } = await doanh_thu_7day(fetchOrdersByDate);
       setWeeklyRevenue(revenueByDay);
       setChartLabels(last7Days);
-
-      // Tính tổng tiền offline
+  
       const offlineAmount = todayOrders
         .filter((order) => order.order_type === "offline")
         .reduce((sum, order) => sum + (order.total_amount || 0), 0);
       setOfflineTotalAmount(offlineAmount);
-
-      // Tính số lượng đơn hàng theo trạng thái
+  
+      const onlineAmount = todayOrders
+        .filter(
+          (order) =>
+            order.order_type === "online" &&
+            order.payment_status === "Đã thanh toán"
+        )
+        .reduce((sum, order) => sum + (order.total_amount || 0), 0);
+      setOnlineTotalAmount(onlineAmount);
+  
       const counts = todayOrders.reduce((acc, order) => {
         acc[order.order_status] = (acc[order.order_status] || 0) + 1;
         return acc;
       }, {});
-      counts["Tất cả"] = todayOrders.length;
+      counts["Tất cả"] = todayOrders?.length;
       setOrderCounts(counts);
-
-      setFilteredOrders(todayOrders);
+  
+      const filtered = todayOrders.filter(
+        (order) => order.order_status === "Chờ xác nhận"
+      );
+      setFilteredOrders(filtered);
     };
-
+  
     fetchOrdersData();
   }, [fetchOrdersByDate]);
-
+  
   // Lọc đơn hàng theo trạng thái
   useEffect(() => {
     if (filterStatus === "Tất cả") {
       setFilteredOrders(todayOrders);
     } else {
-      const filtered = todayOrders.filter(
+      const filtered = todayOrders?.filter(
         (order) => order.order_status === filterStatus
       );
       setFilteredOrders(filtered);
     }
   }, [filterStatus, todayOrders]);
-
-  useEffect(() => {
-    const fetchPendingOrders = async () => {
-      try {
-        const pending = await fetchOrdersByStatus("Chờ xác nhận"); // Lấy dữ liệu đúng từ API
-        setPendingOrders(pending); // Gán trực tiếp vào pendingOrders
-        console.log("Đơn hàng chờ xác nhận:", pending); // Kiểm tra dữ liệu trả về
-      } catch (error) {
-        console.error("Lỗi khi lấy đơn hàng chờ xác nhận:", error);
-      }
-    };
-  
-    fetchPendingOrders();
-  }, [fetchOrdersByStatus]);
-  
 
   // Dữ liệu biểu đồ doanh thu
   const chartData = {
@@ -205,20 +206,20 @@ const Dashboard = () => {
       id: 1,
       title: "Doanh thu tại cửa hàng",
       amount: `${(offlineTotalAmount * 1000).toLocaleString("vi-VN")} đ`,
-      icon: "💰",
     },
+
     {
       id: 2,
-      title: "Doanh thu của hôm nay",
-      amount: `${(statsData.totalAmount * 1000).toLocaleString("vi-VN")} đ`,
-      icon: "💰",
+      title: "Doanh thu online",
+      amount: `${(onlineTotalAmount * 1000).toLocaleString("vi-VN")} đ`,
     },
     {
       id: 3,
-      title: "Đơn hàng",
-      amount: statsData.orderCount,
-      icon: "📦",
-    },
+      title: "Tổng doanh thu",
+      amount: `${(statsData.totalAmount * 1000).toLocaleString("vi-VN")} đ/ ${
+        statsData.orderCount || 0
+      } đơn`,
+    }
   ];
 
   const statuses = [
@@ -230,26 +231,10 @@ const Dashboard = () => {
     "Đã hủy",
   ];
 
-  const updateOrderStatus = (orderId, newStatus) => {
-    // Giả lập cập nhật trạng thái (thực tế bạn sẽ gọi API)
-    /* setFilteredOrders((prevOrders) =>
-      prevOrders.map((order) =>
-        order.id === orderId ? { ...order, order_status: newStatus } : order
-      )
-    ); */
-  };
-
-
-  const handleConfirmOrder = async (orderId: string) => {
-    try {
-      const result = await confirmOrder(orderId);
-      alert(`Đơn hàng ${orderId} đã được xác nhận thành công!`);
-    } catch (error) {
-      alert(`Xác nhận đơn hàng thất bại: ${(error as Error).message}`);
-    }
-  };
   // console.log(filteredOrders);
   return (
+    <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
+
     <div className="min-h-screen bg-light-100 p-6 max-w-[1300px] mx-auto">
       <div className="grid grid-cols-3 gap-6 mb-6">
         {stats.map((stat) => (
@@ -292,13 +277,8 @@ const Dashboard = () => {
           />
         </div>
       </div>
-      <div className="mt-6">
-        <PendingOrdersList
-          orders={pendingOrders}
-          onUpdateStatus={(id) => handleConfirmOrder(id)}
-        />
-      </div>
     </div>
+    </SnackbarProvider>
   );
 };
 
