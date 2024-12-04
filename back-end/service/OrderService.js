@@ -253,14 +253,18 @@ exports.getOrdersByCustomerId = async (customerId) => {
             customer_id: customerId // Tìm theo customer_id
         }) .populate('customer_id', 'name email address phone')
         .populate('staff_id', 'name email')
-        .populate('orderItems');
+        .populate({
+            path: 'orderItems',
+            populate: {
+                path: 'book_id', // Populate thông tin của Book
+            }
+        });
 
         return orders; // Trả về danh sách đơn hàng
     } catch (error) {
         throw new Error('Error fetching orders: ' + error.message); // Xử lý lỗi
     }
 };
-
 
 
 

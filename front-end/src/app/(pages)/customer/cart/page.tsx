@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import CartItems from "../component/cart/CartItems";
+import useFetchBook from "@/app/hook/useFetchBook";
+import useHandlePlaceOrder from "@/app/hook/useHandlePlaceOrder";
 
 type CartItem = {
   id: string;
@@ -67,17 +69,8 @@ const CheckoutPage = () => {
   };
 
   // Hàm xử lý khi đặt hàng
-  const handlePlaceOrder = () => {
-    const data = JSON.stringify({
-      cartItems, // Thông tin giỏ hàng
-      totalQuantity: totalQuantity(), // Tổng số lượng sản phẩm
-      totalPrice: totalPrice(), // Tổng tiền
-    });
+  const handlePlaceOrder = useHandlePlaceOrder(cartItems, totalQuantity(), totalPrice())
 
-    const encodedData = encodeURIComponent(data); // Mã hóa dữ liệu để truyền qua URL
-
-    router.push(`/customer/checkout?data=${encodedData}`); // Điều hướng sang trang thanh toán với dữ liệu
-  };
 
   return (
     <div className="max-w-5xl mx-auto p-6 ">

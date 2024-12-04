@@ -292,6 +292,33 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       throw error; // Ném lỗi để xử lý bên ngoài (nếu cần)
     }
   };
+
+  const completeOrder = async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3200/orders/complete/${id}`, {
+        method: "PUT", // Phương thức PUT cho việc cập nhật trạng thái đơn hàng
+        headers: {
+          "Content-Type": "application/json", // Đặt header nếu API yêu cầu JSON
+        },
+      });
+  
+      if (!res.ok) {
+        // Nếu phản hồi không thành công  
+        const errorData = await res.json(); 
+        throw new Error(
+          errorData.message || "Lỗi không xác định khi xác nhận giao hàng đơn hàng"
+        );
+      }
+  
+      const result = await res.json(); // Đọc dữ liệu phản hồi (nếu có)
+      console.log("Xác nhận hoàn thành đơn hàng:", result);
+      return result.data; // Trả về kết quả để sử dụng nếu cần
+    } catch (error) {
+      console.error("Xác nhận hoàn thành đơn hàng:", error);
+      throw error; // Ném lỗi để xử lý bên ngoài (nếu cần)
+    }
+  };
+
   // Gọi fetchOrders khi component lần đầu render
   useEffect(() => {
     fetchOrders();
@@ -308,6 +335,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
     confirmOrder,
     cancelOrder,
     deliverOrder,
+    completeOrder,
     updateOrder,
     fetchOrdersByStatus,
     fetchOrdersByDate, // Trả về hàm fetchOrdersByStatus

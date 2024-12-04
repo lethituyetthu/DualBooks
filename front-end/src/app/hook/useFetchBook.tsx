@@ -89,8 +89,8 @@ export default function useFetchBook() {
 
   const deleteBook = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:3200/books/${id}`, {
-        method: "DELETE",
+      const response = await fetch(`http://localhost:3200/books/${id}/status`, {
+        method: "PATCH",
       });
       if (!response.ok) {
         throw new Error("Lỗi khi xóa sách!");
@@ -180,7 +180,7 @@ export default function useFetchBook() {
       const res = await fetch(`http://localhost:3200/books/category/${id}`);
       if (res.ok) {
         const result = await res.json();
-        console.log(result)
+        //console.log(result)
         setBooks(result);
         console.log(categoryBook) // Cập nhật `books` chỉ với kết quả tìm kiếm
       } else {
@@ -192,6 +192,20 @@ export default function useFetchBook() {
       );
     }
   };
+
+  const fetchProductStock = async (productId: string) => {
+    try {
+      const response = await fetch(`http://localhost:3200/books/${productId}`);
+      const productData = await response.json();
+
+      console.log(productData.stock)
+      return productData.stock;
+    } catch (error) {
+      console.error("Lỗi khi lấy thông tin tồn kho:", error);
+      return 0; // Trả về 0 nếu có lỗi
+    }
+  };
+  
 
   /*  const bookViews = async (bookId: string) => {
     try {
@@ -221,5 +235,6 @@ export default function useFetchBook() {
     searchBooksById,
     searchBookByCate,
     categoryBook,
+    fetchProductStock,
   };
 }

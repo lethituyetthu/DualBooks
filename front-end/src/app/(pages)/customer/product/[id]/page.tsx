@@ -25,8 +25,8 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
     fetchDetail,
     loading,
     error,
-    categoryBook,
     searchBookByCate,
+    categoryBook,
   } = useFetchBook(); // Hook lấy dữ liệu sách
 
   useEffect(() => {
@@ -40,6 +40,8 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
     }
   }, [detailBook]);
   const flattenedCategoryBook = categoryBook.flat();
+
+  //console.log( categoryBook)
 
   if (loading) return <p>Đang tải...</p>;
   if (error) return <p>Lỗi: {error}</p>;

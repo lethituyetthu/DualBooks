@@ -2,6 +2,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import logo from "@/app/publics/ma_qr.png";
 import useFetchOrder from "@/app/hook/useFetchOder";
+import useFetchBook from "@/app/hook/useFetchBook";
+
 interface typeCheckout {
   cartItems: {
     id: string;
@@ -12,7 +14,7 @@ interface typeCheckout {
   totalPrice: number;
   totalQuantity: number;
   onClose: () => void;
-  onClearCart: () => void; 
+  onClearCart: () => void;
 }
 
 const CheckoutModal: React.FC<typeCheckout> = ({
@@ -20,11 +22,13 @@ const CheckoutModal: React.FC<typeCheckout> = ({
   totalPrice,
   totalQuantity,
   onClose,
-  onClearCart,  
+  onClearCart,
 }) => {
+  const { fetchProductStock } = useFetchBook();
   const [paymentMethod, setPaymentMethod] = useState<string>("");
-  const [adminId, setAdminId] = useState(null);
-  const {addOrder, addOrderItem, getOrderDetail} =useFetchOrder()
+  const [adminId, setAdminId] = useState<string | null>(null);
+  const { addOrder, addOrderItem, getOrderDetail } = useFetchOrder();
+
   useEffect(() => {
     const adminData = localStorage.getItem("admin");
     if (adminData) {
@@ -40,10 +44,23 @@ const CheckoutModal: React.FC<typeCheckout> = ({
   };
 
   const handlePayment = async () => {
+    // Kiểm tra tồn kho cho từng sản phẩm trong giỏ hàng
+    for (const item of cartItems) {
+      const stock = await fetchProductStock(item.id); // Lấy số lượng tồn kho từ API
+      if (item.quantity > stock) {
+        const book = await fetchProductStock(item.id); // Lấy thông tin sản phẩm để hiển thị thông báo
+        alert(
+          `Sản phẩm "${item.product}" không đủ số lượng trong kho. Tồn kho chỉ có ${book} sản phẩm.`
+        );
+        return; // Dừng quá trình thanh toán nếu có sản phẩm hết hàng
+      }
+    }
+
     if (!paymentMethod) {
       alert("Vui lòng chọn phương thức thanh toán.");
       return;
     }
+
     const orderData = {
       orderItems: cartItems,
       total_amount: totalPrice,
@@ -55,38 +72,33 @@ const CheckoutModal: React.FC<typeCheckout> = ({
       order_type: "offline",
       staff_id: adminId,
     };
-   // console.log("Danh sách sản phẩm thanh toán:", orderData);
+
     try {
-      const response  = await addOrder(orderData);
-    console.log('Order created successfully with ID:', response.data);
-    const orderId = response.data._id;
-    console.log(orderId)
-    // Thêm từng sản phẩm vào chi tiết đơn hàng
-    for (const item of cartItems) {
-      const orderItemData = {
-        book_id: item.id,
-        quantity: item.quantity,
-        price: item.price,
-      };
-      await addOrderItem(orderId, orderItemData);  // Thêm chi tiết đơn hàng theo order_id
-    }
-    /* console.log('Order created successfully with items:', orderData.orderItems); */
-    alert("thanh toán thành công")
-    onClearCart();
-    onClose()
+      const response = await addOrder(orderData);
+      const orderId = response.data._id;
+
+      // Thêm từng sản phẩm vào chi tiết đơn hàng
+      for (const item of cartItems) {
+        const orderItemData = {
+          book_id: item.id,
+          quantity: item.quantity,
+          price: item.price,
+        };
+        await addOrderItem(orderId, orderItemData); // Thêm chi tiết đơn hàng theo order_id
+      }
+
+      alert("Thanh toán thành công");
+      onClearCart();
+      onClose();
     } catch (err) {
-      console.error('Failed to create order:', err);
+      console.error("Failed to create order:", err);
     }
   };
-
 
   return (
     <div className="fixed inset-0 flex items-stretch justify-end bg-black bg-opacity-50 z-50">
       <div className="bg-white w-3/4 max-w-lg p-6 relative max-h-screen overflow-y-auto">
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600"
-        >
+        <button onClick={onClose} className="absolute top-2 right-2 text-gray-600">
           ✕
         </button>
 
@@ -117,9 +129,7 @@ const CheckoutModal: React.FC<typeCheckout> = ({
                   <td className="py-3 text-nowrap">
                     {(item.price * 1000).toLocaleString("vi-VN")}
                   </td>
-                  <td className="py-3 text-nowrap text-center">
-                    x{item.quantity}
-                  </td>
+                  <td className="py-3 text-nowrap text-center">x{item.quantity}</td>
                   <td className="py-3 text-right text-nowrap ">
                     {(item.price * item.quantity * 1000).toLocaleString(
                       "vi-VN"

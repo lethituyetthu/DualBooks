@@ -70,7 +70,6 @@ function useFavoriteBooks() {
             setWishlist(books); // Cập nhật wishlist với mảng sách yêu thích
             setBookCount(books.length); // Lưu số lượng sách vào state
             //console.log("Số lượng sách yêu thích: ", books.length); // Log số lượng sách
-            
             } else {
               setMessage("Không có sách yêu thích.");
             }

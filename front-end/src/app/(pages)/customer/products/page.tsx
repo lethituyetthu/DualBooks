@@ -5,7 +5,7 @@ import useFetchBook from "../../../hook/useFetchBook";
 import useFetchCategory from "@/app/hook/useFetchCategory";
 import useFavoriteBooks from "@/app/hook/useFetchWishlist";
 import Link from "next/link";
- import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface Product {
   id: string;
@@ -31,12 +31,12 @@ interface Category {
   name: string;
 }
 
-
 const ProductPage = () => {
-  const route =  useRouter()
-  const { books, loading, error,searchBookByCate,categoryBook } = useFetchBook();
+  const route = useRouter();
+  const { books, loading, error, searchBookByCate, categoryBook } =
+    useFetchBook();
   const { cate }: { cate: Category[] } = useFetchCategory();
-  const { message,wishlist,addToWishlist } = useFavoriteBooks(); // Sử dụng hàm addToWishlist từ hook
+  const { message, wishlist, addToWishlist } = useFavoriteBooks(); // Sử dụng hàm addToWishlist từ hook
   const [minPrice, setMinPrice] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
   const [keyword, setKeyword] = useState<string>("");
@@ -44,9 +44,9 @@ const ProductPage = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
-    // Kiểm tra nếu sản phẩm đã có trong wishlist
-    const isFavorite = (productId: string) =>
-      wishlist.some((item: Product) => item.id === productId);
+  // Kiểm tra nếu sản phẩm đã có trong wishlist
+  const isFavorite = (productId: string) =>
+    wishlist.some((item: Product) => item.id === productId);
   useEffect(() => {
     if (books.length > 0) {
       const mappedProducts: Product[] = books.map((book: typeBook) => ({
@@ -78,10 +78,7 @@ const ProductPage = () => {
     setFilteredProducts(filtered);
   };
 
-  
-
-  const handleCategoryChange = async  (id: string) => {
-
+  const handleCategoryChange = async (id: string) => {
     try {
       await searchBookByCate(id); // Chờ searchBookByCate hoàn thành
       setFilteredProducts(books); // Sau đó cập nhật filteredProducts
@@ -92,16 +89,14 @@ const ProductPage = () => {
     }
   };
 
-
-
   //console.log(cate)
   const handleShowAll = () => {
-    window.location.reload()
+    window.location.reload();
   };
 
   return (
     <div className="max-w-[1200px] m-auto relative">
-       <nav className="flex items-center space-x-2 text-sm text-gray-600 p-4">
+      <nav className="flex items-center space-x-2 text-sm text-gray-600 p-4">
         <a href="/customer" className="hover:text-gray-900">
           Trang chủ
         </a>
@@ -111,15 +106,15 @@ const ProductPage = () => {
         </a>
         <span>/</span>
         <span className="text font-semibold text-primary-400">
-        Danh sách sản phẩm
+          Danh sách sản phẩm
         </span>
       </nav>
-       {/* Thêm thông báo ở đây */}
-  {message && (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-3 rounded shadow-md">
-      {message}
-    </div>
-  )}
+      {/* Thêm thông báo ở đây */}
+      {message && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-3 rounded shadow-md">
+          {message}
+        </div>
+      )}
       <div className="flex">
         {/* Sidebar */}
         <div className="w-1/4 p-4  space-y-6">
@@ -144,7 +139,7 @@ const ProductPage = () => {
                 </svg>
               </button>
             </div>
-            
+
             {cate.map((category) => {
               return (
                 <div key={category.id} className="flex items-center mb-2">
@@ -154,11 +149,11 @@ const ProductPage = () => {
                     name="category"
                     value={category.id}
                     checked={selectedCategory === category.id}
-                    onClick={() => handleCategoryChange(category.id)}
+                    onChange={() => handleCategoryChange(category.id)}
                     className="mr-2"
                   />
                   <label htmlFor={category.id} className="cursor-pointer">
-                    {category.name} 
+                    {category.name}
                   </label>
                 </div>
               );
@@ -206,36 +201,34 @@ const ProductPage = () => {
 
         {/* Product grid */}
         <div className="w-3/4 p-4">
-        
           {loading ? (
             <p>Loading...</p>
           ) : error ? (
             <p>Error: {error}</p>
           ) : (
             <div className="grid grid-cols-4 gap-6">
-              
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => (
                   <div
-                  key={product.id}
-                  className= "relative border rounded-lg shadow-md p-4 bg-white flex flex-col items-center hover:shadow-lg transition-shadow duration-300"
-                >
-                  {/* Heart Icon */}
-                  <button
-                   className="absolute top-3 left-3 bg-white rounded-full p-2 shadow hover:shadow-md transition text-gray-500 hover:text-red-500"
-                    onClick={() => addToWishlist(product)} // Function to handle adding to wishlist
+                    key={product.id}
+                    className="relative border rounded-lg shadow-md p-4 bg-white flex flex-col items-center hover:shadow-lg transition-shadow duration-300"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-6 h-6"
+                    {/* Heart Icon */}
+                    <button
+                      className="absolute top-3 left-3 bg-white rounded-full p-2 shadow hover:shadow-md transition text-gray-500 hover:text-red-500"
+                      onClick={() => addToWishlist(product)} // Function to handle adding to wishlist
                     >
-                      <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-                    </svg>
-                  </button>
-                
-                  <Link
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                      </svg>
+                    </button>
+
+                    <Link
                       href={`/customer/product/${product.id}`}
                       className="w-full text-center"
                     >
@@ -256,7 +249,7 @@ const ProductPage = () => {
                       </p>
 
                       {/* Author */}
-                      <p className="text-sm text-gray-500 mb-2 text-nowrap w-32 truncate mx-auto" >
+                      <p className="text-sm text-gray-500 mb-2 text-nowrap w-32 truncate mx-auto">
                         {product.author}
                       </p>
 
@@ -265,8 +258,7 @@ const ProductPage = () => {
                         {(product.price * 1000).toLocaleString("vi-VN") + "đ"}
                       </div>
                     </Link>
-                </div>
-                
+                  </div>
                 ))
               ) : (
                 <p>Không có sản phẩm nào.</p>

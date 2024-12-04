@@ -397,7 +397,8 @@ exports.getOrdersByCustomerId = async (req, res, customerId) => {
             orderItems: order.orderItems.map(item => ({
                 id: item._id,
                 bookId: item.book_id._id,
-                bookTitle: item.book_id.title, // Ví dụ trường title từ book_id
+                bookTitle: item.book_id.title,
+                bookImg: item.book_id.cover_image,
                 quantity: item.quantity,
                 price: item.price
             })) ,// Nếu cần chi tiết sản phẩm
