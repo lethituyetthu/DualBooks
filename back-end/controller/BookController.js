@@ -18,6 +18,7 @@ const formatBooks = (books) => {
     description: book.description,
     price: book.price,
     stock: book.stock,
+    status: book.status,
     sale: book.sales,
     view: book.views,
     cover_image: book.cover_image,
@@ -42,6 +43,7 @@ const formatProducts = (products) => {
     description: product.description,
     price: product.price,
     stock: product.stock,
+    status: product.status,
     view: product.views,
     cover_image: product.cover_image,
     created_at: product.created_at,   // Thêm trường created_at

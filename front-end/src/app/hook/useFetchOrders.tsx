@@ -116,7 +116,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
   );
 
   // Hàm cập nhật thông tin đơn hàng
-  const updateOrder = useCallback(
+ /*  const updateOrder = useCallback(
     async (orderId: string, updatedData: Partial<typeOrderDetail>) => {
       setLoading(true);
       setError(null);
@@ -152,7 +152,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
       }
     },
     []
-  );
+  ); */
   // Hàm lấy danh sách đơn hàng theo trạng thái
   const fetchOrdersByStatus = useCallback(async (status: string) => {
     setLoading(true);
@@ -336,7 +336,6 @@ export default function useFetchOrders(): UseFetchOrdersResult {
     cancelOrder,
     deliverOrder,
     completeOrder,
-    updateOrder,
     fetchOrdersByStatus,
     fetchOrdersByDate, // Trả về hàm fetchOrdersByStatus
   };

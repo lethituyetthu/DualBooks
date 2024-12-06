@@ -33,10 +33,13 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
     fetchDetail(id);
   }, [id]);
 
+  console.log(detailBook)
+
   // Fetch sản phẩm cùng danh mục khi detailBook được cập nhật
   useEffect(() => {
     if (detailBook?.category?.id) {
       searchBookByCate(detailBook.category.id);
+      console.log(categoryBook)
     }
   }, [detailBook]);
   const flattenedCategoryBook = categoryBook.flat();
@@ -129,7 +132,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
         <h1 className="text-2xl px-10 uppercase font-semibold  py-6  text-primary-400 bg-light-50 text-center font-itim border-primary-400 border-b-2">
           Những cuốn sách cùng chủ đề bạn không nên bỏ lỡ
         </h1>
-        <ProductListByCate products={flattenedCategoryBook} />
+        <ProductListByCate products={categoryBook} />
       </div>
     </div>
   );

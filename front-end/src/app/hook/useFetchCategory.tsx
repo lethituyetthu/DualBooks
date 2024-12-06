@@ -89,8 +89,8 @@ export default function useFetchCategory() {
 
   const deleteCategory = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:3200/categories/${id}`, {
-        method: "DELETE",
+      const res = await fetch(`http://localhost:3200/categories/${id}/status`, {
+        method: "PATCH",
       });
 
       if (!res.ok) {
