@@ -101,18 +101,7 @@ const RegisterPage = () => {
             Đăng Ký Ngay
           </button>
         </form>
-        <p className="mb-4">Hoặc sử dụng tài khoản</p>
-        <div className="flex space-x-4">
-          <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
-            Facebook
-          </button>
-          <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
-            Twitter
-          </button>
-          <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">
-            Instagram
-          </button>
-        </div>
+        
       </div>
 
       {/* Right Side - "HELLO" message */}

@@ -57,8 +57,11 @@ export default function Dashboard() {
     () => calculateStats(yesterday, orders, customers),
     [yesterday, orders, customers]
   );
-
+  console.log(orders)
   const totalOrders = orders.length;
+  const totalCompletedOrders = orders.filter(
+    (order) => order.order_status === "Hoàn thành"
+  ).length;
   const totalRevenue = orders
     ?.filter((order) => order.payment_status === "Đã thanh toán")
     .reduce((sum, order) => sum + (order.total_amount || 0), 0);
@@ -66,14 +69,16 @@ export default function Dashboard() {
 
   const dailyRevenue = useMemo(() => {
     const revenueByDay = Array(30).fill(0);
-    orders?.filter((order) => order.payment_status === "Đã thanh toán").forEach((order) => {
-      if (order?.order_date && order?.total_amount) {
-        const day = new Date(order.order_date).getDate();
-        if (day >= 1 && day <= 30) {
-          revenueByDay[day - 1] += order.total_amount;
+    orders
+      ?.filter((order) => order.payment_status === "Đã thanh toán")
+      .forEach((order) => {
+        if (order?.order_date && order?.total_amount) {
+          const day = new Date(order.order_date).getDate();
+          if (day >= 1 && day <= 30) {
+            revenueByDay[day - 1] += order.total_amount;
+          }
         }
-      }
-    });
+      });
     return revenueByDay;
   }, [orders]);
 
@@ -159,6 +164,7 @@ export default function Dashboard() {
   return (
     <div className="p-6 min-h-screen">
       <TotalStats
+        totalCompletedOrders={totalCompletedOrders}
         totalRevenue={totalRevenue}
         totalOrders={totalOrders}
         totalCustomers={totalCustomers}

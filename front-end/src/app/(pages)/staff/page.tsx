@@ -19,7 +19,7 @@ interface CartItem {
 
 const Staff: React.FC = () => {
   const router = useRouter();
-  const { books, loading, error, searchBooks, searchBooksById } =
+  const { booksAll, loading, error, searchBooksAll, searchBooksById } =
     useFetchBook();
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -104,7 +104,7 @@ const Staff: React.FC = () => {
 
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
-    searchBooks(term);
+    searchBooksAll(term);
   };
 
   const handleSearchByIdChange = async (id: string) => {
@@ -160,7 +160,7 @@ const Staff: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-3 gap-4 max-h-[calc(100vh-230px)] overflow-y-auto">
-            {books.map((book: Books) => (
+            {booksAll.map((book: Books) => (
               <ProductList key={book.id} book={book} onAddToCart={addToCart} />
             ))}
           </div>

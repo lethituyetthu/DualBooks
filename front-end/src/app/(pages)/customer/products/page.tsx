@@ -33,12 +33,13 @@ interface Category {
 
 const ProductPage = () => {
   const route = useRouter();
-  const { books, loading, error, searchBookByCate, categoryBook } =
+  const { books, loading, error, searchBookByCate, categoryBook, searchBooks } =
     useFetchBook();
   const { cate }: { cate: Category[] } = useFetchCategory();
   const { message, wishlist, addToWishlist } = useFavoriteBooks(); // Sử dụng hàm addToWishlist từ hook
   const [minPrice, setMinPrice] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [keyword, setKeyword] = useState<string>("");
   const [author] = useState<string>("");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -61,15 +62,18 @@ const ProductPage = () => {
       setFilteredProducts(mappedProducts);
     }
   }, [books]);
-
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+    searchBooks(term);
+  };
   const handleFilter = () => {
     const min = parseInt(minPrice) || 0;
     const max = parseInt(maxPrice) || Infinity;
 
     const filtered = filteredProducts.filter((product) => {
       return (
-        product.price >= min &&
-        product.price <= max &&
+        (product.price *1000) >= min &&
+        (product.price *1000) <= max &&
         product.name.toLowerCase().includes(keyword.toLowerCase()) &&
         product.author.toLowerCase().includes(author.toLowerCase())
       );
@@ -118,10 +122,21 @@ const ProductPage = () => {
       <div className="flex">
         {/* Sidebar */}
         <div className="w-1/4 p-4  space-y-6">
+          {/* Tìm kiếm */}
+          <div className="border p-4 bg-white rounded-lg shadow">
+            <h2 className="text-lg font-bold mb-4">Tìm kiếm sản phẩm</h2>
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              placeholder="Nhập tên sản phẩm"
+              className="border rounded p-2 w-full"
+            />
+          </div>
           {/* Category Filter */}
           <div className="border p-4 bg-white rounded-lg shadow">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold">Nhóm Sản Phẩm</h2>
+              <h2 className="text-lg font-bold">Danh mục </h2>
               <button onClick={handleShowAll}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -167,6 +182,8 @@ const ProductPage = () => {
               <label className="block mb-1">Giá tối thiểu:</label>
               <input
                 type="number"
+                min="0"
+                 step="1000"
                 value={minPrice}
                 onChange={(e) => setMinPrice(e.target.value)}
                 className="border rounded p-2 w-full"
@@ -176,20 +193,14 @@ const ProductPage = () => {
               <label className="block mb-1">Giá tối đa:</label>
               <input
                 type="number"
+                min="0"
+                step="1000"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
                 className="border rounded p-2 w-full"
               />
             </div>
-            <div className="mb-4">
-              <label className="block mb-1">Từ khóa:</label>
-              <input
-                type="text"
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
-                className="border rounded p-2 w-full"
-              />
-            </div>
+           
             <button
               onClick={handleFilter}
               className="bg-primary-400 hover:bg-primary-300 text-white py-2 px-4 rounded w-full mt-4"

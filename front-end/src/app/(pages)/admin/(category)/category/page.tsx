@@ -27,8 +27,13 @@ export default function CategoryTable() {
 
   const handleDelete = async (id) => {
     if (confirm("Bạn có chắc chắn muốn xóa thể loại này?")) {
-      await deleteCategory(id);
-      route.refresh();
+      await deleteCategory(id)
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Lỗi khi xóa danh mục", error);
+      });
     }
   };
 
@@ -116,7 +121,7 @@ export default function CategoryTable() {
 
       {/* Edit Modal */}
       {editingCategory && (
-        <EditCategoryModal
+        <EditCategoryModal  
           category={editFormData}
           setCategory={setEditFormData}
           onClose={() => setEditingCategory(null)}

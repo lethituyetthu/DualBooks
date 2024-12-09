@@ -14,127 +14,110 @@ const OrderHistory = () => {
     cancelOrder,
     completeOrder,
   } = useFetchOrders();
-  const { enqueueSnackbar } = useSnackbar(); // Hook để hiển thị thông báo
+  const { enqueueSnackbar } = useSnackbar();
 
-  const [orderDetail, setOrderDetail] = useState<any>(null); // State lưu chi tiết đơn hàng
-  const [showDetails, setShowDetails] = useState(false); // Điều khiển hiển thị modal
+  const [orderDetail, setOrderDetail] = useState<any>(null);
+  const [showDetails, setShowDetails] = useState(false);
+  const [filterStatus, setFilterStatus] = useState<string>("Tất cả");
+  const [filteredOrders, setFilteredOrders] = useState(orders);
 
-  // Xử lý hủy đơn hàng
-  const handleCancelOrder = async (orderId: string) => {
-    try {
-      const result = await cancelOrder(orderId);
-      console.log(result);
-      enqueueSnackbar(`Đơn hàng ${orderId} đã được hủy thành công!`, {
-        variant: "error",
-        anchorOrigin: {
-          vertical: "bottom",
-          horizontal: "right",
-        },
-        autoHideDuration: 3000,
-      });
-      setShowDetails(false); // Đóng modal sau khi hủy đơn
-    } catch (error) {
-      // Hiển thị thông báo lỗi
-      enqueueSnackbar(`Hủy đơn hàng thất bại: ${(error as Error).message}`, {
-        variant: "error",
-        anchorOrigin: {
-          vertical: "bottom",
-          horizontal: "right",
-        },
-        autoHideDuration: 3000,
-      });
+  // Update filtered orders when filterStatus changes
+  useEffect(() => {
+    if (filterStatus === "Tất cả") {
+      setFilteredOrders(orders);
+    } else {
+      setFilteredOrders(orders.filter((order) => order.order_status === filterStatus));
     }
-  };
+  }, [filterStatus, orders]);
 
-  // Xử lý hoàn thành đơn hàng
-  const handleCompleteOrder = async (orderId: string) => {
-    try {
-      const a = await completeOrder(orderId);
-      console.log(a);
-      // Hiển thị thông báo thành công
-      enqueueSnackbar(`Đơn hàng ${orderId} đã hoàn thành!`, {
-        variant: "success",
-        anchorOrigin: {
-          vertical: "bottom",
-          horizontal: "right",
-        },
-        autoHideDuration: 3000,
-      });
-      setShowDetails(false); // Đóng modal sau khi hủy đơn
-    } catch (error) {
-      // Hiển thị thông báo lỗi
-      enqueueSnackbar(`Hủy đơn hàng thất bại: ${(error as Error).message}`, {
-        variant: "error",
-        anchorOrigin: {
-          vertical: "bottom",
-          horizontal: "right",
-        },
-        autoHideDuration: 3000,
-      });
-    }
-  };
+  // Count orders by status
+  const orderCounts = orders.reduce((acc, order) => {
+    acc[order.order_status] = (acc[order.order_status] || 0) + 1;
+    return acc;
+  }, {});
 
-  // Xử lý hiển thị chi tiết đơn hàng
-  const handleViewDetails = async (order: any) => {
-    try {
-      const detail = await fetchOrderDetail(order.id);
-      setOrderDetail(detail); // Lấy chi tiết đơn hàng
-      setShowDetails(true); // Hiển thị modal chi tiết
-    } catch (error) {
-      console.error("Lỗi khi lấy chi tiết đơn hàng:", error);
-    }
-  };
-
-  // Lấy danh sách đơn hàng khi component mount
+  // Fetch orders on component mount
   useEffect(() => {
     const customerData = localStorage.getItem("customer");
     if (customerData) {
       const { id: customerId } = JSON.parse(customerData);
-      fetchOrdersByCustomerId(customerId); // Lấy danh sách đơn hàng của khách hàng
+      fetchOrdersByCustomerId(customerId);
     } else {
-      console.error("Không tìm thấy thông tin khách hàng trong localStorage");
+      console.error("Customer data not found in localStorage");
     }
   }, [fetchOrdersByCustomerId]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const handleViewDetails = (order: any) => {
+    fetchOrderDetail(order.id).then((details) => {
+      setOrderDetail(details);
+      setShowDetails(true);
+    });
+  };
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const handleCancelOrder = (orderId: string) => {
+    cancelOrder(orderId).then(() => {
+      enqueueSnackbar("Order has been cancelled", { variant: "success" });
+      fetchOrdersByCustomerId(JSON.parse(localStorage.getItem("customer") || "").id);
+    });
+  };
+
+  const handleCompleteOrder = (orderId: string) => {
+    completeOrder(orderId).then(() => {
+      enqueueSnackbar("Order marked as complete", { variant: "success" });
+      fetchOrdersByCustomerId(JSON.parse(localStorage.getItem("customer") || "").id);
+    });
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    <SnackbarProvider
-      maxSnack={3}
-      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-    >
-      <div className="container mx-auto p-6 max-w-[1000px]">
-        {/* Tiêu đề */}
+    <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: "bottom", horizontal: "left" }}>
+      <div className="container mx-auto p-6 max-w-[1000px] min-h-screen">
         <h2 className="text-center text-3xl font-bold text-primary-400 font-itim mb-8">
           Lịch sử đơn hàng
         </h2>
 
-        {/* Nếu không có đơn hàng */}
-        {orders.length === 0 ? (
+        {/* Filter by status */}
+        <div className="mb-4 flex flex-wrap justify-center space-x-4">
+          {["Tất cả", "Chờ xác nhận", "Đã xác nhận", "Đang giao hàng", "Hoàn thành", "Đã hủy"].map(
+            (status) => (
+              <div
+                key={status}
+                onClick={() => setFilterStatus(status)}
+                className={`relative px-4 py-2 rounded transition-colors duration-300 ${
+                  filterStatus === status
+                    ? "bg-primary-500 text-black border-primary-500"
+                    : "bg-white text-gray-600 border-gray-300 hover:bg-gray-100"
+                }`}
+              >
+                <span>
+                  {status} ({status === "Tất cả" ? orders.length : orderCounts[status] || 0})
+                </span>
+              </div>
+            )
+          )}
+        </div>
+
+        {/* Order list */}
+        {filteredOrders.length === 0 ? (
           <div className="text-center text-xl text-gray-500">
             Không có đơn hàng nào!
           </div>
         ) : (
-          <div className="overflow-x-auto  p-4">
+          <div className="overflow-x-auto p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 gap-6">
-              {orders.map((order) => (
+              {filteredOrders.map((order) => (
                 <div
                   key={order.id}
-                  className=" border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-300 bg-white"
+                  className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-300 bg-white"
                 >
-                  {/* Mã đơn hàng */}
-                  <div className=" flex items-center justify-between mb-3">
-                    <button className=" text-gray-600 transition-colors duration-300 text-sm">
+                  {/* Order details */}
+                  <div className="flex items-center justify-between mb-3">
+                    <button className="text-gray-600 transition-colors duration-300 text-sm">
                       Đơn hàng: #{order.id.slice(-10)}
                     </button>
                     <div className="flex items-center justify-between w-60">
-                      {/* Ngày đặt hàng */}
                       <div className="text-sm text-gray-600 ">
                         {new Intl.DateTimeFormat("vi-VN", {
                           year: "numeric",
@@ -142,50 +125,43 @@ const OrderHistory = () => {
                           day: "2-digit",
                         }).format(new Date(order.order_date))}
                       </div>
-                      {"||"}
-                      {/* Trạng thái đơn hàng */}
+                      {" || "}
                       <span
-                        className={`${
+                        className={
                           order.order_status === "Hoàn thành"
                             ? "text-green-600"
                             : order.order_status === "Chờ xác nhận"
                             ? "text-blue-600"
                             : "text-red-600"
-                        } font-medium`}
+                        }
+                        className="font-medium"
                       >
                         {order.order_status}
                       </span>
                     </div>
                   </div>
 
-                  {/* Hiển thị sản phẩm trong đơn hàng */}
+                  {/* Display products */}
                   {order.orderItems && order.orderItems.length > 0 && (
                     <div className="text-sm text-gray-700 mt-2">
                       <ul className="list-disc pl-5">
                         {order.orderItems.slice(0, 1).map((item, idx) => (
-                          <li
-                            key={idx}
-                            className="mb-4 flex items-center space-x-4"
-                          >
-                            {/* Hiển thị ảnh sản phẩm */}
+                          <li key={idx} className="mb-4 flex items-center space-x-4">
+                            {/* Product image */}
                             <Image
                               width={100}
                               height={200}
                               src={`http://localhost:3200/uploads/books/${item.bookImg}`}
-                              alt={"ảnh sp"}
+                              alt={"ảnh sản phẩm"}
                               className="w-16 h-16 object-cover rounded-md"
                             />
-
-                            {/* Thông tin chi tiết sản phẩm */}
+                            {/* Product details */}
                             <div>
-                              <span className="font-semibold">
-                                {item.bookTitle}
-                              </span>{" "}
-                              <br></br>x{item.quantity} -{" "}
+                              <span className="font-semibold">{item.bookTitle}</span>
+                              <br />
+                              x{item.quantity} -{" "}
                               {(
-                                item.price *
-                                item.quantity *
-                                1000
+                                item.price * item.quantity * 1000
                               ).toLocaleString("vi-VN")}{" "}
                               VNĐ
                             </div>
@@ -195,7 +171,7 @@ const OrderHistory = () => {
                           <div className="text-black">
                             <button
                               onClick={() => handleViewDetails(order)}
-                              className=" transition-colors duration-300 font-bold"
+                              className="transition-colors duration-300 font-bold"
                             >
                               ...
                             </button>
@@ -205,22 +181,19 @@ const OrderHistory = () => {
                     </div>
                   )}
 
+                  {/* Total and actions */}
                   <div className="flex justify-between items-center">
-                    {/* Tổng tiền */}
                     <div className="text-l mb-3 text-primary-600">
-                      <strong className="font-bold text-black">
-                        Tổng tiền:
-                      </strong>{" "}
+                      <strong className="font-bold text-black">Tổng tiền:</strong>{" "}
                       {(order.total_amount * 1000).toLocaleString("vi-VN")}
                     </div>
 
-                    {/* Trạng thái */}
                     <div className="text-sm mb-3">
                       {order.order_status !== "Đang giao hàng" && (
                         <button
                           className="bg-red-500 hover:bg-red-700 rounded-sm px-5 py-2 text-white font-medium transition-colors duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
                           onClick={() => handleCancelOrder(order.id)}
-                          disabled={order.order_status !== "Chờ xác nhận"} // Điều kiện vô hiệu hóa
+                          disabled={order.order_status !== "Chờ xác nhận"}
                         >
                           Hủy đơn
                         </button>
@@ -229,7 +202,6 @@ const OrderHistory = () => {
                         <button
                           className="bg-blue-500 hover:bg-blue-700 rounded-sm px-5 py-2 text-white font-medium transition-colors duration-300 "
                           onClick={() => handleCompleteOrder(order.id)}
-                          // Điều kiện vô hiệu hóa
                         >
                           Đã nhận hàng
                         </button>
@@ -237,7 +209,6 @@ const OrderHistory = () => {
                       <button
                         className="ml-2 bg-white border rounded-sm px-5 py-2 text-black font-medium transition-colors duration-300 "
                         onClick={() => handleViewDetails(order)}
-                        // Điều kiện vô hiệu hóa
                       >
                         Xem chi tiết
                       </button>
@@ -311,7 +282,7 @@ const OrderHistory = () => {
                     key={item.id}
                     className="flex items-center space-x-4 text-sm text-gray-700"
                   >
-                    {/* Hình ảnh sản phẩm */}
+{/* Hình ảnh sản phẩm */}
                     <div className="w-16 h-16 flex-shrink-0">
                       <Image
                         width={100}
@@ -344,6 +315,7 @@ const OrderHistory = () => {
             </div>
           </div>
         )}
+        
       </div>
     </SnackbarProvider>
   );

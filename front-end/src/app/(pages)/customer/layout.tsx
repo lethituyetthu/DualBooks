@@ -10,11 +10,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       maxSnack={3}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
     >
-      <div>
         <Header />
         <main className="bg-light-50">{children}</main>
         <Footer />
-      </div>
+      
     </SnackbarProvider>
   );
 };

@@ -149,7 +149,7 @@ export default function useFetchBook() {
       });
       const result = await res.json();
       setDetailBook(result);
-      console.log(result.reviews)
+      console.log(result.views)
       return result;
     } catch (error) {
       setError((error as Error).message);

@@ -35,12 +35,16 @@ export default function Footer() {
           </h3>
           <p>"Khám phá thế giới từ những trang giấy."</p>
           <div className="mt-4">
-            <button className="bg-primary text-white px-6 py-2 rounded-lg bg-primary-700 hover:bg-primary-300">
-              Đăng ký
-            </button>
-            <button className="border border-primary text-primary px-6 py-2 rounded-lg ml-4 hover:bg-primary-700 hover:text-light-100">
-              Đăng nhập
-            </button>
+            <Link href={"/customer/register"}>
+              <button className="bg-primary text-white px-6 py-2 rounded-lg bg-primary-700 hover:bg-primary-300">
+                Đăng ký
+              </button>
+            </Link>
+            <Link href={"/customer/login"}>
+              <button className="border border-primary text-primary px-6 py-2 rounded-lg ml-4 hover:bg-primary-700 hover:text-light-100">
+                Đăng nhập
+              </button>
+            </Link>
           </div>
         </div>
         <div className="footer-box2">

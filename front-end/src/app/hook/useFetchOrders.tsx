@@ -103,9 +103,9 @@ export default function useFetchOrders(): UseFetchOrdersResult {
           throw new Error("Lỗi khi lấy chi tiết đơn hàng!");
         }
         const result = await response.json();
-
-        return result
+        
         setOrderDetail(result); // Đặt chi tiết đơn hàng vào state
+        return result
       } catch (err) {
         setError((err as Error).message);
       } finally {

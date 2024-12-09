@@ -51,11 +51,9 @@ export default function NameToken({ customer }: NameTokenProps) {
           {customer.name}
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
           <Link href="/customer/profile">
             <DropdownMenuItem>
-              <p>Thông tin cá nhân</p>
+              <p>Hồ sơ</p>
             </DropdownMenuItem>
           </Link>
           <Link href="/customer/OrderHistory">
@@ -64,7 +62,7 @@ export default function NameToken({ customer }: NameTokenProps) {
             </DropdownMenuItem>
           </Link>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
+          <DropdownMenuItem onClick={handleLogout}>Đăng xuất</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </li>

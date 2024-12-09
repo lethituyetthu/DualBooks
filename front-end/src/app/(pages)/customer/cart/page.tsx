@@ -78,7 +78,7 @@ const CheckoutPage = () => {
         Giỏ hàng
       </h2>
 
-      <div>
+      <div className="">
         {/* Hiển thị danh sách sản phẩm trong giỏ hàng */}
         <CartItems
           cartItems={cartItems}

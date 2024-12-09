@@ -39,10 +39,11 @@ const Dashboard = () => {
   const [orderCounts, setOrderCounts] = useState({});
   const [offlineTotalAmount, setOfflineTotalAmount] = useState(0);
   const [onlineTotalAmount, setOnlineTotalAmount] = useState(0);
-  const [chartLabels, setChartLabels] = useState([]);
+  const [chartLabels, setChartLabels] = useState<string[]>([]);
   const [statsData, setStatsData] = useState({
     totalAmount: 0,
     orderCount: 0,
+    completedOrdersCount: 0,
   });
   const [weeklyRevenue, setWeeklyRevenue] = useState([]);
 
@@ -81,9 +82,10 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchOrdersData = async () => {
       const today = new Date().toISOString().split("T")[0];
-      const todayOrders = (await fetchOrdersByDate(today)) || []; // Đảm bảo không null
+
+      const todayOrders = await fetchOrdersByDate(today); // Đảm bảo không null
       setTodayOrders(todayOrders);
-  
+
       if (todayOrders.length === 0) {
         // Nếu không có đơn hàng, đặt giá trị mặc định
         setStatsData({ totalAmount: 0, orderCount: 0 });
@@ -92,14 +94,16 @@ const Dashboard = () => {
         setOnlineTotalAmount(0);
         setOrderCounts({ "Tất cả": 0 });
         setFilteredOrders([]);
-        setChartLabels(Array.from({ length: 7 }, (_, i) => {
-          const date = new Date();
-          date.setDate(new Date().getDate() - i);
-          return date.toISOString().split("T")[0];
-        }).reverse());
+        setChartLabels(
+          Array.from({ length: 7 }, (_, i) => {
+            const date = new Date();
+            date.setDate(new Date().getDate() - i);
+            return date.toISOString().split("T")[0];
+          }).reverse()
+        );
         return;
       }
-  
+
       // Các xử lý khác nếu có đơn hàng
       const completedOrders = todayOrders?.filter(
         (order) => order.order_status === "Hoàn thành"
@@ -107,19 +111,46 @@ const Dashboard = () => {
       const totalAmountToday = completedOrders
         .filter((order) => order.payment_status === "Đã thanh toán")
         .reduce((sum, order) => sum + (order.total_amount || 0), 0);
-  
+
       const orderCountToday = todayOrders.length;
-      setStatsData({ totalAmount: totalAmountToday, orderCount: orderCountToday });
-  
-      const { revenueByDay, last7Days } = await doanh_thu_7day(fetchOrdersByDate);
+
+      const totalCompletedOrders = todayOrders.filter(
+        (order) => order.payment_status === "Đã thanh toán"
+      ).length;
+
+      setStatsData({
+        totalAmount: totalAmountToday,
+        orderCount: orderCountToday,
+        completedOrdersCount: totalCompletedOrders,
+      });
+
+      const { revenueByDay, last7Days } = await doanh_thu_7day(
+        fetchOrdersByDate
+      );
       setWeeklyRevenue(revenueByDay);
       setChartLabels(last7Days);
-  
-      const offlineAmount = todayOrders
-        .filter((order) => order.order_type === "offline")
+
+      if (Array.isArray(todayOrders)) {
+        const offlineAmount = todayOrders
+          .filter((order) => order.order_type === "offline")
+          .reduce((sum, order) => sum + (order.total_amount || 0), 0);
+        setOfflineTotalAmount(offlineAmount);
+
+        const onlineAmount = todayOrders
+        .filter(
+          (order) =>
+            order.order_type === "online" &&
+            order.payment_status === "Đã thanh toán"
+        )
         .reduce((sum, order) => sum + (order.total_amount || 0), 0);
-      setOfflineTotalAmount(offlineAmount);
-  
+      setOnlineTotalAmount(onlineAmount);
+
+      } else {
+        setOfflineTotalAmount(0);
+        setOnlineTotalAmount(onlineAmount); // Nếu không có đơn hàng hợp lệ, gán giá trị mặc định
+      }
+
+
       const onlineAmount = todayOrders
         .filter(
           (order) =>
@@ -128,23 +159,23 @@ const Dashboard = () => {
         )
         .reduce((sum, order) => sum + (order.total_amount || 0), 0);
       setOnlineTotalAmount(onlineAmount);
-  
+
       const counts = todayOrders.reduce((acc, order) => {
         acc[order.order_status] = (acc[order.order_status] || 0) + 1;
         return acc;
       }, {});
       counts["Tất cả"] = todayOrders?.length;
       setOrderCounts(counts);
-  
+
       const filtered = todayOrders.filter(
         (order) => order.order_status === "Chờ xác nhận"
       );
       setFilteredOrders(filtered);
     };
-  
+
     fetchOrdersData();
   }, [fetchOrdersByDate]);
-  
+
   // Lọc đơn hàng theo trạng thái
   useEffect(() => {
     if (filterStatus === "Tất cả") {
@@ -217,9 +248,9 @@ const Dashboard = () => {
       id: 3,
       title: "Tổng doanh thu",
       amount: `${(statsData.totalAmount * 1000).toLocaleString("vi-VN")} đ/ ${
-        statsData.orderCount || 0
+        statsData.completedOrdersCount || 0
       } đơn`,
-    }
+    },
   ];
 
   const statuses = [
@@ -233,51 +264,53 @@ const Dashboard = () => {
 
   // console.log(filteredOrders);
   return (
-    <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
-
-    <div className="min-h-screen bg-light-100 p-6 max-w-[1300px] mx-auto">
-      <div className="grid grid-cols-3 gap-6 mb-6">
-        {stats.map((stat) => (
-          <StatsCard
-            key={stat.id}
-            title={stat.title}
-            amount={stat.amount}
-            icon={stat.icon}
-          />
-        ))}
-      </div>
-
-      <OrdersList
-        orders={filteredOrders}
-        statuses={statuses}
-        filterStatus={filterStatus}
-        setFilterStatus={setFilterStatus}
-        orderCounts={orderCounts}
-      />
-
-      <div className="mt-9 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Chart Section */}
-        <div className="col-span-2 ">
-          <RevenueChart chartData={chartData} chartOptions={chartOptions} />
+    <SnackbarProvider
+      maxSnack={3}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+    >
+      <div className="min-h-screen bg-light-100 p-6 max-w-[1300px] mx-auto">
+        <div className="grid grid-cols-3 gap-6 mb-6">
+          {stats.map((stat) => (
+            <StatsCard
+              key={stat.id}
+              title={stat.title}
+              amount={stat.amount}
+              icon={stat.icon}
+            />
+          ))}
         </div>
 
-        {/* Right Sidebar */}
-        <div className="space-y-6">
-          <ProductsList
-            title="Sản phẩm sắp hết hàng"
-            products={lowStock}
-            renderDetails={(product) => product.stock}
-          />
-          <ProductsList
-            title="Sản phẩm mới"
-            products={newBooks}
-            renderDetails={(product) =>
-              `${(product.price * 1000).toLocaleString("vi-VN")} đ`
-            }
-          />
+        <OrdersList
+          orders={filteredOrders}
+          statuses={statuses}
+          filterStatus={filterStatus}
+          setFilterStatus={setFilterStatus}
+          orderCounts={orderCounts}
+        />
+
+        <div className="mt-9 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Chart Section */}
+          <div className="col-span-2 ">
+            <RevenueChart chartData={chartData} chartOptions={chartOptions} />
+          </div>
+
+          {/* Right Sidebar */}
+          <div className="space-y-6">
+            <ProductsList
+              title="Sản phẩm sắp hết hàng"
+              products={lowStock}
+              renderDetails={(product) => product.stock}
+            />
+            <ProductsList
+              title="Sản phẩm mới"
+              products={newBooks}
+              renderDetails={(product) =>
+                `${(product.price * 1000).toLocaleString("vi-VN")} đ`
+              }
+            />
+          </div>
         </div>
       </div>
-    </div>
     </SnackbarProvider>
   );
 };

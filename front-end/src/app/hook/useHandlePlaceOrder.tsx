@@ -1,6 +1,7 @@
 // useHandlePlaceOrder.ts
 import { useRouter } from "next/navigation";
 import useFetchBook from "@/app/hook/useFetchBook";
+import { useSnackbar } from 'notistack';
 
 
 type CartItem = {
@@ -16,19 +17,30 @@ type CartItem = {
 const useHandlePlaceOrder = (cartItems: CartItem[],  totalQuantity: number, totalPrice: number) => {
   const router = useRouter();
   const { fetchProductStock } = useFetchBook();
+  const { enqueueSnackbar } = useSnackbar();
 
-  // Hàm xử lý khi đặt hàng
-  const handlePlaceOrder = async () => {
+   // Hàm xử lý khi đặt hàng
+   const handlePlaceOrder = async () => {
     for (const item of cartItems) {
-        const stock = await fetchProductStock(item.id); // Lấy số lượng tồn kho từ API
+      try {
+        // Lấy số lượng tồn kho từ API
+        const stock = await fetchProductStock(item.id);
+
+        // Kiểm tra nếu số lượng giỏ hàng lớn hơn số lượng tồn kho
         if (item.quantity > stock) {
-          const book = await fetchProductStock(item.id); // Lấy thông tin sản phẩm để hiển thị thông báo
-          alert(
-            `Sản phẩm "${item.title}" không đủ số lượng trong kho. Tồn kho chỉ có ${book} sản phẩm.`
+          // Sử dụng notistack để hiển thị thông báo lỗi
+          enqueueSnackbar(
+            `Sản phẩm "${item.title}" không đủ số lượng trong kho. Tồn kho chỉ có ${stock} sản phẩm.`, 
+            { variant: 'error' } // Thông báo lỗi (variant: 'error')
           );
           return; // Dừng quá trình thanh toán nếu có sản phẩm hết hàng
         }
+      } catch (error) {
+        // Hiển thị thông báo lỗi nếu có lỗi trong quá trình kiểm tra tồn kho
+        enqueueSnackbar("Có lỗi xảy ra khi kiểm tra tồn kho.", { variant: 'error' });
+        return;
       }
+    }
     // Nếu không có lỗi tồn kho, thực hiện thanh toán
     const data = JSON.stringify({
       cartItems, // Thông tin giỏ hàng

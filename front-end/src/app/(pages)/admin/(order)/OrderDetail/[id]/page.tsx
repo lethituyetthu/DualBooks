@@ -8,6 +8,7 @@ const OrderDetailPage = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
   const { id } = params; // Lấy giá trị 'id' từ params
   const { orderDetail, loading, error, fetchOrderDetail } = useFetchOrders();
+  //console.log("22",id)
 
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const OrderDetailPage = ({ params }: { params: { id: string } }) => {
   if (error) return <div>Lỗi: {error}</div>;
   if (!orderDetail) return <div>Không tìm thấy đơn hàng.</div>;
 
-
+  console.log("22",id)
   return (
     <div className="p-6 max-w-3xl mx-auto bg-white shadow-lg rounded-lg">
   <h2 className="text-3xl font-bold mb-6 text-center text-primary-400 font-itim uppercase">Chi tiết đơn hàng</h2>
