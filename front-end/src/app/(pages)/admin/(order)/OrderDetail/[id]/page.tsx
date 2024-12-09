@@ -30,13 +30,13 @@ const OrderDetailPage = ({ params }: { params: { id: string } }) => {
     <h3 className="text-2xl font-semibold text-gray-600 border-b pb-2 mb-4">Thông tin đơn hàng</h3>
     <div className="space-y-2 text-gray-600">
       <p><strong>ID đơn hàng:</strong> {orderDetail.id}</p>
-      <p><strong>Loại đơn hàng:</strong> {orderDetail.order_type}</p>
-      <p><strong>Ngày đặt hàng:</strong> {new Date(orderDetail.order_date).toLocaleString()}</p>
-      <p><strong>Trạng thái đơn hàng:</strong> {orderDetail.order_status}</p>
-      <p><strong>Trạng thái thanh toán:</strong> {orderDetail.payment_status}</p>
-      <p><strong>Địa chỉ giao hàng:</strong> {orderDetail.shipping_address}</p>
-      <p><strong>Số lượng sản phẩm :</strong> {orderDetail.total_quantity}</p>
-      <p><strong>Tổng tiền:</strong> <span className="text-red-500 font-bold">{(orderDetail.total_amount * 1000).toLocaleString("vi-VN") + " VND"}</span></p>
+      <p><strong>Loại đơn hàng:</strong> {orderDetail.orderType}</p>
+      <p><strong>Ngày đặt hàng:</strong> {new Date(orderDetail.orderDate).toLocaleString()}</p>
+      <p><strong>Trạng thái đơn hàng:</strong> {orderDetail.orderStatus}</p>
+      <p><strong>Trạng thái thanh toán:</strong> {orderDetail.paymentStatus}</p>
+      <p><strong>Địa chỉ giao hàng:</strong> {orderDetail.shippingAddress}</p>
+      <p><strong>Số lượng sản phẩm :</strong> {orderDetail.totalQuantity}</p>
+      <p><strong>Tổng tiền:</strong> <span className="text-red-500 font-bold">{(orderDetail.totalAmount * 1000).toLocaleString("vi-VN") + " VND"}</span></p>
     </div>
   </div>
 

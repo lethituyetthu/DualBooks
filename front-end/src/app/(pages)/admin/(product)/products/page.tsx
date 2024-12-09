@@ -8,7 +8,7 @@ import { useState } from "react";
 import SearchProduct from "@/components/ui/searchProduct_byName";
 
 const ProductList = () => {
-  const { booksAll, loading, error, searchBooksAll } = useFetchBook();
+  const { books, loading, error, searchBooks } = useFetchBook();
   const { cate } = useFetchCategory();
   const [searchTerm, setSearchTerm] = useState("");
   
@@ -28,11 +28,11 @@ const ProductList = () => {
       second: "2-digit",
     });
   };
-    
+
   // Hàm xử lý thay đổi ô tìm kiếm
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
-    searchBooksAll(term);
+    searchBooks(term);
   };
 
   if (loading) return <p>Loading...</p>;
@@ -73,7 +73,7 @@ const ProductList = () => {
             </tr>
           </thead>
           <tbody>
-            {booksAll.map((product) => (
+            {books.map((product) => (
               <Product
                 key={product.id}
                 product={product}

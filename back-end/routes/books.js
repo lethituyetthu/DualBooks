@@ -30,7 +30,7 @@ router.get("/", async function (req, res, next) {
   }
 });
 // Lấy tất cả danh sách getAllvisible
-// http://localhost:3000/books
+// http://localhost:3000/books/getAllvisible
 router.get("/getAllvisible", async function (req, res, next) {
   console.log("GET /books endpoint hit");
   try {
@@ -393,8 +393,7 @@ router.put(
 );
 // Route để xóa bài đánh giá, cần xác thực khách hàng trước khi xóa
 router.delete(
-  "/:bookId/reviews/:reviewId",
-  authenticateCustomer,
+  "/:bookId/reviews/:reviewId/:customerId",
   reviewController.deleteReview
 );
 // Endpoint để lấy 5 sản phẩm có số lượng tồn kho ít nhất

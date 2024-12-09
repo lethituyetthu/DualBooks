@@ -96,11 +96,11 @@ const CheckoutPaymentPage = () => {
       alert("Giỏ hàng trống. Vui lòng thêm sản phẩm vào giỏ hàng.");
       return;
     }
-    const totalAmount = calculateTotal() + shippingFee;
+    const totalAmount = (calculateTotal() + shippingFee)
     const order = {
       customer_id: customer?.id,
       cartItems,
-      total_amount: totalAmount,
+      total_amount:totalAmount ,
       total_quantity: calculateTotalQuantity(),
       payment_method: selectedPayment,
       shipping_address: shippingAddress,
@@ -144,13 +144,13 @@ const CheckoutPaymentPage = () => {
       <p className="text-center text-3xl py-6 font-bold text-primary-600 font-itim">
         Đơn Hàng Của Bạn
       </p>
-      <div className="max-w-4xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8 rounded-md">
-        <div className="p-4 bg-white shadow-lg rounded-md">
+      <div className="max-w-4xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-50 shadow-md rounded-md">
+        <div className="p-4 bg-white shadow rounded-md">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
             Địa chỉ giao hàng
           </h2>
           {customer && (
-            <div className="mb-4 text-gray-600 ">
+            <div className="mb-4 text-gray-600">
               <p>
                 <strong>Họ tên:</strong> {customer.name}
               </p>
@@ -204,7 +204,7 @@ const CheckoutPaymentPage = () => {
           </label>
         </div>
 
-        <div className="p-4 bg-white shadow-lg rounded-md">
+        <div className="p-4 bg-white shadow rounded-md">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
             Phương thức thanh toán
           </h2>

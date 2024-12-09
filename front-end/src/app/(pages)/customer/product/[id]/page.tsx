@@ -25,26 +25,21 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
     fetchDetail,
     loading,
     error,
-    searchBookByCate,
     categoryBook,
+    searchBookByCate,
   } = useFetchBook(); // Hook lấy dữ liệu sách
 
   useEffect(() => {
     fetchDetail(id);
   }, [id]);
 
-  console.log(detailBook)
-
   // Fetch sản phẩm cùng danh mục khi detailBook được cập nhật
   useEffect(() => {
     if (detailBook?.category?.id) {
       searchBookByCate(detailBook.category.id);
-      console.log(categoryBook)
     }
   }, [detailBook]);
   const flattenedCategoryBook = categoryBook.flat();
-
-  //console.log( categoryBook)
 
   if (loading) return <p>Đang tải...</p>;
   if (error) return <p>Lỗi: {error}</p>;
@@ -120,10 +115,10 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
           ĐÁNH GIÁ SẢN PHẨM
         </h1>
         <div className="">
-          <Rating />
+          <Rating id={id}/>
           <div className="flex justify-between">
-            <ReviewForm />
-            <FeetBack />
+            <ReviewForm id={id}/>
+            <FeetBack  id={id} />
           </div>
         </div>
       </div>
@@ -132,7 +127,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
         <h1 className="text-2xl px-10 uppercase font-semibold  py-6  text-primary-400 bg-light-50 text-center font-itim border-primary-400 border-b-2">
           Những cuốn sách cùng chủ đề bạn không nên bỏ lỡ
         </h1>
-        <ProductListByCate products={categoryBook} />
+        <ProductListByCate products={flattenedCategoryBook} />
       </div>
     </div>
   );

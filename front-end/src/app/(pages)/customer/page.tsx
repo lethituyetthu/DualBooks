@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import Image from "next/image";
 import banner from "@/app/publics/banner/banner.png";
@@ -9,15 +7,10 @@ import styles from '@/app/(pages)/customer/style.module.css'
 import Category from "./component/category";
 import NewBooks from "./component/NewBooks";
 import HotBooks from "./component/HotBooks";
-import { SnackbarProvider } from "notistack";
 
 
 export default function page() {
   return (
-    <SnackbarProvider
-    maxSnack={3}
-    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-  >
     <div>
       <div className={styles.bannerContainer}>
         <Image src={banner} className={styles.bannerImg} alt="banner anh"/>
@@ -30,6 +23,5 @@ export default function page() {
       <HotBooks/>
       </div>
     </div>
-    </SnackbarProvider>
   );
 }

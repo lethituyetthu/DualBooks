@@ -1,4 +1,16 @@
 const bookService = require("../service/BookService");
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, '0'); // Đảm bảo 2 chữ số
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Lấy tháng (tháng bắt đầu từ 0)
+  const year = date.getFullYear();
+  
+  // Lấy giờ và phút
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  
+  return `${day}/${month}/${year} ${hours}:${minutes}`; // Định dạng: 07/11/2024 14:08
+};
 // Hàm formatBooks định dạng sách
 // dùng cho các hàm : getAll,getByCategory, getByAuthor, getByTitle, getAllSortedByPrice,
 //  searchBooks, getLowStockBooks
@@ -18,7 +30,6 @@ const formatBooks = (books) => {
     description: book.description,
     price: book.price,
     stock: book.stock,
-    status: book.status,
     sale: book.sales,
     view: book.views,
     cover_image: book.cover_image,
@@ -43,7 +54,6 @@ const formatProducts = (products) => {
     description: product.description,
     price: product.price,
     stock: product.stock,
-    status: product.status,
     view: product.views,
     cover_image: product.cover_image,
     created_at: product.created_at,   // Thêm trường created_at
@@ -69,7 +79,8 @@ exports.getAllvisible = async () => {
     // Trả về danh sách sách đã được định dạng
     return formattedBooks; // Đảm bảo trả về danh sách đã định dạng
   } catch (error) {
-    throw new Error('Error fetching books: ' + error.message);
+    console.error("Error in bookController.getAllvisible:", error.message);
+    throw new Error("Error fetching books: " + error.message);
   }
 };
 
@@ -160,7 +171,7 @@ exports.getBookDetailsById = async (id) => {
         customer_id: review.customer_id,
         comment: review.comment,
         rating: review.rating,
-        created_at: review.created_at
+        created_at: formatDate(review.created_at), 
       }))
     };
 

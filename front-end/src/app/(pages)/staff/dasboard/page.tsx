@@ -2,224 +2,82 @@
 
 import React, { useEffect, useState } from "react";
 import { FaWallet, FaShoppingCart } from "react-icons/fa";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
 import useFetchBook from "@/app/hook/useFetchBook";
 import useFetchOrders from "@/app/hook/useFetchOrders";
-import RevenueChart from "./component/RevenueChart";
-import ProductsList from "./component/ProductsList";
-import OrdersList from "./component/OrdersList";
-import StatsCard from "./component/StatsCard";
-import { SnackbarProvider } from "notistack";
-
-// Đăng ký ChartJS components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 const Dashboard = () => {
   const { newBooks, lowStock } = useFetchBook();
-  const { fetchOrdersByDate, orders, fetchOrdersByStatus } = useFetchOrders();
+  const { fetchOrdersByDate } = useFetchOrders();
   const [todayOrders, setTodayOrders] = useState([]);
+  const [filterStatus, setFilterStatus] = useState("Tất cả");
   const [filteredOrders, setFilteredOrders] = useState([]);
-  const [filterStatus, setFilterStatus] = useState("Chờ xác nhận");
-  const [orderCounts, setOrderCounts] = useState({});
-  const [offlineTotalAmount, setOfflineTotalAmount] = useState(0);
-  const [onlineTotalAmount, setOnlineTotalAmount] = useState(0);
-  const [chartLabels, setChartLabels] = useState([]);
+  const [orderCounts, setOrderCounts] = useState({}); // Đếm số lượng đơn hàng theo trạng thái
+
   const [statsData, setStatsData] = useState({
     totalAmount: 0,
     orderCount: 0,
   });
-  const [weeklyRevenue, setWeeklyRevenue] = useState([]);
 
-  // Tính doanh thu hàng tuần
-  const doanh_thu_7day = async (fetchOrdersByDate) => {
-    // Tạo danh sách 7 ngày gần nhất
-    const today = new Date();
-    const last7Days = Array.from({ length: 7 }, (_, i) => {
-      const date = new Date();
-      date.setDate(today.getDate() - i);
-      return date.toISOString().split("T")[0]; // Định dạng yyyy-mm-dd
-    }).reverse(); // Đảo ngược để ngày gần nhất ở cuối
+  useEffect(() => {
+    const fetchTodayOrders = async () => {
+      const today = new Date().toISOString().split("T")[0];
+      const orders = await fetchOrdersByDate(today);
 
-    console.log("7 ngày gần nhất:", last7Days);
+      if (orders) {
+        setTodayOrders(orders);
 
-    // Tính doanh thu từng ngày bằng cách gọi fetchOrdersByDate
-    const revenueByDay = await Promise.all(
-      last7Days.map(async (day) => {
-        const dayOrders = (await fetchOrdersByDate(day)) || []; // Lấy dữ liệu từng ngày
-
-        const completedOrders = dayOrders.filter(
-          (order) => order.payment_status === "Đã thanh toán"
+        // Tính toán thống kê tổng số lượng và doanh thu
+        const totalAmount = orders.reduce(
+          (sum, order) => sum + order.total_amount,
+          0
         );
 
-        return completedOrders.reduce(
-          (sum, order) => sum + (order.total_amount || 0),
-          0
-        ); // Tính tổng doanh thu
-      })
-    );
+        const orderCount = orders.length;
 
-    return { revenueByDay, last7Days };
-  };
+        setStatsData({
+          totalAmount,
+          orderCount,
+        });
 
-  // Lấy dữ liệu đơn hàng trong ngày
-  useEffect(() => {
-    const fetchOrdersData = async () => {
-      const today = new Date().toISOString().split("T")[0];
-      const todayOrders = (await fetchOrdersByDate(today)) || []; // Đảm bảo không null
-      setTodayOrders(todayOrders);
-  
-      if (todayOrders.length === 0) {
-        // Nếu không có đơn hàng, đặt giá trị mặc định
-        setStatsData({ totalAmount: 0, orderCount: 0 });
-        setWeeklyRevenue(Array(7).fill(0)); // Doanh thu 7 ngày = 0
-        setOfflineTotalAmount(0);
-        setOnlineTotalAmount(0);
-        setOrderCounts({ "Tất cả": 0 });
-        setFilteredOrders([]);
-        setChartLabels(Array.from({ length: 7 }, (_, i) => {
-          const date = new Date();
-          date.setDate(new Date().getDate() - i);
-          return date.toISOString().split("T")[0];
-        }).reverse());
-        return;
+        // Đếm số lượng đơn hàng theo trạng thái
+        const counts = orders.reduce((acc, order) => {
+          acc[order.order_status] = (acc[order.order_status] || 0) + 1;
+          return acc;
+        }, {});
+        setOrderCounts(counts);
+
+        // Hiển thị tất cả khi chưa lọc
+        setFilteredOrders(orders);
       }
-  
-      // Các xử lý khác nếu có đơn hàng
-      const completedOrders = todayOrders?.filter(
-        (order) => order.order_status === "Hoàn thành"
-      );
-      const totalAmountToday = completedOrders
-        .filter((order) => order.payment_status === "Đã thanh toán")
-        .reduce((sum, order) => sum + (order.total_amount || 0), 0);
-  
-      const orderCountToday = todayOrders.length;
-      setStatsData({ totalAmount: totalAmountToday, orderCount: orderCountToday });
-  
-      const { revenueByDay, last7Days } = await doanh_thu_7day(fetchOrdersByDate);
-      setWeeklyRevenue(revenueByDay);
-      setChartLabels(last7Days);
-  
-      const offlineAmount = todayOrders
-        .filter((order) => order.order_type === "offline")
-        .reduce((sum, order) => sum + (order.total_amount || 0), 0);
-      setOfflineTotalAmount(offlineAmount);
-  
-      const onlineAmount = todayOrders
-        .filter(
-          (order) =>
-            order.order_type === "online" &&
-            order.payment_status === "Đã thanh toán"
-        )
-        .reduce((sum, order) => sum + (order.total_amount || 0), 0);
-      setOnlineTotalAmount(onlineAmount);
-  
-      const counts = todayOrders.reduce((acc, order) => {
-        acc[order.order_status] = (acc[order.order_status] || 0) + 1;
-        return acc;
-      }, {});
-      counts["Tất cả"] = todayOrders?.length;
-      setOrderCounts(counts);
-  
-      const filtered = todayOrders.filter(
-        (order) => order.order_status === "Chờ xác nhận"
-      );
-      setFilteredOrders(filtered);
     };
-  
-    fetchOrdersData();
+    fetchTodayOrders();
   }, [fetchOrdersByDate]);
-  
+
   // Lọc đơn hàng theo trạng thái
   useEffect(() => {
     if (filterStatus === "Tất cả") {
       setFilteredOrders(todayOrders);
     } else {
-      const filtered = todayOrders?.filter(
+      const filtered = todayOrders.filter(
         (order) => order.order_status === filterStatus
       );
       setFilteredOrders(filtered);
     }
   }, [filterStatus, todayOrders]);
 
-  // Dữ liệu biểu đồ doanh thu
-  const chartData = {
-    labels: chartLabels.map((date) => {
-      const [year, month, day] = date.split("-"); // Đảm bảo lấy đúng thứ tự
-      return `${day}/${month}`; // Định dạng ngày/tháng
-    }),
-    datasets: [
-      {
-        label: "Doanh thu (VNĐ)",
-        data: weeklyRevenue.map((amount) => amount * 1000), // Giữ nguyên giá trị
-        backgroundColor: "#AF683E",
-        borderColor: "#AF683E",
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: { position: "top" },
-      title: { display: true, text: "Thống kê doanh thu 7 ngày gần nhất" },
-      tooltip: {
-        callbacks: {
-          title: (tooltipItems) => `Ngày: ${tooltipItems[0].label}`,
-          label: (tooltipItem) =>
-            `Doanh Thu: ${tooltipItem.raw.toLocaleString("vi-VN")} đ`,
-        },
-      },
-    },
-    scales: {
-      x: {
-        grid: { display: false },
-        title: { display: true, text: "Ngày (7 ngày gần nhất)" },
-      },
-      y: {
-        ticks: {
-          callback: (value) => `${value.toLocaleString("vi-VN")} đ`,
-        },
-        title: { display: true, text: "Doanh Thu (VNĐ)" },
-      },
-    },
-  };
-
   const stats = [
     {
-      id: 1,
-      title: "Doanh thu tại cửa hàng",
-      amount: `${(offlineTotalAmount * 1000).toLocaleString("vi-VN")} đ`,
-    },
-
-    {
-      id: 2,
-      title: "Doanh thu online",
-      amount: `${(onlineTotalAmount * 1000).toLocaleString("vi-VN")} đ`,
-    },
-    {
       id: 3,
-      title: "Tổng doanh thu",
-      amount: `${(statsData.totalAmount * 1000).toLocaleString("vi-VN")} đ/ ${
-        statsData.orderCount || 0
-      } đơn`,
-    }
+      title: "Tổng tiền",
+      amount: `${(statsData.totalAmount * 1000).toLocaleString("vi-VN")} đ`,
+      icon: <FaWallet className="text-4xl text-primary-400" />,
+    },
+    {
+      id: 4,
+      title: "Đơn hàng",
+      amount: statsData.orderCount,
+      icon: <FaShoppingCart className="text-4xl text-primary-400" />,
+    },
   ];
 
   const statuses = [
@@ -228,57 +86,146 @@ const Dashboard = () => {
     "Đã xác nhận",
     "Đang giao hàng",
     "Hoàn thành",
-    "Đã hủy",
+    "Đã hủy"
   ];
 
-  // console.log(filteredOrders);
   return (
-    <SnackbarProvider maxSnack={3} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
-
     <div className="min-h-screen bg-light-100 p-6 max-w-[1300px] mx-auto">
-      <div className="grid grid-cols-3 gap-6 mb-6">
+      {/* Header Section */}
+      <div className="grid grid-cols-4 gap-6 mb-6">
         {stats.map((stat) => (
-          <StatsCard
+          <div
             key={stat.id}
-            title={stat.title}
-            amount={stat.amount}
-            icon={stat.icon}
-          />
+            className="bg-white rounded-lg shadow p-6 flex items-center justify-between text-left space-x-4"
+          >
+            <div>
+              <p className="text-sm font-semibold text-gray-600">
+                {stat.title}
+              </p>
+              <p className="text-2xl font-bold text-primary-500">
+                {stat.amount}
+              </p>
+            </div>
+            <div className="text-primary-500 text-4xl flex-shrink-0">
+              {stat.icon}
+            </div>
+          </div>
         ))}
       </div>
-
-      <OrdersList
-        orders={filteredOrders}
-        statuses={statuses}
-        filterStatus={filterStatus}
-        setFilterStatus={setFilterStatus}
-        orderCounts={orderCounts}
-      />
-
-      <div className="mt-9 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-3 gap-6">
         {/* Chart Section */}
-        <div className="col-span-2 ">
-          <RevenueChart chartData={chartData} chartOptions={chartOptions} />
+        <div className="col-span-2 bg-white rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold text-gray-700 mb-4">Thống kê</h3>
+          <div className="h-40 w-full flex items-center justify-center">
+            <p>Biểu đồ placeholder</p>
+          </div>
         </div>
-
         {/* Right Sidebar */}
         <div className="space-y-6">
-          <ProductsList
-            title="Sản phẩm sắp hết hàng"
-            products={lowStock}
-            renderDetails={(product) => product.stock}
-          />
-          <ProductsList
-            title="Sản phẩm mới"
-            products={newBooks}
-            renderDetails={(product) =>
-              `${(product.price * 1000).toLocaleString("vi-VN")} đ`
-            }
-          />
+          {/* Low Stock Products */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">
+              Sản phẩm sắp hết hàng
+            </h3>
+            <ul className="space-y-4">
+              {lowStock.length > 0 ? (
+                lowStock.map((book) => (
+                  <li key={book.id} className="flex justify-between">
+                    <span>{book.title}</span>
+                    <span className="font-semibold text-nowrap">
+                      {book.stock}
+                    </span>
+                  </li>
+                ))
+              ) : (
+                <li className="text-gray-500 text-sm">
+                  Không có sách sắp hết hàng.
+                </li>
+              )}
+            </ul>
+          </div>
+
+          {/* New Products */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">
+              Sản phẩm mới
+            </h3>
+            <ul className="space-y-4">
+              {newBooks.map((book) => (
+                <li key={book.id} className="flex justify-between">
+                  <span>{book.title}</span>
+                  <span className="font-semibold text-nowrap">
+                    {(book.price * 1000).toLocaleString("vi-VN")} đ
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
+      
+      {/* Daily Orders Section */}
+      <div className="bg-white rounded-lg shadow p-6 mt-9">
+        <div className="flex justify-between items-center px-10 py-3 ">
+          <h3 className="text-lg font-semibold text-gray-700 mb-4">Đơn hàng</h3>
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            className="border border-gray-300 rounded-lg py-2 px-4"
+          >
+            {statuses.map((status) => (
+              <option key={status} value={status}>
+                {status} ({orderCounts[status] || 0}) {/* Hiển thị số lượng */}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <ul className="space-y-4 px-10 h-80 overflow-y-auto">
+          {filteredOrders.length > 0 ? (
+            filteredOrders.map((order) => (
+              <li
+                key={order.id}
+                className="flex justify-between items-center py-2 px-4 bg-white rounded-md shadow mb-2"
+              >
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white">
+                    <span>👤</span>
+                  </div>
+                  <span className="ml-4 font-medium text-gray-700">
+                    #...{order.id.slice(-5)}
+                  </span>
+                </div>
+
+                <span
+                  className={` font-medium text-center w-1/6 ${
+                    order.order_status === "Hoàn thành"
+                      ? "text-green-700 bg-green-100"
+                      : order.order_status === "Đã hủy"
+                      ? "text-red-700 bg-red-100"
+                      : "text-blue-700 bg-blue-100"
+                  } py-1 px-2 rounded`}
+                >
+                  {order.order_status}
+                </span>
+
+                <span className="text-gray-600 font-medium text-center w-1/6">
+                  {order.customer?.phone || "N/A"}
+                </span>
+
+                <span className="text-green-500 font-semibold text-right w-1/6">
+                  {(order.total_amount * 1000).toLocaleString("vi-VN") || "0"} đ
+                </span>
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-500 text-center">
+              Không có đơn hàng cho trạng thái này.
+            </li>
+          )}
+        </ul>
+      </div>
     </div>
-    </SnackbarProvider>
   );
 };
 

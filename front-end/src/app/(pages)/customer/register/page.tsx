@@ -12,10 +12,8 @@ interface FormData {
   address: string;
   password: string;
 }
-
 const RegisterPage = () => {
-  const { register, errors } = useFetchCustomer();
-
+  const { register, errors, successMessage } = useFetchCustomer();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -23,7 +21,10 @@ const RegisterPage = () => {
     address: "",
     password: "",
   });
-
+  const [isRegistered, setIsRegistered] = useState<boolean>(false);  // Trạng thái đăng ký thành công
+  const [verificationCode, setVerificationCode] = useState<string>("");
+  const [verifyErrors, setVerifyErrors] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -31,13 +32,55 @@ const RegisterPage = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  
- const handleSubmit = async (e:React.FormEvent)=>{
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("handleSubmit được gọi"); 
+    try {
+      const response = await register(formData);
+      if (response.ok) {
+        setIsRegistered(true);
+        console.log("isRegistered:", true); // Debug giá trị isRegistered
+      } else {
+        const data = await response.json();
+        setVerifyErrors(data.message || "Đã xảy ra lỗi khi đăng ký.");
+      }
+    } catch{
+      setVerifyErrors("Không thể kết nối đến server. Vui lòng kiểm tra kết nối mạng.");
+    }
+  };
+  const handleVerificationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVerificationCode(e.target.value);
+  };
 
-    await register(formData)
- }
+  const verifyEmail = async () => {
+    try {
+      const response = await fetch("http://localhost:3200/customers/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          verificationCode,
+        }),
+      });
+  
+      if (response.ok) {
+        setIsVerified(true); // Đánh dấu email đã xác minh thành công
+        setVerifyErrors("");
+        window.location.href = "/customer/login";
+      } else {
+        const data = await response.json();
+        if (response.status === 409) {
+          setVerifyErrors("Email đã được sử dụng. Vui lòng chọn email khác.");
+        } else {
+          setVerifyErrors(data.message || "Đã xảy ra lỗi khi xác minh.");
+        }
+      }
+    } catch{
+      setVerifyErrors("Không thể kết nối đến server. Vui lòng kiểm tra kết nối mạng.");
+    }
+  };
 
   return (
     <div className="flex justify-between p-8 max-w-4xl mx-auto">
@@ -46,6 +89,18 @@ const RegisterPage = () => {
         <h2 className="text-3xl font-bold mb-6 text-primary-600 font-itim">
           Đăng Ký
         </h2>
+          {/* Hiển thị thông báo thành công */}
+      {successMessage && (
+        <div className="alert alert-success" role="alert">
+          {successMessage}
+        </div>
+      )}
+          {/* Hiển thị lỗi tổng quát nếu có */}
+    {errors.general && (
+      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">
+        {errors.general}
+      </div>
+    )}
         <form className="flex flex-col w-full mb-6" onSubmit={handleSubmit}>
           {/* Name Field */}
           <InputField
@@ -54,8 +109,9 @@ const RegisterPage = () => {
             placeholder="Tên"
             value={formData.name}
             onChange={handleChange}
-            error={errors.name}
+            error={errors.name }
           />
+            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
 
           {/* Email Field */}
           <InputField
@@ -66,6 +122,8 @@ const RegisterPage = () => {
             onChange={handleChange}
             error={errors.email}
           />
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+
 
           {/* Phone Field */}
           <InputField
@@ -74,8 +132,9 @@ const RegisterPage = () => {
             placeholder="Số điện thoại"
             value={formData.phone}
             onChange={handleChange}
-            error={errors.phone}
+            error={errors.phone }
           />
+           {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
 
           {/* Address Field */}
           <InputField
@@ -86,6 +145,7 @@ const RegisterPage = () => {
             onChange={handleChange}
             error={errors.address}
           />
+           {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
 
           {/* Password Field */}
           <InputField
@@ -96,11 +156,35 @@ const RegisterPage = () => {
             onChange={handleChange}
             error={errors.password}
           />
+            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
 
-          <button className="p-3 bg-primary-400 text-white rounded-sm hover:bg-opacity-90">
+            <button
+            type="submit"
+            className="p-3 bg-primary-400 text-white rounded-sm hover:bg-opacity-90"
+          >
             Đăng Ký Ngay
           </button>
         </form>
+
+        {/* Hiển thị mã xác minh khi đăng ký thành công */}
+        {isRegistered && !isVerified && (
+  <div>
+    <input
+      type="text"
+      value={verificationCode}
+      onChange={handleVerificationChange}
+      placeholder="Nhập mã xác minh"
+      className="p-3 border rounded mt-4"
+    />
+    {verifyErrors && <p className="text-red-500">{verifyErrors}</p>}
+    <button
+      onClick={verifyEmail}
+      className="p-3 bg-primary-400 text-white rounded-sm hover:bg-opacity-90"
+    >
+      Xác nhận
+    </button>
+  </div>
+)}
         <p className="mb-4">Hoặc sử dụng tài khoản</p>
         <div className="flex space-x-4">
           <button className="p-3 border border-[#F2B05E] text-[#F2B05E] rounded-md hover:bg-opacity-90">

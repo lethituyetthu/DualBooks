@@ -63,13 +63,14 @@ function useFavoriteBooks() {
         fetch(`http://localhost:3200/favoriteBooks/${userId}`)
           .then((response) => response.json())
           .then((data) => {
-            //console.log("Dữ liệu trả về từ API: ", data);
+            // console.log("Dữ liệu trả về từ API: ", data);
   
             if (data && data.favoriteBooks && Array.isArray(data.favoriteBooks.books)) {
               const books = data.favoriteBooks.books;
             setWishlist(books); // Cập nhật wishlist với mảng sách yêu thích
             setBookCount(books.length); // Lưu số lượng sách vào state
-            //console.log("Số lượng sách yêu thích: ", books.length); // Log số lượng sách
+            // console.log("Số lượng sách yêu thích: ", books.length); // Log số lượng sách
+            
             } else {
               setMessage("Không có sách yêu thích.");
             }
@@ -137,6 +138,8 @@ function useFavoriteBooks() {
 
   const handleRemoveFromWishlist = (productId: string) => {
     const customer = localStorage.getItem("customer");
+    console.log(customer);
+    
   
     if (customer) {
       const customerData = JSON.parse(customer);
@@ -161,6 +164,10 @@ function useFavoriteBooks() {
         })
         .then((data) => {
           console.log("Sản phẩm đã xóa thành công:", data);
+           // Delay reload page after 3 seconds
+       setTimeout(() => {
+        window.location.reload(); // Làm mới trang sau 3 giây
+      }, 1000);
           const updatedWishlist = wishlist.filter((product) => product._id !== productId);
           setWishlist(updatedWishlist);
           setMessage("Sản phẩm đã được xóa khỏi yêu thích.");
