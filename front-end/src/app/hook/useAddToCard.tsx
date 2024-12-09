@@ -35,7 +35,6 @@ const useAddToCart = (updateCartCount: () => void) => {
       // Thêm sản phẩm vào giỏ hàng
       cart.push({ ...product, quantity: 1 });
       alert("Sản phẩm đã được thêm vào giỏ hàng!");
-      window.location.reload()
     }
 
     // Lưu giỏ hàng vào localStorage

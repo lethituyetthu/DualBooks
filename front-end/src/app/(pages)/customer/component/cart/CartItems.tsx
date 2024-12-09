@@ -22,14 +22,14 @@ const CartItems: React.FC<CartItemListProps> = ({
 }) => {
   if (cartItems.length === 0) {
     return (
-      <div className="text-center text-gray-600 h-96">
+      <div className="text-center text-gray-600">
         <p>Giỏ hàng của bạn đang trống.</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6 h-96 overflow-hidden overflow-y-auto ">
+    <div className="space-y-6 h-96 overflow-hidden overflow-y-auto">
       {cartItems?.map((item) => (
         <div
           key={item.id}

@@ -1,0 +1,51 @@
+router.get('/getAllvisible', async function(req, res, next) {
+    console.log('GET /categories endpoint hit');
+    try {
+      // Gọi controller để lấy dữ liệu
+      const result = await categoryController.getAllvisible(req, res);
+
+      // Kiểm tra kết quả và trả về response
+      if (result && result.length > 0) {
+          console.log('Category fetched successfully:', result); // Log khi lấy dữ liệu thành công
+          res.status(200).json(result); // Trả về dữ liệu JSON
+      } else {
+          console.log('No category found'); // Log khi không có danh mục
+          res.status(404).json({ error: 'No categories found' });
+      }
+  } catch (error) {
+      // Log lỗi và trả về thông báo lỗi
+      console.error('Error fetching categories:', error.message);
+      res.status(500).json({ error: error.message });
+  }
+});
+
+ exports.getAllvisible = async (req, res) => {
+    try {
+      // Gọi service để lấy danh sách thể loại
+      const categories = await categoryService.getAllvisible();
+  
+      // Map qua từng category và định dạng lại dữ liệu trước khi trả về
+    return categories.map((c) => ({
+        id: c._id,              // Sử dụng _id làm id
+        name: c.name,           // Tên thể loại
+        description: c.description,
+        cate_image: c.cate_image,
+
+        parent_id: c.parent_id,  // ID của thể loại cha (nếu có)
+        status:c.status,
+      }));
+    } catch (error) {
+        throw new Error('Error fetching categories: ' + error.message);
+    }
+  };
+
+
+// Lấy tất cả danh mục có trạng thái visible
+exports.getAllvisible = async () => {
+    try {
+        const categories = await categoryModel.find({ status: 'visible' });
+        return categories;
+    } catch (error) {
+        throw new Error('Error fetching categories: ' + error.message);
+    }
+};

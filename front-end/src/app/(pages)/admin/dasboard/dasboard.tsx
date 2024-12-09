@@ -24,23 +24,20 @@ export default function Dashboard() {
   }, []);
 
   const calculateStats = (date, orders, customers) => {
-    const ordersOnDate =
-      orders?.filter(
-        (order) =>
-          order?.order_date &&
-          new Date(order.order_date).toISOString().split("T")[0] === date &&
-          order.payment_status === "Đã thanh toán"
-      ) || [];
+    const ordersOnDate = orders?.filter(
+      (order) =>
+        order?.order_date &&
+        new Date(order.order_date).toISOString().split("T")[0] === date
+    ) || [];
     const revenueOnDate = ordersOnDate.reduce(
       (sum, order) => sum + (order.total_amount || 0),
       0
     );
-    const customersOnDate =
-      customers?.filter(
-        (customer) =>
-          customer?.created_at &&
-          new Date(customer.created_at).toISOString().split("T")[0] === date
-      ) || [];
+    const customersOnDate = customers?.filter(
+      (customer) =>
+        customer?.created_at &&
+        new Date(customer.created_at).toISOString().split("T")[0] === date
+    ) || [];
     return {
       orders: ordersOnDate.length,
       revenue: revenueOnDate,
@@ -57,28 +54,24 @@ export default function Dashboard() {
     () => calculateStats(yesterday, orders, customers),
     [yesterday, orders, customers]
   );
-  console.log(orders)
+
   const totalOrders = orders.length;
-  const totalCompletedOrders = orders.filter(
-    (order) => order.order_status === "Hoàn thành"
-  ).length;
-  const totalRevenue = orders
-    ?.filter((order) => order.payment_status === "Đã thanh toán")
-    .reduce((sum, order) => sum + (order.total_amount || 0), 0);
+  const totalRevenue = orders?.reduce(
+    (sum, order) => sum + (order.total_amount || 0),
+    0
+  );
   const totalCustomers = customers.length;
 
   const dailyRevenue = useMemo(() => {
     const revenueByDay = Array(30).fill(0);
-    orders
-      ?.filter((order) => order.payment_status === "Đã thanh toán")
-      .forEach((order) => {
-        if (order?.order_date && order?.total_amount) {
-          const day = new Date(order.order_date).getDate();
-          if (day >= 1 && day <= 30) {
-            revenueByDay[day - 1] += order.total_amount;
-          }
+    orders.forEach((order) => {
+      if (order?.order_date && order?.total_amount) {
+        const day = new Date(order.order_date).getDate();
+        if (day >= 1 && day <= 30) {
+          revenueByDay[day - 1] += order.total_amount;
         }
-      });
+      }
+    });
     return revenueByDay;
   }, [orders]);
 
@@ -164,7 +157,6 @@ export default function Dashboard() {
   return (
     <div className="p-6 min-h-screen">
       <TotalStats
-        totalCompletedOrders={totalCompletedOrders}
         totalRevenue={totalRevenue}
         totalOrders={totalOrders}
         totalCustomers={totalCustomers}

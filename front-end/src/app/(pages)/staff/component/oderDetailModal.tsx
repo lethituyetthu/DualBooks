@@ -1,68 +1,7 @@
+// components/OrderDetailModal.tsx
 import React from "react";
-import { useSnackbar } from "notistack";
-import useFetchOrders from "@/app/hook/useFetchOrders";
 
 const OrderDetailModal = ({ order, onClose }) => {
-  const { confirmOrder, deliverOrder } = useFetchOrders();
-  const { enqueueSnackbar } = useSnackbar(); // Hook để hiển thị thông báo
-
-  const handleConfirmOrder = async (orderId: string) => {
-    try {
-      await confirmOrder(orderId);
-      // Hiển thị thông báo thành công
-      enqueueSnackbar(`Đơn hàng ${orderId} đã được xác nhận thành công!`, {
-        variant: "success",
-        anchorOrigin: {
-          vertical: "bottom",
-          horizontal: "right",
-        },
-        autoHideDuration: 3000,
-      });
-      onClose(); // Đóng modal sau khi xác nhận
-    } catch (error) {
-      // Hiển thị thông báo lỗi
-      enqueueSnackbar(
-        `Xác nhận đơn hàng thất bại: ${(error as Error).message}`,
-        {
-          variant: "error",
-          anchorOrigin: {
-            vertical: "bottom",
-            horizontal: "right",
-          },
-          autoHideDuration: 3000,
-        }
-      );
-    }
-  };
-
-  const handleDeliverOrder = async (orderId: string) => {
-    try {
-      await deliverOrder(orderId);
-      // Hiển thị thông báo thành công
-      enqueueSnackbar(`Đơn hàng ${orderId} đã xác nhận giao hàng thành công!`, {
-        variant: "success",
-        anchorOrigin: {
-          vertical: "bottom",
-          horizontal: "right",
-        },
-        autoHideDuration: 3000,
-      });
-      onClose(); // Đóng modal sau khi xác nhận
-    } catch (error) {
-      // Hiển thị thông báo lỗi
-      enqueueSnackbar(
-        `Xác nhận giao hàng thất bại: ${(error as Error).message}`,
-        {
-          variant: "error",
-          anchorOrigin: {
-            vertical: "bottom",
-            horizontal: "right",
-          },
-          autoHideDuration: 3000,
-        }
-      );
-    }
-  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -103,53 +42,34 @@ const OrderDetailModal = ({ order, onClose }) => {
           <p>
             <strong>Đơn Hàng:</strong> {order.order_type}
           </p>
-
-          {/* Nút xác nhận đơn hàng */}
-          {order.order_status === "Chờ xác nhận" && (
-            <button
-              onClick={() => handleConfirmOrder(order.id)}
-              className="mt-4 bg-primary-400 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-md transition-all duration-200"
-            >
-              Xác nhận đơn hàng
-            </button>
-          )}
-
-          {order.order_status === "Đã xác nhận" && (
-            <button
-              onClick={() => handleDeliverOrder(order.id)}
-              className="mt-4 bg-primary-400 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-md transition-all duration-200"
-            >
-              Giao hàng
-            </button>
+          {/* Thông tin khách hàng */}
+          {order.customerInfo && (
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold text-gray-800">
+                Thông Tin Khách Hàng
+              </h3>
+              <p>
+                <strong>Họ tên:</strong> {order.customerInfo.name}
+              </p>
+              <p>
+                <strong>Email:</strong> {order.customerInfo.email}
+              </p>
+              <p>
+                <strong>Số điện thoại:</strong> {order.customerInfo.phone}
+              </p>
+              {order.customerInfo.address && (
+                <p>
+                  <strong>Địa chỉ:</strong> {order.customerInfo.address}
+                </p>
+              )}
+            </div>
           )}
         </div>
-
-        {/* Thông tin khách hàng */}
-        {order.customerInfo && (
-          <div className="mt-2">
-            <h3 className="text-xl font-semibold text-gray-800">
-              Thông Tin Khách Hàng
-            </h3>
-            <p>
-              <strong>Họ tên:</strong> {order.customerInfo.name}
-            </p>
-            <p>
-              <strong>Email:</strong> {order.customerInfo.email}
-            </p>
-            <p>
-              <strong>Số điện thoại:</strong> {order.customerInfo.phone}
-            </p>
-
-            <p>
-              <strong>Địa chỉ:</strong> {order.shipping_address}
-            </p>
-          </div>
-        )}
 
         {/* Bảng chi tiết các sản phẩm trong đơn hàng */}
         {order.orderItems && order.orderItems.length > 0 && (
           <div className="mt-8">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">
               Danh Sách Sản Phẩm
             </h3>
             <div className="overflow-x-auto">

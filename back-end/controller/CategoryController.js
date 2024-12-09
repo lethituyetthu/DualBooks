@@ -19,6 +19,25 @@ exports.getAll = async (req, res) => {
         throw new Error('Error fetching categories: ' + error.message);
     }
   };
+  exports.getAllvisible = async (req, res) => {
+    try {
+      // Gọi service để lấy danh sách thể loại
+      const categories = await categoryService.getAllvisible();
+  
+      // Map qua từng category và định dạng lại dữ liệu trước khi trả về
+    return categories.map((c) => ({
+        id: c._id,              // Sử dụng _id làm id
+        name: c.name,           // Tên thể loại
+        description: c.description,
+        cate_image: c.cate_image,
+
+        parent_id: c.parent_id,  // ID của thể loại cha (nếu có)
+        status:c.status,
+      }));
+    } catch (error) {
+        throw new Error('Error fetching categories: ' + error.message);
+    }
+  };
 // Lấy chi tiết thể loại theo ID
 exports.findById = async (id) => {
     try {

@@ -8,7 +8,6 @@ const OrderDetailPage = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
   const { id } = params; // Lấy giá trị 'id' từ params
   const { orderDetail, loading, error, fetchOrderDetail } = useFetchOrders();
-  //console.log("22",id)
 
 
     useEffect(() => {
@@ -21,7 +20,7 @@ const OrderDetailPage = ({ params }: { params: { id: string } }) => {
   if (error) return <div>Lỗi: {error}</div>;
   if (!orderDetail) return <div>Không tìm thấy đơn hàng.</div>;
 
-  console.log("22",id)
+
   return (
     <div className="p-6 max-w-3xl mx-auto bg-white shadow-lg rounded-lg">
   <h2 className="text-3xl font-bold mb-6 text-center text-primary-400 font-itim uppercase">Chi tiết đơn hàng</h2>
@@ -31,13 +30,13 @@ const OrderDetailPage = ({ params }: { params: { id: string } }) => {
     <h3 className="text-2xl font-semibold text-gray-600 border-b pb-2 mb-4">Thông tin đơn hàng</h3>
     <div className="space-y-2 text-gray-600">
       <p><strong>ID đơn hàng:</strong> {orderDetail.id}</p>
-      <p><strong>Loại đơn hàng:</strong> {orderDetail.order_type}</p>
-      <p><strong>Ngày đặt hàng:</strong> {new Date(orderDetail.order_date).toLocaleString()}</p>
-      <p><strong>Trạng thái đơn hàng:</strong> {orderDetail.order_status}</p>
-      <p><strong>Trạng thái thanh toán:</strong> {orderDetail.payment_status}</p>
-      <p><strong>Địa chỉ giao hàng:</strong> {orderDetail.shipping_address}</p>
-      <p><strong>Số lượng sản phẩm :</strong> {orderDetail.total_quantity}</p>
-      <p><strong>Tổng tiền:</strong> <span className="text-red-500 font-bold">{(orderDetail.total_amount * 1000).toLocaleString("vi-VN") + " VND"}</span></p>
+      <p><strong>Loại đơn hàng:</strong> {orderDetail.orderType}</p>
+      <p><strong>Ngày đặt hàng:</strong> {new Date(orderDetail.orderDate).toLocaleString()}</p>
+      <p><strong>Trạng thái đơn hàng:</strong> {orderDetail.orderStatus}</p>
+      <p><strong>Trạng thái thanh toán:</strong> {orderDetail.paymentStatus}</p>
+      <p><strong>Địa chỉ giao hàng:</strong> {orderDetail.shippingAddress}</p>
+      <p><strong>Số lượng sản phẩm :</strong> {orderDetail.totalQuantity}</p>
+      <p><strong>Tổng tiền:</strong> <span className="text-red-500 font-bold">{(orderDetail.totalAmount * 1000).toLocaleString("vi-VN") + " VND"}</span></p>
     </div>
   </div>
 

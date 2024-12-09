@@ -104,8 +104,12 @@ const Favorites = () => {
               <div className="flex justify-center">
                 <button
                   onClick={() => {
-                    console.log("Adding product to cart", product._id);
+                    // console.log("Adding product to cart", product._id);
                     addToCart(product); // Gọi hàm addToCart khi nhấp vào nút
+                     // Delay reload page after 1 second
+                       setTimeout(() => {
+                       window.location.reload(); // Làm mới trang sau 1 giây
+                       }, 500);
                   }}
                   className="bg-transparent border border-primary-600 hover:bg-primary-300 hover:text-light-100 text-primary-600 px-6 py-2 rounded"
                 >

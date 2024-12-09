@@ -9,7 +9,7 @@ exports.getAll = async () => {
     const books = await bookModel.find()
       .populate({
         path: "categoryID", // Tham chiếu danh mục
-        //match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
+        match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible
         select: "name", // Chỉ lấy trường tên
       })
       .populate("publisherID", "name"); // Populate nhà xuất bản
@@ -39,6 +39,7 @@ exports.getAllvisible = async () => {
 
     return filteredBooks; // Trả về danh sách sách đã lọc
   } catch (error) {
+    console.error("Error in bookService.getAllvisible:", error.message);
     throw new Error("Error fetching books: " + error.message);
   }
 };
@@ -135,7 +136,13 @@ exports.getBookDetailsById = async (id) => {
     const book = await bookModel.findById(id)
       .populate('categoryID', 'name')  // Populate thông tin danh mục
       .populate('publisherID', 'name')  // Populate thông tin nhà xuất bản
-      .populate('reviews')  // Populate thông tin reviews
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'customer_id',  // Lấy thông tin customer từ customer_id trong reviews
+          select: 'name'  // Chỉ lấy trường name của khách hàng
+        }
+      }) // Populate thông tin reviews
       .exec();
 
     if (!book) {
@@ -270,7 +277,7 @@ exports.searchBooks = async function (query) {
 exports.getHotProducts = async () => {
   try {
     // Lấy danh sách sản phẩm theo lượt xem giảm dần hoặc số lượng bán hàng giảm dần
-    const hotProducts = await bookModel.find({})
+    const hotProducts = await bookModel.find({ status: "visible" })
       .sort({ views: -1 }) // Hoặc sử dụng .sort({ sales: -1 }) tùy vào yêu cầu
       .limit(10)// Giới hạn số lượng sản phẩm hot được trả về
       .populate({
@@ -317,8 +324,8 @@ exports.getFeaturedProducts = async () => {
 exports.getLatestBooks = async () => {
   try {
     // Lấy danh sách sách theo ngày tạo mới nhất
-    const latestBooks = await bookModel.find({})
-      .sort({ createdAt: 1 }) // Sắp xếp theo ngày tạo giảm dần (mới nhất lên trước)
+    const latestBooks = await bookModel.find({ status: "visible" })
+      .sort({ createdAt: -1 }) // Sắp xếp theo ngày tạo giảm dần (mới nhất lên trước)
       .limit(5) // Giới hạn kết quả trả về 5 cuốn sách
       .populate({
         path: "categoryID", // Tham chiếu danh mục
@@ -340,7 +347,7 @@ exports.getLatestBooks = async () => {
 exports.getLowStockBooks = async () => {
   try {
     // Truy vấn để lấy 5 sản phẩm có số lượng tồn kho ít nhất
-    const lowStockBooks = await bookModel.find({ stock: { $lt: 5 } })  // Lọc các sách có stock < 5
+    const lowStockBooks = await bookModel.find({ stock: { $lt: 5 }, status: "visible" })  // Lọc các sách có stock < 5
       .populate({
         path: "categoryID", // Tham chiếu danh mục
         match: { status: "visible" }, // Chỉ lấy danh mục có trạng thái visible

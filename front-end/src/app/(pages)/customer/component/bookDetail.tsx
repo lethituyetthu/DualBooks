@@ -2,8 +2,6 @@ import { useState } from "react";
 import Image from "next/image";
 import useAddToCart from "@/app/hook/useAddToCard";
 import { useRouter } from "next/navigation";
-import useHandlePlaceOrder from "@/app/hook/useHandlePlaceOrder";
-
 interface BookDetailProps {
   title: string;
   description: string;
@@ -24,7 +22,6 @@ const BookDetail = ({
   views,
 }: BookDetailProps) => {
   const router = useRouter()
-
   const [quantity, setQuantity] = useState(1);
   const [notification, setNotification] = useState<string | null>(null);
 
@@ -44,7 +41,7 @@ const BookDetail = ({
     }
   };
 
-  /* const handlePlaceOrder = () => {
+  const handlePlaceOrder = () => {
     const product = {
       id,
       title,
@@ -64,9 +61,7 @@ const BookDetail = ({
     router.push(`/customer/checkout?data=${encodedData}`);
     //console.log(encodedData)
     // Điều hướng sang trang thanh toán với dữ liệu
-  }; */
-
-  const handlePlaceOrder = useHandlePlaceOrder([{ id, title, price, cover_image, quantity, category: '' }], quantity, quantity*price)
+  };
   const handleAddToCart = () => {
     const product = {
       id,

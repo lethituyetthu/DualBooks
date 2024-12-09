@@ -34,22 +34,6 @@ export default function SidebarOrder({
 
   return (
     <aside className="w-1/4 p-6 border-r">
-      {/* Bộ lọc trạng thái đơn hàng */}
-      <div className="mb-6 bg-white p-5 rounded-sm">
-        <label className="block text-gray-700 font-medium mb-2">Trạng thái</label>
-        <select
-          value={selectedStatus}
-          onChange={handleStatusChange}
-          className="w-full p-2 border rounded focus:outline-none"
-        >
-          <option value="">Tất cả trạng thái</option>
-          {statusOptions.map((status, index) => (
-            <option key={index} value={status}>
-              {status}
-            </option>
-          ))}
-        </select>
-      </div>
       {/* Tìm kiếm theo ID */}
       <form onSubmit={handleSearchSubmit}>
         <div className="mb-6 bg-white p-5 rounded-sm">
@@ -76,7 +60,22 @@ export default function SidebarOrder({
         
       </div>
 
-      
+      {/* Bộ lọc trạng thái đơn hàng */}
+      <div className="mb-6 bg-white p-5 rounded-sm">
+        <label className="block text-gray-700 font-medium mb-2">Trạng thái</label>
+        <select
+          value={selectedStatus}
+          onChange={handleStatusChange}
+          className="w-full p-2 border rounded focus:outline-none"
+        >
+          <option value="">Tất cả trạng thái</option>
+          {statusOptions.map((status, index) => (
+            <option key={index} value={status}>
+              {status}
+            </option>
+          ))}
+        </select>
+      </div>
     </aside>
   );
 }

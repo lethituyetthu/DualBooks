@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useFetchCategory from "@/app/hook/useFetchCategory";
+import { log } from "console";
 
 const AddCate = () => {
   const router = useRouter();
@@ -38,7 +39,7 @@ const AddCate = () => {
       alert("Tất cả các trường đều bắt buộc!");
       return;
     }
-    //console.log(formData);
+    console.log(formData);
 
     const formDataToSend = new FormData();
     formDataToSend.append("name", name);
@@ -46,10 +47,13 @@ const AddCate = () => {
     if (cate_image) {
       formDataToSend.append("cate_image", cate_image); // Đính kèm file
     }
+    
+    
+
 
     const response = await addCategory(formDataToSend);
 
-   // console.log("res", response);
+    console.log("res",response);
 
     if (!response) {
       alert("Lỗi khi thêm thể loại!");

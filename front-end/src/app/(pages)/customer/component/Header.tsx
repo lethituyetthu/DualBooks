@@ -104,7 +104,7 @@ export default function Header() {
           />
         </svg>
       ),
-      title: "0326 310 819",
+      title: "(+84) 123 456 789",
     },
     {
       icon: (
@@ -156,8 +156,15 @@ export default function Header() {
           </ul>
 
           {/* Support and Login */}
-          <ul className="flex w-[30%] justify-end pr-4">
-            
+          <ul className="flex w-[30%] justify-between pr-4">
+            <li>
+              <Link
+                href={`/`}
+                className="flex justify-between w-auto capitalize hover:text-dark-600 transition-transform duration-300"
+              >
+                <p>Hỗ Trợ Trực Tuyến</p>
+              </Link>
+            </li>
             {customer ? (
               <NameToken customer={customer} />
             ) : (

@@ -105,7 +105,6 @@ router.put('/confirm/:orderId', orderController.confirmOrder);
 router.put('/deliver/:orderId', orderController.markAsDelivering);
 // API  chuyển trạng thái đơn hàng từ "Đang giao hàng" sang "Hoàn thành"
 router.put('/complete/:orderId', orderController.markAsCompleted);
-
 // Route: Lọc đơn hàng theo ID khách hàng
 router.get('/filter-by-customer/:customerId', async (req, res) => {
   try {

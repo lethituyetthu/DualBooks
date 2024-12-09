@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 // import { useRouter } from "next/navigation";
 interface typeCustomer {
-  _id: string; // ID là thuộc tính bắt buộc
+  _id?: string; // ID là thuộc tính bắt buộc
   name?: string; // Bắt buộc
   email?: string; // Bắt buộc
   password?: string; // Bắt buộc, có thể xóa nếu không cần
@@ -18,7 +18,14 @@ interface Errors {
   phone?: string;
   address?: string;
   password?: string;
+  general?: string; // Thêm thuộc tính 'general'
 }
+// // Định nghĩa kiểu dữ liệu trả về từ API
+// interface RegisterResponse {
+//   success: boolean;
+//   message: string;
+// }
+
 // function isCustomerArray(data: unknown): data is typeCustomer[] {
 //   if (!Array.isArray(data)) return false;
 
@@ -97,37 +104,107 @@ export default function useFetchCustomer() {
   }, []);
 
   // Register
-  const register = async (formData: typeCustomer) => {
+  // const register = async (formData: typeCustomer) => {
+  //   const validateErrors = validateForm(formData);
+  
+  //   if (Object.keys(validateErrors).length > 0) {
+  //     setErrors(validateErrors);
+  //     return; // Dừng lại nếu có lỗi xác thực
+  //   }
+  
+  //   try {
+  //     // Gửi yêu cầu đăng ký tới API
+  //     const response: Response = await fetch("http://localhost:3200/customers/register", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  
+  //     // Kiểm tra nếu phản hồi không thành công (mã trạng thái không phải 2xx)
+  //     if (!response.ok) {
+  //       const errorData = await response.json();  // Lấy thông tin lỗi từ phản hồi
+  //       console.log("Error data:", errorData);
+  
+  //       // Xử lý lỗi theo các mã trạng thái cụ thể
+  //       if (response.status === 400) {
+  //         setErrors({ general: errorData.error || "Thông tin không hợp lệ." });
+  //       } else if (response.status === 409) {
+  //         setErrors({ email: errorData.error || "Email hoặc số điện thoại đã được sử dụng." });
+  //       } else if (response.status === 422) {
+  //         setErrors({ password: errorData.error || "Mật khẩu phải gồm 6 ký tự, chỉ bao gồm chữ cái và số." });
+  //       } else {
+  //         setErrors({ general: "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau." });
+  //       }
+  //       return; // Dừng lại nếu có lỗi, không tiếp tục xử lý thành công
+  //     }
+  
+  //     // Nếu phản hồi thành công, lấy dữ liệu JSON
+  //     const data = await response.json();
+  //     console.log("Response data:", data);
+  
+  //     // Kiểm tra mã trạng thái 201 (Created) hoặc 200 (OK)
+  //     if (response.status === 201 || response.status === 200) {
+  //       setSuccessMessage(data.message || "Đăng ký thành công! Vui lòng kiểm tra email.");
+  //       setErrors({}); // Reset lỗi nếu đăng ký thành công
+  //     } else {
+  //       setErrors({ general: data.error || "Đã xảy ra lỗi khi đăng ký." });
+  //     }
+  //   } catch (error) {
+  //     // Xử lý lỗi nếu không thể kết nối tới server
+  //     setErrors({ general: "Không thể kết nối đến server. Vui lòng kiểm tra kết nối mạng." });
+  //     console.error("Đã xảy ra lỗi:", error);
+  //   }
+  // };
+  const register = async (formData: typeCustomer): Promise<Response> => {
     const validateErrors = validateForm(formData);
-
+  
     if (Object.keys(validateErrors).length > 0) {
       setErrors(validateErrors);
-      return;
+   // Trả về một Response giả để đáp ứng kiểu trả về Promise<Response>
+   return new Response(JSON.stringify({ error: "Lỗi validate dữ liệu" }), { status: 400 });
     }
-
+  
     try {
-      const response = await fetch("http://localhost:3200/customers/register", {
+      const response: Response = await fetch("http://localhost:3200/customers/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
-        setErrors({ email: errorData.message });
-      } else {
-        const data = await response.json();
-        setSuccessMessage(data.message);
-        setErrors({});
-        window.location.href = "/customer/login";
+        // Xử lý lỗi
+        if (response.status === 400) {
+          setErrors({ general: errorData.error || "Thông tin không hợp lệ." });
+        } else if (response.status === 409) {
+          setErrors({ email: errorData.error || "Email hoặc số điện thoại đã được sử dụng." });
+        } else if (response.status === 422) {
+          setErrors({ password: errorData.error || "Mật khẩu phải gồm 6 ký tự, chỉ bao gồm chữ cái và số." });
+        } else {
+          setErrors({ general: "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau." });
+        }
+        return response; // Trả về response để kiểm tra trong handleSubmit
       }
+  
+      // Trả về response để tiếp tục xử lý trong handleSubmit
+      return response;
+  
     } catch (error) {
+      setErrors({ general: "Không thể kết nối đến server. Vui lòng kiểm tra kết nối mạng." });
       console.error("Đã xảy ra lỗi:", error);
+        // Trả về một Response giả khi có lỗi kết nối
+    return new Response(JSON.stringify({ error: "Không thể kết nối đến server" }), { status: 500 });
     }
   };
+  
+  
+  
 
+  
   // Login
   const login = async (formData: typeCustomer) => {
     const validateErrors = validateForm(formData, true);
@@ -182,19 +259,29 @@ export default function useFetchCustomer() {
 
   // Edit customer info
   const edit = async (id: string, formData: typeCustomer) => {
-  
-  
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setErrors({ email: "Thiếu token. Vui lòng đăng nhập." });
+      return;
+    }
+
+    const validateErrors = validateForm(formData);
+    if (Object.keys(validateErrors).length > 0) {
+      setErrors(validateErrors);
+      return;
+    }
+
     try {
-      const response = await fetch(`http://localhost:3200/customers/${id}`, {
+      const response = await fetch(`http://localhost:3200/customers/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
-  
-      //console.log(response.data)
-      // Kiểm tra nếu phản hồi không thành công
+      console.log(formData);
       if (!response.ok) {
         const errorData = await response.json();
         setErrors({ email: errorData.message });
@@ -202,15 +289,14 @@ export default function useFetchCustomer() {
       } else {
         const data = await response.json();
         console.log("Cập nhật thông tin thành công");
-        setSuccessMessage(data.message);  // Hiển thị thông báo thành công
-        setErrors({});  // Xóa lỗi nếu có
+        setSuccessMessage(data.message);
+        setErrors({});
       }
     } catch (error) {
       console.error("Đã xảy ra lỗi khi cập nhật thông tin khách hàng:", error);
       setErrors({ email: "Đã xảy ra lỗi không xác định." });
     }
   };
-  
 
  // Hàm lấy tất cả dữ liệu khách hàng
  const fetchCustomers = useCallback(async () => {

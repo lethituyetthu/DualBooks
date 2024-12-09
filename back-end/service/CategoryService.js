@@ -9,6 +9,15 @@ exports.getAll = async () => {
         throw new Error('Error fetching categories: ' + error.message);
     }
 };
+// Lấy tất cả danh mục có trạng thái visible
+exports.getAllvisible = async () => {
+    try {
+        const categories = await categoryModel.find({ status: 'visible' });
+        return categories;
+    } catch (error) {
+        throw new Error('Error fetching categories: ' + error.message);
+    }
+};
 
 // Tìm danh mục theo ID
 exports.findById = async (id) => {
