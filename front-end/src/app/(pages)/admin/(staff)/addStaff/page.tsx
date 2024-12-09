@@ -10,7 +10,7 @@ const AddStaff = () => {
     username: "", // Thay đổi từ 'name' thành 'username'
     email: "",
     password: "",
-    role: "Staff", // Mặc định là Nhân Viên
+    role: "staff", // Mặc định là Nhân Viên
   });
   const [selectedFile, setSelectedFile] = useState(null);
 

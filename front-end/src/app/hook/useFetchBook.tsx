@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Books } from "../types/Books";
+import { set } from "lodash";
 
 interface Error {
   _id?: string;
@@ -199,7 +200,8 @@ export default function useFetchBook() {
       const res = await fetch(`http://localhost:3200/books/${id}`);
       if (res.ok) {
         const result = await res.json();
-        setBooks([result]); // Cập nhật `books` chỉ với kết quả tìm kiếm
+        setBooks([result])
+        console.log(result) // Cập nhật `books` chỉ với kết quả tìm kiếm
       } else {
         throw new Error("Không tìm thấy sách với ID này.");
       }

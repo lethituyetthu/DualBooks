@@ -318,7 +318,7 @@ exports.getLatestBooks = async () => {
   try {
     // Lấy danh sách sách theo ngày tạo mới nhất
     const latestBooks = await bookModel.find({})
-      .sort({ createdAt: -1 }) // Sắp xếp theo ngày tạo giảm dần (mới nhất lên trước)
+      .sort({ createdAt: 1 }) // Sắp xếp theo ngày tạo giảm dần (mới nhất lên trước)
       .limit(5) // Giới hạn kết quả trả về 5 cuốn sách
       .populate({
         path: "categoryID", // Tham chiếu danh mục
