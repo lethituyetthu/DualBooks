@@ -1,5 +1,8 @@
 const customerService = require('../service/CustomerService ');
-const mailer = require('../mailer')
+const mailer = require('../mailer');
+const jwt = require('jsonwebtoken'); // Để tạo token
+const { SECRET_KEY,REFRESH_SECRET_KEY } = require('../config');
+
 // Xử lý đăng ký khách hàng
 exports.registerCustomer = async (req, res) => {
     try {
@@ -65,6 +68,7 @@ exports.verifyEmail = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
 exports.verifyOtp = async (req, res) => {
     try {
         const { email, otp } = req.body; // Nhận email và OTP từ client
@@ -80,41 +84,54 @@ exports.verifyOtp = async (req, res) => {
             return res.status(400).json({ success: false, message: 'Mã OTP không chính xác.' });
         }
 
-        // Kiểm tra thời gian hết hạn của OTP
         if (new Date() > new Date(customer.otpExpiry)) {
             return res.status(400).json({ success: false, message: 'Mã OTP đã hết hạn.' });
         }
+ // Tạo token
+ const token = jwt.sign(
+    { id: customer._id, email: customer.email }, 
+    SECRET_KEY,
+     { expiresIn: '15m' });
+        const tokenExpiry = new Date(Date.now() + 15 * 60 * 1000); // Thời gian hết hạn token
 
-        // Nếu OTP hợp lệ, cập nhật trạng thái xác minh email
-        customer.isEmailVerified = true;
-        customer.otp = undefined; // Xóa OTP sau khi xác minh thành công
-        customer.otpExpiry = undefined; // Xóa thời gian hết hạn OTP
-        await customer.save();
+        await customerService.updateToken(customer._id, token, tokenExpiry);
+
+       // Gửi email với token và link đặt lại mật khẩu
+       await mailer.sendTokenEmail(
+        email,
+        token, 
+    );
+
 
         // Trả về phản hồi thành công
-        res.status(200).json({ success: true, message: 'Xác minh email thành công!' });
+        res.status(200).json({ success: true, message: 'Token đã được gửi qua email.' });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
 };
 // Hàm xử lý yêu cầu đặt lại mật khẩu
 exports.resetPassword = async (req, res) => {
-    const { email, newPassword } = req.body;
+    const { token, newPassword } = req.body;
   
-    if (!email || !newPassword) {
-      return res.status(400).json({ message: "Email và mật khẩu mới là bắt buộc" });
+    if (!token || !newPassword) {
+        return res.status(400).json({ message: "Token và mật khẩu mới là bắt buộc" });
     }
   
     try {
-      // Gọi service để thực hiện đặt lại mật khẩu
-      const result = await customerService.resetPassword(email, newPassword);
-  
-      // Trả kết quả cho client
-      return res.status(200).json(result);
+        // Kiểm tra và giải mã token
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const email = decoded.email; // Lấy email từ decoded token
+
+        // Gọi service để thực hiện đặt lại mật khẩu
+        const result = await customerService.resetPassword(email, newPassword);
+
+        // Trả kết quả cho client
+        return res.status(200).json(result);
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+        // Xử lý lỗi nếu token không hợp lệ hoặc gặp lỗi khác
+        return res.status(500).json({ message: error.message || 'Đã có lỗi xảy ra khi đặt lại mật khẩu' });
     }
-  };
+};
 exports.loginCustomer = async (req, res) => {
   const { email, password } = req.body;
 
@@ -133,7 +150,7 @@ exports.loginCustomer = async (req, res) => {
 // Cập nhật thông tin khách hàng
 exports.updateCustomer = async (customerId, customerData) => {
     try {
-        const updatedCustomer = await customerService.updateCustomerStatus(customerId, customerData);
+        const updatedCustomer = await customerService.updateCustomerById(customerId, customerData);
         return updatedCustomer;
     } catch (error) {
         throw new Error('Error updating customer: ' + error.message);

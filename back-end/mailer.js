@@ -40,6 +40,22 @@ const sendOtpEmail = async (toEmail, otp) => {
         throw new Error('Gửi OTP thất bại: ' + error.message);
     }
 };
+const sendTokenEmail = async (toEmail, token) => {
+    const resetLink = `http://localhost:3000/customer/ResetPassword?token=${token}`; // Xây dựng đường link đặt lại mật khẩu
+
+    const mailOptions = {
+        from: 'hieunnps30444@fpt.edu.vn',
+        to: toEmail,
+        subject: 'Đặt lại mật khẩu', // Tiêu đề của email
+        text: `Bạn đã yêu cầu đặt lại mật khẩu. Vui lòng nhấp vào liên kết sau để đặt lại mật khẩu: ${resetLink}` // Nội dung email chứa đường link reset
+    };
+
+    try {
+        await transporter.sendMail(mailOptions); // Gửi email với các thông tin trên
+    } catch (error) {
+        throw new Error('Gửi email thất bại: ' + error.message); // Xử lý lỗi nếu gửi email thất bại
+    }
+};
 
 // Hàm gửi email đặt lại mật khẩu
 const sendResetPasswordEmail = async (toEmail, resetLink) => {
@@ -60,5 +76,6 @@ const sendResetPasswordEmail = async (toEmail, resetLink) => {
 module.exports = { 
     sendVerificationEmail, 
     sendOtpEmail, 
+    sendTokenEmail,
     sendResetPasswordEmail 
 };

@@ -139,7 +139,18 @@ exports.verifyCodeAndActivateUser = async (email, verificationCode) => {
 };
 exports.findCustomerByEmail = async (email) => {
     // Tìm khách hàng theo email
+    // Kiểm tra định dạng email
+    if (!isValidEmail(email)) {
+        throw new AppError('Email không hợp lệ.', 400);
+    }
     return await Customer.findOne({ email });
+};
+exports.updateToken = async (customerId, token, tokenExpiry) => {
+    const customer = await Customer.findById(customerId);
+    if (!customer) throw new Error('Khách hàng không tồn tại');
+    customer.token = token;
+    customer.tokenExpiry = tokenExpiry;
+    await customer.save();
 };
 
 exports.updateOtp = async (customerId, otp, otpExpiry) => {
@@ -152,14 +163,20 @@ exports.updateOtp = async (customerId, otp, otpExpiry) => {
 // Hàm cập nhật mật khẩu cho khách hàng
 exports.resetPassword = async (email, newPassword) => {
     try {
-      // Kiểm tra xem khách hàng có tồn tại không
+         // Kiểm tra xem khách hàng có tồn tại không
       const customer = await Customer.findOne({ email });
       if (!customer) {
         throw new Error('Khách hàng không tồn tại');
       }
   
-      // Mã hóa mật khẩu mới
-      const hashedPassword = await bcrypt.hash(newPassword, 10);
+       // Kiểm tra mật khẩu
+    const passwordRegex = /^[a-zA-Z0-9]{6}$/; // Mật khẩu chỉ gồm 6 ký tự chữ hoặc số
+    if (!passwordRegex.test(newPassword)) {
+      throw new Error('Mật khẩu không hợp lệ. Vui lòng sử dụng 6 ký tự chỉ gồm chữ và số.');
+    }
+
+    // Mã hóa mật khẩu mới
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
   
       // Cập nhật mật khẩu mới
       customer.password = hashedPassword;
@@ -173,6 +190,15 @@ exports.resetPassword = async (email, newPassword) => {
 // Đăng nhập khách hàng
 exports.loginCustomer = async (email, password) => {
     try {
+          // Kiểm tra định dạng email
+          if (!isValidEmail(email)) {
+            throw new AppError('Email không hợp lệ.', 400);
+        }
+        // Kiểm tra mật khẩu
+        const passwordRegex = /^[a-zA-Z0-9]{6}$/; // Mật khẩu chỉ gồm 6 ký tự chữ hoặc số
+        if (!passwordRegex.test(password)) {
+            throw new Error('Mật khẩu không hợp lệ. Mật khẩu phải gồm 6 ký tự chữ hoặc số.');
+        }
         // Tìm khách hàng theo email
         const customer = await Customer.findOne({ email });
 

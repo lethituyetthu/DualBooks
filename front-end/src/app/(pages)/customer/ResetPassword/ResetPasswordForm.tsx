@@ -1,35 +1,44 @@
 'use client'; // Đánh dấu thành phần là Client Component
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 const ResetPasswordForm: React.FC = () => {
   const router = useRouter();
   const [newPassword, setNewPassword] = useState<string>(''); // Trạng thái cho mật khẩu mới
   const [confirmPassword, setConfirmPassword] = useState<string>(''); // Trạng thái cho xác nhận mật khẩu
-
-  const handleResetPassword = async () => {
-    if (newPassword === confirmPassword) {
-      const storedEmail = localStorage.getItem('email'); // Lấy email từ localStorage
-
-      if (!storedEmail) {
-        alert('Không tìm thấy email trong localStorage. Vui lòng thử lại!');
-        return;
+  const [token, setToken] = useState<string | null>(null); // Trạng thái cho token
+    // Lấy token từ URL khi trang được tải
+    useEffect(() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tokenFromUrl = urlParams.get('token');
+      if (tokenFromUrl) {
+        setToken(tokenFromUrl); // Lưu token vào state
+      } else {
+        alert('Token không hợp lệ!');
+        router.push('/customer/login'); // Điều hướng đến trang đăng nhập nếu không có token
       }
-
-      try {
-        // Gửi yêu cầu API đặt lại mật khẩu
-        const response = await fetch('http://localhost:3200/customers/reset-password', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: storedEmail,
-            newPassword,
-          }),
-        });
-
-        const data = await response.json();
+    }, [router]);
+    const handleResetPassword = async () => {
+      if (newPassword === confirmPassword) {
+        if (!token) {
+          alert('Không tìm thấy token! Vui lòng thử lại!');
+          return;
+        }
+  
+        try {
+          // Gửi yêu cầu API đặt lại mật khẩu với token
+          const response = await fetch('http://localhost:3200/customers/reset-password', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              token,
+              newPassword,
+            }),
+          });
+  
+          const data = await response.json();
 
         if (response.ok) {
           alert('Mật khẩu đã được đặt lại thành công!');

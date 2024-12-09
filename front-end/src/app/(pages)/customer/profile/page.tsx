@@ -51,7 +51,7 @@ const CustomerProfilePage = () => {
 
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault();
-    console.log(formData,"trang prpfile")
+    console.log(formData,"trang profile")
     await edit(formData.id, formData)
    
     

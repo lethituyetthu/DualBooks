@@ -86,9 +86,10 @@ const ForgotPasswordForm: React.FC = () => {
       const data = await response.json();
 
       if (data.success) {
-        // Mở tab mới và điều hướng đến trang Reset Password
-        const newTab = window.open('/customer/ResetPassword', '_blank');
-        if (newTab) newTab.focus();
+        // // Mở tab mới và điều hướng đến trang Reset Password
+        // const newTab = window.open('/customer/ResetPassword', '_blank');
+        // if (newTab) newTab.focus();
+        alert(data.message); // Thông báo nếu OTP không đúng
       } else {
         alert(data.message); // Thông báo nếu OTP không đúng
       }

@@ -23,6 +23,8 @@ const CustomerSchema = new Schema({
     },
     otp: { type: String },
     otpExpiry: { type: Date },
+    token: { type: String },
+    tokenExpiry: { type: Date },
     resetToken: { type: String },
     resetTokenExpiry: { type: Date },
     created_at: { type: Date, default: Date.now },
