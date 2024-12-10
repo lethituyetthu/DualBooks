@@ -29,6 +29,26 @@ router.get('/', async function(req, res, next) {
       res.status(500).json({ error: error.message });
   }
 });
+router.get('/getAllvisible', async function(req, res, next) {
+    console.log('GET /categories endpoint hit');
+    try {
+      // Gọi controller để lấy dữ liệu
+      const result = await categoryController.getAllvisible(req, res);
+
+      // Kiểm tra kết quả và trả về response
+      if (result && result.length > 0) {
+          console.log('Category fetched successfully:', result); // Log khi lấy dữ liệu thành công
+          res.status(200).json(result); // Trả về dữ liệu JSON
+      } else {
+          console.log('No category found'); // Log khi không có danh mục
+          res.status(404).json({ error: 'No categories found' });
+      }
+  } catch (error) {
+      // Log lỗi và trả về thông báo lỗi
+      console.error('Error fetching categories:', error.message);
+      res.status(500).json({ error: error.message });
+  }
+});
 // GET /categories/:id - Lấy chi tiết sản phẩm theo ID
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
@@ -45,7 +65,7 @@ router.get('/:id', async (req, res) => {
   });
 // Endpoint tạo danh mục mới với hình ảnh
 // POST /api/categories
-router.post('/', uploadCategory.single('cate_image'), async (req, res) => {
+router.post('/',authenticateAdmin, uploadCategory.single('cate_image'), async (req, res) => {
   console.log('POST /categories endpoint hit');
   try {
       const categoryData = req.body;
@@ -71,7 +91,7 @@ router.post('/', uploadCategory.single('cate_image'), async (req, res) => {
 });
 // Endpoint cập nhật danh mục
 // PUT /api/categories/:id
-router.put('/:id',
+router.put('/:id',authenticateAdmin,
   uploadCategory.single('cate_image'),
   [
       body('name').not().isEmpty().withMessage('Category name is required'),

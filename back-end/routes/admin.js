@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../controller/AdminController');
 const uploadAdmin = require('../middlewares/uploadAdmin'); // Import middleware Multer
-const authenticateAdmin = require('../middlewares/auth'); // Import middleware xác thực
+// const authenticateAdmin = require('../middlewares/auth'); // Import middleware xác thực
+const authenticateAdmin = require('../middlewares/auth copy'); // Import middleware xác thực
 
 // Endpoint đăng ký admin mới
 // POST /api/admins/register
@@ -13,7 +14,16 @@ router.post('/register', uploadAdmin.single('user_img'), async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
+// API xác minh mã
+router.post('/verify', async (req, res) => {
+    try {
+        console.log('Nhận yêu cầu xác minh:', req.body); // Log toàn bộ dữ liệu yêu cầu
+        await adminController.verifyEmailCode(req, res); // Gọi controller để xác minh mã
+    } catch (error) {
+        console.error('Lỗi trong API xác minh mã:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
 // Endpoint đăng nhập admin
 // POST /api/admins/login
 router.post('/login', async (req, res) => {
@@ -23,6 +33,8 @@ router.post('/login', async (req, res) => {
         res.status(401).json({ error: error.message });
     }
 });
+// API đăng nhập admin
+router.post('/loginAccess', adminController.loginAccessAdmin);
 // **Endpoint mới: Lấy danh sách tất cả admin (Chỉ dành cho admin đã đăng nhập)**
 // GET /api/admins
 router.get('/', async (req, res) => {

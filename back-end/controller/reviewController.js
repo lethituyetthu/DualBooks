@@ -61,8 +61,7 @@ exports.updateReview = async (req, res) => {
     }
 };
 exports.deleteReview = async (req, res) => {
-    const { bookId, reviewId } = req.params;
-    const customerId = req.customer.id;  // Lấy customer ID từ middleware
+    const { bookId, reviewId, customerId } = req.params; // Lấy customer ID từ middleware
 
     try {
         // Lấy bài đánh giá từ cơ sở dữ liệu

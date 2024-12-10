@@ -66,7 +66,8 @@ app.use('/reviews', reviewsRouter);
 app.use('/favoriteBooks', favoriteBooksRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  console.log(`http://localhost:${PORT}/books`);
+  console.log(`http://localhost:${PORT}/books/`);
+  console.log(`http://localhost:${PORT}/books/getAllvisible`);
   console.log(`http://localhost:${PORT}/books/hot`);
   console.log(`http://localhost:${PORT}/books/new`);
   console.log(`http://localhost:${PORT}/books/featured`);

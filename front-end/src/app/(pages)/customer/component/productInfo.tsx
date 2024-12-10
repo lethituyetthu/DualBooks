@@ -22,6 +22,7 @@ const ProductInfo = ({ title, cover_image, author, categoryName, price, descript
         <p><strong>Nhà xuất bản:</strong> Nhà xuất bản Trẻ</p>
         <p><strong>Thương hiệu:</strong> DualBooks</p>
         <p><strong>Giá bìa:</strong> {(price * 1000).toLocaleString("vi-VN") + " đ"}</p>
+        <p><strong>Ngày phát hành:</strong> 2022-10-15</p>
       </div>
     </div>
   );

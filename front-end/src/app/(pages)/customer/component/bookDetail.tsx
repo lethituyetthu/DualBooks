@@ -44,27 +44,7 @@ const BookDetail = ({
     }
   };
 
-  /* const handlePlaceOrder = () => {
-    const product = {
-      id,
-      title,
-      price,
-      cover_image,
-      quantity,
-    };
   
-    const data = JSON.stringify({
-      cartItems : [product], // Thông tin giỏ hàng
-      totalQuantity: quantity , // Tổng số lượng sản phẩm
-      totalPrice: quantity*price, // Tổng tiền
-    });
-
-    const encodedData = encodeURIComponent(data); // Mã hóa dữ liệu để truyền qua URL
-
-    router.push(`/customer/checkout?data=${encodedData}`);
-    //console.log(encodedData)
-    // Điều hướng sang trang thanh toán với dữ liệu
-  }; */
 
   const handlePlaceOrder = useHandlePlaceOrder([{ id, title, price, cover_image, quantity, category: '' }], quantity, quantity*price)
   const handleAddToCart = () => {
@@ -139,8 +119,9 @@ const BookDetail = ({
               {quantity}
             </span>
             <button
+            disabled={quantity>stock}
               onClick={handleIncrease}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 transition"
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 transition disabled:bg-gray-400"
             >
               +
             </button>
@@ -150,14 +131,18 @@ const BookDetail = ({
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4">
           <button
-          onClick={handlePlaceOrder} className="px-6 py-3 bg-primary-400 hover:bg-primary-300 text-white font-medium rounded-md shadow transition">
+          disabled={quantity>stock}
+          onClick={handlePlaceOrder} className="px-6 py-3 bg-primary-400 hover:bg-primary-300 text-white font-medium rounded-md shadow transition disabled:bg-gray-400">
             Mua Ngay
           </button>
           <button
+          disabled={quantity>stock}
+
             onClick={handleAddToCart}
-            className="px-6 py-3 bg-white border border-primary-500 hover:bg-primary-100 text-primary-600 font-medium rounded-md shadow transition"
+            className="px-6 py-3 bg-white border border-primary-500 hover:bg-primary-100 text-primary-600 font-medium rounded-md shadow transition disabled:bg-gray-400 disabled:text-white"
           >
-            Thêm vào giỏ hàng
+            {stock === 0 ? "hết hàng" : "Thêm vào giỏ hàng" }
+            
           </button>
         </div>
 

@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SnackbarProvider
       maxSnack={3}
-      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
     >
       <div className="">
         <Header />

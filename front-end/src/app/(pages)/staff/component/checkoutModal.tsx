@@ -1,8 +1,11 @@
+
+"use client"
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import logo from "@/app/publics/ma_qr.png";
 import useFetchOrder from "@/app/hook/useFetchOder";
 import useFetchBook from "@/app/hook/useFetchBook";
+import { useSnackbar } from 'notistack';
 
 interface typeCheckout {
   cartItems: {
@@ -28,6 +31,7 @@ const CheckoutModal: React.FC<typeCheckout> = ({
   const [paymentMethod, setPaymentMethod] = useState<string>("");
   const [adminId, setAdminId] = useState<string | null>(null);
   const { addOrder, addOrderItem, getOrderDetail } = useFetchOrder();
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const adminData = localStorage.getItem("admin");
@@ -49,10 +53,14 @@ const CheckoutModal: React.FC<typeCheckout> = ({
       const stock = await fetchProductStock(item.id); // Lấy số lượng tồn kho từ API
       if (item.quantity > stock) {
         const book = await fetchProductStock(item.id); // Lấy thông tin sản phẩm để hiển thị thông báo
-        alert(
-          `Sản phẩm "${item.product}" không đủ số lượng trong kho. Tồn kho chỉ có ${book} sản phẩm.`
-        );
-        return; // Dừng quá trình thanh toán nếu có sản phẩm hết hàng
+        if (item.quantity > stock) {
+          // Sử dụng notistack để hiển thị thông báo lỗi
+          enqueueSnackbar(
+            `Sản phẩm "${item.id}" không đủ số lượng trong kho. Tồn kho chỉ có ${stock} sản phẩm.`, 
+            { variant: 'error' } // Thông báo lỗi (variant: 'error')
+          );
+          return; // Dừng quá trình thanh toán nếu có sản phẩm hết hàng
+        } // Dừng quá trình thanh toán nếu có sản phẩm hết hàng
       }
     }
 

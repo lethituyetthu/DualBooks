@@ -2,8 +2,11 @@
 
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import { useSnackbar } from "notistack";
 
 const ContactPage: React.FC = () => {
+  const {enqueueSnackbar} = useSnackbar()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -71,7 +74,10 @@ const ContactPage: React.FC = () => {
         (response) => {
           console.log("Email sent successfully:", response);
           setIsSending(false);
-          alert("Cảm ơn bạn đã liên hệ, chúng tôi sẽ phản hồi bạn sớm!");
+          enqueueSnackbar(`Cảm ơn bạn đã liên hệ, chúng tôi sẽ phản hồi bạn sớm!`, {
+            variant: "success",
+            autoHideDuration: 1500,
+          })
         },
         (error) => {
           console.error("Error sending email:", error);
@@ -82,6 +88,7 @@ const ContactPage: React.FC = () => {
   };
 
   return (
+    
     <div className="max-w-[1300px] mx-auto">
       <nav className="flex items-center space-x-2 text-sm text-gray-600 p-4">
         <a href="/customer" className="hover:text-gray-900">

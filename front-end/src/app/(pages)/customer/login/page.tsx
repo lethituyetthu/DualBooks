@@ -75,9 +75,13 @@ const LoginPage = () => {
           </div> */}
 
           {/* Forgot Password */}
-          <p className="mb-4 text-right text-primary-600 cursor-pointer hover:underline">
+           <Link
+          href="/customer/ForgotPassword">
+             <p className="mb-4 text-right text-primary-600 cursor-pointer hover:underline">
             Quên mật khẩu?
           </p>
+          </Link>
+         
 
           {/* Submit Button */}
           <button className="p-3 bg-primary-400 text-white rounded-sm hover:bg-opacity-90">

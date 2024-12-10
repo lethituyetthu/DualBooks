@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import useFetchCustomer from "../../../hook/useFetchCustomer";
 import Link from "next/link";
+import { useSnackbar } from "notistack";
 // Define the interface for the customer data.
 interface FormData {
   id: string;
@@ -15,7 +16,7 @@ interface FormData {
 
 const CustomerProfilePage = () => {
   const {edit,fetchCustomer, errors} = useFetchCustomer()
-
+const {enqueueSnackbar} = useSnackbar()
   const [formData, setFormData] = useState<FormData>({
     id:"",
     name: "",
@@ -51,14 +52,17 @@ const CustomerProfilePage = () => {
 
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault();
-    console.log(formData,"trang prpfile")
     await edit(formData.id, formData)
    
-    
+    enqueueSnackbar(
+      `thông tin đã được cập nhật`, 
+       // Thông báo lỗi (variant: 'error')
+      { variant: 'success',autoHideDuration: 1000,  },
+    );
   };
 
   return (
-    <div className=" bg-light-50 flex items-center justify-center py-2">
+    <div className=" bg-light-50 flex items-center justify-center py-10">
       <div className="bg-white  lg:w-3/4 xl:w-1/2 shadow-lg rounded-lg p-6">
         {/* Header Section */}
         <div className="flex items-center my-6 border-b border-gray-300 pb-4">

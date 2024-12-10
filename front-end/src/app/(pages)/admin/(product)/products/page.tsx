@@ -127,6 +127,7 @@ const ProductList = () => {
             <tr>
               <th className="px-6 py-4 text-nowrap">Hình ảnh</th>
               <th className="px-6 py-4 text-nowrap">Tiêu đề</th>
+              <th className="px-6 py-4 text-nowrap">Nhà XB</th>
               <th className="px-6 py-4 text-nowrap">Tác giả</th>
               <th className="px-6 py-4 text-nowrap">Danh mục</th>
               <th className="px-6 py-4 text-nowrap">
@@ -136,7 +137,7 @@ const ProductList = () => {
                 </button>
               </th>
               <th className="px-6 py-4 text-nowrap">
-                Số lượng
+                Tồn kho
                 <button onClick={() => handleSort("stock")}>
                   {renderSortIcon("stock")}
                 </button>

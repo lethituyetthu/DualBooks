@@ -57,35 +57,54 @@ export default function useFetchAdmin() {
   // Login function
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:3200/admins/login", {
+      const response = await fetch("http://localhost:3200/admins/loginAccess", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Lỗi đăng nhập");
+        // Phân biệt lỗi từ API
+        if (response.status === 401) {
+          throw new Error("Sai email hoặc mật khẩu. Vui lòng thử lại.");
+        } else if (response.status === 403) {
+          throw new Error("Tài khoản chưa được xác minh email.");
+        } else {
+          throw new Error("Đã xảy ra lỗi trong quá trình đăng nhập.");
+        }
       }
-
+  
       const data = await response.json();
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("admin", JSON.stringify({
-        id: data.admin._id,
-        email: data.admin.email,
-        username: data.admin.username,
-        role: data.admin.role,
-      }));
+  
+      // Lưu trữ token dưới HttpOnly cookies để tăng cường bảo mật
+      document.cookie = `token=${data.token}; HttpOnly; Secure; SameSite=Strict; max-age=900`; // 15 phút
+      document.cookie = `refreshToken=${data.refreshToken}; HttpOnly; Secure; SameSite=Strict; max-age=604800`; // 7 ngày
+  
+      // Lưu thông tin người dùng vào localStorage (Chỉ thông tin không nhạy cảm)
+      localStorage.setItem(
+        "admin",
+        JSON.stringify({
+          id: data.admin._id,
+          email: data.admin.email,
+          username: data.admin.username,
+          role: data.admin.role,
+        })
+      );
 
       setIsAuthenticated(true);
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       data.admin.role === "Staff" ? router.push("/staff") : router.push("/admin");
       
       return data;
-    } catch (error) {
-      console.error("Login error:", error);
+    } catch (error: any) {
+      // Phân biệt lỗi mạng hoặc lỗi từ máy chủ
+      if (error.message.includes("NetworkError") || error.message.includes("Failed to fetch")) {
+        console.error("Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại mạng.");
+      } else {
+        console.error("Lỗi đăng nhập:", error.message);
+      }
       return { error: error.message };
     }
   };

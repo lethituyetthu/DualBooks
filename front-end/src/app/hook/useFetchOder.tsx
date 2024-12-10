@@ -38,8 +38,6 @@ export default function useFetchOrder() {
 
   const addOrder = async (orderData: Order) => {
     setLoading(true);
-
-    console.log(orderData)
     setError(null);
     try {
       const response = await fetch("http://localhost:3200/orders/", {

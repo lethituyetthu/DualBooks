@@ -1,51 +1,68 @@
 [{
   "_id": {
-    "$oid": "672df409494fdc22fa2fe8ac"
+    "$oid": "671b76daa384bb0885b3f6e9"
   },
-  "username": "tuyetthuAdmin",
-  "email": "thulttps29800@fpt.edu.vn",
-  "password": "$2b$10$cVH1Ta8qFXUdCyomd3faLOso.UbOmNR6O.YiPYJ6vLTbFQxCTaije",
-  "user_img": "1732610908779-images.jpg",
-  "role": "admin",
-  "created_at": {
-    "$date": "2024-11-08T11:20:41.326Z"
-  },
-  "updated_at": {
-    "$date": "2024-11-26T08:48:28.782Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67377c815e9452ddbce4babc"
-  },
-  "username": "thule",
-  "email": "thule01265@gmail.com",
-  "password": "$2b$10$vNQgJ1oKWnHEyafvE6bRju8CnjmmlPRwARp5Ys0ZWR0dQPgvDrgMa",
-  "user_img": "1732610866756-images.jpg",
+  "username": "NguyenHieu",
+  "email": "nguyenhieutv@gmail.com",
+  "password": "$2b$10$ryUAze2Wad0lahx7J2THKezDeabAkIbcVYL3RW35GfypBv03YMPSa",
+  "user_img": "1729853146659-hieuqc.jpg",
   "role": "staff",
   "created_at": {
-    "$date": "2024-11-15T16:53:21.469Z"
+    "$date": "2024-10-25T10:45:46.681Z"
   },
   "updated_at": {
-    "$date": "2024-11-26T08:47:46.760Z"
+    "$date": "2024-10-25T10:45:46.681Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6741825e244345a3022c819f"
+    "$oid": "671f30521751b74efec7df94"
   },
-  "username": "thanhtan",
-  "email": "thanhtan@gmail.com",
-  "password": "$2b$10$DHpOZXy3cWXSOf.eHqfO2egcq1Bz/JAZVzzAHJawMZ5m.VgzzUgMi",
-  "user_img": "1732610885821-images.jpg",
-  "role": "admin",
+  "username": "Nguyễn Minh Hiếu",
+  "email": "minhhieu@gmail.com",
+  "password": "$2b$10$ipfiHLYf544VUs.PjjpTT.MUfsu5wmcSsUfkqZzTlyvV6vqyyUnWW",
+  "user_img": "1730097234091-hieuqc.jpg",
+  "role": "staff",
   "created_at": {
-    "$date": "2024-11-23T07:21:02.787Z"
+    "$date": "2024-10-28T06:33:54.094Z"
   },
   "updated_at": {
-    "$date": "2024-11-26T08:48:05.825Z"
+    "$date": "2024-10-28T06:33:54.094Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "671f31853d95a105c8d0b7ae"
+  },
+  "username": "Thu Lê",
+  "email": "thule2004@gmail.com",
+  "password": "$2b$10$tdNbnBazgjsqtDY6kasKreWM5t6NNpf.tkT5LYMwIiN.Nacmh5tZm",
+  "user_img": "1730097541180-hieuqc.jpg",
+  "role": "admin",
+  "created_at": {
+    "$date": "2024-10-28T06:39:01.194Z"
+  },
+  "updated_at": {
+    "$date": "2024-10-28T06:39:01.194Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6736e62083b9ba7045245c89"
+  },
+  "username": "Nhật Huy",
+  "email": "huyle2004@gmail.com",
+  "password": "$2b$10$Hm.C3vstJFWh12lRmG3jSegBLdrif8zXJIvgUcCb/JPqozJcxs.Ia",
+  "user_img": "1731651104132-hieuqc.jpg",
+  "role": "staff",
+  "created_at": {
+    "$date": "2024-11-15T06:11:44.138Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-15T06:11:44.138Z"
   },
   "__v": 0
 }]

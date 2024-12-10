@@ -155,8 +155,9 @@ exports.cancelOrder = async (orderId) => {
             throw new Error('Only orders with "Chờ xác nhận" status can be cancelled');
         }
 
-        // Cập nhật trạng thái đơn hàng thành "Đã hủy"
+        // Cập nhật trạng thái đơn hàng và ngày hủy
         order.order_status = 'Đã hủy';
+        
         const updatedOrder = await order.save();
 
         return updatedOrder; // Trả về đơn hàng sau khi đã cập nhật
@@ -181,6 +182,8 @@ exports.confirmOrder = async (orderId) => {
 
         // Cập nhật trạng thái đơn hàng thành "Đã xác nhận"
         order.order_status = 'Đã xác nhận';
+        
+
         const updatedOrder = await order.save();
 
         // Trả về đơn hàng đã cập nhật
@@ -206,6 +209,8 @@ exports.markAsDelivering = async (orderId) => {
 
         // Cập nhật trạng thái đơn hàng thành "Đang giao hàng"
         order.order_status = 'Đang giao hàng';
+        
+
         const updatedOrder = await order.save();
 
         // Trả về đơn hàng đã cập nhật
@@ -234,6 +239,8 @@ exports.markAsCompleted = async (orderId) => {
 
         // Cập nhật trạng thái thanh toán thành "Đã thanh toán"
         order.payment_status = 'Đã thanh toán';
+
+        
 
         // Lưu các thay đổi vào cơ sở dữ liệu
         const updatedOrder = await order.save();
@@ -265,6 +272,7 @@ exports.getOrdersByCustomerId = async (customerId) => {
         throw new Error('Error fetching orders: ' + error.message); // Xử lý lỗi
     }
 };
+
 
 
 
