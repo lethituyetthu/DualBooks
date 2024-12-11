@@ -47,7 +47,7 @@ app.use(cors({
 app.options('*', cors());
 
 //kết nối db
-const connection = mongoose.connect('mongodb://localhost:27017/DA_TN', {})
+const connection = mongoose.connect('mongodb://localhost:27017/DATN', {})
     .then(() => {
         console.log('>>>>>>> DB đã kết nối thành công!!!!');
     })

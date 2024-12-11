@@ -47,7 +47,7 @@ export default function Showcategory() {
 
                 {/* Link */}
                 <Link
-                  href="#"
+                 href={`/customer/CategoryProductList?id=${item.id}`}
                   className="text-base font-medium text-primary-600 hover:text-primary-500 flex items-center gap-2 transition duration-300"
                 >
                   Xem ngay
