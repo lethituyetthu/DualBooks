@@ -11,7 +11,7 @@ export default function Page() {
   const [orderDate, setOrderDate] = useState<string>(""); // Ngày đặt hàng
 
   // Lọc đơn hàng theo trạng thái, loại và ngày
-  //console.log(orders)
+  console.log(orders)
   const filteredOrders = orders?.filter((order) => {
     const matchesStatus = !status || order.order_status.toLowerCase() === status.toLowerCase();
     const matchesType = !orderType || order.order_type.toLowerCase() === orderType.toLowerCase();

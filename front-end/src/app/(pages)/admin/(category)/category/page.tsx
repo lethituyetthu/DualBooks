@@ -19,7 +19,7 @@ export default function CategoryTable() {
   });
 
   const route = useRouter();
-  const { cate, deleteCategory, updateCategory  } = useFetchCategory();
+  const { cate, deleteCategory, updateCategory, fetchCategoryById  } = useFetchCategory();
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
@@ -27,13 +27,8 @@ export default function CategoryTable() {
 
   const handleDelete = async (id) => {
     if (confirm("Bạn có chắc chắn muốn xóa thể loại này?")) {
-      await deleteCategory(id)
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Lỗi khi xóa danh mục", error);
-      });
+      await deleteCategory(id);
+      route.refresh();
     }
   };
 
@@ -50,11 +45,10 @@ export default function CategoryTable() {
   const handleEditSubmit = async (formDataToSend) => {
 
     const response = await updateCategory(editFormData.id, formDataToSend);
-    
     if (!response) {
       alert("Cập nhật thể loại thành công!");
       setEditingCategory(null);
-      route.push("/admin/category");
+      route.refresh();
     } else {
       alert("Lỗi khi cập nhật thể loại!");
     }
@@ -93,7 +87,7 @@ export default function CategoryTable() {
       <table className="w-full border-collapse">
         <thead>
           <tr className="bg-primary-400 text-white">
-            <th className="p-4 text-left font-semibold text-nowrap">Hình Ảnh</th>
+            <th className="p-4 text-left font-semibold">Hình Ảnh</th>
             <th className="p-4 text-left font-semibold">Thể Loại</th>
             <th className="p-4 text-left font-semibold">Miêu Tả</th>
             <th className="p-4 text-left font-semibold">Thao Tác</th>
@@ -121,7 +115,7 @@ export default function CategoryTable() {
 
       {/* Edit Modal */}
       {editingCategory && (
-        <EditCategoryModal  
+        <EditCategoryModal
           category={editFormData}
           setCategory={setEditFormData}
           onClose={() => setEditingCategory(null)}

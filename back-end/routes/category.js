@@ -65,7 +65,7 @@ router.get('/:id', async (req, res) => {
   });
 // Endpoint tạo danh mục mới với hình ảnh
 // POST /api/categories
-router.post('/', uploadCategory.single('cate_image'), async (req, res) => {
+router.post('/',authenticateAdmin, uploadCategory.single('cate_image'), async (req, res) => {
   console.log('POST /categories endpoint hit');
   try {
       const categoryData = req.body;
@@ -91,7 +91,7 @@ router.post('/', uploadCategory.single('cate_image'), async (req, res) => {
 });
 // Endpoint cập nhật danh mục
 // PUT /api/categories/:id
-router.put('/:id',
+router.put('/:id',authenticateAdmin,
   uploadCategory.single('cate_image'),
   [
       body('name').not().isEmpty().withMessage('Category name is required'),
@@ -151,7 +151,7 @@ router.put('/:id',
 );
 
 // DELETE /api/categories/:id - Xóa một thể loại
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',authenticateAdmin, async (req, res) => {
   const { id } = req.params;
 
   try {

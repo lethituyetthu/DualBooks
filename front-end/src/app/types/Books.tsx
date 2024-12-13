@@ -10,10 +10,6 @@ export interface Books {
         name: string;
         id:string
     };        // ID của danh mục sách thuộc về
-    publisher: {
-        name: string;
-        id:string
-    }; 
     views: number;             // Số lượt xem của sách
     sales: number;             // Số lượng sách đã bán
     created_at: Date;          // Ngày tạo bản ghi sách

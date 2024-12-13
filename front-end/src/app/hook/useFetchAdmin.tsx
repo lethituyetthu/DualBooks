@@ -57,7 +57,7 @@ export default function useFetchAdmin() {
   // Login function
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:3200/admins/loginAccess", {
+      const response = await fetch("http://localhost:3200/admins/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

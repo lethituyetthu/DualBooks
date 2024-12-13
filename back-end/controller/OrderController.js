@@ -17,7 +17,7 @@ const formatOrder = (order) => {
         id: item._id,
         bookId: item.book_id._id,
         bookTitle: item.book_id.title,
-        bookImg: item.book_id.cover_image,
+        cover_image: item.book_id.cover_image,
         quantity: item.quantity,
         price: item.price
       }))
@@ -397,7 +397,7 @@ exports.getOrdersByCustomerId = async (req, res, customerId) => {
                 id: item._id,
                 bookId: item.book_id._id,
                 bookTitle: item.book_id.title,
-                bookImg: item.book_id.cover_image,
+                cover_image: item.book_id.cover_image,
                 quantity: item.quantity,
                 price: item.price
             })) ,// Nếu cần chi tiết sản phẩm

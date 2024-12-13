@@ -22,7 +22,7 @@ const CartItems: React.FC<CartItemListProps> = ({
 }) => {
   if (cartItems.length === 0) {
     return (
-      <div className="text-center text-gray-600 min-h-96">
+      <div className="text-center text-gray-600">
         <p>Giỏ hàng của bạn đang trống.</p>
       </div>
     );

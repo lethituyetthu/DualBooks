@@ -18,7 +18,7 @@ export default function page() {
       </div>
       <Category/>
       <NewBooks/>
-      <div className="max-w-[1200px] m-auto py-[90px]">
+      <div className="max-w-[1200px] m-auto my-[90px]">
       <Image src={bannerHot} className={styles.bannerImg} alt="banner anh"/>
       <HotBooks/>
       </div>

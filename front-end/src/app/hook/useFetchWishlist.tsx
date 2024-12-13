@@ -165,9 +165,9 @@ function useFavoriteBooks() {
         .then((data) => {
           console.log("Sản phẩm đã xóa thành công:", data);
            // Delay reload page after 3 seconds
-      /*  setTimeout(() => {
+       setTimeout(() => {
         window.location.reload(); // Làm mới trang sau 3 giây
-      }, 1000); */
+      }, 1000);
           const updatedWishlist = wishlist.filter((product) => product._id !== productId);
           setWishlist(updatedWishlist);
           setMessage("Sản phẩm đã được xóa khỏi yêu thích.");

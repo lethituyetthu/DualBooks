@@ -259,19 +259,29 @@ export default function useFetchCustomer() {
 
   // Edit customer info
   const edit = async (id: string, formData: typeCustomer) => {
-  
-  
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setErrors({ email: "Thiếu token. Vui lòng đăng nhập." });
+      return;
+    }
+
+    const validateErrors = validateForm(formData);
+    if (Object.keys(validateErrors).length > 0) {
+      setErrors(validateErrors);
+      return;
+    }
+
     try {
-      const response = await fetch(`http://localhost:3200/customers/${id}`, {
+      const response = await fetch(`http://localhost:3200/customers/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
-  
-      //console.log(response.data)
-      // Kiểm tra nếu phản hồi không thành công
+      console.log(formData);
       if (!response.ok) {
         const errorData = await response.json();
         setErrors({ email: errorData.message });
@@ -279,8 +289,8 @@ export default function useFetchCustomer() {
       } else {
         const data = await response.json();
         console.log("Cập nhật thông tin thành công");
-        setSuccessMessage(data.message);  // Hiển thị thông báo thành công
-        setErrors({});  // Xóa lỗi nếu có
+        setSuccessMessage(data.message);
+        setErrors({});
       }
     } catch (error) {
       console.error("Đã xảy ra lỗi khi cập nhật thông tin khách hàng:", error);

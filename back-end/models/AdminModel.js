@@ -34,14 +34,10 @@ const AdminSchema = new Schema({
         default: 'staff' // Thiết lập mặc định là 'staff'
     },
     refreshToken: { type: String }, // Lưu refresh_token
-    isEmailVerified: {
-        type: Boolean,
-        default: false, // Chưa xác minh email
-    },
-    verificationCode: {
-        type: String,
-        required: false, // Chưa cần mã xác nhận khi tạo
-    },
+    otp: { type: String },
+    otpExpiry: { type: Date },
+    token: { type: String },
+    tokenExpiry: { type: Date },
     created_at: { 
         type: Date, 
         default: Date.now 
@@ -74,11 +70,13 @@ AdminSchema.pre('save', async function(next) {
 });
 
 // Phương thức để so sánh mật khẩu khi đăng nhập
-AdminSchema.methods.comparePassword = async function(candidatePassword) {
+// Hàm so sánh mật khẩu
+AdminSchema.methods.comparePassword = async function (candidatePassword) {
     try {
         return await bcrypt.compare(candidatePassword, this.password);
     } catch (error) {
-        throw error;
+        console.error('Error comparing passwords:', error);
+        throw new Error('Password comparison failed');
     }
 };
 

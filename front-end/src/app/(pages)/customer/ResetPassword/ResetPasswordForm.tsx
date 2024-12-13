@@ -14,7 +14,7 @@ const ResetPasswordForm: React.FC = () => {
       if (tokenFromUrl) {
         setToken(tokenFromUrl); // Lưu token vào state
       } else {
-        alert('Token không hợp lệ!');
+        alert('Vui lòng xác thực email!');
         router.push('/customer/login'); // Điều hướng đến trang đăng nhập nếu không có token
       }
     }, [router]);

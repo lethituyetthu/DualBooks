@@ -1,93 +1,36 @@
 const adminService = require('../service/AdminService');
 const mailer = require('../mailer');
-
-// // Hàm đăng ký admin mới
-// exports.registerAdmin = async (req, res) => {
-//     try {
-//         const adminData = req.body;
-
-// // Kiểm tra xem có tệp tin ảnh được tải lên không
-//     if (!req.file) {
-//             return res.status(400).json({ error: 'User image is required' });
-//         }
-
-//         // Thêm tên file ảnh vào dữ liệu admin
-//         adminData.user_img = req.file.filename;
-
-//         const newAdmin = await adminService.registerAdmin(adminData);
-//         res.status(201).json({ message: 'Admin registered successfully/ Đăng ký thành công', data: newAdmin });
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// };
+const jwt = require('jsonwebtoken'); // Để tạo token
+const { SECRET_KEY,REFRESH_SECRET_KEY } = require('../config');
+// Hàm đăng ký admin mới
 exports.registerAdmin = async (req, res) => {
     try {
         const adminData = req.body;
-        
-        // Kiểm tra thông tin đầu vào
-        if (!req.file) {
-            return res.status(400).json({ error: 'Ảnh người dùng là bắt buộc' });
+
+// Kiểm tra xem có tệp tin ảnh được tải lên không
+    if (!req.file) {
+            return res.status(400).json({ error: 'User image is required' });
         }
 
-        // Thêm ảnh vào dữ liệu đăng ký
+        // Thêm tên file ảnh vào dữ liệu admin
         adminData.user_img = req.file.filename;
 
-        // Kiểm tra các trường bắt buộc
-        const requiredFields = ['username', 'email', 'password', 'user_img'];
-        for (const field of requiredFields) {
-            if (!adminData[field]) {
-                return res.status(400).json({ error: `Trường "${field}" là bắt buộc` });
-            }
-        }
-
-        // Tạo mã xác nhận và gửi email
-        const verificationCode = Math.floor(100000 + Math.random() * 900000); // Mã xác nhận 6 chữ số
-        await mailer.sendVerificationEmail(adminData.email, verificationCode);
-
-        // Lưu mã xác nhận tạm thời (có thể lưu trong Redis hoặc cơ sở dữ liệu)
-        adminData.verificationCode = verificationCode;
-
-        // Lưu thông tin người dùng vào cơ sở dữ liệu (chưa lưu trừ khi xác minh email thành công)
         const newAdmin = await adminService.registerAdmin(adminData);
-
-        res.status(201).json({ message: 'Đăng ký thành công, vui lòng kiểm tra email của bạn để xác nhận' });
+        res.status(201).json({ message: 'Admin registered successfully/ Đăng ký thành công', data: newAdmin });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-// Controller xác minh mã
-exports.verifyEmailCode = async (req, res) => {
-    try {
-        const { email, verificationCode } = req.body;
-
-        // Log thông tin nhận được từ client
-        console.log('Thông tin yêu cầu:', { email, verificationCode });
-
-        // Gọi service để xử lý logic xác minh mã
-        const result = await adminService.verifyCodeAndActivateUser(email, verificationCode);
-
-        // Kiểm tra kết quả và phản hồi lại client
-        if (!result.success) {
-            console.log('Kết quả xác minh:', result); // Log kết quả xác minh
-            return res.status(result.status).json({ error: result.message });
-        }
-
-        console.log('Xác minh thành công, email đã được xác nhận');
-        res.status(200).json({ message: 'Xác minh email thành công' });
-    } catch (error) {
-        console.error('Lỗi trong quá trình xác minh:', error);
-        res.status(500).json({ error: error.message });
-    }
-};
-
 
 // Hàm đăng nhập admin
 exports.loginAdmin = async (req, res) => {
     const { email, password } = req.body;
+    console.log('Req from body:',req.body);
+    
 
     try {
-        const { token, admin } = await adminService.loginAdmin(email, password);
-        res.status(200).json({ message: 'Login successful', token, admin });
+        const { token, refreshToken, admin } = await adminService.loginAdmin(email, password);
+        res.status(200).json({ message: 'Login successful', token,  refreshToken, admin });
     } catch (error) {
         res.status(401).json({ error: error.message });
     }
@@ -192,5 +135,94 @@ exports.getAdminsByName = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+exports.verifyEmail = async (req, res) => {
+    try {
+        const { email } = req.body; // Nhận email từ client
 
+        // Gọi service để kiểm tra email tồn tại trong cơ sở dữ liệu
+        const admin = await adminService.findAdminByEmail(email);
+
+        if (!admin) {
+            return res.status(404).json({ success: false, message: 'Email không tồn tại.' });
+        }
+
+        // Tạo mã OTP
+        const otp = Math.floor(100000 + Math.random() * 900000); // Tạo mã OTP 6 chữ số
+
+        // Cập nhật OTP và thời gian hết hạn trong cơ sở dữ liệu
+        const otpExpiry = new Date(Date.now() + 5 * 60 * 1000); // Hết hạn trong 5 phút
+        await adminService.updateOtp(admin._id, otp, otpExpiry);
+
+        // Gửi OTP qua email
+        await mailer.sendOtpEmail(email, otp);
+
+        // Trả về phản hồi thành công
+        res.status(200).json({ success: true, message: 'Mã OTP đã được gửi qua email.' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+exports.verifyOtp = async (req, res) => {
+    try {
+        const { email, otp } = req.body; // Nhận email và OTP từ client
+
+        // Kiểm tra email tồn tại trong cơ sở dữ liệu
+        const admin = await adminService.findAdminByEmail(email);
+        if (!admin) {
+            return res.status(404).json({ success: false, message: 'Email không tồn tại.' });
+        }
+
+        // Kiểm tra OTP và thời gian hết hạn
+        if (admin.otp !== otp) {
+            return res.status(400).json({ success: false, message: 'Mã OTP không chính xác.' });
+        }
+
+        if (new Date() > new Date(admin.otpExpiry)) {
+            return res.status(400).json({ success: false, message: 'Mã OTP đã hết hạn.' });
+        }
+ // Tạo token
+ const token = jwt.sign(
+    { id: admin._id, email: admin.email }, 
+    SECRET_KEY,
+     { expiresIn: '15m' });
+        const tokenExpiry = new Date(Date.now() + 15 * 60 * 1000); // Thời gian hết hạn token
+
+        await adminService.updateToken(admin._id, token, tokenExpiry);
+
+       // Gửi email với token và link đặt lại mật khẩu
+       await mailer.sendTokenEmails(
+        email,
+        token, 
+    );
+
+
+        // Trả về phản hồi thành công
+        res.status(200).json({ success: true, message: 'Token đã được gửi qua email.' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+// Hàm xử lý yêu cầu đặt lại mật khẩu
+exports.resetPassword = async (req, res) => {
+    const { token, newPassword } = req.body;
+  
+    if (!token || !newPassword) {
+        return res.status(400).json({ message: "Token và mật khẩu mới là bắt buộc" });
+    }
+  
+    try {
+        // Kiểm tra và giải mã token
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const email = decoded.email; // Lấy email từ decoded token
+
+        // Gọi service để thực hiện đặt lại mật khẩu
+        const result = await adminService.resetPassword(email, newPassword);
+
+        // Trả kết quả cho client
+        return res.status(200).json(result);
+    } catch (error) {
+        // Xử lý lỗi nếu token không hợp lệ hoặc gặp lỗi khác
+        return res.status(500).json({ message: error.message || 'Đã có lỗi xảy ra khi đặt lại mật khẩu' });
+    }
+};
 

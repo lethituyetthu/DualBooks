@@ -2,6 +2,23 @@ const Admin = require('../models/AdminModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { SECRET_KEY, REFRESH_SECRET_KEY } = require('../config');
+class AppError extends Error {
+    constructor(message, statusCode) {
+        super(message);
+        this.statusCode = statusCode; // Gán mã lỗi HTTP
+    }
+}
+// Hàm kiểm tra định dạng email
+const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+};
+
+// Hàm kiểm tra định dạng số điện thoại
+const isValidPhone = (phone) => {
+    const phoneRegex = /^\d{10}$/; // Số điện thoại phải là 10 chữ số
+    return phoneRegex.test(phone);
+};
 // Hàm đăng ký admin mới
 exports.registerAdmin = async (adminData) => {
     try {
@@ -36,8 +53,6 @@ exports.registerAdmin = async (adminData) => {
             password: adminData.password, // Mật khẩu chưa mã hóa
             user_img: adminData.user_img, // Tên file ảnh đã được lưu
             role: adminData.role || 'admin',
-            verificationCode: adminData.verificationCode,
-            isEmailVerified: false, // Mặc định là chưa xác minh
             created_at: new Date(),
             updated_at: new Date()
         });
@@ -50,63 +65,39 @@ exports.registerAdmin = async (adminData) => {
         throw new Error('Error registering admin: ' + error.message);
     }
 };
-// Service xác minh mã và kích hoạt người dùng
-exports.verifyCodeAndActivateUser = async (email, verificationCode) => {
-    try {
-        // Tìm người dùng trong cơ sở dữ liệu
-        const admin = await Admin.findOne({ email });
-
-        // Log thông tin người dùng tìm thấy
-        console.log('Tìm thấy người dùng:', admin);
-
-        if (!admin) {
-            console.log('Không tìm thấy người dùng với email:', email);
-            return { success: false, status: 404, message: 'Không tìm thấy người dùng' };
-        }
-
-        // Kiểm tra mã xác nhận
-        console.log('Mã xác nhận trong CSDL:', admin.verificationCode);
-        console.log('Mã xác nhận từ yêu cầu:', verificationCode);
-
-        if (admin.verificationCode !== verificationCode) {
-            return { success: false, status: 400, message: 'Mã xác nhận không đúng' };
-        }
-
-        // Cập nhật trạng thái đã xác minh email
-        admin.isEmailVerified = true;
-        await admin.save();
-
-        // Log dữ liệu admin sau khi lưu
-        console.log('Dữ liệu admin sau khi cập nhật:', admin);
-
-        return { success: true }; // Trả về kết quả thành công
-    } catch (error) {
-        console.error('Lỗi xác minh mã:', error);
-        throw new Error('Lỗi xác minh mã: ' + error.message);
-    }
-};
 
 // Hàm đăng nhập admin
 exports.loginAdmin = async (email, password) => {
     try {
         // Tìm admin theo email
         const admin = await Admin.findOne({ email });
+        console.log('Admin found:', admin);
+        console.log('Admin password:', admin.password);
+console.log('Password input:', password);
 
         if (!admin) {
             throw new Error('Admin not found');
         }
+ // Kiểm tra mật khẩu đã được mã hóa (bcrypt.compare)
+ const isPasswordCorrect = await bcrypt.compare(password, admin.password);
+ console.log('Password correct:', isPasswordCorrect); // Kiểm tra kết quả so sánh
 
-        // Kiểm tra mật khẩu
-        const isMatch = await admin.comparePassword(password);
-
-        if (!isMatch) {
-            throw new Error('Invalid password');
-        }
-
+ if (!isPasswordCorrect) {
+     throw new Error('Invalid password');
+ }
         // Tạo token
-        const token = jwt.sign({ id: admin._id, email: admin.email, role: admin.role }, SECRET_KEY, { expiresIn: '1h' });
-
-        return { token, admin };
+        const token = jwt.sign(
+            { id: admin._id, email: admin.email, role: admin.role },
+             SECRET_KEY, { expiresIn: '1h' });
+        const refreshToken = jwt.sign(
+           { id: admin._id, email: admin.email }, 
+            REFRESH_SECRET_KEY, { expiresIn: '7d' } // Refresh token có thời gian sống dài hơn (7 ngày)
+                );  
+    // Lưu refresh_token vào cơ sở dữ liệu (nếu cần thiết)
+    admin.refreshToken = refreshToken;
+    await admin.save();
+        return { token,refreshToken, admin };
+       
     } catch (error) {
         throw new Error('Error logging in admin: ' + error.message);
     }
@@ -228,4 +219,51 @@ exports.getAdminsByName = async (name) => {
         throw new Error('Error fetching admins: ' + error.message);
     }
 };
+exports.findAdminByEmail = async (email) => {
+    // Tìm khách hàng theo email
+    // Kiểm tra định dạng email
+    if (!isValidEmail(email)) {
+        throw new AppError('Email không hợp lệ.', 400);
+    }
+    return await Admin.findOne({ email });
+};
+exports.updateToken = async (adminId, token, tokenExpiry) => {
+    const admin = await Admin.findById(adminId);
+    if (!admin) throw new Error('Khách hàng không tồn tại');
+    admin.token = token;
+    admin.tokenExpiry = tokenExpiry;
+    await admin.save();
+};
+exports.updateOtp = async (adminId, otp, otpExpiry) => {
+    // Cập nhật OTP và thời gian hết hạn cho khách hàng
+    return await Admin.findByIdAndUpdate(adminId, {
+        otp,
+        otpExpiry
+    }, { new: true });
+};
+// Hàm cập nhật mật khẩu cho khách hàng
+exports.resetPassword = async (email, newPassword) => {
+    try {
+         // Kiểm tra xem khách hàng có tồn tại không
+      const admin = await Admin.findOne({ email });
+      if (!admin) {
+        throw new Error('Tài khoản không tồn tại');
+      }
+  
+       // Kiểm tra mật khẩu
+    const passwordRegex = /^[a-zA-Z0-9]{6}$/; // Mật khẩu chỉ gồm 6 ký tự chữ hoặc số
+    if (!passwordRegex.test(newPassword)) {
+      throw new Error('Mật khẩu không hợp lệ. Vui lòng sử dụng 6 ký tự chỉ gồm chữ và số.');
+    }
 
+   
+  
+      // Cập nhật mật khẩu mới
+      admin.password = newPassword;
+      await admin.save();
+  
+      return { success: true, message: 'Mật khẩu đã được đặt lại thành công!' };
+    } catch (error) {
+      throw new Error(error.message || 'Đã có lỗi xảy ra khi đặt lại mật khẩu');
+    }
+  };

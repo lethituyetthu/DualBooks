@@ -15,22 +15,12 @@ type CartItem = {
   
 // Custom Hook để xử lý đặt hàng
 const useHandlePlaceOrder = (cartItems: CartItem[],  totalQuantity: number, totalPrice: number) => {
-
-  const customerToken = localStorage.getItem("customer");
-
-    // Kiểm tra khách hàng đã đăng nhập
-  
   const router = useRouter();
   const { fetchProductStock } = useFetchBook();
   const { enqueueSnackbar } = useSnackbar();
 
    // Hàm xử lý khi đặt hàng
    const handlePlaceOrder = async () => {
-    if (!customerToken) {
-      alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
-      return;
-    }
-    
     for (const item of cartItems) {
       try {
         // Lấy số lượng tồn kho từ API

@@ -47,14 +47,12 @@ const FeetBack = ({ id }: { id: string }) => {
   if (loading) return <p>Đang tải đánh giá...</p>;
   if (error) return <p>Lỗi: {error}</p>;
 
-  console.log(reviews)
-
   return (
     <div className="w-[50%]">
       <h2 className="text-xl font-semibold mb-4 ml-3">Đánh Giá Của Khách Hàng</h2>
       {/* Khung chứa danh sách bình luận */}
       <div
-        className=""
+        className="border p-4 rounded-md shadow-sm bg-gray-50"
         style={{
           maxHeight: "300px", // Chiều cao giới hạn cho khung chứa
           overflowY: "auto", // Hiển thị thanh cuộn dọc nếu nội dung vượt quá

@@ -2,8 +2,6 @@ import { useState } from "react";
 import Image from "next/image";
 import useAddToCart from "@/app/hook/useAddToCard";
 import { useRouter } from "next/navigation";
-import useHandlePlaceOrder from "@/app/hook/useHandlePlaceOrder";
-
 interface BookDetailProps {
   title: string;
   description: string;
@@ -24,7 +22,6 @@ const BookDetail = ({
   views,
 }: BookDetailProps) => {
   const router = useRouter()
-
   const [quantity, setQuantity] = useState(1);
   const [notification, setNotification] = useState<string | null>(null);
 
@@ -44,9 +41,27 @@ const BookDetail = ({
     }
   };
 
+  const handlePlaceOrder = () => {
+    const product = {
+      id,
+      title,
+      price,
+      cover_image,
+      quantity,
+    };
   
+    const data = JSON.stringify({
+      cartItems : [product], // Thông tin giỏ hàng
+      totalQuantity: quantity , // Tổng số lượng sản phẩm
+      totalPrice: quantity*price, // Tổng tiền
+    });
 
-  const handlePlaceOrder = useHandlePlaceOrder([{ id, title, price, cover_image, quantity, category: '' }], quantity, quantity*price)
+    const encodedData = encodeURIComponent(data); // Mã hóa dữ liệu để truyền qua URL
+
+    router.push(`/customer/checkout?data=${encodedData}`);
+    //console.log(encodedData)
+    // Điều hướng sang trang thanh toán với dữ liệu
+  };
   const handleAddToCart = () => {
     const product = {
       id,
@@ -119,9 +134,8 @@ const BookDetail = ({
               {quantity}
             </span>
             <button
-            disabled={quantity>stock}
               onClick={handleIncrease}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 transition disabled:bg-gray-400"
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 transition"
             >
               +
             </button>
@@ -131,18 +145,14 @@ const BookDetail = ({
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4">
           <button
-          disabled={quantity>stock}
-          onClick={handlePlaceOrder} className="px-6 py-3 bg-primary-400 hover:bg-primary-300 text-white font-medium rounded-md shadow transition disabled:bg-gray-400">
+          onClick={handlePlaceOrder} className="px-6 py-3 bg-primary-400 hover:bg-primary-300 text-white font-medium rounded-md shadow transition">
             Mua Ngay
           </button>
           <button
-          disabled={quantity>stock}
-
             onClick={handleAddToCart}
-            className="px-6 py-3 bg-white border border-primary-500 hover:bg-primary-100 text-primary-600 font-medium rounded-md shadow transition disabled:bg-gray-400 disabled:text-white"
+            className="px-6 py-3 bg-white border border-primary-500 hover:bg-primary-100 text-primary-600 font-medium rounded-md shadow transition"
           >
-            {stock === 0 ? "hết hàng" : "Thêm vào giỏ hàng" }
-            
+            Thêm vào giỏ hàng
           </button>
         </div>
 

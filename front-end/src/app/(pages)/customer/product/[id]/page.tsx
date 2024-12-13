@@ -118,7 +118,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
           <Rating id={id}/>
           <div className="flex justify-between">
             <ReviewForm id={id}/>
-           <FeetBack  id={id} />
+            <FeetBack  id={id} />
           </div>
         </div>
       </div>
