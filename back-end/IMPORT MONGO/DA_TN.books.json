@@ -2,38 +2,37 @@
   "_id": {
     "$oid": "66d57256afc8a51793d73227"
   },
-  "id": 1,
   "title": "Búp Sen Xanh (Tái Bản 2020)",
   "author": "Sơn Tùng",
-  "category": "Thiếu nhi",
   "description": "Có thể xếp “Búp Sen Xanh” vào nhóm tác phẩm văn học dành cho thiếu nhi và là tác phẩm nổi tiếng nhất viết về chủ tịch Hồ Chí Minh trong suốt thời thơ ấu cho đến khi rời Việt Nam sang Pháp.\\n\\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...\"",
   "price": 52.56,
-  "stock": 85,
+  "stock": 77,
   "cover_image": "1728314210371-331872765.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
     "$date": "2024-11-25T04:03:50.656Z"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
   },
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
   },
   "__v": 1,
   "reviews": [],
-  "sales": 11,
-  "views": 59,
+  "sales": 19,
+  "views": 67,
   "status": "hidden"
 },
 {
   "_id": {
     "$oid": "66d57256afc8a51793d73228"
   },
-  "id": 2,
   "title": "Chuyện Con Mèo Dạy Hải Âu Bay (Tái Bản 2019)",
   "author": "Luis Sepúlveda",
-  "category": "Thiếu nhi",
   "description": "Chuyện con mèo dạy hải âu bay là kiệt tác dành cho thiếu nhi của nhà văn Chi Lê nổi tiếng Luis Sepúlveda – tác giả của cuốn Lão già mê đọc truyện tình đã bán được 18 triệu bản khắp thế giới. Tác phẩm không chỉ là một câu chuyện ấm áp, trong sáng, dễ thương về loài vật mà còn chuyển tải thông điệp về trách nhiệm với môi trường, về sự sẻ chia và yêu thương cũng như ý nghĩa của những nỗ lực – “Chỉ những kẻ dám mới có thể bay”.\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...",
   "price": 39.2,
-  "stock": 98,
+  "stock": 85,
   "cover_image": "1728314238932-845181620.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
@@ -62,21 +61,19 @@
       "$oid": "672cdee3bdecd3bd976dca88"
     }
   ],
-  "sales": 2,
-  "views": 34,
+  "sales": 15,
+  "views": 41,
   "status": "visible"
 },
 {
   "_id": {
     "$oid": "66d57256afc8a51793d73229"
   },
-  "id": 3,
   "title": "Chú Mèo Nhiều Tên",
   "author": "Katie Harnett",
-  "category": "Thiếu nhi",
   "description": "Chú mèo ở phố Ngàn Hoa có vô số cái tên, mỗi người gọi chú một kiểu. Ai cũng yêu chú cả. Nhưng có một ngôi nhà trên phố chú chưa từng ghé chân…\n\nCuốn sách tranh tuyệt vời này kể câu chuyện ngọt ngào và đáng nhớ về tình cảm láng giềng, tình bạn… mà không ai trong chúng ta quên được.",
   "price": 39.2,
-  "stock": 100,
+  "stock": 93,
   "cover_image": "1728314472597-447946428.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
@@ -90,21 +87,19 @@
   },
   "__v": 1,
   "reviews": [],
-  "sales": 0,
-  "views": 23,
+  "sales": 7,
+  "views": 25,
   "status": "visible"
 },
 {
   "_id": {
     "$oid": "66d57256afc8a51793d7322a"
   },
-  "id": 4,
   "title": "Chuyện Của Áng Mây",
   "author": "Katie Harnett",
-  "category": "Thiếu nhi",
   "description": "Đám mây nhỏ cô đơn biết mấy. Giá cậu tìm được ai đó yêu thích những cơn mưa!\n\nMột ngày nọ, cậu đi ngang qua cô chủ tiệm hoa lúc nào cũng buồn rầu… Liệu họ có tìm thấy ở nhau những điều mình trông đợi?\n\nMột câu chuyện ấm lòng về những cảm xúc và tình bạn bất ngờ…",
   "price": 28.05,
-  "stock": 100,
+  "stock": 95,
   "cover_image": "1728314507183-596565747.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
@@ -118,7 +113,7 @@
   },
   "__v": 1,
   "reviews": [],
-  "sales": 0,
+  "sales": 5,
   "views": 6,
   "status": "visible"
 },
@@ -126,13 +121,11 @@
   "_id": {
     "$oid": "66d57256afc8a51793d7322b"
   },
-  "id": 5,
   "title": "Bà Ơi, Về Với Cháu!",
   "author": "Sue Limb, Grégoire Mabire",
-  "category": "Thiếu nhi",
   "description": "Cha mẹ Bessie thường xuyên bận rộn, nhưng may mắn thay… ở đây có Bà. Bà luôn dành thời gian cho Bessie.\n\nNhững cảm xúc mà \"Bà ơi, về với cháu!\" mang lại vô cùng chân thực và xúc động, khiến người đọc bồi hồi da diết nhớ lại những năm tháng thơ bé bên bà - một trong những người phụ nữ quan trọng nhất trong cuộc đời.\n\nCùng đọc \"Bà ơi, về với cháu!\" bằng tất cả lòng biết ơn và trân trọng nhé!",
   "price": 29.75,
-  "stock": 99,
+  "stock": 92,
   "cover_image": "1728314540438-621785815.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
@@ -146,7 +139,7 @@
   },
   "__v": 1,
   "reviews": [],
-  "sales": 1,
+  "sales": 8,
   "views": 2,
   "status": "visible"
 },
@@ -154,13 +147,11 @@
   "_id": {
     "$oid": "66d5ac5590db775ed89c8df7"
   },
-  "id": 6,
   "title": "Toán 12 - Tập 1 (Chân Trời) (Chuẩn)",
   "author": "Nhiều Tác Giả",
-  "category": "Giáo khoa - Tham khảo ",
   "description": "Sách biên soạn theo chương trình giáo dục phổ thông mới. Các kiến thức trong sách được chủ yếu xuất phát từ những tình huống của cuộc sống quanh ta và trở lại giúp ta giải quyết những vấn đề của cuộc sống. Vì thế, khi học Toán theo cuốn sách này, các em sẽ cảm nhận được rằng, Toán học thật là gần gũi.",
   "price": 14,
-  "stock": 100,
+  "stock": 98,
   "cover_image": "1728314580541-478306471.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
@@ -176,21 +167,19 @@
     "$oid": "671927e6b173afa473507ac2"
   },
   "reviews": [],
-  "sales": 0,
-  "views": 6,
+  "sales": 2,
+  "views": 12,
   "status": "visible"
 },
 {
   "_id": {
     "$oid": "66d5ae3684632959c4685045"
   },
-  "id": 7,
   "title": "Tiếng Anh 12 Friends Global - Student Book",
   "author": "Nhiều Tác Giả",
-  "category": "Giáo khoa - Tham khảo ",
   "description": "Tiếng Anh 12 Friends Global - Student Book\n\nMỤC LỤC\n\nUnit I. Introduction\n\nUnit 1. Relationships\n\nUnit 2. Problems\n\nUnit 3. Customs and tradition\n\nUnit 4. Holidays and tourism\n\nUnit 5. Careers\n\nUnit 6. Health\n\nUnit 7. Media\n\nUnit 8. Change the world",
   "price": 99,
-  "stock": 100,
+  "stock": 96,
   "cover_image": "1728314600164-920992024.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
@@ -201,29 +190,30 @@
   "updated_at": {
     "$date": "2024-11-25T04:09:15.760Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": [],
+  "sales": 4,
+  "views": 5
 },
 {
   "_id": {
     "$oid": "66e5335b2a019adbc7cbf5c6"
   },
-  "id": 8,
   "title": "Tiếng Anh 12 Friends Global - Workbook",
   "author": "Nhiều Tác Giả",
-  "category": "Giáo khoa - Tham khảo ",
   "description": "Với phương châm “Developing a global outlook – Vươn tầm thế giới”, Sách giáo khoa Tiếng Anh 12 Friends Global góp phần nâng cao chất lượng hoạt động giáo dục toàn diện về năng lực, phẩm chất, kĩ năng giúp các em phát triển và hội nhập trong thời đại mới. Nội dung các bài nghe, bài đọc hấp dẫn, phù hợp đặc điểm học sinh lớp 12 với mục tiêu phát triển năng lực ngôn ngữ và năng lực giao tiếp.\n\n",
   "price": 79,
-  "stock": 100,
+  "stock": 95,
   "cover_image": "1728314627206-883689815.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
   },
-  "views": 4,
-  "sales": 0,
+  "views": 8,
+  "sales": 5,
   "created_at": {
     "$date": "2024-09-14T06:55:23.006Z"
   },
@@ -241,19 +231,17 @@
   "_id": {
     "$oid": "66e533ca526475c476d285b8"
   },
-  "id": 9,
   "title": "Ngữ Văn 12 - Tập 2 (Chân Trời) (Chuẩn)",
   "author": "Nhiều Tác Giả",
-  "category": "Giáo khoa - Tham khảo ",
   "description": "Với cách thể hiện phong phú và lôi cuốn, hình thức trình bày hấp dẫn và thân thiện, cuốn sách được biên soạn theo định hướng phát triển phẩm chất và năng lực học sinh. Các kiến thức trong sách sẽ đến với các em học sinh một cách tự nhiên, bắt nguồn từ thực tế đời sống và giúp các em biết cách giải quyết những vấn đề đặt ra trong cuộc sống",
   "price": 19,
-  "stock": 100,
+  "stock": 98,
   "cover_image": "1728314651509-461275518.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
   },
   "views": 9,
-  "sales": 0,
+  "sales": 2,
   "created_at": {
     "$date": "2024-09-14T06:57:14.222Z"
   },
@@ -271,19 +259,17 @@
   "_id": {
     "$oid": "66e53413526475c476d285ba"
   },
-  "id": 10,
   "title": "Tin Học 12 - Định Hướng Tin Học Ứng Dụng (Kết Nối) (Chuẩn)",
   "author": "Nhiều Tác Giả",
-  "category": "Giáo khoa - Tham khảo ",
   "description": "Sách cung cấp cho các em những kiến thức chuyên sâu, bổ ích, lí thú và thiết thực, giúp các em hình thành kĩ năng thực hành, kĩ năng vận dụng kiến thức đã học, ứng dụng tin học vào giải quyết vấn đề thực tế.",
   "price": 21,
-  "stock": 100,
+  "stock": 97,
   "cover_image": "1728314672726-733512066.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
   },
   "views": 2,
-  "sales": 0,
+  "sales": 3,
   "created_at": {
     "$date": "2024-09-14T06:58:27.798Z"
   },
@@ -301,155 +287,148 @@
   "_id": {
     "$oid": "66e534ab526475c476d285bc"
   },
-  "id": 11,
   "title": "Góc Nhỏ Có Nắng",
   "author": "Little Rainbow",
-  "category": "Văn học ",
   "description": "- Với 30 chủ đề tô màu phong phú đa dạng, mỗi bức tranh như là một lời thủ thỉ tâm tình gửi đến bạn\n\n- Thư giãn và chữa lành: Với những hình ảnh đẹp mắt và đơn giản, tô màu sẽ là một phương pháp hiệu quả giúp bạn chữa lành và nuôi dưỡng tâm hồn\n\n- Khám phá sự sáng tạo: Bạn đừng ngại vẽ thêm, tô thêm màu sắc để thể hiện cảm xúc của riêng mình\n\n- Chất liệu giấy dày, mịn, đẹp sẽ đem đến cho bạn trải nghiệm tô màu thú vị",
   "price": 54.4,
-  "stock": 100,
+  "stock": 99,
   "cover_image": "1728314706073-318929387.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c41"
   },
-  "views": 0,
-  "sales": 0,
+  "views": 2,
+  "sales": 1,
   "created_at": {
     "$date": "2024-09-14T07:00:59.183Z"
   },
   "updated_at": {
     "$date": "2024-10-24T16:18:23.743Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e53504526475c476d285be"
   },
-  "id": 12,
   "title": "Sưởi Ấm Mặt Trời - Phần Tiếp Theo Của Cây Cam Ngọt Của Tôi",
   "author": "Joses Mauro De Vasconcelos",
-  "category": "Văn học ",
   "description": "Zezé, cậu bé tinh nghịch siêu hạng đồng thời cũng đáng yêu bậc nhất ngày ngào giờ đã thoát khỏi cuộc sống nghèo khó, cũng không còn phải chịu cảnh bị đánh đập thường xuyên như trong quá khứ. Cậu đã chuyển đến Natal sống cùng gia đình cha đỡ đầu, được học ở một ngôi trường tốt, dần dần tiến bộ cả về mặt trí tuệ lẫn thể chất. Nhưng nỗi đau mất mát vẫn đè nặng lên trái tim cậu và Zezé vẫn là một cậu nhóc “ hầu như lúc nào cũng buồn”, thậm chí “có lẽ là một trong những cậu nhóc buồn nhất quả đất”.\n\n",
   "price": 124.8,
-  "stock": 100,
+  "stock": 99,
   "cover_image": "1728314775706-745924870.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c41"
   },
   "views": 0,
-  "sales": 0,
+  "sales": 1,
   "created_at": {
     "$date": "2024-09-14T07:02:28.896Z"
   },
   "updated_at": {
     "$date": "2024-10-24T16:18:33.266Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e5355b526475c476d285c0"
   },
-  "id": 13,
   "title": "Cây Cam Ngọt Của Tôi",
   "author": "Joses Mauro De Vasconcelos",
-  "category": "Văn học ",
   "description": "Hãy làm quen với Zezé, cậu bé tinh nghịch siêu hạng đồng thời cũng đáng yêu bậc nhất, với ước mơ lớn lên trở thành nhà thơ cổ thắt nơ bướm. Chẳng phải ai cũng công nhận khoản “đáng yêu” kia đâu nhé. Bởi vì, ở cái xóm ngoại ô nghèo ấy, nỗi khắc khổ bủa vây đã che mờ mắt người ta trước trái tim thiện lương cùng trí tưởng tượng tuyệt vời của cậu bé con năm tuổi.\n\n",
   "price": 84.24,
-  "stock": 100,
+  "stock": 99,
   "cover_image": "1728314795640-28671373.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c41"
   },
-  "views": 0,
-  "sales": 0,
+  "views": 6,
+  "sales": 1,
   "created_at": {
     "$date": "2024-09-14T07:03:55.350Z"
   },
   "updated_at": {
     "$date": "2024-10-24T16:18:43.986Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e535b0526475c476d285c2"
   },
-  "id": 14,
   "title": "Nhà Giả Kim (Tái Bản 2020)",
   "author": "Paulo Coelho",
-  "category": "Văn học ",
   "description": "Tiểu thuyết Nhà giả kim của Paulo Coelho như một câu chuyện cổ tích giản dị, nhân ái, giàu chất thơ, thấm đẫm những minh triết huyền bí của phương Đông. Trong lần xuất bản đầu tiên tại Brazil vào năm 1988, sách chỉ bán được 900 bản. Nhưng, với số phận đặc biệt của cuốn sách dành cho toàn nhân loại, vượt ra ngoài biên giới quốc gia, Nhà giả kim đã làm rung động hàng triệu tâm hồn, trở thành một trong những cuốn sách bán chạy nhất mọi thời đại, và có thể làm thay đổi cuộc đời người đọc.\n\n",
   "price": 61.62,
-  "stock": 100,
+  "stock": 98,
   "cover_image": "1728314817227-762829361.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c41"
   },
   "views": 0,
-  "sales": 0,
+  "sales": 2,
   "created_at": {
     "$date": "2024-09-14T07:05:20.142Z"
   },
   "updated_at": {
     "$date": "2024-10-24T16:18:54.156Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e5360d526475c476d285c4"
   },
-  "id": 15,
   "title": "25 Độ Âm",
   "author": "Thảo Trang",
-  "category": "Văn học",
   "description": "Di cư và nhập cảnh trái phép luôn là vấn đề nhức nhối của nhân loại trong hàng thập kỉ tồn tại và phát triển. Mặc dù các quốc gia đã đưa ra rất nhiều lời cảnh tỉnh và siết chặt an ninh cùng nhiều hình thức trừng phạt mạnh tay, nhưng vấn nạn này chưa bao giờ được giải quyết triệt để, thậm chí thủ đoạn của bọn tội phạm vượt biên còn ngày càng tinh vi và ngoan cố hơn. Chúng ta hẳn không thể nào quên được sự kiện kinh hoàng, gây rúng động toàn thế giới cách đây 5 năm: 1h20ph sáng ngày 23/10/2019, cảnh sát Anh quốc đã phát hiện ra thi thể của 39 người Việt tử vong trong một chiếc xe container đông lạnh. Họ đều là những con người tham gia vào chuyến hành trình vượt biên trái phép và bỏ mạng ngay trước giây phút tưởng chừng đã đặt chân được đến miền đất hứa.",
   "price": 123.24,
-  "stock": 100,
+  "stock": 97,
   "cover_image": "1728314839131-814488182.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c41"
   },
-  "views": 0,
-  "sales": 0,
+  "views": 4,
+  "sales": 3,
   "created_at": {
     "$date": "2024-09-14T07:06:53.371Z"
   },
   "updated_at": {
     "$date": "2024-10-24T16:19:10.481Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e536ac526475c476d285c7"
   },
-  "id": 16,
   "title": "Tư Duy Ngược",
   "author": "Nguyễn Anh Dũng",
-  "category": "Tâm lý - Kỹ năng sống",
   "description": "Chúng ta thực sự có hạnh phúc không? Chúng ta có đang sống cuộc đời mình không? Chúng ta có dám dũng cảm chiến thắng mọi khuôn mẫu, định kiến, đi ngược đám đông để khẳng định bản sắc riêng của mình không?. Có bao giờ bạn tự hỏi như thế, rồi có câu trả lời cho chính mình?\n\n",
   "price": 69.5,
   "stock": 100,
@@ -457,7 +436,7 @@
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c42"
   },
-  "views": 0,
+  "views": 4,
   "sales": 0,
   "created_at": {
     "$date": "2024-09-14T07:09:32.615Z"
@@ -465,107 +444,103 @@
   "updated_at": {
     "$date": "2024-10-24T16:19:22.160Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e536ed526475c476d285c9"
   },
-  "id": 17,
   "title": "Tư Duy Mở",
   "author": "Nguyễn Anh Dũng",
-  "category": "Tâm lý - Kỹ năng sống",
   "description": "Con người đang sống trong thời đại công nghệ, khi mọi thứ thay đổi chóng mặt, điều đó đòi hỏi chúng ta phải linh hoạt trong cách tư duy để bắt kịp xu hướng toàn cầu. Hay nói cách khác, chúng ta cần có một tư duy mở để đón nhận và khai phá kiến thức mới, bởi nếu chúng ta cứ khăng khăng giữ định kiến của mình thì sự phát triển sẽ đi vào ngõ cụt.\n\n",
   "price": 69,
-  "stock": 100,
+  "stock": 98,
   "cover_image": "1728314886169-545471971.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c42"
   },
-  "views": 0,
-  "sales": 0,
+  "views": 1,
+  "sales": 2,
   "created_at": {
     "$date": "2024-09-14T07:10:37.002Z"
   },
   "updated_at": {
     "$date": "2024-10-24T16:19:33.992Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e53749526475c476d285cb"
   },
-  "id": 18,
   "title": "Khéo Ăn Nói Sẽ Có Được Thiên Hạ (Tái Bản 2022)",
   "author": "Trác Nhã",
-  "category": "Tâm lý - Kỹ năng sống",
   "description": "Trong xã hội thông tin hiện đại, sự im lặng không còn là vàng nữa, nếu không biết cách giao tiếp thì dù là vàng cũng sẽ bị chôn vùi. Trong cuộc đời một con người, từ xin việc đến thăng tiến, từ tình yêu đến hôn nhân, từ tiếp thị cho đến đàm phán, từ xã giao đến làm việc… không thể không cần đến kĩ năng và khả năng giao tiếp. Khéo ăn khéo nói thì đi đâu, làm gì cũng gặp thuận lợi. Không khéo ăn nói, bốn bề đều là trở ngại khó khăn.\n\n\n",
   "price": 84.5,
-  "stock": 100,
+  "stock": 98,
   "cover_image": "1728314906998-265918746.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c42"
   },
   "views": 0,
-  "sales": 0,
+  "sales": 2,
   "created_at": {
     "$date": "2024-09-14T07:12:09.608Z"
   },
   "updated_at": {
     "$date": "2024-10-24T16:19:41.983Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e537a9526475c476d285cd"
   },
-  "id": 19,
   "title": "Sức Mạnh Tiềm Thức (Tái Bản 2021)",
   "author": "Joseph Murphyc",
-  "category": "Tâm lý - Kỹ năng sống",
   "description": "Là một trong những quyển sách về nghệ thuật sống nhận được nhiều lời ngợi khen và bán chạy nhất mọi thời đại, Sức Mạnh Tiềm Thức đã giúp hàng triệu độc giả trên thế giới đạt được những mục tiêu quan trọng trong đời chỉ bằng một cách đơn giản là thay đổi tư duy.",
   "price": 89.6,
-  "stock": 100,
+  "stock": 99,
   "cover_image": "1728314928908-13044095.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c42"
   },
-  "views": 0,
-  "sales": 0,
+  "views": 2,
+  "sales": 1,
   "created_at": {
     "$date": "2024-09-14T07:13:45.544Z"
   },
   "updated_at": {
     "$date": "2024-10-24T16:19:51.182Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
 },
 {
   "_id": {
     "$oid": "66e5382a526475c476d285cf"
   },
-  "id": 20,
   "title": "38 Bức Thư Rockefeller Viết Cho Con Trai",
   "author": "Thanh Hương",
-  "category": "Tâm lý - Kỹ năng sống",
   "description": "NGƯỜI SỐNG TRÊN ĐỜI, NHƯ THẾ NÀO LÀ THIỆN, LẠI NHƯ THẾ NÀO LÀ ÁC? THẾ NÀO LÀ SỰ THIÊN LỆCH, MÀ THẾ NÀO MỚI LÀ CHÍNH ĐÍNH?\nCó người khởi tâm ác mà thực ra lại là làm việc thiện. Nhưng nhà kia giàu có lắm, gặp năm mất mùa, dân cùng cực phải cướp thóc lúa ở chợ ngay giữa ban ngày. Người kia báo với tri huyện, nhưng tri huyện không xử lý việc ấy.",
   "price": 69,
   "stock": 100,
@@ -591,28 +566,1570 @@
   "_id": {
     "$oid": "66ef5d2eaf9af43bb23ed4ae"
   },
-  "id": 21,
   "title": "Những Chuyện Lạ Ở Tokyo",
   "author": "Haruki Murakami",
-  "category": "Văn học",
   "description": "Thất lạc người thân, sinh ly tử biệt, lãng quên tên họ... Những con người đột nhiên đánh mất điều quý giá rồi sa chân vào một góc đô thị - một thế giới tràn đầy sự trùng hợp và bất ngờ. Lữ khách tình cờ đưa ta lần theo ánh sáng nhạt mờ trong trái tim người chỉnh đàn cô độc, Vịnh Hanalei họa nên cuộc sống của một người mẹ có đứa con trai bỏ mạng nơi biển cả xứ xa... Ở thế giới mà ta đã quen, có những điểm mù xuất hiện trong khoảnh khắc, số phận bí ẩn của những người mất hút vào những điểm mù ấy được thuật lại trong năm câu chuyện này.",
   "price": 88,
-  "stock": 100,
+  "stock": 99,
   "cover_image": "1728315035418-259201318.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c41"
   },
-  "views": 0,
-  "sales": 0,
+  "views": 2,
+  "sales": 1,
   "created_at": {
     "$date": "2024-09-21T23:56:30.354Z"
   },
   "updated_at": {
     "$date": "2024-11-08T16:56:03.432Z"
   },
-  "__v": 0,
+  "__v": 1,
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "status": "visible"
+  "status": "visible",
+  "reviews": []
+},
+{
+  "_id": {
+    "$oid": "674704d437a1279bf13547b3"
+  },
+  "title": "Thế giới phẳng",
+  "author": " Thomas Friedman",
+  "description": "Sách nói \"Thế Giới Phẳng\" (The World Is Flat) của Thomas L. Friedman là một cuốn sách nổi tiếng, khám phá sự chuyển mình của nền kinh tế toàn cầu trong bối cảnh toàn cầu hóa và công nghệ thông tin. Xuất bản lần đầu vào năm 2005, tác phẩm đã nhanh chóng thu hút sự chú ý và trở thành tài liệu tham khảo quan trọng cho những ai quan tâm đến các vấn đề kinh tế, xã hội và công nghệ.",
+  "price": 110,
+  "stock": 24,
+  "cover_image": "1733286226275-37369832.jpg",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 4,
+  "status": "visible",
+  "sales": 4,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:39:00.793Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-04T04:23:46.310Z"
+  },
+  "__v": 0,
+  "category": "Kinh Tế"
+},
+{
+  "_id": {
+    "$oid": "6747058837a1279bf1354999"
+  },
+  "title": "Bộ sách Làm Giàu Từ Chứng Khoán (How To Make Money In Stock) phiên bản mới + Hướng Dẫn Thực Hành CANSLIM Cho Người Mới Bắt Đầu",
+  "author": "William J. O’Neil, Matthew Galgani",
+  "description": "Bạn là Nhà Đầu Tư Mới và đang tìm kiếm một Phương Pháp Đầu Tư Đúng Đắn, hướng dẫn từng bước giúp bạn có thể phân tích vì sao nên mua hay nên bán, mua ở đâu, mua giá nào thì rủi ro thấp nhất... để trở thành một Nhà Đầu Tư Thành Công?",
+  "price": 700,
+  "stock": 46,
+  "cover_image": "1733286296069-802292361.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 6,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:42:00.543Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-04T04:24:56.088Z"
+  },
+  "__v": 0,
+  "category": "Kinh Tế"
+},
+{
+  "_id": {
+    "$oid": "6747063437a1279bf1354fd7"
+  },
+  "title": "Những Kẻ Xuất Chúng (Tái Bản)",
+  "author": "Nhà Xuất Bản Thế Giới",
+  "description": "Cuốn sách Những kẻ xuất chúng sẽ giúp bạn tìm ra câu trả lời thông qua các phân tích về xã hội, văn hóa và thế hệ của những nhân vật kiệt xuất như Bill Gates, Beatles và Mozart, bên cạnh những thất bại đáng kinh ngạc của một số người khác (ví dụ: Christopher Langan, người có chỉ số IQ cao hơn Einstein nhưng rốt cuộc lại quay về làm việc trong một trại ngựa). Theo đó, cùng với tài năng và tham vọng, những người thành công đều được thừa hưởng một cơ hội đặt biệt để rèn luyện kỹ năng và cho phép họ vượt lên những người cùng trang lứa.",
+  "price": 100,
+  "stock": 136,
+  "cover_image": "1733286349665-922639389.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 4,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:44:52.442Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-04T04:25:49.697Z"
+  },
+  "__v": 0,
+  "category": "Kinh Tế"
+},
+{
+  "_id": {
+    "$oid": "674706bd37a1279bf1355210"
+  },
+  "title": "Từ Tốt Đến Vĩ Đại (Tái bản 2021)",
+  "author": "NXB Trẻ",
+  "description": "Jim Collins cùng nhóm nghiên cứu đã miệt mài nghiên cứu những công ty có bước nhảy vọt và bền vững để rút ra những kết luận sát sườn, những yếu tố cần kíp để đưa công ty từ tốt đến vĩ đại. Đó là những yếu tố khả năng lãnh đạo, con người, văn hóa, kỷ luật, công nghệ… Những yếu tố này được nhóm nghiên cứu xem xét tỉ mỉ và kiểm chứng cụ thể qua 11 công ty nhảy vọt lên vĩ đại. Mỗi kết luận của nhóm nghiên cứu đều hữu ích, vượt thời gian, ý nghĩa vô cùng to lớn đối với mọi lãnh đạo và quản lý ở mọi loại hình công ty (từ công ty có nền tảng và xuất phát tốt đến những công ty mới khởi nghiệp), và mọi lĩnh vực ngành nghề. Đây là cuốn sách nên đọc đối với bất kỳ lãnh đạo hay quản lý nào!",
+  "price": 89,
+  "stock": 120,
+  "cover_image": "1732708029351-723347035.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 3,
+  "status": "visible",
+  "sales": 3,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:47:09.353Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T11:47:09.353Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747072437a1279bf1355432"
+  },
+  "title": "Thám Tử Lừng Danh Conan Tập 7 Bản Nâng Cấp - Tặng Kèm Bookmark",
+  "author": "Gosho Aoyama",
+  "description": "Nhận được lá thư mời kì lạ, chúng tôi khởi hành đến một hòn đảo sóng nước mênh mông… Đi thì cũng được, nhưng chẳng ngờ rằng lần này lại bị cuốn vào vụ án mạng liên hoàn liên quan đến những tiếng đàn piano… Phá xong án thì rắc rối mới lại đến. Không biết từ đâu, một cô bạn gái mới toanh của tôi bỗng xuất hiện? Xem ra tâm lí con gái còn khó hơn cả những vụ án rắc rối nhất! Có ai giải đáp giúp tôi sự tức giận của Ran là gì được không!?",
+  "price": 35,
+  "stock": 47,
+  "cover_image": "1732708132694-944915461.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 3,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:48:52.697Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T11:48:52.697Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747076e37a1279bf1355668"
+  },
+  "title": "Thám Tử Lừng Danh Conan Tập 5 Bản Nâng Cấp - Tặng Kèm Bookmark",
+  "author": " Gosho Aoyama",
+  "description": "Cơ thể vừa bị teo nhỏ thì vô số nguy hiểm lại kéo đến!! Một vụ án nan giải và đáng sợ đến rợn tóc gáy lại ập xuống đầu tôi!! Đáng lo hơn, Ran cũng trở thành mục tiêu. Nhưng với bộ não siêu phàm và 7 món đồ hỗ trợ phá án, tôi sẵn sàng quyết chiến với bọn chúng! Tôi là Edogawa Conan – Thám tử nhí lừng danh!!",
+  "price": 35,
+  "stock": 58,
+  "cover_image": "1732708206786-476479911.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:50:06.788Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T11:50:06.788Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674707d637a1279bf13558b2"
+  },
+  "title": "Thám Tử Lừng Danh Conan Tập 4 Bản Nâng Cấp - Tặng Kèm Bookmark",
+  "author": "Gosho Aoyama",
+  "description": "Người nhỏ nhưng trí tuệ thì không nhỏ tẹo nào đâu nhé!! Bằng chứng là một loạt những bí ẩn đều lần lượt được suy luận tài tình của tôi khám phá ra hết! Nhưng ước gì tôi sớm quay trở lại hình dạng ban đầu để lật tẩy danh tính bọn người mặc áo đen! Cũng là để được gặp lại Ran nữa!! Tôi là Edogawa Conan – Thám tử nhí lừng danh!",
+  "price": 35,
+  "stock": 19,
+  "cover_image": "1732708310182-521362788.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:51:50.184Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T11:51:50.184Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747083b37a1279bf1355b32"
+  },
+  "title": "Thám Tử Lừng Danh Conan Tập 1 Bản Nâng Cấp - Tặng Kèm Bookmark",
+  "author": "Gosho Aoyama",
+  "description": "Kudo Shinichi là một cậu thám tử học sinh năng nổ với biệt tài suy luận có thể sánh ngang với Sherlock Holmes! Một ngày nọ, khi mải đuổi theo những kẻ khả nghi, cậu đã bị chúng cho uống một loại thuốc kì lạ khiến cho cơ thể bị teo nhỏ. Vậy là một thám tử tí hon xuất hiện với cái tên giả: Edogawa Conan!!",
+  "price": 35,
+  "stock": 8,
+  "cover_image": "1732708411736-946869499.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 1,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:53:31.739Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T11:53:31.739Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747087637a1279bf1355da6"
+  },
+  "title": "Thám Tử Lừng Danh Conan Tập 2 Bản Nâng Cấp - Tặng Kèm Bookmark",
+  "author": "Gosho Aoyama",
+  "description": "Conan đã quyết định ở nhờ tại văn phòng của thám tử Kogoro, bố của Mori Ran – bạn gái cậu, để lần theo tung tích tổ chức bí ẩn kia. Nhằm tránh con mắt người đời, hằng ngày cậu đến trường như một học sinh cấp 1 bình thường. Và thám tử nhí lừng danh Conan đã đứng đằng sau ông bác thám tử “gà mờ” Mori Kogoro phá giải những vụ án hóc búa một cách tài tình!!",
+  "price": 35,
+  "stock": 20,
+  "cover_image": "1732708470931-810720410.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 2,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:54:30.934Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T11:54:30.934Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674708ab37a1279bf135604a"
+  },
+  "title": "Thám Tử Lừng Danh Conan Tập 3 Bản Nâng Cấp - Tặng Kèm Bookmark",
+  "author": "Gosho Aoyama",
+  "description": "Một học sinh cấp 3 bỗng chốc biến thành cậu bé cấp 1!! Trong tình cảnh oái ăm ấy, dòng máu thám tử trong tôi vẫn sục sôi, giúp tôi tiếp tục chinh phục những vụ án mới!! Nhưng để giữ kín thân phận của mình, tôi đã phải khổ sở lắm đó!! Tôi là Edogawa Conan – Thám tử nhí lừng danh!!",
+  "price": 35,
+  "stock": 8,
+  "cover_image": "1732708523727-292423661.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 4,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:55:23.730Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T11:55:23.730Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747091d37a1279bf13562e4"
+  },
+  "title": "Shin - Cậu Bé Bút Chì - Truyện Dài Tập 19",
+  "author": "Usui Yoshito",
+  "description": "Với tài năng kể chuyện hấp dẫn, tác giả đã biến các trang sách của mình thành những sân chơi ngập tràn tiếng cười của những cô bé, cậu bé hồn nhiên và một thế giới tuổi thơ đa sắc màu. Những bài học giáo dục nhẹ nhàng, thấm thía cũng được lồng ghép một cách khéo léo trong từng tình huống truyện. Có thể Shin là một cậu bé cá tính, hiếu động. Có thể những trò tinh nghịch của Shin đôi khi quá trớn, chẳng chừa một ai. Nhưng sau những “sự cố” do Shin gây ra, người lớn thấy mình cần “quan tâm” đến trẻ con nhiều hơn nữa, các bạn đọc nhỏ tuổi chắc hẳn cũng được dịp nhìn nhận lại bản thân, để phân biệt điều tốt điều xấu trong cuộc sống.",
+  "price": 25,
+  "stock": 69,
+  "cover_image": "1732708637625-452727433.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 3,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T11:57:17.637Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T11:57:17.637Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67470b6537a1279bf13565bb"
+  },
+  "title": "Giáo Trình Chuẩn HSK 1 (Tái Bản 2023)",
+  "author": "Khương Lệ Bình, Vương Phương, Vương Phong, Lưu Lệ Bình",
+  "description": "Giáo Trình Chuẩn HSK 1  Được chia thành 6 cấp độ với tổng cộng 18 cuốn, Giáo trình chuẩn HSK có những đặc điểm nổi bật sau:  • Kết hợp thi cử và giảng dạy: Được biên soạn phù hợp với nội dung, hình thức cũng như các cấp độ của đề thi HSK thật, bộ sách này có thể được sử dụng đồng thời cho cả hai mục đích là giảng dạy tiếng Trung Quốc và luyện thi HSK. • Bố cục chặt chẽ và khoa học: Các điểm ngữ pháp được giải thích cặn kẽ, phần ngữ âm và chữ Hán được trình bày từ đơn giản đến phức tạp theo từng cấp độ.",
+  "price": 126,
+  "stock": 29,
+  "cover_image": "1732709221860-271435915.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c44"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:07:01.864Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:07:01.864Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67470bae37a1279bf135687d"
+  },
+  "title": "\"Chém\" Tiếng Anh Không Cần Động Não - Tặng Kèm Bộ Video Luyện Nghe-Nói + Sổ Học Từ Vựng",
+  "author": "Bino Chém Tiếng Anh",
+  "description": "“Chém” Tiếng Anh Không Cần Động Não  “Phần lớn người Việt đều biết tiếng Anh NHIỀU HƠN HỌ NGHĨ, chỉ là họ chưa biết làm thế nào để đưa ý tưởng thành lời nói mà thôi!” - Bino chém tiếng Anh  Biết nhiều tiếng Anh nhưng không… nói được - điều này có đúng với bạn không? Sao 12 năm học tiếng Anh không giúp chúng ta xử lý được những cuộc trò chuyện thông thường?  Sao điểm tiếng Anh trên lớp toàn 9, 10 nhưng gặp Tây lại ấp a ấp úng? Sao sở hữu điểm IELTS 7.0+ nhưng vẫn “sốc ngôn ngữ” khi ra nước ngoài?",
+  "price": 113,
+  "stock": 37,
+  "cover_image": "1732709294051-878328542.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c44"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 4,
+  "status": "visible",
+  "sales": 3,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:08:14.053Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:08:14.053Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67470c0a37a1279bf1356b53"
+  },
+  "title": "Combo Sách Giáo Trình Chuẩn YCT 1 - Sách Bài Học + Sách Bài Tập (Bộ 2 Cuốn)",
+  "author": "Tô Anh Hà, Kim Phi Phi, Vương Lôi, Thái Nam",
+  "description": "Combo Sách Giáo Trình Chuẩn YCT 1 - Sách Bài Học + Sách Bài Tập (Bộ 2 Cuốn)  Bài thi tiếng Trung Quốc dành cho học sinh (Youth Chinese Test - YCT) là bài kiểm tra chuẩn ở cấp độ quốc tế về trình độ tiếng Trung Quốc. Bài thi này đánh giá khả năng sử dụng tiếng Trung Quốc trong cuộc sống hằng ngày cũng như trong học tập của học sinh tiểu học và trung học cơ sở có ngôn ngữ mẹ để không phải là tiếng Trung Quốc. Bộ sách Giáo trình chuẩn YCT được biên soạn theo hướng bám sát các bài thi YCT đồng thời dựa trên nguyên tắc kết hợp giảng dạy và kiểm tra.",
+  "price": 142,
+  "stock": 53,
+  "cover_image": "1732709386684-883494053.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c44"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:09:46.685Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:09:46.685Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67470de437a1279bf1356e60"
+  },
+  "title": "Con Đường Chuyển Hoá - Sa Môn Thích Pháp Hòa",
+  "author": "Sa Môn Thích Pháp Hòa",
+  "description": "Sau khi quyển sách đầu tiên, Chia sẻ từ trái tim - 50 Bài giảng nhân quả thiết thực trong cuộc sống của Sa Môn Thích Pháp Hòa, được xuất bản và nhận được sự ủng hộ của đại chúng ở khắp nơi, chúng tôi thực hiện quyển sách tiếp theo, Con đường chuyển hoá - 50 Bài giảng về con đường chân chánh giúp chuyển hóa nỗi khổ niềm đau, cũng là một tuyển tập từ các bài pháp thoại của thầy, nhưng ở góc độ tiếp cận Phật pháp nhiều hơn.",
+  "price": 131,
+  "stock": 39,
+  "cover_image": "1732709860041-983949181.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 9,
+  "status": "visible",
+  "sales": 4,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:17:40.044Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:17:40.044Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67470ea137a1279bf135715e"
+  },
+  "title": "Muôn Kiếp Nhân Sinh - Many Times, Many Lives",
+  "author": "Nguyên Phong",
+  "description": "Giáo sư John Vũ – Nguyên Phong và những câu chuyện chưa từng có về tiền kiếp, khám phá luật Nhân quả, Luân hồi.  “Muôn kiếp nhân sinh” là tác phẩm do Giáo sư John Vũ - Nguyên Phong viết từ năm 2017 và hoàn tất đầu năm 2020 ghi lại những câu chuyện, trải nghiệm tiền kiếp kỳ lạ từ nhiều kiếp sống của người bạn tâm giao lâu năm, ông Thomas – một nhà kinh doanh tài chính nổi tiếng ở New York. Những câu chuyện chưa từng tiết lộ này sẽ giúp mọi người trên thế giới chiêm nghiệm, khám phá các quy luật về luật Nhân quả và Luân hồi của vũ trụ giữa lúc trái đất đang gặp nhiều tai ương, biến động, khủng hoảng từng ngày.",
+  "price": 117,
+  "stock": 31,
+  "cover_image": "1732710049690-86884268.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 8,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:20:49.693Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:20:49.693Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67470f2a37a1279bf1357470"
+  },
+  "title": "Võ Nguyên Giáp - Những Năm Tháng Cuộc Đời (Tái Bản)",
+  "author": "Mai Ly, Kim Tuyến, Quang Khải, Vĩnh Thắng, An Vy",
+  "description": "Võ Nguyên Giáp - Những Năm Tháng Cuộc Đời  Tập sách điểm lại 103 sự kiện đáng chú ý trong cuộc đời đại tướng Võ Nguyên Giáp với tiêu chí đơn giản, rõ ràng, hướng tới đối tượng người đọc muốn tra cứu nhanh.",
+  "price": 66,
+  "stock": 75,
+  "cover_image": "1732710186752-84813114.jpg",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:23:06.754Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:23:06.754Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67470f8937a1279bf1357796"
+  },
+  "title": "Những Trận Đánh Nổi Tiếng Của Dân Tộc Việt Nam Từ Khi Có Đảng Lãnh Đạo (Tái Bản 2023)",
+  "author": "Bách Khoa",
+  "description": "Những Trận Đánh Nổi Tiếng Của Dân Tộc Việt Nam Từ Khi Có Đảng Lãnh Đạo Nội dung cuốn sách gồm các phần:  Phần I: Những chiến dịch tiêu biểu trong cuộc kháng chiến chống thực dân Pháp (1946 – 1954).  Ngay sau khi Cách mạng tháng Tám thành công năm 1945, chính quyền non trẻ của dân tộc ta lâm vào cảnh bị thực dân Pháp đe dọa. Trước tình hình cấp bách này, Chủ tịch Hồ Chí Minh, Đại tướng Võ Nguyên Giáp và các tướng lĩnh khác gấp rút chuẩn bị cho cuộc chiến đấu bảo vệ thủ đô Hà Nội và cả nước (Hào khí Thăng Long trong những ngày bảo vệ thủ đô)  Tiếp theo là những chiến dịch tiêu biểu như: Chiến dịch Việt Bắc - Thu Đông năm 1947; Chiến dịch đường số 4 Cao – Bắc – Lạng; Chiến dịch Biên giới, Chiến dịch Trung du, Chiến dịch Hòa Bình và cuối cùng là Chiến dịch Điện Biên Phủ - bước ngoặt của cuộc kháng chiến chống Pháp.",
+  "price": 58,
+  "stock": 19,
+  "cover_image": "1732710281028-509340228.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:24:41.030Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:24:41.030Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67470fd837a1279bf1357ad0"
+  },
+  "title": "Muôn Kiếp Nhân Sinh - Many Times, Many Lives",
+  "author": "Nguyên Phong",
+  "description": "Muôn Kiếp Nhân Sinh - Many Times, Many Lives  Giáo sư John Vũ – Nguyên Phong và những câu chuyện chưa từng có về tiền kiếp, khám phá luật Nhân quả, Luân hồi.  “Muôn kiếp nhân sinh” là tác phẩm do Giáo sư John Vũ - Nguyên Phong viết từ năm 2017 và hoàn tất đầu năm 2020 ghi lại những câu chuyện, trải nghiệm tiền kiếp kỳ lạ từ nhiều kiếp sống của người bạn tâm giao lâu năm, ông Thomas – một nhà kinh doanh tài chính nổi tiếng ở New York. Những câu chuyện chưa từng tiết lộ này sẽ giúp mọi người trên thế giới chiêm nghiệm, khám phá các quy luật về luật Nhân quả và Luân hồi của vũ trụ giữa lúc trái đất đang gặp nhiều tai ương, biến động, khủng hoảng từng ngày.",
+  "price": 115,
+  "stock": 87,
+  "cover_image": "1732710360871-266314128.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:26:00.873Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:26:00.873Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747101a37a1279bf1357e1e"
+  },
+  "title": "Thiền Sư Và Em Bé 5 Tuổi",
+  "author": "Thích Nhất Hạnh",
+  "description": "Trong lòng chúng ta ai cũng có một em bé đang đau khổ. Ai cũng có một thời gian khó khăn khi còn thơ ấu và nhiều người đã trải qua những chấn động tâm lý, những tổn thương lớn mà vết thương còn lưu lại đến bây giờ. Để tự bảo vệ và phòng hộ trước những khổ đau trong tương lai, chúng ta thường cố quên đi thời gian đau lòng đó. Mỗi khi tiếp xúc với những kinh nghiệm khổ đau ấy, chúng ta nghĩ rằng chúng ta sẽ không chịu đựng nổi, sẽ không có khả năng xử lý nên chúng ta nén chặt những cảm xúc và ký ức của mình vào đáy sâu vô thức. Đó có thể là do đã từ lâu chúng ta không đủ can đảm để đối diện với em bé đó.",
+  "price": 90,
+  "stock": 14,
+  "cover_image": "1732710426965-486255375.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:27:06.967Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:27:06.967Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747109c37a1279bf1358180"
+  },
+  "title": "Sách - Tôn Giáo Thế Giới (World Religions)",
+  "author": "John Bowker",
+  "description": "\"Tôn Giáo Thế Giới\"    Bạn quan tâm đến đạo Phật? Bối rối về Cơ đốc giáo và Do Thái giáo? Tò mò về Hồi giáo?... Bạn có thể khám phá mọi điều về các tôn giáo quan trọng trên thế giới - chỉ với một cuốn sách.     “Tôn giáo thế giới” (tựa gốc: “World Religions”) của học giả nổi danh John Bowker là một ấn phẩm súc tích, uyên thâm và đầy màu sắc về các tôn giáo khác nhau trên thế giới - từ Đông sang Tây, từ cổ xưa đến hiện đại. Đây là món quà hoàn hảo cho bất cứ ai có niềm tò mò về tôn giáo, tâm linh, triết học hay về thế giới loài người nói chung.     Ấn phẩm đã bán được hơn 117.000 bản trên toàn thế giới; nằm trong top các cuốn sách lịch sử tôn giáo bán chạy nhất trên Amz; và nằm trong list gợi ý đọc của tờ The Guardian.     Trong “Tôn giáo thế giới”, John Bowker dành mỗi chương riêng cho từng tôn giáo lớn: Ấn Độ giáo, Phật giáo, Do Thái giáo, Cơ Đốc giáo, Hồi giáo, Kỳ Na giáo, Sích giáo, tôn giáo Trung Hoa và Nhật Bản.     Bên cạnh đó, tác giả còn đề cập đến những tôn giáo cổ xưa nhất (như Bái hoả giáo, tôn giáo Hy Lạp, La Mã, Bắc Âu…) cũng như các tôn giáo bản địa ít được biết đến hơn. Nỗ lực đó nhằm giúp cho bạn đọc có một cái nhìn tổng quan, toàn diện về những đức tin trên khắp trái đất.    Với mỗi tín ngưỡng, bạn đọc sẽ được khám phá về những đức tin, triết lý và nền tảng giáo lý đằng sau, hay nói như tác giả, “những lời giải thích mà họ đưa ra về vũ trụ, về bản chất con người, về mục tiêu của cuộc sống, về Chúa hoặc về một quyền lực cao hơn, về con đường dẫn đến cứu rỗi hoặc giác ngộ”...    Mỗi tôn giáo thường gắn liền các truyền thuyết, câu chuyện; cũng như bối cảnh chính trị, xã hội và văn hoá mà từ đó chúng ra đời. Đây cũng là điểm hấp dẫn đặc biệt của cuốn sách; khi độc giả như được du ngoạn khắp thế giới, ngắm nhìn và lắng nghe những câu chuyện sống động và quan trọng nhất của loài người. Đó có thể là sự tích quen thuộc về cuộc đời của Đức Phật; hành trình “lên trời” của nhà tiên tri Muhammad; hay truyền thuyết về Lão Tử của Đạo giáo…     Với “Tôn giáo thế giới”, bạn đọc sẽ hiểu cặn kẽ về truyền thống thờ tự; kinh sách; những vị thần và nhà tiên tri; những nghi lễ trang nghiêm; các văn bản linh thiêng và các giáo phái khác nhau của mỗi tôn giáo. Những nội dung này luôn đi kèm với những hình ảnh và bản vẽ tuyệt đẹp, đem lại cho người đọc một trải nghiệm đầy màu sắc (về cả nghĩa đen lẫn nghĩa bóng). ",
+  "price": 360,
+  "stock": 9,
+  "cover_image": "1732710556772-191246752.jpg",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:29:16.776Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:29:16.776Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747112d37a1279bf13584f6"
+  },
+  "title": "Lịch Sử Thượng Đế (Tái Bản 2023) - Karen Armstrong",
+  "author": "Karen Armstrong",
+  "description": "Karen Armstrong là một tác giả người Anh, chủ nhân của 12 cuốn sách về tôn giáo đối chiếu, và là chuyên gia về đức tin trên thế giới, trào lưu tôn giáo chính thống và thuyết độc thần. Năm 1993, được công chúng chú ý nhờ cuốn sách Lịch sử Thượng đế, công trình của Armstrong tập trung vào những điểm tương đồng của các tôn giáo lớn, cũng như tầm quan trọng trong nhiều khía cạnh của lòng trắc ẩn, hay “Quy tắc vàng” theo cách giải thích của bà. Vì sao có sự tồn tại của Chúa Trời? Ba tôn giáo độc thần chủ đạo – Do Thái giáo, Cơ Đốc giáo và Hồi giáo – đã định hình và thay đổi khái niệm Chúa Trời như thế nào? Ba tôn giáo này có sự ảnh hưởng lẫn nhau ra sao?  Trong cuốn sách viết lối tư duy thông minh này, Karen Armstrong, một trong những nhà dẫn giải tôn giáo hàng đầu của Anh lần lại lịch sử quá trình nam giới và phụ nữ nhận thức và trải nghiệm liên quan tới Chúa Trời, từ thời Tổ phụ Abraham cho tới hiện tại.",
+  "price": 255,
+  "stock": 11,
+  "cover_image": "1732710701240-851189087.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:31:41.242Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:31:41.242Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747119337a1279bf1358880"
+  },
+  "title": "Kiến Thức Sâu Sắc Cho Người Thành Tâm Cầu Đạo",
+  "author": "Gurudev Sri Sri Ravi Shankar",
+  "description": "Những giáo viên giỏi có khả năng đơn giản hóa các chủ đề phức tạp và giúp cho bất kỳ ai cũng có thể hiểu được. Với một bậc thầy giác ngộ, chủ đã là về toàn bộ cuộc sống và mọi thứ đều nằm trong phạm vi của nó.  Trong cuốn sách này. Gurudev đề cập gần như tất cả các khía cạnh của cuộc sống - các mối quan hệ và cách hành xử với mọi người, cách buông bỏ và nắm giữ, cách hiểu được các khuôn mẫu của một người, tình yêu thương nghiệp, ý chí tự do, cái tôi, Chân lý, Thượng đế và nhiều chủ đề nữa. Thấy chỉ ra bản chất của những phức tạp trong cuộc sống bằng lối diễn đạt đơn giản, hài hước mà sâu sắc..  Nếu Gurudev cho bạn biết lý do tại sao một người nói dối là ngây thơ thì Thấy cũng nhắc bạn rằng thế giới này là một tờ giấy gói với món quà đang chờ đợi bên trong",
+  "price": 220,
+  "stock": 29,
+  "cover_image": "1732710803051-728877703.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 2,
+  "status": "visible",
+  "sales": 3,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:33:23.053Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:33:23.053Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747128237a1279bf1358c1e"
+  },
+  "title": "Hải Trình Yêu Thương Từ Thành Phố Mang Tên Bác - The Loving Voyage From Ho Chi Minh City",
+  "author": "Nguyễn Á",
+  "description": "Hải Trình Yêu Thương Từ Thành Phố Mang Tên Bác  “Tự hào biết bao giữa mênh mông biển cả và muôn trùng sóng vỗ, nhà giàn DK1/10 tuy nhỏ bé nhưng sùng sũng hiên ngang như tinh thần của người lính Cụ Hồ. Đúng trên nhà giàn, giữa một màu xanh của trời và biển bao la, vô tận, hình ảnh lá cờ đỏ sao vàng rực rỡ mạnh mẽ tung bay trong gió là khoảnh khắc thiêng liêng đầy tự hào đối với tôi và các thành viên trong đoàn.”  \"How proud that amidst the vast ocean and countless waves, the DK1/10 platform, although small, stands tall and proud like the spirit of Uncle Ho's soldiers. Standing on the platform, between the endless blue sky and sea, the image of the red flag with a bright yellow star flying strongly in the wind is a sacred and proud moment for me and the members of the delegation.\"",
+  "price": 540,
+  "stock": 32,
+  "cover_image": "1732711042446-220145149.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-11-27T12:37:22.448Z"
+  },
+  "updated_at": {
+    "$date": "2024-11-27T12:37:22.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8de5651ec3c38514d539"
+  },
+  "title": "Thơ Cho Thiếu Nhi",
+  "author": "Nhiều tác giả",
+  "description": "Thơ Cho Thiếu Nhi  Cuốn sách tập hợp những bài thơ hay dành cho thiếu nhi của nhiều tác giả: Nguyễn Trọng Tạo, Trần Đăng Khoa, Phạm Hổ, Kim Chuông, Đoàn Văn Cừ, Phạm Cúc...",
+  "price": 43,
+  "stock": 65,
+  "cover_image": "1733070309863-370693064.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:25:09.872Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:25:09.872Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8e29651ec3c38514d8ff"
+  },
+  "title": "Thơ Hay Viết Cho Thiếu Nhi - Bóng Mây",
+  "author": "\t Thanh Hào",
+  "description": "Thơ Hay Viết Cho Thiếu Nhi - Bóng Mây  Bóng mây như một khu vườn thơ mến thương và ngộ nghĩnh, có chú gà trống ngắm bông hoa mào gà mà hoảng hốt kêu: “Ai lấy mào của tôi/Cắm lên cây này thế?”, có những cây nấm hương, mộc nhĩ đi làm cỗ khắp nơi, có cành đào tặng nội cầm mùa xuân trên tay, có trái cau là kẹo của bà, có quả thị treo trên bàn học làm sáng một vầng trăng trong trang sách em mở ra và có hương cốm lá sen chứa cả quê hương nắng đượm...",
+  "price": 51,
+  "stock": 29,
+  "cover_image": "1733070377480-378920694.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:26:17.483Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:26:17.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8e89651ec3c38514dcd9"
+  },
+  "title": "Sách Giáo Khoa Bộ Lớp 7 - Chân Trời Sáng Tạo - Sách Bài Tập (Bộ 12 Cuốn) (2023) + 2 Bao Sách TP",
+  "author": "Bộ Giáo Dục Và Đào Tạo",
+  "description": "Sách Giáo Khoa Bộ Lớp 7 - Chân Trời Sáng Tạo - Sách Bài Tập (Bộ 12 Cuốn) (2023) + 2 Bao Sách TP  Bao Gồm:  - Sách Giáo Khoa Bộ Lớp 7 - Chân Trời Sáng Tạo - Sách Bài Tập (Bộ 12 Cuốn) (2023)  - 2 Cuộn Bao Sách Nylon TP (10 Tờ/Cuộn)",
+  "price": 190,
+  "stock": 100,
+  "cover_image": "1733070473678-765666483.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c40"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:27:53.681Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:27:53.681Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8f08651ec3c38514e0c7"
+  },
+  "title": "Amazing Science 3 (Tái Bản 2023)",
+  "author": "Nhiều Tác Giả",
+  "description": "Amazing Science 3  Bộ sách Amazing science dành cho học sinh học chương trình Tiếng Anh cấp Tiểu học nhằm giúp các em phát triển khả năng sử dụng Tiếng Anh thông qua việc tiếp cận nội dung môn Khoa học. Sách được trình bày đẹp, bắt mắt, dễ sử dụng.  Quyển Amazing science 3 gồm nhiều chủ đề xoay quanh kiến thức khoa học cơ bản phù hợp với trẻ em Việt Nam học Tiếng Anh thông qua ngôn từ khoa học. Mỗi bài học được biên soạn theo cấu trúc thông dụng LET'S LEARN, LET'S PRACTICE và LET'S MEMORIZE. Các kiến thức bài được viết theo kiểu nối tiếp từ quyển 1 đến quyển 5, hệ thống kiến thức phát triển liền mạch, theo đó các từ ngữ khoa học được sử dụng xuyên suốt giúp các em tăng dần vốn từ Tiếng Anh về khoa học tự nhiên một cách nhẹ nhàng.",
+  "price": 45,
+  "stock": 42,
+  "cover_image": "1733070600492-632776740.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c40"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:30:00.495Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:30:00.495Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8f42651ec3c38514e4c9"
+  },
+  "title": "Hợp Tuyển Văn Học Văn Học Cổ Điển Hàn Quốc",
+  "author": "Phan Thị Thu Hiền",
+  "description": "Hợp Tuyển Văn Học Văn Học Cổ Điển Hàn Quốc  Văn học Hàn Quốc rất phong phú và đặc sắc. Tuy nhiên, những tác phẩm được dịch và giới thiệu ở Việt Nam còn quá khiêm tốn. Bộ Hợp tuyển văn học Hàn Quốc được biên soạn với mục đích dịch và giới thiệu những tác phẩm (trích đoạn tác phẩm) tiêu biểu, đáp ứng nhu cầu của bạn đọc quan tâm, yêu mến và mong muốn thưởng thức, tìm hiểu văn chương xứ sở Kim chi.  Trước khi bán đảo Hàn bị chia cắt bởi vĩ tuyến 38 (bắt đầu từ năm 1945 và chính thức từ năm 1953), có một nền văn học truyền thống của chung toàn bán đảo. Sau khi chia cắt, miền Bắc và miền Nam thành hai quốc gia. Ở miền Bắc (North Korea) là Cộng hòa Dân chủ Nhân dân Triều Tiên (Joseon Minjujueui Inmin Gonghwaguk), cách gọi tắt quen thuộc ở Việt Nam là Triều Tiên. Ở miền Nam (South Korea) là Daehan Minguk (Đại Hàn Dân Quốc), cách gọi tắt quen thuộc ở Việt Nam là Hàn Quốc.",
+  "price": 155,
+  "stock": 76,
+  "cover_image": "1733070658059-184796010.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c41"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:30:58.062Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:30:58.062Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8f7e651ec3c38514e8df"
+  },
+  "title": "Phúc Cho Ai Không Thấy Mà Tin",
+  "author": "Gene Edwards",
+  "description": "Ai sống cuộc đời công chính sẽ được nhìn thấy Thiên Chúa, ai có tâm hồn cao đẹp và lòng hướng thiện sẽ được Thiên Chúa che chở - đó là điều mà mọi người con của Chúa đều tin tưởng, thậm chí là lấy đó làm lý tưởng sống. Thế nhưng mấy ai thật sự có thể tin vào hồng ân Thiên Chúa khi chưa tận mắt nhìn thấy Ngài?  Chắc hẳn ai trong chúng ta cũng từng ít nhất một lần trải qua những sự kiện trùng hợp đến khó tin, hoặc thần kỳ đến nỗi không thể lý giải, nhưng những người có niềm tin tôn giáo có lẽ sẽ dễ lý giải những chuyện như vậy hơn. Bởi họ tin đó là nhờ vào ơn trên, hoặc theo cách nói của các Kitô hữu thì đó là hồng ân Thiên Chúa. Tuy nhiên, không phải ai cũng có niềm tin vào những thứ vô hình và siêu nhiên. Đôi khi người ta cần được trải nghiệm và cảm nhận bằng cả trái tim thì mới vun đắp được niềm tin đó.",
+  "price": 64,
+  "stock": 43,
+  "cover_image": "1733070718715-286565278.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:31:58.717Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:31:58.717Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8fc7651ec3c38514ed09"
+  },
+  "title": "Tác Phẩm Văn Học Trong Nhà Trường - Thơ Xuân Quỳnh",
+  "author": "Xuân Quỳnh",
+  "description": "Tác Phẩm Văn Học Trong Nhà Trường - Thơ Xuân Quỳnh  “Thế giới thơ ca Xuân Quỳnh là sự tương tranh không ngừng giữa khắc nghiệt và yên lành với những biểu hiện sống động và biến hóa khôn cùng của chúng. Ở đó trái tim thơ Xuân Quỳnh là cánh chuồn chuồn báo bão cứ chao đi chao về, mệt nhoài giữa biến động và yên định, bão tố và bình yên, chiến tranh và hòa bình, thác lũ và êm trôi, tình yêu và cách trở, ra đi và trở lại, chảy trôi phiêu bạt và trụ vững kiên gan, tổ ấm và dòng đời, sóng và bờ, thuyền và biển, nhà ga và con tàu, trời xanh và bom đạn, gió Lào và cát trắng, cỏ dại và nắng lửa, thủy chung và trắc trở, xuân sắc và tàn phai, ngọn lửa cô đơn và đại ngàn tối sẫ” (Nhà phê bình CHU VĂN SƠN)  “Xuân Quỳnh là hiện tượng rất quan trọng của nền thơ của chúng ta. Có lẽ là từ thời Hồ Xuân Hương, qua các chặng phát triển, phải đến Xuân Quỳnh, nền thơ ấy mới thấy lại một nữ thi sĩ đầy tài năng và sự đa dạng của một tâm hồn được thể hiện ở một tầm cỡ đáng kể như vậy, dồi dào phong phú như vậy.” (Nhà phê bình LẠI NGUYÊN ÂN).",
+  "price": 36,
+  "stock": 10,
+  "cover_image": "1733070791650-840987288.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c41"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:33:11.653Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:33:11.653Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c9014651ec3c38514f147"
+  },
+  "title": "Chuyện Tâm Lý Trong Phòng Pháp Lý",
+  "author": "Lê Bảo Ngọc",
+  "description": "Chuyện Tâm Lý Trong Phòng Pháp Lý  AI CŨNG LÀ NẠN NHÂN TRONG CÂU CHUYỆN CỦA CHÍNH MÌNH!  - Có thật là “trẻ con không biết gì đâu”, “trẻ em không biết nói dối”?  - Tại sao người bị bạo lực gia đình không nhanh chóng rời đi?  - Tại sao người bị bắt nạt thường nghĩ đến tự sát thay vì trả thù?  -Chuyện gì sẽ xảy đến nếu con người để bản năng động vật lấn át?  Cuốn sách đánh dấu sự trở lại của tác giả “Không phải sói nhưng cũng đừng là cừu” - Luật gia Lê Bảo Ngọc. “Chuyện tâm lý trong phòng pháp lý” không phải cuốn sách tâm lý để thỏa mãn cái tôi của bạn. Cuốn sách là hàng trăm chiếc gương với đủ hình dạng méo tròn để bạn tự đặt câu hỏi về thế giới quan của mình và những người xung quanh. Ai cũng là nạn nhân trong câu chuyện của chính mình. Câu chuyện qua lời kể của “người bị hại” có thể không phải là sự thật như chúng ta từng nghĩ!",
+  "price": 102,
+  "stock": 107,
+  "cover_image": "1733070868263-538565528.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c42"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:34:28.266Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:34:28.266Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c903e651ec3c38514f599"
+  },
+  "title": "Tâm Lý Học Toàn Thư - Lịch Sử Tâm Lý Học",
+  "author": "Nhiều Tác Giả",
+  "description": "Tâm Lý Học Toàn Thư - Lịch Sử Tâm Lý Học  Từ rất lâu trước khi lịch sử loài người được lưu lại dưới dạng viết, con người đã biết tò mò về thế giới xung quanh và về chính bản thân mình: Tâm trí hoạt động ra sao, vì đâu mà ta sinh lòng thích hay ghét, cách con người học hỏi ngôn ngữ, tất cả những điều ấy là khởi nguồn cho môn khoa học về tâm lý.  Tâm lý học chỉ trở thành một ngành khoa học riêng biệt từ khi Wilhelm Wundt thành lập phòng thí nghiệm đầu tiên ở Leipzig, Đức vào năm 1879. Trước thế kỷ 19, tâm lý học được xem là một phần quan trọng của triết học, và các triết gia thời xưa, tiêu biểu như Plato và Aristotle xem tâm trí ngày nay là “linh hồn”. Thời đó, những người có hành động kỳ dị bị coi là ngoài lề xã hội bình thường bị nhốt vào nhà thương điên và thường xuyên nhận được những lối điều trị phi nhân tính. Nhờ vào ngành khoa học tâm thần học khi đó, bệnh nhân được đối xử một cách nhân văn và được quan tâm đến sức khỏe tinh thần hơn.  Từ đó đến nay, đã có nhiều lý thuyết được đưa ra và các phương pháp nghiên cứu được sử dụng trong lịch sử tâm lý học, những nỗ lực của các nhà tâm lý học không chỉ đưa tâm lý học thành môn khoa học độc lập, mà còn hỗ trợ các bệnh nhân đang gặp phải các rối loạn tinh thần thông qua các phương pháp được đề xuất dựa trên các lý thuyết đó. Lịch sử Tâm lý học là cuốn sách thuộc bộ Tâm lý học toàn thư sẽ mang đến bức tranh toàn cảnh những giai đoạn hình thành và nội dung chi tiết của những trường phái trong suốt lịch sử ngành tâm lý học:",
+  "price": 142,
+  "stock": 53,
+  "cover_image": "1733070910807-314678914.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c42"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:35:10.810Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:35:10.810Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c9092651ec3c38514f9ff"
+  },
+  "title": "Combo Manga - Doraemon Học Tập (Bộ 14 Cuốn)",
+  "author": "Nhiều Tác Giả",
+  "description": "Combo Manga - Doraemon Học Tập (Bộ 14 Cuốn)",
+  "price": 481,
+  "stock": 20,
+  "cover_image": "1733070994272-320107404.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:36:34.275Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:36:34.275Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c90b5651ec3c38514fe79"
+  },
+  "title": "Bộ Manga - Level E: Tập 1 - 3 (Bộ 3 Tập)",
+  "author": "Yoshihiro Togashi",
+  "description": "ộ Manga - Level E: Tập 1-3 (Bộ 3 Tập)  Ở Trái Đất hiện nay có hàng trăm loài người ngoài hành tinh lai vãng và sinh sống, nhưng chỉ riêng người Trái Đất là không nhận ra điều đó. Đại hoàng tử của hành tinh Dogra là người sở hữu bộ óc thiên tài số 1 vũ trụ. Tuy nhiên, sự tinh quái của anh ta còn dễ nể hơn nữa. Đi đến đâu, hoàng tử gây rắc rối tới đó. Rốt cuộc lần này, hoàng tử lại ủ mưu gì đây...!?  Một tác phẩm Sci-Fi hài hước nhưng không kém phần sâu sắc đến từ tác giả Yoshihiro Togashi, \"cha đẻ\" của Hành trình U linh giới và Hunter x Hunter, trọn bộ 3 tập sẽ chính thức ra mắt từ tháng 8.2024, các bạn đừng bỏ lỡ nhé!",
+  "price": 81,
+  "stock": 42,
+  "cover_image": "1733071029480-84247956.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 2,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:37:09.482Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:37:09.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c90fc651ec3c385150307"
+  },
+  "title": "Tiếng Trung Dành Cho Học Sinh Tiểu Học - Tập 6",
+  "author": "Vương Nguy, Kim Phi Phi, Vương Lôi",
+  "description": "Tiếng Trung Dành Cho Học Sinh Tiểu Học - Tập 6  - Giáo trình bao gồm sáu tập sách bài học và sáu tập sách bài tập.  - Nội dung thiết thực, gần gũi với cuộc sống hằng ngày của học sinh tiểu học.  - Chương trình học bám sát chuẩn quốc tế (bài thi YCT, khung tham chiếu CEFR, tiêu chuẩn ACTFL).  - Vô số hoạt động (tô màu, vẽ hình, hát, chơi trò chơi…) được đưa vào bài học giúp học sinh tăng thêm hứng thú khi học tiếng Trung.",
+  "price": 268,
+  "stock": 12,
+  "cover_image": "1733071100952-161060623.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c44"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:38:20.958Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:38:20.958Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c9126651ec3c3851507a9"
+  },
+  "title": "Hình Thái Học Tiếng Anh",
+  "author": "PGS TS Tô Minh Thanh",
+  "description": "Hình Thái Học Tiếng Anh  Hình thái học tiếng Anh là một phân ngành thuộc Ngôn ngữ học Anh (English Linguistics) có tác động quan trọng trong việc giúp người học gắn kết dạng âm thanh (sound form) với dạng chữ viết (written form), và với ý nghĩa (meaning) của từ tiếng Anh (English words), nhất là khi việc nhanh chóng mở rộng vốn từ là một yêu cầu rất cao và quá cấp bách không chỉ đối với sinh viên đại học hoặc học viên sau đại học ngành Ngôn ngữ Anh (English Language Studies) tại các trường cao đẳng hoặc đại học ở Việt Nam hiện nay.",
+  "price": 57,
+  "stock": 11,
+  "cover_image": "1733071142927-555835092.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c44"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:39:02.930Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:39:02.930Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c9175651ec3c385150c5f"
+  },
+  "title": "Jesse Livermore - Reminiscences Of A Stock Operator - Hồi Ức Của Một Thiên Tài Đầu Tư Chứng Khoán",
+  "author": "Edwin Lefèvre",
+  "description": "Jesse Livermore - Reminiscences Of A Stock Operator - Hồi Ức Của Một Thiên Tài Đầu Tư Chứng Khoán  I. AI NÊN ĐỌC CUỐN SÁCH NÀY  - Những nhà đầu tư chứng khoán: Người đã có kinh nghiệm và muốn nâng cao kiến thức và hiểu biết sâu hơn về thị trường.  - Những người mới bắt đầu: Người tìm kiếm lời khuyên đầu tư và hiểu biết cơ bản về cách thị trường hoạt động.  - Sinh viên và học giả: Những người quan tâm đến lịch sử và phát triển của thị trường tài chính và các nhà đầu cơ.  - Những người yêu thích đọc về các nhân vật lịch sử và tự truyện: Cuốn sách cung cấp cái nhìn sâu sắc vào cuộc đời và sự nghiệp của Jesse Livermore, một nhân vật có thật và rất nổi tiếng trong lịch sử chứng khoán.",
+  "price": 163,
+  "stock": 41,
+  "cover_image": "1733071221156-448803644.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:40:21.158Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:40:21.158Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c919a651ec3c385151129"
+  },
+  "title": "Chiêu Bài Quản Lý Vàng Của Bill Gates (2016)",
+  "author": "Thương Mỗ , Lê Duyên Hải",
+  "description": "Chiêu Bài Quản Lý Vàng Của Bill Gates (2016)  Bill Gates là người sáng lập ra Tập đoàn Microsoft, công ty hàng đầu chuyên cung cấp phần mềm cho máy tính. Ông nguyên là Tổng Giám đốc và Chủ tịch Hội đồng quản trị của Microsoft. Bill Gates được cả thế giới biết đến như một huyền thoại trong lĩnh vực phần mềm, ông đã tạo ra một vương quốc phần mềm kỳ diệu bằng chính nỗ lực của mình. Bill Gate cũng là người nhiều năm liền nắm vị trí “người giàu nhất thế giới” do tạp chí danh tiếng Forbes bình chọn.  Tại sao Bill Gates lại thành công đến vậy? Tại sao lịch sử lại chọn ông? Là một nhà lãnh đạo, Bill Gates đã có những phương pháp quản lý như thế nào để Microsoft không ngừng phát triển, liên tục đi từ thành công này đến thành công khác trong nhiều năm? Cuôn sách CHIÊU BÀI QUẢN LÝ VÀNG CỦA BILLGATES sẽ giải mã bí mật thành công của nhà tỉ phú này.",
+  "price": 54,
+  "stock": 20,
+  "cover_image": "1733071258647-584262420.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c45"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 2,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:40:58.649Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:40:58.650Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c91e7651ec3c385151607"
+  },
+  "title": "Lịch Sử Do Thái",
+  "author": "Paul Johnson",
+  "description": "Lịch Sử Do Thái  Lịch sử Do Thái của Paul Johnson bắt đầu bằng những sự kiện được viết trong Kinh Thánh và kết thúc khi thành lập Nhà nước Israel. Cuốn sách không chỉ giới thiệu về lịch sử 4.000 năm tồn tại của người Do Thái mà còn đề cập đến những tác động, ảnh hưởng cũng như những đóng góp của họ cho nhân loại.  Người Do Thái tạo nên một bản sắc riêng biệt và cụ thể sớm hơn bất cứ dân tộc nào còn tồn tại tới ngày nay. Họ đã duy trì được nó giữa những nghịch cảnh khủng khiếp cho tới hôm nay. Sức chịu đựng phi thường này từ đâu ra? Sức mạnh ý chí đặc biệt cháy bỏng nào đã khiến người Do Thái khác biệt và giữ cho họ thuần nhất? Sức sống bền bỉ của họ nằm trong bản chất bất biến, hay khả năng thích ứng, hay cả hai? Liệu lịch sử của họ có cho thấy những nỗ lực như vậy là đáng giá? Hay nó cho thấy họ đã hoài công?",
+  "price": 338,
+  "stock": 9,
+  "cover_image": "1733071335743-106348990.gif",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c46"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 2,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-01T16:42:15.745Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-01T16:42:15.745Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674fda13b4978b3195d85868"
+  },
+  "title": "ad",
+  "author": "dv",
+  "description": "dv",
+  "price": 21,
+  "stock": 3,
+  "cover_image": "1733286419512-754342780.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-04T04:26:59.519Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-04T04:26:59.519Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751a9f1d0c174ff927bcba2"
+  },
+  "title": "Giáo Dục Đầu Đời Cho Trẻ - Những Bài Học Tự Bảo Vệ Bản Thân - Không Được Chạm Vào Vùng Riêng Tư Của Tớ",
+  "author": "Hồ Tâm",
+  "description": "Giáo Dục Đầu Đời Cho Trẻ - Những Bài Học Tự Bảo Vệ Bản Thân - Không Được Chạm Vào Vùng Riêng Tư Của Tớ  Trong xã hội ngày nay, việc trang bị cho trẻ em những kiến thức an toàn để tự bảo vệ bản thân là điều hết sức cần thiết. Thấu hiểu điều này, bộ sách Giáo dục đầu đời cho trẻ - Những bài học tự bảo vệ bản thân đã ra đời nhằm giúp các em nhận thức rõ về cơ thể mình, bồi dưỡng những quan niệm đúng đắn về giới tính, đồng thời nắm được những nguy cơ tiềm tàng trong cuộc sống, tránh xa mọi hiểm nguy.",
+  "price": 31,
+  "stock": 53,
+  "cover_image": "1733405169402-117701179.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:26:09.415Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:26:09.415Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751aa39d0c174ff927bd13e"
+  },
+  "title": "Cùng Con Trưởng Thành - Giáo Dục Nhân Cách Cho Trẻ: Học Cách Tha Thứ",
+  "author": "Watiek Ideo, Veronica Winata",
+  "description": "Cùng Con Trưởng Thành - Giáo Dục Nhân Cách Cho Trẻ: Học Cách Tha Thứ  Giáo dục nhân cách cho trẻ là bộ sách mang tính giáo dục cao của tác giả nổi tiếng người Indonesia Watiek Ideo. Qua những câu chuyện về cuộc sống hằng ngày của hai chị em Kimi và Kino, các độc giả nhỏ tuổi sẽ học được nhiều điều hay lẽ phải như sự biết ơn, đồng cảm, tha thứ, thật thà, tôn trọng và yêu thương mọi người. Trẻ em giống như tờ giấy trắng, sự rèn giũa ngay từ nhỏ chính là một nền tảng giúp các em hình thành nên những đức tính tốt. Thấu hiểu điều đó, bộ sách này đã ra đời với hy vọng sẽ trở thành một người bạn đồng hành hữu ích, đáng tin cậy, giúp các bạn nhỏ bồi dưỡng nhân cách và hoàn thiện bản thân mỗi ngày.",
+  "price": 13,
+  "stock": 20,
+  "cover_image": "1733405241295-194478074.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:27:21.298Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:27:21.298Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751aa6cd0c174ff927bd6f0"
+  },
+  "title": "Gấu Con Tinh Nghịch - Sự Quan Tâm Và Lòng Biết Ơn: Cảm Ơn Đom Đóm!",
+  "author": "Nam Mi-Young, Kim Huyn",
+  "description": "Gấu Con Tinh Nghịch - Sự Quan Tâm Và Lòng Biết Ơn: Cảm Ơn Đom Đóm!  Ngay từ khi cất tiếng khóc chào đời đến lúc lớn khôn, trẻ em sẽ học cách tìm hiểu và thích nghi với thế giới xung quanh. Các yếu tố như môi trường sống, cha mẹ hay những người mà trẻ tiếp xúc hằng ngày sẽ dần ảnh hưởng đến tính cách cũng như tâm lý của trẻ. Chính vì thế, trẻ em cần được cha mẹ uốn nắn ngay từ nhỏ bởi quãng thời gian thơ ấu được coi là nền tảng hình thành nhân cách của trẻ sau này. Và một trong những công cụ quan trọng và cách tiếp cận thông minh trong quá trình giáo dục trẻ là thông qua các cuốn sách hay, câu chuyện gần gũi.",
+  "price": 48,
+  "stock": 96,
+  "cover_image": "1733405292648-397207891.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:28:12.651Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:28:12.651Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751aaa7d0c174ff927bdcb8"
+  },
+  "title": "Làm Bạn Cùng Con - Con Không Muốn Đâu!",
+  "author": "Henry Lo, Yi-Ting Lee",
+  "description": "Làm Bạn Cùng Con - Con Không Muốn Đâu!  Ngày hôm nay, Miu Miu không muốn chơi bóng đá tẹo nào! Dù cho bố có động viên, khuyên nhủ nhẹ nhàng, tới khi bố bắt đầu to tiếng, Miu Miu cũng nhất quyết không chịu đá bóng. Rốt cuộc là vì sao thế nhỉ? Bố và Miu Miu sẽ giải quyết bằng cách nào?",
+  "price": 36,
+  "stock": 85,
+  "cover_image": "1733405351229-271238335.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:29:11.235Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:29:11.235Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751ab2dd0c174ff927be2c0"
+  },
+  "title": "Tớ Có Quyền - Giải Cứu Hành Tinh Xanh",
+  "author": "Alain Serres, Aurélia Fronty",
+  "description": "Tớ Có Quyền - Giải Cứu Hành Tinh Xanh  Khi tớ chào đời, tớ có quyền được yêu thương, được nuôi nấng và dạy dỗ để mở ra một cuộc  sống tươi đẹp... Nhưng tất cả những điều ấy có ý nghĩa gì nữa nếu tớ không có quyền được  sống trên một hành tinh khỏe mạnh? Vì vậy, khi thấy hành tinh xanh đang bị đối xử tệ bạc, tớ có quyền lên tiếng:  “Dừng lại! Đừng làm tổn thương Trái Đất nữa!”",
+  "price": 47,
+  "stock": 53,
+  "cover_image": "1733405485415-269075440.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 2,
+  "status": "visible",
+  "sales": 3,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:31:25.419Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:31:25.419Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751ab5bd0c174ff927be8b4"
+  },
+  "title": "Tớ Có Quyền - Yêu Thích Sách (Như Sô-Cô-La!)",
+  "author": "Alain Serres, Aurélia Fronty",
+  "description": "Tớ Có Quyền - Yêu Thích Sách (Như Sô-Cô-La!)  Các bạn nhỏ đáng yêu ơi! Trên thế giới, có hàng ngàn người đang làm việc với sách. Người ta viết sách, in sách, rồi đem sách đưa tới các hiệu sách, thư viện, trường học… chờ bạn tìm đọc.  Các bạn có quyền khám phá tất cả những kho báu tri thức ấy để xem mình yêu thích cuốn sách nào! Thậm chí, bạn có quyền mê đọc sách như mê ăn sô-cô-la luôn đấy!  Chúc các bạn nhỏ luôn cảm nhận được sự ngọt ngào trong từng trang sách nhé!",
+  "price": 39,
+  "stock": 54,
+  "cover_image": "1733405531425-749034970.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:32:11.427Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:32:11.427Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751ab8bd0c174ff927beebe"
+  },
+  "title": "Những Lời Yêu Thương Dành Tặng Anh Và Em Trai - Vì Sao Tớ Yêu Anh Và Em Trai",
+  "author": "Daniel Howarth",
+  "description": "Những Lời Yêu Thương Dành Tặng Anh Và Em Trai - Vì Sao Tớ Yêu Anh Và Em Trai  Mọi người đều yêu anh và em trai của mình – tớ cũng thế!  ---  Tiếp nối thành công của series phần 1 “Vì sao tớ yêu…”, 10 cuốn sách với 10 đề tài gần gũi quen thuộc sẽ mang tới cho các bạn nhỏ ở độ tuổi 3-6 những bài học yêu thương sâu sắc, giúp các em thêm quý mến, trân trọng thế giới và những người thân yêu xung quanh. Phần minh hoạ dễ thương và sinh động chắc chắn sẽ chiếm trọn cảm tình của các bạn nhỏ đấy!",
+  "price": 26,
+  "stock": 52,
+  "cover_image": "1733405579330-10230896.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:32:59.332Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:32:59.332Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751abc4d0c174ff927bf4de"
+  },
+  "title": "Lớp Học Mật Ngữ - Phiên Bản Mới - Tập 11 - Tặng Kèm Búp Bê Giấy Thiên Yết Nữ Hoặc Kim Ngưu Nam Ngẫu Nhiên",
+  "author": "B R O Group",
+  "description": "Lớp Học Mật Ngữ - Phiên Bản Mới - Tập 11  Nếu bạn mê tít những câu chuyện trinh thám, thấy việc trở thành thám tử như Conan là cực bảnh, và mỗi lần có dịp gì cần suy luận để tìm ra sự thật là rất “đã cái nư”, thì Lớp Học Mật Ngữ phiên bản mới Tập 11 dành cho bạn!  Đó là ngày sinh hoạt ngoại khóa ở trường, nên mỗi học trò sẽ được về một phòng học với môn mà mình thích nhất. Cự Giải vui vẻ ôm khay bánh vừa làm bước vào lớp, nhưng chỉ sau một vài câu hỏi dồn của anh em Song Tử, đã phải ngậm ngùi nhận ra sáng nay định làm bánh mì mà cấy nhầm… men bánh bao.",
+  "price": 26,
+  "stock": 41,
+  "cover_image": "1733405636840-159611056.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c3f"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:33:56.844Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:33:56.844Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751ac2ad0c174ff927bfb14"
+  },
+  "title": "Sách Tham Khảo Toán 11",
+  "author": "Hoàng Xuân Nhàn, Phạm Văn Bình",
+  "description": "Sách Tham Khảo Toán 11  Sách gồm hai phần:  A. Tóm tắt lý thuyết và tổng hợp kiến thức  B. Ví dụ minh họa và hướng dẫn giải bài tập  Trong sách này, các tác giả đã cố gắng đưa vào các dạng bài phù hợp nhất theo từng chủ đề, được sắp xếp từ dễ đến khó kèm theo lời giải tự luận, trắc nghiệm ngắn gọn, hiệu quả, phù hợp với xu thế kiểm tra, đánh giá trong thời gian tới.",
+  "price": 151,
+  "stock": 98,
+  "cover_image": "1733405738107-577699628.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c40"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:35:38.112Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:35:38.112Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751acb2ab58d03c5e4b05c1"
+  },
+  "title": "Bài Tập Trắc Nghiệm Tiếng Anh - Lớp 11 Nâng Cao (Có Đáp Án) - 2020",
+  "author": "Mai Lan Hương, Nguyễn Thị Thanh Tâm",
+  "description": "Chúng tôi đã phát hành quyển Bài tập tiếng Anh 11 nâng cao có đủ hai dạng tự luận và trắc nghiệm theo chương trình mới được áp dụng đại trà năm 2007. Tuy nhiên, vì để cuốn sách không quá dày, chúng tôi chưa thể đưa vào nhiều bài tập trắc nghiệm. Nhằm giúp các em học sinh có thêm bài tập để thực hành kỹ năng làm bài tập trắc nghiệm, chúng tôi biên soạn thêm Bài tập trắc nghiệm tiếng Anh 11 nâng cao.  Bài tập trắc nghiệm tiếng Anh 11 nâng cao được soạn theo từng đơn vị bài học (Unit) của sách giáo khoa Tiếng Anh 11 nâng cao. Mỗi Unit được soạn thành 2 TEST, mỗi TEST gồm 80 câu.  Sau 4 Unit có một CONSOLIDATION (gồm 80 câu) được soạn như bài kiểm tra một tiết để ôn luyện kiến thức và đánh giá kết quả học tập.",
+  "price": 53,
+  "stock": 64,
+  "cover_image": "1733405874343-290542460.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c40"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:37:54.348Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:37:54.348Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751acfbab58d03c5e4b0c23"
+  },
+  "title": "Tự Học Toán Học Lớp 11 - Tập 1 (Tái Bản 2023)",
+  "author": "Lê Văn Tuấn",
+  "description": "Học toán không chỉ đơn thuần để giải toán, mục đích chính của học toán là học cách tư duy logic... Mà đã là học cách tư duy logic thì ngành nào chúng ta cũng cần.  Nhận thấy được những khó khăn mà các bạn học sinh gặp phải trong quá trình tìm kiếm tài liệu, chọn lọc thông tin, kiến thức, cũng như tầm quan trọng của việc học và tự học môn Toán tác giả đã biên soạn bộ sách: Tự Học Toán Học Lớp 11 gồm hai tập: tập 1 và tập 2 với số lượng bài tập lớn, phong phú và đa dạng, được phân chia chi tiết theo các chủ đề, dạng toán từ cơ bản đến nâng cao, các bài tập cũng được sắp xếp theo thứ tự, mức độ khó tăng dần.",
+  "price": 130,
+  "stock": 42,
+  "cover_image": "1733405947115-690285289.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c40"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 1,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:39:07.122Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:39:07.122Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751ad4cab58d03c5e4b12bb"
+  },
+  "title": "Phát Triển Năng Lực Và Tư Duy Giải Toán Lớp 11",
+  "author": "Nguyễn Xuân Mai",
+  "description": "Phát Triển Năng Lực Và Tư Duy Giải Toán Lớp 11  Các em học sinh thân mến!  Một trong những điểm nổi bật của chương trình giáo dục phổ thông 2018 là chú trọng đến việc hình thành và phát triển năng lực toán học, nhấn mạnh đến ứng dụng của toán học trong các bộ môn khoa học khác và trong thực tiễn. Do đó, việc nâng cao năng lực tư duy giải toán ở cấp trung học phổ thông rất cần thiết.  Trên tay các em là cuốn Nâng cao năng lực tư duy giải toán lớp 11. Cuốn sách gồm 2 mạch nội dung chính là: Đại số, giải tích và Hình học không gian. Cuốn sách là sự tổng hợp - hệ thống hóa của 3 bộ sách Kết nối tri thức với cuộc sống, Chân trời sáng tạo và Cánh Diều. Do đó, cuốn sách hội tụ đầy đủ các dạng toán từ cơ bản đến nâng cao, số lượng bài tập phong phú, đa dạng và cách giải đơn giản, sáng tạo, ngắn gọn, dễ hiểu.",
+  "price": 139,
+  "stock": 20,
+  "cover_image": "1733406028678-767394572.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c40"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 2,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:40:28.680Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:40:28.680Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751ad9dab58d03c5e4b1949"
+  },
+  "title": "[Light Novel] Chúa Tể Bóng Tối - Tập 4 - Bản Giới Hạn - Tặng Kèm Thẻ Nhân Vật + Tranh Bình Phong",
+  "author": "Daisuke Aizawa, Touzai",
+  "description": "Chúa Tể Bóng Tối - Tập 4  Sau khi sát hại vua cha và phản bội quê hương, giờ đây Rose lại đồng ý bắt tay với Công tước Doem để bảo vệ mẹ mình.  Tại vương quốc nghệ thuật Oriana đang phủ trong bầu không khí chiến tranh, tin tức về đám cưới của Rose và Doem dần lan rộng.  “Ta chắc chắn sẽ không bỏ qua cho chuyện này…”  Có thể hai người đã được gia đình đôi bên chấp thuận, nhưng Chúa tể Bóng tối thì nhất quyết sẽ không để đám cưới kia diễn ra trót lọt!  * CHÚA TỂ BÓNG TỐI là series light-novel ăn khách tại Nhật Bản, đã được chuyển thể thành manga, anime, manga ngoại truyện và cả game mobile với hơn 4 triệu bản sách đã bán ra!",
+  "price": 128,
+  "stock": 41,
+  "cover_image": "1733406109721-115699340.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c41"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 1,
+  "status": "visible",
+  "sales": 2,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:41:49.734Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:41:49.734Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "title": "Tiệm Sách Của Nàng - Tặng Kèm Bookmark Photostrip + Sổ Tay Màu Ngẫu Nhiên + Chữ Ký Tác Giả",
+  "author": "Nguyễn Nhật Ánh",
+  "description": "Tiệm Sách Của Nàng  Bối cảnh là một tiệm sách tại thành phố hiện đại. Nhân vật “anh” xuất hiện trong câu chuyện tình cảm lãng mạn, ở đó có nắng ấm êm, có mưa thành dòng để thả thuyền giấy, những câu thoại vu vơ chỉ hai người mới hiểu, với “một chút hân hoan, một chút dỗi hờn…”  Nhưng tràn ngập gần 300 trang sách là ký ức về tuổi trưởng thành ngày ấy ở vùng quê miền Trung. Quá khứ và hiện tại mang màu sắc vui buồn trái ngược, khiến cuốn sách có một hấp dẫn khác biệt.",
+  "price": 112,
+  "stock": 18,
+  "cover_image": "1733406159515-595111281.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c41"
+  },
+  "publisherID": {
+    "$oid": "671927e6b173afa473507ac2"
+  },
+  "views": 1,
+  "status": "visible",
+  "sales": 4,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-05T13:42:39.517Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:42:39.517Z"
+  },
+  "__v": 0
 }]

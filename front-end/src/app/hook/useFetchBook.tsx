@@ -209,7 +209,8 @@ export default function useFetchBook() {
         // Giả sử `data` là mảng lồng như `[Array(2)]`
         setBooks(result)
         setCategoryBook(result); 
-        console.log(categoryBook)
+        //console.log(categoryBook)
+        return result;
         // Cập nhật `books` chỉ với kết quả tìm kiếm
       } else {
         throw new Error("Không tìm thấy sách trong danh mục này.");

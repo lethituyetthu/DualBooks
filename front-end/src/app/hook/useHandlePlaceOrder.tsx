@@ -27,7 +27,10 @@ const useHandlePlaceOrder = (cartItems: CartItem[],  totalQuantity: number, tota
    // Hàm xử lý khi đặt hàng
    const handlePlaceOrder = async () => {
     if (!customerToken) {
-      alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
+      enqueueSnackbar(`bạn cần đăng nhập để mua sản phẩm`, {
+      variant: "error",
+      autoHideDuration: 2000,
+    });
       return;
     }
     

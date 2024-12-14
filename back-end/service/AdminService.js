@@ -36,8 +36,6 @@ exports.registerAdmin = async (adminData) => {
             password: adminData.password, // Mật khẩu chưa mã hóa
             user_img: adminData.user_img, // Tên file ảnh đã được lưu
             role: adminData.role || 'admin',
-            verificationCode: adminData.verificationCode,
-            isEmailVerified: false, // Mặc định là chưa xác minh
             created_at: new Date(),
             updated_at: new Date()
         });
@@ -48,41 +46,6 @@ exports.registerAdmin = async (adminData) => {
         return newAdmin;
     } catch (error) {
         throw new Error('Error registering admin: ' + error.message);
-    }
-};
-// Service xác minh mã và kích hoạt người dùng
-exports.verifyCodeAndActivateUser = async (email, verificationCode) => {
-    try {
-        // Tìm người dùng trong cơ sở dữ liệu
-        const admin = await Admin.findOne({ email });
-
-        // Log thông tin người dùng tìm thấy
-        console.log('Tìm thấy người dùng:', admin);
-
-        if (!admin) {
-            console.log('Không tìm thấy người dùng với email:', email);
-            return { success: false, status: 404, message: 'Không tìm thấy người dùng' };
-        }
-
-        // Kiểm tra mã xác nhận
-        console.log('Mã xác nhận trong CSDL:', admin.verificationCode);
-        console.log('Mã xác nhận từ yêu cầu:', verificationCode);
-
-        if (admin.verificationCode !== verificationCode) {
-            return { success: false, status: 400, message: 'Mã xác nhận không đúng' };
-        }
-
-        // Cập nhật trạng thái đã xác minh email
-        admin.isEmailVerified = true;
-        await admin.save();
-
-        // Log dữ liệu admin sau khi lưu
-        console.log('Dữ liệu admin sau khi cập nhật:', admin);
-
-        return { success: true }; // Trả về kết quả thành công
-    } catch (error) {
-        console.error('Lỗi xác minh mã:', error);
-        throw new Error('Lỗi xác minh mã: ' + error.message);
     }
 };
 

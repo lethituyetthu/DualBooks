@@ -19,7 +19,7 @@ interface CartItem {
 
 const Staff: React.FC = () => {
   const router = useRouter();
-  const { books, loading, error, searchBooksAll, searchBooksById } =
+  const { books, loading, error, searchBooks, searchBooksById } =
     useFetchBook();
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -27,7 +27,7 @@ const Staff: React.FC = () => {
   const [searchId, setSearchId] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const adminInfo = localStorage.getItem("admin");
 
     if (!adminInfo) {
@@ -39,7 +39,7 @@ const Staff: React.FC = () => {
         router.push("/login_admin");
       }
     }
-  }, [router]); */
+  }, [router]);
 
   const addToCart = (book: Books) => {
     setCartItems((prevItems) => {
@@ -104,7 +104,8 @@ const Staff: React.FC = () => {
 
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
-    searchBooksAll(term);
+
+    searchBooks(term);
   };
 
   const handleSearchByIdChange = async (id: string) => {

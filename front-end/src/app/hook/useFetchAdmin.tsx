@@ -57,7 +57,7 @@ export default function useFetchAdmin() {
   // Login function
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:3200/admins/loginAccess", {
+      const response = await fetch("http://localhost:3200/admins/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +95,7 @@ export default function useFetchAdmin() {
 
       setIsAuthenticated(true);
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      data.admin.role === "Staff" ? router.push("/staff") : router.push("/admin");
+      data.admin.role === "staff" ? router.push("/staff") : router.push("/admin");
       
       return data;
     } catch (error: any) {

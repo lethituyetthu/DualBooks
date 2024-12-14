@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../controller/AdminController');
 const uploadAdmin = require('../middlewares/uploadAdmin'); // Import middleware Multer
-// const authenticateAdmin = require('../middlewares/auth'); // Import middleware xác thực
-const authenticateAdmin = require('../middlewares/auth copy'); // Import middleware xác thực
+const authenticateAdmin = require('../middlewares/auth'); // Import middleware xác thực
 
 // Endpoint đăng ký admin mới
 // POST /api/admins/register
@@ -11,16 +10,6 @@ router.post('/register', uploadAdmin.single('user_img'), async (req, res) => {
     try {
         await adminController.registerAdmin(req, res);
     } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-// API xác minh mã
-router.post('/verify', async (req, res) => {
-    try {
-        console.log('Nhận yêu cầu xác minh:', req.body); // Log toàn bộ dữ liệu yêu cầu
-        await adminController.verifyEmailCode(req, res); // Gọi controller để xác minh mã
-    } catch (error) {
-        console.error('Lỗi trong API xác minh mã:', error);
         res.status(500).json({ error: error.message });
     }
 });

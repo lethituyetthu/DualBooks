@@ -111,7 +111,6 @@ const RegisterPage = () => {
             onChange={handleChange}
             error={errors.name }
           />
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
 
           {/* Email Field */}
           <InputField
@@ -122,7 +121,6 @@ const RegisterPage = () => {
             onChange={handleChange}
             error={errors.email}
           />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
 
 
           {/* Phone Field */}
@@ -134,7 +132,6 @@ const RegisterPage = () => {
             onChange={handleChange}
             error={errors.phone }
           />
-           {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
 
           {/* Address Field */}
           <InputField
@@ -145,7 +142,6 @@ const RegisterPage = () => {
             onChange={handleChange}
             error={errors.address}
           />
-           {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
 
           {/* Password Field */}
           <InputField
@@ -156,7 +152,6 @@ const RegisterPage = () => {
             onChange={handleChange}
             error={errors.password}
           />
-            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
 
             <button
             type="submit"

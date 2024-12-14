@@ -5,10 +5,10 @@ import Image from "next/image";
 import useFethWishList from "../../../hook/useFetchWishlist";
 import useAddToCart from "../../../hook/useAddToCard";
 import Link from "next/link";
-import img from "@/app/publics/banner/free-photo-of-khong-gian-m-cung.jpeg";
+import img from "@/app/publics/banner/1003263114617edaa6d7617f1f23ac93.jpg";
 
 interface Product {
-  _id: string; 
+  _id: string;
   name: string;
   title: string;
   price: number;
@@ -46,21 +46,18 @@ const Favorites = () => {
   );
 
   return (
-    <div className="max-w-[1300px] m-auto py-6 min-h-screen">
-      <h2 className="text-center font-itim text-3xl font-bold text-primary-400 mb-6">
-        Sản phẩm yêu thích
-      </h2>
+    <div className=" min-h-screen">
       <div className="flex items-start">
-        <div className="w-full md:w-1/3">
+        <div className="w-full md:w-2/5">
           <Image
             src={img}
             height={1000}
             width={1000}
             alt="banner"
-            className="w-full h-auto rounded-lg object-cover"
+            className="w-full h-auto  object-cover"
           />
         </div>
-        <div className="w-full md:w-2/3 pl-10">
+        <div className="w-full md:w-3/5 pl-10  mx-auto">
           {message && (
             <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-3 rounded shadow-md">
               {message}
@@ -69,7 +66,10 @@ const Favorites = () => {
 
           {wishlist.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              <h2 className="text-center font-itim text-3xl font-bold text-primary-400 my-10">
+              Sách yêu thích, câu chuyện không thể bỏ qua
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7 mx-5 ">
                 {currentProducts.map((product) => (
                   <div
                     key={product._id}
@@ -80,19 +80,7 @@ const Favorites = () => {
                       className="absolute top-1 right-1 text-sm p-1 text-red-500 hover:text-red-900"
                       aria-label="Remove from wishlist"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
-                        <path
-                          fillRule="evenodd"
-                          d="m3.087 9 .54 9.176A3 3 0 0 0 6.62 21h10.757a3 3 0 0 0 2.995-2.824L20.913 9H3.087Zm6.163 3.75A.75.75 0 0 1 10 12h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75Z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      <i className="fas fa-times"></i>
                     </button>
                     <Image
                       src={`http://localhost:3200/uploads/books/${product.cover_image}`}
@@ -142,7 +130,7 @@ const Favorites = () => {
                 ))}
               </div>
               {/* Pagination */}
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center my-10">
                 {Array.from({ length: totalPages }, (_, index) => (
                   <button
                     key={index}
@@ -154,12 +142,14 @@ const Favorites = () => {
                     }`}
                   >
                     {index + 1}
-                  </button> 
+                  </button>
                 ))}
               </div>
             </>
           ) : (
-            <p className="text-center text-gray-500">Chưa có sản phẩm yêu thích.</p>
+            <p className="text-center text-gray-500">
+              Chưa có sản phẩm yêu thích.
+            </p>
           )}
         </div>
       </div>

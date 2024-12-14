@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useSnackbar } from "notistack";
 
 const ReviewForm = ({ id }: { id: string }) => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
+  const {enqueueSnackbar}= useSnackbar()
 
   const handleSubmit = async (e: React.FormEvent) => {
+
     e.preventDefault();
 
     // Lấy customer_id từ localStorage
@@ -12,10 +15,12 @@ const ReviewForm = ({ id }: { id: string }) => {
 
     // Kiểm tra nếu không có customerData trong localStorage
     if (!customerData) {
-      console.error('Không tìm thấy dữ liệu khách hàng trong localStorage');
+      enqueueSnackbar(`bạn cần đăng nhập để viết bình luận`, {
+      variant: "error",
+      autoHideDuration: 2000,
+    });
       return;
     }
-  
     // Chuyển đổi chuỗi JSON thành đối tượng và lấy ID
     const customer = JSON.parse(customerData);
     const customerId = customer.id;

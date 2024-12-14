@@ -39,6 +39,9 @@ const BookDetail = ({
   };
 
   const handleDecrease = () => {
+    if(quantity > stock){
+      
+    }
     if (quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
@@ -119,7 +122,7 @@ const BookDetail = ({
               {quantity}
             </span>
             <button
-            disabled={quantity>stock}
+            //disabled={quantity>stock}
               onClick={handleIncrease}
               className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 transition disabled:bg-gray-400"
             >
@@ -131,27 +134,23 @@ const BookDetail = ({
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4">
           <button
-          disabled={quantity>stock}
+         // disabled={quantity>stock}
           onClick={handlePlaceOrder} className="px-6 py-3 bg-primary-400 hover:bg-primary-300 text-white font-medium rounded-md shadow transition disabled:bg-gray-400">
             Mua Ngay
           </button>
           <button
-          disabled={quantity>stock}
+          //disabled={quantity>stock}
 
             onClick={handleAddToCart}
             className="px-6 py-3 bg-white border border-primary-500 hover:bg-primary-100 text-primary-600 font-medium rounded-md shadow transition disabled:bg-gray-400 disabled:text-white"
           >
-            {stock === 0 ? "hết hàng" : "Thêm vào giỏ hàng" }
+          Thêm vào giỏ hàng
             
           </button>
         </div>
 
         {/* Notification for added product */}
-        {notification && (
-          <div className="mt-4 p-4 bg-green-100 text-green-700 rounded-md shadow text-center">
-            {notification}
-          </div>
-        )}
+        
       </div>
     </div>
   );

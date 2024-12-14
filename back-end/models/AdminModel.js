@@ -34,14 +34,14 @@ const AdminSchema = new Schema({
         default: 'staff' // Thiết lập mặc định là 'staff'
     },
     refreshToken: { type: String }, // Lưu refresh_token
-    isEmailVerified: {
-        type: Boolean,
-        default: false, // Chưa xác minh email
-    },
-    verificationCode: {
-        type: String,
-        required: false, // Chưa cần mã xác nhận khi tạo
-    },
+    // isEmailVerified: {
+    //     type: Boolean,
+    //     default: false, // Chưa xác minh email
+    // },
+    // verificationCode: {
+    //     type: String,
+    //     required: false, // Chưa cần mã xác nhận khi tạo
+    // },
     created_at: { 
         type: Date, 
         default: Date.now 

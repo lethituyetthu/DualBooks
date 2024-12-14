@@ -7,7 +7,7 @@ const ProductsList = ({ title, products, renderDetails }) => {
         {products.length > 0 ? (
           products.map((product) => (
             <li key={product.id} className="flex justify-between">
-              <span>{product.title}</span>
+              <span className="w-[75%]">{product.title}</span>
               <span className="font-semibold">{renderDetails(product)}</span>
             </li>
           ))

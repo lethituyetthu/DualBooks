@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-
+import { useRouter, useParams } from "next/navigation";
 import useFetchCategory from "../../../hook/useFetchCategory";
 import {
   Carousel,
@@ -23,6 +23,14 @@ export default function Showcategory() {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  /* const searchBook = {
+    route.push(`/customer/products?cateId=${item.id}`)
+  } */
+
+
+   
+
 
   return (
     <div className="max-w-[1100px] m-auto my-8">
@@ -47,7 +55,8 @@ export default function Showcategory() {
 
                 {/* Link */}
                 <Link
-                  href="#"
+                  href={`/customer/products?cateId=${item.id}`}
+                  //href={`/customer/CategoryProductList?id=${item.id}`}
                   className="text-base font-medium text-primary-600 hover:text-primary-500 flex items-center gap-2 transition duration-300"
                 >
                   Xem ngay

@@ -1,85 +1,25 @@
 const adminService = require('../service/AdminService');
-const mailer = require('../mailer');
+// const mailer = require('../mailer');
 
-// // Hàm đăng ký admin mới
-// exports.registerAdmin = async (req, res) => {
-//     try {
-//         const adminData = req.body;
-
-// // Kiểm tra xem có tệp tin ảnh được tải lên không
-//     if (!req.file) {
-//             return res.status(400).json({ error: 'User image is required' });
-//         }
-
-//         // Thêm tên file ảnh vào dữ liệu admin
-//         adminData.user_img = req.file.filename;
-
-//         const newAdmin = await adminService.registerAdmin(adminData);
-//         res.status(201).json({ message: 'Admin registered successfully/ Đăng ký thành công', data: newAdmin });
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// };
+// Hàm đăng ký admin mới
 exports.registerAdmin = async (req, res) => {
     try {
         const adminData = req.body;
-        
-        // Kiểm tra thông tin đầu vào
-        if (!req.file) {
-            return res.status(400).json({ error: 'Ảnh người dùng là bắt buộc' });
+
+// Kiểm tra xem có tệp tin ảnh được tải lên không
+    if (!req.file) {
+            return res.status(400).json({ error: 'User image is required' });
         }
 
-        // Thêm ảnh vào dữ liệu đăng ký
+        // Thêm tên file ảnh vào dữ liệu admin
         adminData.user_img = req.file.filename;
 
-        // Kiểm tra các trường bắt buộc
-        const requiredFields = ['username', 'email', 'password', 'user_img'];
-        for (const field of requiredFields) {
-            if (!adminData[field]) {
-                return res.status(400).json({ error: `Trường "${field}" là bắt buộc` });
-            }
-        }
-
-        // Tạo mã xác nhận và gửi email
-        const verificationCode = Math.floor(100000 + Math.random() * 900000); // Mã xác nhận 6 chữ số
-        await mailer.sendVerificationEmail(adminData.email, verificationCode);
-
-        // Lưu mã xác nhận tạm thời (có thể lưu trong Redis hoặc cơ sở dữ liệu)
-        adminData.verificationCode = verificationCode;
-
-        // Lưu thông tin người dùng vào cơ sở dữ liệu (chưa lưu trừ khi xác minh email thành công)
         const newAdmin = await adminService.registerAdmin(adminData);
-
-        res.status(201).json({ message: 'Đăng ký thành công, vui lòng kiểm tra email của bạn để xác nhận' });
+        res.status(201).json({ message: 'Admin registered successfully/ Đăng ký thành công', data: newAdmin });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-// Controller xác minh mã
-exports.verifyEmailCode = async (req, res) => {
-    try {
-        const { email, verificationCode } = req.body;
-
-        // Log thông tin nhận được từ client
-        console.log('Thông tin yêu cầu:', { email, verificationCode });
-
-        // Gọi service để xử lý logic xác minh mã
-        const result = await adminService.verifyCodeAndActivateUser(email, verificationCode);
-
-        // Kiểm tra kết quả và phản hồi lại client
-        if (!result.success) {
-            console.log('Kết quả xác minh:', result); // Log kết quả xác minh
-            return res.status(result.status).json({ error: result.message });
-        }
-
-        console.log('Xác minh thành công, email đã được xác nhận');
-        res.status(200).json({ message: 'Xác minh email thành công' });
-    } catch (error) {
-        console.error('Lỗi trong quá trình xác minh:', error);
-        res.status(500).json({ error: error.message });
-    }
-};
-
 
 // Hàm đăng nhập admin
 exports.loginAdmin = async (req, res) => {

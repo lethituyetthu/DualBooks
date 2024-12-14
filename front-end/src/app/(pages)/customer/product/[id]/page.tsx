@@ -66,7 +66,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/components">
+            <BreadcrumbLink href={`/customer/products?cateId=${detailBook.category.id}`}>
               {detailBook.category.name}
             </BreadcrumbLink>
           </BreadcrumbItem>
