@@ -39,6 +39,8 @@ export default function useFetchOrder() {
   const addOrder = async (orderData: Order) => {
     setLoading(true);
     setError(null);
+    console.log(orderData)
+
     try {
       const response = await fetch("http://localhost:3200/orders/", {
         method: "POST",
@@ -53,7 +55,7 @@ export default function useFetchOrder() {
       }
 
       const data = await response.json();
-      console.log(data)
+      console.log(data.data.total_amount)
       return data;
     } catch (err: any) {
       setError(err.message);
@@ -66,7 +68,7 @@ export default function useFetchOrder() {
   const addOrderItem = async (orderId: string, orderItemData: OrderItem) => {
     setLoading(true);
     setError(null);
-    console.log(orderId)
+    console.log(orderItemData)
 
     try {
       const response = await fetch(
@@ -85,6 +87,8 @@ export default function useFetchOrder() {
         throw new Error(`Error: ${response.statusText}`);
       }
       const data = await response.json();
+
+      console.log(data)
       if (data && data._id) {
         return data._id;
       } else {

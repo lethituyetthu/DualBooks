@@ -46,25 +46,30 @@ export default function useFetchBook() {
         const resultNew = await resNew.json();
         setNewBooks(resultNew);
 
-        const resLowStock = await fetch("http://localhost:3200/books/low-stock");
-       
+        const resLowStock = await fetch(
+          "http://localhost:3200/books/low-stock"
+        );
+
         const resultLowStock = await resLowStock.json();
-         // console.log(resultLowStock)
-         setLowStock(resultLowStock);
-         const res = await fetch("http://localhost:3200/books/getAllvisible");
-         if (!res.ok) {
-           throw new Error("Lỗi khi lấy tất cả dữ liệu sách!!!");
-         }
-         const result = await res.json();
-         setBooks(result); 
-         const resAll = await fetch("http://localhost:3200/books") 
-         if(!resAll.ok){ 
-           throw new Error("lỗi khi lấy tất cả danh sách sản phẩm")
-         }
-          const resultAll = await resAll.json()
-         setBooksAll(resultAll)
-       } catch (error) { 
-         setError((error as Error).message);
+        // console.log(resultLowStock)
+        setLowStock(resultLowStock);
+        const res = await fetch("http://localhost:3200/books/getAllvisible");
+        if (!res.ok) {
+          throw new Error("Lỗi khi lấy tất cả dữ liệu sách!!!");
+        }
+        const result = await res.json();
+        //console.log("sp ẩn",result)
+        setBooks(result);
+
+        const resAll = await fetch("http://localhost:3200/books");
+        if (!resAll.ok) {
+          throw new Error("lỗi khi lấy tất cả danh sách sản phẩm");
+        }
+
+        const resultAll = await resAll.json();
+        setBooksAll(resultAll);
+      } catch (error) {
+        setError((error as Error).message);
       } finally {
         setLoading(false);
       }
@@ -96,8 +101,7 @@ export default function useFetchBook() {
 
   const deleteBook = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:3200/books/${id}/status`, 
-      {
+      const response = await fetch(`http://localhost:3200/books/${id}/status`, {
         method: "PATCH",
       });
       if (!response.ok) {
@@ -137,7 +141,7 @@ export default function useFetchBook() {
       /*   if (!res.ok) {
         throw new Error("Lỗi khi lấy thông tin chi tiết sản phẩm");
       } */
-      
+
       await fetch(`http://localhost:3200/books/${id}/views`, {
         method: "PATCH",
       });
@@ -153,7 +157,7 @@ export default function useFetchBook() {
     }
   };
 
-  // lọc sp theo tên -- admin 
+  // lọc sp theo tên -- admin
   const searchBooksAll = async (term: string) => {
     try {
       const res = await fetch(`http://localhost:3200/books/title/${term}`);
@@ -176,10 +180,16 @@ export default function useFetchBook() {
 
       // Kiểm tra phản hồi từ API
       if (res.ok) {
-        // const errorDetails = await res.json(); // Lấy chi tiết lỗi từ phản hồi
-        // throw new Error(`Lỗi khi tìm kiếm sách 2: ${errorDetails.message || "Không xác định"}`);
         const result = await res.json();
-        setBooks(result);
+        // Filter books to include only those with status 'visible'
+        //console.log(result);
+        const visibleBooks = result.filter(
+          (book: Books) => book.status === "visible"
+        );
+        console.log(visibleBooks);
+
+        setBooks(visibleBooks);
+        return visibleBooks;
       }
     } catch (error) {
       // Cập nhật lỗi với thông điệp chi tiết
@@ -197,7 +207,9 @@ export default function useFetchBook() {
         throw new Error("Không tìm thấy sách với ID này.");
       }
     } catch (error) {
-      setError(`Có lỗi xảy ra khi tìm kiếm sách theo ID: ${(error as Error).message}`);
+      setError(
+        `Có lỗi xảy ra khi tìm kiếm sách theo ID: ${(error as Error).message}`
+      );
     }
   };
 
@@ -207,8 +219,8 @@ export default function useFetchBook() {
       if (res.ok) {
         const result = await res.json();
         // Giả sử `data` là mảng lồng như `[Array(2)]`
-        setBooks(result)
-        setCategoryBook(result); 
+        setBooks(result);
+        setCategoryBook(result);
         //console.log(categoryBook)
         return result;
         // Cập nhật `books` chỉ với kết quả tìm kiếm
@@ -217,34 +229,28 @@ export default function useFetchBook() {
       }
     } catch (error) {
       setError(
-        `Có lỗi xảy ra khi tìm kiếm sách theo danh mục: ${(error as Error).message}`
+        `Có lỗi xảy ra khi tìm kiếm sách theo danh mục: ${
+          (error as Error).message
+        }`
       );
     }
   };
   const fetchProductStock = async (productId: string) => {
-
     try {
-
       const response = await fetch(`http://localhost:3200/books/${productId}`);
 
       const productData = await response.json();
 
-
-
-      console.log(productData.stock)
+      console.log(productData.stock);
 
       return productData.stock;
-
     } catch (error) {
-
       console.error("Lỗi khi lấy thông tin tồn kho:", error);
 
       return 0; // Trả về 0 nếu có lỗi
-
     }
-
   };
-   return {
+  return {
     lowStock,
     updateBook,
     hotBooks,

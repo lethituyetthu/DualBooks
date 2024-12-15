@@ -33,7 +33,6 @@ export default function Product({ product, formatDateTime }) {
         />
       </td>
       <td className="px-6 py-4">{product.title}</td>
-      <td className="px-6 py-4 text-nowrap">{product.publisher.name}</td>
       <td className="px-6 py-4 ">{product.author}</td>
       <td className="px-6 py-4">{product.category.name}</td>
       <td className="px-6 py-4 text-nowrap">

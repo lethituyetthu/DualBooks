@@ -81,10 +81,13 @@ const CheckoutModal: React.FC<typeCheckout> = ({
       staff_id: adminId,
     };
 
+    
     try {
       const response = await addOrder(orderData);
       const orderId = response.data._id;
 
+      console.log(orderData)
+      console.log(response)
       // Thêm từng sản phẩm vào chi tiết đơn hàng
       for (const item of cartItems) {
         const orderItemData = {

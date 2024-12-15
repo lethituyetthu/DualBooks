@@ -152,20 +152,32 @@ const product1 = books.map((book) => ({
     }
   };
 
-  const handleSearchChange = (term: string) => {
-    setSearchTerm(term);
-    searchBooks(term);
-    setFilteredProducts(
-      books.map((book: typeBook) => ({
-        id: book.id,
-        name: book.title,
-        price: book.price,
-        image: book.cover_image,
-        author: book.author,
-      }))
-    );
-    setCurrentPage(1);
+  const handleSearchChange = async (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      const term = searchTerm.trim(); // Lấy giá trị tìm kiếm hiện tại từ state
+      if (term) {
+        try {
+           const books =    await searchBooks(term);
+           // Chờ hoàn tất tìm kiếm từ server
+
+           console.log(books)
+          setFilteredProducts(
+            books.map((book: typeBook) => ({
+              id: book.id,
+              name: book.title,
+              price: book.price,
+              image: book.cover_image,
+              author: book.author,
+            }))
+          );
+          setCurrentPage(1); // Reset về trang đầu tiên
+        } catch (error) {
+          console.error("Lỗi khi tìm kiếm:", error);
+        }
+      }
+    }
   };
+  
   // Áp dụng bộ lọc giá, từ khóa
   const handleFilter = () => {
     const min = parseInt(minPrice) || 0;
@@ -241,7 +253,8 @@ const totalPages = Math.ceil(listProducts.length / itemsPerPage);
             <input
               type="text"
               value={searchTerm}
-              onChange={(e) => handleSearchChange(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}// Cập nhật giá trị nhập liệu
+              onKeyDown={handleSearchChange}  // Thực hiện tìm kiếm khi nhấn Enter
               placeholder="Nhập tên sản phẩm"
               className="border rounded p-2 w-full"
             />

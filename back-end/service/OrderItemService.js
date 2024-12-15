@@ -19,8 +19,8 @@ exports.createOrderItem = async (orderId, book_id, quantity, price) => {
         // Cập nhật total_amount trong Order
         const order = await OrderModel.findById(orderId);
         if (order) {
-            order.total_amount += price * quantity; // Cập nhật trường total_amount
-            await order.save(); // Lưu lại đơn hàng đã được cập nhật
+            const additionalAmount = price * quantity; // Tính toán thêm số tiền cho đơn hàng
+            order.total_amount = order.total_amount + additionalAmount; // Cộng thêm số tiền vào total_amount của Order            await order.save(); // Lưu lại đơn hàng đã được cập nhật
         }
 
         // Giảm số lượng tồn kho của sách và tăng số lượng sản phẩm đã bán

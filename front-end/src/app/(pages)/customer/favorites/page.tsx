@@ -38,7 +38,7 @@ const Favorites = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-  };
+  }; 
 
   const currentProducts = wishlist.slice(
     (currentPage - 1) * productsPerPage,
