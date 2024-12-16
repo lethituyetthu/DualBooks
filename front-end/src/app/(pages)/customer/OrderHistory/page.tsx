@@ -20,7 +20,6 @@ const OrderHistory = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [filterStatus, setFilterStatus] = useState<string>("Tất cả");
   const [filteredOrders, setFilteredOrders] = useState(orders);
-
   // Update filtered orders when filterStatus changes
   useEffect(() => {
     if (filterStatus === "Tất cả") {
@@ -68,7 +67,10 @@ const OrderHistory = () => {
     });
   };
 
-  console.log(orderDetail)
+  const sortedOrders = [...filteredOrders].sort(
+    (a, b) => new Date(b.order_date) - new Date(a.order_date)
+  );
+  //console.log(orderDetail)
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -101,14 +103,14 @@ const OrderHistory = () => {
         </div>
 
         {/* Order list */}
-        {filteredOrders.length === 0 ? (
+        {sortedOrders.length === 0 ? (
           <div className="text-center text-xl text-gray-500">
             Không có đơn hàng nào!
           </div>
         ) : (
           <div className="overflow-x-auto p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 gap-6">
-              {filteredOrders.map((order) => (
+              {sortedOrders.map((order) => (
                 <div
                   key={order.id}
                   className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-300 bg-white"
@@ -135,7 +137,6 @@ const OrderHistory = () => {
                             ? "text-blue-600"
                             : "text-red-600"
                         }
-                        className="font-medium"
                       >
                         {order.order_status}
                       </span>
@@ -146,7 +147,7 @@ const OrderHistory = () => {
                   {order.orderItems && order.orderItems.length > 0 && (
                     <div className="text-sm text-gray-700 mt-2">
                       <ul className="list-disc pl-5">
-                        {order.orderItems.slice(0, 1).map((item, idx) => (
+                        {order.orderItems.map((item, idx) => (
                           <li key={idx} className="mb-4 flex items-center space-x-4">
                             {/* Product image */}
                             <Image

@@ -60,10 +60,9 @@ export interface UseFetchOrdersResult {
   ) => Promise<void>;
   fetchOrdersByStatus: (status: string) => Promise<void>; // Add this line to the interface
   fetchOrdersByDate: (status: string) => Promise<void>; // Add this line to the interface
-  fetchOrdersByCustomerId:(customerId: string) => Promise<void>,
-  confirmOrder:(id:string)=> Promise<void>,
-  cancelOrder:(id:string)=> Promise<void>
-
+  fetchOrdersByCustomerId: (customerId: string) => Promise<void>;
+  confirmOrder: (id: string) => Promise<void>;
+  cancelOrder: (id: string) => Promise<void>;
 }
 
 export default function useFetchOrders(): UseFetchOrdersResult {
@@ -103,20 +102,18 @@ export default function useFetchOrders(): UseFetchOrdersResult {
           throw new Error("Lỗi khi lấy chi tiết đơn hàng!");
         }
         const result = await response.json();
-        
+
         setOrderDetail(result); // Đặt chi tiết đơn hàng vào state
-        return result
+        return result;
       } catch (err) {
         setError((err as Error).message);
       } finally {
         setLoading(false);
       }
-    },
-    []
-  );
+    },[]  );
 
   // Hàm cập nhật thông tin đơn hàng
- /*  const updateOrder = useCallback(
+  /*  const updateOrder = useCallback(
     async (orderId: string, updatedData: Partial<typeOrderDetail>) => {
       setLoading(true);
       setError(null);
@@ -207,7 +204,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
         throw new Error("Lỗi khi lấy dữ liệu đơn hàng theo ID khách hàng!");
       }
       const result = await response.json();
-      console.log(result)
+      console.log(result);
       setOrders(result); // Đặt dữ liệu đơn hàng vào state
     } catch (err) {
       setError((err as Error).message);
@@ -224,15 +221,15 @@ export default function useFetchOrders(): UseFetchOrdersResult {
           "Content-Type": "application/json", // Đặt header nếu API yêu cầu JSON
         },
       });
-  
+
       if (!res.ok) {
-        // Nếu phản hồi không thành công  
+        // Nếu phản hồi không thành công
         const errorData = await res.json(); // Thử lấy thông tin chi tiết lỗi từ API
         throw new Error(
           errorData.message || "Lỗi không xác định khi xác nhận đơn hàng"
         );
       }
-  
+
       const result = await res.json(); // Đọc dữ liệu phản hồi (nếu có)
       console.log("Xác nhận đơn hàng thành công:", result);
       return result; // Trả về kết quả để sử dụng nếu cần
@@ -249,7 +246,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
           "Content-Type": "application/json", // Đặt header nếu API yêu cầu JSON
         },
       });
-  
+
       if (!res.ok) {
         // Nếu phản hồi không thành công
         const errorData = await res.json(); // Thử lấy thông tin chi tiết lỗi từ API
@@ -257,7 +254,7 @@ export default function useFetchOrders(): UseFetchOrdersResult {
           errorData.message || "Lỗi không xác định khi huỷ đơn hàng"
         );
       }
-  
+
       const result = await res.json(); // Đọc dữ liệu phản hồi (nếu có)
       console.log("huỷ đơn hàng thành công", result);
       return result; // Trả về kết quả để sử dụng nếu cần
@@ -275,15 +272,16 @@ export default function useFetchOrders(): UseFetchOrdersResult {
           "Content-Type": "application/json", // Đặt header nếu API yêu cầu JSON
         },
       });
-  
+
       if (!res.ok) {
-        // Nếu phản hồi không thành công  
-        const errorData = await res.json(); 
+        // Nếu phản hồi không thành công
+        const errorData = await res.json();
         throw new Error(
-          errorData.message || "Lỗi không xác định khi xác nhận giao hàng đơn hàng"
+          errorData.message ||
+            "Lỗi không xác định khi xác nhận giao hàng đơn hàng"
         );
       }
-  
+
       const result = await res.json(); // Đọc dữ liệu phản hồi (nếu có)
       console.log("Xác nhận giao hàng thành công:", result);
       return result; // Trả về kết quả để sử dụng nếu cần
@@ -301,15 +299,16 @@ export default function useFetchOrders(): UseFetchOrdersResult {
           "Content-Type": "application/json", // Đặt header nếu API yêu cầu JSON
         },
       });
-  
+
       if (!res.ok) {
-        // Nếu phản hồi không thành công  
-        const errorData = await res.json(); 
+        // Nếu phản hồi không thành công
+        const errorData = await res.json();
         throw new Error(
-          errorData.message || "Lỗi không xác định khi xác nhận giao hàng đơn hàng"
+          errorData.message ||
+            "Lỗi không xác định khi xác nhận giao hàng đơn hàng"
         );
       }
-  
+
       const result = await res.json(); // Đọc dữ liệu phản hồi (nếu có)
       console.log("Xác nhận hoàn thành đơn hàng:", result);
       return result.data; // Trả về kết quả để sử dụng nếu cần

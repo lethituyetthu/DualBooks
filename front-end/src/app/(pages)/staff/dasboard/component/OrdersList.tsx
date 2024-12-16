@@ -30,8 +30,18 @@ const OrdersList = ({
     }
   };
 
+  const formatDateTime = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleString("vi-VN", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
   return (
-    <div className="bg-white rounded-lg shadow p-6 mt-9">
+    <div className="bg-white rounded-lg shadow p-6 ">
       <div className="flex justify-between items-center px-10 py-3">
         <h3 className="text-lg font-semibold text-gray-700">Đơn hàng</h3>
         <select
@@ -39,14 +49,14 @@ const OrdersList = ({
           onChange={(e) => setFilterStatus(e.target.value)}
           className="border border-gray-300 rounded-lg py-2 px-4"
         >
-          {statuses.map((status) => (
+          {statuses?.map((status) => (
             <option key={status} value={status}>
               {status} ({orderCounts[status] || 0})
             </option>
           ))}
         </select>
       </div>
-      <ul className="space-y-4 px-10 h-80 overflow-y-auto">
+      <ul className="space-y-4 px-10 h-96 overflow-y-auto">
         {orders?.length > 0 ? (
           orders.map((order) => (
             <li
@@ -68,6 +78,9 @@ const OrdersList = ({
               </span>
               <span className="text-gray-600 font-medium text-center w-1/5">
                 {order.customer?.phone || "N/A"}
+              </span>
+              <span className="text-gray-600 font-medium text-center w-1/5">
+              {formatDateTime(order.order_date)}
               </span>
               <span className="text-green-500 font-semibold text-center w-1/5">
                 {(order.total_amount * 1000).toLocaleString("vi-VN")} đ

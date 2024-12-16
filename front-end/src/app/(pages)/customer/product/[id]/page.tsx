@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
 import Image from "next/image";
 import useFetchBook from "../../../../hook/useFetchBook"; // Hook lấy dữ liệu sách
 import BookDetail from "../../component/bookDetail";
@@ -23,15 +23,24 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
   const {
     detailBook,
     fetchDetail,
+    fetchViews,
     loading,
     error,
     categoryBook,
     searchBookByCate,
   } = useFetchBook(); // Hook lấy dữ liệu sách
-
+  const lastFetchedId = useRef<string | null>(null);
   useEffect(() => {
-    fetchDetail(id);
-  }, [id]);
+    const fetchData = async () => {
+      if (!id || lastFetchedId.current === id) return; // Nếu ID không thay đổi, không gọi lại API
+      lastFetchedId.current = id; // Cập nhật ID đã fetch
+      await fetchDetail(id); // Gọi API lấy chi tiết sách
+      fetchViews(id); // Gọi API tăng lượt xem (không cần chờ)
+    };
+  
+    fetchData();
+  }, [id, fetchDetail, fetchViews]);
+  
 
   // Fetch sản phẩm cùng danh mục khi detailBook được cập nhật
   useEffect(() => {
@@ -88,7 +97,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
         views={views}
         
       />
-      {/* Phần MÔ TẢ SẢN PHẨM - Nhỏ lại */}
+{/* Phần MÔ TẢ SẢN PHẨM - Nhỏ lại */}
       <div className="mt-[40px] text-sm ">
         <h1 className="text-xl mb-4 bg-primary-400 text-light-100 py-5 pl-3 rounded-sm font-itim">
           MÔ TẢ SẢN PHẨM

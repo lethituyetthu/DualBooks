@@ -32,7 +32,7 @@
   "author": "Luis Sepúlveda",
   "description": "Chuyện con mèo dạy hải âu bay là kiệt tác dành cho thiếu nhi của nhà văn Chi Lê nổi tiếng Luis Sepúlveda – tác giả của cuốn Lão già mê đọc truyện tình đã bán được 18 triệu bản khắp thế giới. Tác phẩm không chỉ là một câu chuyện ấm áp, trong sáng, dễ thương về loài vật mà còn chuyển tải thông điệp về trách nhiệm với môi trường, về sự sẻ chia và yêu thương cũng như ý nghĩa của những nỗ lực – “Chỉ những kẻ dám mới có thể bay”.\n“Búp Sen Xanh” là nơi tiểu thuyết và lịch sử đã gặp nhau và hoạ nên một giai đoạn trong cuộc đời người Cha già của dân tộc Việt Nam. Nơi ấy, có quê nhà xứ Nghệ, có làng Sen, có khung dệt của mẹ, có lời dạy của cha, có những người bạn và những kỷ niệm ấu thơ. Nơi ấy có xứ Huế mà trong cuộc sống nghèo khổ có trăn trở tuổi trẻ, về con người, về vận mệnh dân tộc, có mất mát và đau thương...",
   "price": 39.2,
-  "stock": 85,
+  "stock": 83,
   "cover_image": "1728314238932-845181620.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
@@ -61,9 +61,9 @@
       "$oid": "672cdee3bdecd3bd976dca88"
     }
   ],
-  "sales": 15,
-  "views": 41,
-  "status": "visible"
+  "sales": 17,
+  "views": 47,
+  "status": "hidden"
 },
 {
   "_id": {
@@ -73,7 +73,7 @@
   "author": "Katie Harnett",
   "description": "Chú mèo ở phố Ngàn Hoa có vô số cái tên, mỗi người gọi chú một kiểu. Ai cũng yêu chú cả. Nhưng có một ngôi nhà trên phố chú chưa từng ghé chân…\n\nCuốn sách tranh tuyệt vời này kể câu chuyện ngọt ngào và đáng nhớ về tình cảm láng giềng, tình bạn… mà không ai trong chúng ta quên được.",
   "price": 39.2,
-  "stock": 93,
+  "stock": 91,
   "cover_image": "1728314472597-447946428.webp",
   "created_at": "2024-09-02T00:00:00Z",
   "updated_at": {
@@ -87,8 +87,8 @@
   },
   "__v": 1,
   "reviews": [],
-  "sales": 7,
-  "views": 25,
+  "sales": 9,
+  "views": 30,
   "status": "visible"
 },
 {
@@ -151,7 +151,7 @@
   "author": "Nhiều Tác Giả",
   "description": "Sách biên soạn theo chương trình giáo dục phổ thông mới. Các kiến thức trong sách được chủ yếu xuất phát từ những tình huống của cuộc sống quanh ta và trở lại giúp ta giải quyết những vấn đề của cuộc sống. Vì thế, khi học Toán theo cuốn sách này, các em sẽ cảm nhận được rằng, Toán học thật là gần gũi.",
   "price": 14,
-  "stock": 98,
+  "stock": 96,
   "cover_image": "1728314580541-478306471.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
@@ -166,9 +166,13 @@
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "reviews": [],
-  "sales": 2,
-  "views": 12,
+  "reviews": [
+    {
+      "$oid": "675ed55706e63396ea64e0c0"
+    }
+  ],
+  "sales": 4,
+  "views": 30,
   "status": "visible"
 },
 {
@@ -179,7 +183,7 @@
   "author": "Nhiều Tác Giả",
   "description": "Tiếng Anh 12 Friends Global - Student Book\n\nMỤC LỤC\n\nUnit I. Introduction\n\nUnit 1. Relationships\n\nUnit 2. Problems\n\nUnit 3. Customs and tradition\n\nUnit 4. Holidays and tourism\n\nUnit 5. Careers\n\nUnit 6. Health\n\nUnit 7. Media\n\nUnit 8. Change the world",
   "price": 99,
-  "stock": 96,
+  "stock": 94,
   "cover_image": "1728314600164-920992024.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
@@ -196,8 +200,8 @@
   },
   "status": "visible",
   "reviews": [],
-  "sales": 4,
-  "views": 5
+  "sales": 6,
+  "views": 23
 },
 {
   "_id": {
@@ -212,7 +216,7 @@
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
   },
-  "views": 8,
+  "views": 32,
   "sales": 5,
   "created_at": {
     "$date": "2024-09-14T06:55:23.006Z"
@@ -599,14 +603,14 @@
   "description": "Sách nói \"Thế Giới Phẳng\" (The World Is Flat) của Thomas L. Friedman là một cuốn sách nổi tiếng, khám phá sự chuyển mình của nền kinh tế toàn cầu trong bối cảnh toàn cầu hóa và công nghệ thông tin. Xuất bản lần đầu vào năm 2005, tác phẩm đã nhanh chóng thu hút sự chú ý và trở thành tài liệu tham khảo quan trọng cho những ai quan tâm đến các vấn đề kinh tế, xã hội và công nghệ.",
   "price": 110,
   "stock": 24,
-  "cover_image": "1733286226275-37369832.jpg",
+  "cover_image": "1734271730317-145380253.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c45"
   },
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "views": 4,
+  "views": 6,
   "status": "visible",
   "sales": 4,
   "reviews": [],
@@ -614,7 +618,7 @@
     "$date": "2024-11-27T11:39:00.793Z"
   },
   "updated_at": {
-    "$date": "2024-12-04T04:23:46.310Z"
+    "$date": "2024-12-15T14:08:50.333Z"
   },
   "__v": 0,
   "category": "Kinh Tế"
@@ -627,23 +631,23 @@
   "author": "William J. O’Neil, Matthew Galgani",
   "description": "Bạn là Nhà Đầu Tư Mới và đang tìm kiếm một Phương Pháp Đầu Tư Đúng Đắn, hướng dẫn từng bước giúp bạn có thể phân tích vì sao nên mua hay nên bán, mua ở đâu, mua giá nào thì rủi ro thấp nhất... để trở thành một Nhà Đầu Tư Thành Công?",
   "price": 700,
-  "stock": 46,
-  "cover_image": "1733286296069-802292361.webp",
+  "stock": 45,
+  "cover_image": "1734277431273-708520453.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c45"
   },
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "views": 6,
+  "views": 8,
   "status": "visible",
-  "sales": 2,
+  "sales": 3,
   "reviews": [],
   "created_at": {
     "$date": "2024-11-27T11:42:00.543Z"
   },
   "updated_at": {
-    "$date": "2024-12-04T04:24:56.088Z"
+    "$date": "2024-12-15T15:43:51.295Z"
   },
   "__v": 0,
   "category": "Kinh Tế"
@@ -656,23 +660,23 @@
   "author": "Nhà Xuất Bản Thế Giới",
   "description": "Cuốn sách Những kẻ xuất chúng sẽ giúp bạn tìm ra câu trả lời thông qua các phân tích về xã hội, văn hóa và thế hệ của những nhân vật kiệt xuất như Bill Gates, Beatles và Mozart, bên cạnh những thất bại đáng kinh ngạc của một số người khác (ví dụ: Christopher Langan, người có chỉ số IQ cao hơn Einstein nhưng rốt cuộc lại quay về làm việc trong một trại ngựa). Theo đó, cùng với tài năng và tham vọng, những người thành công đều được thừa hưởng một cơ hội đặt biệt để rèn luyện kỹ năng và cho phép họ vượt lên những người cùng trang lứa.",
   "price": 100,
-  "stock": 136,
-  "cover_image": "1733286349665-922639389.webp",
+  "stock": 135,
+  "cover_image": "1734277517408-424498437.jpg",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c45"
   },
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "views": 4,
+  "views": 8,
   "status": "visible",
-  "sales": 2,
+  "sales": 3,
   "reviews": [],
   "created_at": {
     "$date": "2024-11-27T11:44:52.442Z"
   },
   "updated_at": {
-    "$date": "2024-12-04T04:25:49.697Z"
+    "$date": "2024-12-15T15:45:17.819Z"
   },
   "__v": 0,
   "category": "Kinh Tế"
@@ -685,7 +689,7 @@
   "author": "NXB Trẻ",
   "description": "Jim Collins cùng nhóm nghiên cứu đã miệt mài nghiên cứu những công ty có bước nhảy vọt và bền vững để rút ra những kết luận sát sườn, những yếu tố cần kíp để đưa công ty từ tốt đến vĩ đại. Đó là những yếu tố khả năng lãnh đạo, con người, văn hóa, kỷ luật, công nghệ… Những yếu tố này được nhóm nghiên cứu xem xét tỉ mỉ và kiểm chứng cụ thể qua 11 công ty nhảy vọt lên vĩ đại. Mỗi kết luận của nhóm nghiên cứu đều hữu ích, vượt thời gian, ý nghĩa vô cùng to lớn đối với mọi lãnh đạo và quản lý ở mọi loại hình công ty (từ công ty có nền tảng và xuất phát tốt đến những công ty mới khởi nghiệp), và mọi lĩnh vực ngành nghề. Đây là cuốn sách nên đọc đối với bất kỳ lãnh đạo hay quản lý nào!",
   "price": 89,
-  "stock": 120,
+  "stock": 119,
   "cover_image": "1732708029351-723347035.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c45"
@@ -695,7 +699,7 @@
   },
   "views": 3,
   "status": "visible",
-  "sales": 3,
+  "sales": 4,
   "reviews": [],
   "created_at": {
     "$date": "2024-11-27T11:47:09.353Z"
@@ -741,7 +745,7 @@
   "author": " Gosho Aoyama",
   "description": "Cơ thể vừa bị teo nhỏ thì vô số nguy hiểm lại kéo đến!! Một vụ án nan giải và đáng sợ đến rợn tóc gáy lại ập xuống đầu tôi!! Đáng lo hơn, Ran cũng trở thành mục tiêu. Nhưng với bộ não siêu phàm và 7 món đồ hỗ trợ phá án, tôi sẵn sàng quyết chiến với bọn chúng! Tôi là Edogawa Conan – Thám tử nhí lừng danh!!",
   "price": 35,
-  "stock": 58,
+  "stock": 57,
   "cover_image": "1732708206786-476479911.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c43"
@@ -751,7 +755,7 @@
   },
   "views": 0,
   "status": "visible",
-  "sales": 2,
+  "sales": 3,
   "reviews": [],
   "created_at": {
     "$date": "2024-11-27T11:50:06.788Z"
@@ -769,7 +773,7 @@
   "author": "Gosho Aoyama",
   "description": "Người nhỏ nhưng trí tuệ thì không nhỏ tẹo nào đâu nhé!! Bằng chứng là một loạt những bí ẩn đều lần lượt được suy luận tài tình của tôi khám phá ra hết! Nhưng ước gì tôi sớm quay trở lại hình dạng ban đầu để lật tẩy danh tính bọn người mặc áo đen! Cũng là để được gặp lại Ran nữa!! Tôi là Edogawa Conan – Thám tử nhí lừng danh!",
   "price": 35,
-  "stock": 19,
+  "stock": 18,
   "cover_image": "1732708310182-521362788.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c43"
@@ -779,7 +783,7 @@
   },
   "views": 0,
   "status": "visible",
-  "sales": 1,
+  "sales": 2,
   "reviews": [],
   "created_at": {
     "$date": "2024-11-27T11:51:50.184Z"
@@ -825,7 +829,7 @@
   "author": "Gosho Aoyama",
   "description": "Conan đã quyết định ở nhờ tại văn phòng của thám tử Kogoro, bố của Mori Ran – bạn gái cậu, để lần theo tung tích tổ chức bí ẩn kia. Nhằm tránh con mắt người đời, hằng ngày cậu đến trường như một học sinh cấp 1 bình thường. Và thám tử nhí lừng danh Conan đã đứng đằng sau ông bác thám tử “gà mờ” Mori Kogoro phá giải những vụ án hóc búa một cách tài tình!!",
   "price": 35,
-  "stock": 20,
+  "stock": 19,
   "cover_image": "1732708470931-810720410.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c43"
@@ -835,7 +839,7 @@
   },
   "views": 2,
   "status": "visible",
-  "sales": 2,
+  "sales": 3,
   "reviews": [],
   "created_at": {
     "$date": "2024-11-27T11:54:30.934Z"
@@ -853,7 +857,7 @@
   "author": "Gosho Aoyama",
   "description": "Một học sinh cấp 3 bỗng chốc biến thành cậu bé cấp 1!! Trong tình cảnh oái ăm ấy, dòng máu thám tử trong tôi vẫn sục sôi, giúp tôi tiếp tục chinh phục những vụ án mới!! Nhưng để giữ kín thân phận của mình, tôi đã phải khổ sở lắm đó!! Tôi là Edogawa Conan – Thám tử nhí lừng danh!!",
   "price": 35,
-  "stock": 8,
+  "stock": 7,
   "cover_image": "1732708523727-292423661.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c43"
@@ -863,7 +867,7 @@
   },
   "views": 4,
   "status": "visible",
-  "sales": 1,
+  "sales": 2,
   "reviews": [],
   "created_at": {
     "$date": "2024-11-27T11:55:23.730Z"
@@ -1105,7 +1109,7 @@
   "author": "Nguyên Phong",
   "description": "Muôn Kiếp Nhân Sinh - Many Times, Many Lives  Giáo sư John Vũ – Nguyên Phong và những câu chuyện chưa từng có về tiền kiếp, khám phá luật Nhân quả, Luân hồi.  “Muôn kiếp nhân sinh” là tác phẩm do Giáo sư John Vũ - Nguyên Phong viết từ năm 2017 và hoàn tất đầu năm 2020 ghi lại những câu chuyện, trải nghiệm tiền kiếp kỳ lạ từ nhiều kiếp sống của người bạn tâm giao lâu năm, ông Thomas – một nhà kinh doanh tài chính nổi tiếng ở New York. Những câu chuyện chưa từng tiết lộ này sẽ giúp mọi người trên thế giới chiêm nghiệm, khám phá các quy luật về luật Nhân quả và Luân hồi của vũ trụ giữa lúc trái đất đang gặp nhiều tai ương, biến động, khủng hoảng từng ngày.",
   "price": 115,
-  "stock": 87,
+  "stock": 86,
   "cover_image": "1732710360871-266314128.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c46"
@@ -1115,7 +1119,7 @@
   },
   "views": 0,
   "status": "visible",
-  "sales": 0,
+  "sales": 1,
   "reviews": [],
   "created_at": {
     "$date": "2024-11-27T12:26:00.873Z"
@@ -1414,14 +1418,14 @@
   "description": "Ai sống cuộc đời công chính sẽ được nhìn thấy Thiên Chúa, ai có tâm hồn cao đẹp và lòng hướng thiện sẽ được Thiên Chúa che chở - đó là điều mà mọi người con của Chúa đều tin tưởng, thậm chí là lấy đó làm lý tưởng sống. Thế nhưng mấy ai thật sự có thể tin vào hồng ân Thiên Chúa khi chưa tận mắt nhìn thấy Ngài?  Chắc hẳn ai trong chúng ta cũng từng ít nhất một lần trải qua những sự kiện trùng hợp đến khó tin, hoặc thần kỳ đến nỗi không thể lý giải, nhưng những người có niềm tin tôn giáo có lẽ sẽ dễ lý giải những chuyện như vậy hơn. Bởi họ tin đó là nhờ vào ơn trên, hoặc theo cách nói của các Kitô hữu thì đó là hồng ân Thiên Chúa. Tuy nhiên, không phải ai cũng có niềm tin vào những thứ vô hình và siêu nhiên. Đôi khi người ta cần được trải nghiệm và cảm nhận bằng cả trái tim thì mới vun đắp được niềm tin đó.",
   "price": 64,
   "stock": 43,
-  "cover_image": "1733070718715-286565278.webp",
+  "cover_image": "1734271427093-778970930.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c46"
   },
   "publisherID": {
     "$oid": "671927e6b173afa473507ac2"
   },
-  "views": 0,
+  "views": 6,
   "status": "visible",
   "sales": 0,
   "reviews": [],
@@ -1429,9 +1433,10 @@
     "$date": "2024-12-01T16:31:58.717Z"
   },
   "updated_at": {
-    "$date": "2024-12-01T16:31:58.717Z"
+    "$date": "2024-12-15T14:03:47.282Z"
   },
-  "__v": 0
+  "__v": 0,
+  "category": "Lịch Sử - Địa Lý - Tôn Giáo"
 },
 {
   "_id": {
@@ -1581,7 +1586,7 @@
   "author": "Vương Nguy, Kim Phi Phi, Vương Lôi",
   "description": "Tiếng Trung Dành Cho Học Sinh Tiểu Học - Tập 6  - Giáo trình bao gồm sáu tập sách bài học và sáu tập sách bài tập.  - Nội dung thiết thực, gần gũi với cuộc sống hằng ngày của học sinh tiểu học.  - Chương trình học bám sát chuẩn quốc tế (bài thi YCT, khung tham chiếu CEFR, tiêu chuẩn ACTFL).  - Vô số hoạt động (tô màu, vẽ hình, hát, chơi trò chơi…) được đưa vào bài học giúp học sinh tăng thêm hứng thú khi học tiếng Trung.",
   "price": 268,
-  "stock": 12,
+  "stock": 11,
   "cover_image": "1733071100952-161060623.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c44"
@@ -1591,7 +1596,7 @@
   },
   "views": 0,
   "status": "visible",
-  "sales": 0,
+  "sales": 1,
   "reviews": [],
   "created_at": {
     "$date": "2024-12-01T16:38:20.958Z"
@@ -1715,41 +1720,13 @@
 },
 {
   "_id": {
-    "$oid": "674fda13b4978b3195d85868"
-  },
-  "title": "ad",
-  "author": "dv",
-  "description": "dv",
-  "price": 21,
-  "stock": 3,
-  "cover_image": "1733286419512-754342780.webp",
-  "categoryID": {
-    "$oid": "66e52d1113ae0384d3444c3f"
-  },
-  "publisherID": {
-    "$oid": "671927e6b173afa473507ac2"
-  },
-  "views": 0,
-  "status": "visible",
-  "sales": 0,
-  "reviews": [],
-  "created_at": {
-    "$date": "2024-12-04T04:26:59.519Z"
-  },
-  "updated_at": {
-    "$date": "2024-12-04T04:26:59.519Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
     "$oid": "6751a9f1d0c174ff927bcba2"
   },
   "title": "Giáo Dục Đầu Đời Cho Trẻ - Những Bài Học Tự Bảo Vệ Bản Thân - Không Được Chạm Vào Vùng Riêng Tư Của Tớ",
   "author": "Hồ Tâm",
   "description": "Giáo Dục Đầu Đời Cho Trẻ - Những Bài Học Tự Bảo Vệ Bản Thân - Không Được Chạm Vào Vùng Riêng Tư Của Tớ  Trong xã hội ngày nay, việc trang bị cho trẻ em những kiến thức an toàn để tự bảo vệ bản thân là điều hết sức cần thiết. Thấu hiểu điều này, bộ sách Giáo dục đầu đời cho trẻ - Những bài học tự bảo vệ bản thân đã ra đời nhằm giúp các em nhận thức rõ về cơ thể mình, bồi dưỡng những quan niệm đúng đắn về giới tính, đồng thời nắm được những nguy cơ tiềm tàng trong cuộc sống, tránh xa mọi hiểm nguy.",
   "price": 31,
-  "stock": 53,
+  "stock": 52,
   "cover_image": "1733405169402-117701179.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
@@ -1759,7 +1736,7 @@
   },
   "views": 0,
   "status": "visible",
-  "sales": 1,
+  "sales": 2,
   "reviews": [],
   "created_at": {
     "$date": "2024-12-05T13:26:09.415Z"
@@ -1777,7 +1754,7 @@
   "author": "Watiek Ideo, Veronica Winata",
   "description": "Cùng Con Trưởng Thành - Giáo Dục Nhân Cách Cho Trẻ: Học Cách Tha Thứ  Giáo dục nhân cách cho trẻ là bộ sách mang tính giáo dục cao của tác giả nổi tiếng người Indonesia Watiek Ideo. Qua những câu chuyện về cuộc sống hằng ngày của hai chị em Kimi và Kino, các độc giả nhỏ tuổi sẽ học được nhiều điều hay lẽ phải như sự biết ơn, đồng cảm, tha thứ, thật thà, tôn trọng và yêu thương mọi người. Trẻ em giống như tờ giấy trắng, sự rèn giũa ngay từ nhỏ chính là một nền tảng giúp các em hình thành nên những đức tính tốt. Thấu hiểu điều đó, bộ sách này đã ra đời với hy vọng sẽ trở thành một người bạn đồng hành hữu ích, đáng tin cậy, giúp các bạn nhỏ bồi dưỡng nhân cách và hoàn thiện bản thân mỗi ngày.",
   "price": 13,
-  "stock": 20,
+  "stock": 19,
   "cover_image": "1733405241295-194478074.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c3f"
@@ -1787,7 +1764,7 @@
   },
   "views": 0,
   "status": "visible",
-  "sales": 1,
+  "sales": 2,
   "reviews": [],
   "created_at": {
     "$date": "2024-12-05T13:27:21.298Z"
@@ -2029,7 +2006,7 @@
   "author": "Lê Văn Tuấn",
   "description": "Học toán không chỉ đơn thuần để giải toán, mục đích chính của học toán là học cách tư duy logic... Mà đã là học cách tư duy logic thì ngành nào chúng ta cũng cần.  Nhận thấy được những khó khăn mà các bạn học sinh gặp phải trong quá trình tìm kiếm tài liệu, chọn lọc thông tin, kiến thức, cũng như tầm quan trọng của việc học và tự học môn Toán tác giả đã biên soạn bộ sách: Tự Học Toán Học Lớp 11 gồm hai tập: tập 1 và tập 2 với số lượng bài tập lớn, phong phú và đa dạng, được phân chia chi tiết theo các chủ đề, dạng toán từ cơ bản đến nâng cao, các bài tập cũng được sắp xếp theo thứ tự, mức độ khó tăng dần.",
   "price": 130,
-  "stock": 42,
+  "stock": 41,
   "cover_image": "1733405947115-690285289.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
@@ -2039,7 +2016,7 @@
   },
   "views": 0,
   "status": "visible",
-  "sales": 1,
+  "sales": 2,
   "reviews": [],
   "created_at": {
     "$date": "2024-12-05T13:39:07.122Z"
@@ -2057,7 +2034,7 @@
   "author": "Nguyễn Xuân Mai",
   "description": "Phát Triển Năng Lực Và Tư Duy Giải Toán Lớp 11  Các em học sinh thân mến!  Một trong những điểm nổi bật của chương trình giáo dục phổ thông 2018 là chú trọng đến việc hình thành và phát triển năng lực toán học, nhấn mạnh đến ứng dụng của toán học trong các bộ môn khoa học khác và trong thực tiễn. Do đó, việc nâng cao năng lực tư duy giải toán ở cấp trung học phổ thông rất cần thiết.  Trên tay các em là cuốn Nâng cao năng lực tư duy giải toán lớp 11. Cuốn sách gồm 2 mạch nội dung chính là: Đại số, giải tích và Hình học không gian. Cuốn sách là sự tổng hợp - hệ thống hóa của 3 bộ sách Kết nối tri thức với cuộc sống, Chân trời sáng tạo và Cánh Diều. Do đó, cuốn sách hội tụ đầy đủ các dạng toán từ cơ bản đến nâng cao, số lượng bài tập phong phú, đa dạng và cách giải đơn giản, sáng tạo, ngắn gọn, dễ hiểu.",
   "price": 139,
-  "stock": 20,
+  "stock": 19,
   "cover_image": "1733406028678-767394572.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c40"
@@ -2067,7 +2044,7 @@
   },
   "views": 2,
   "status": "visible",
-  "sales": 2,
+  "sales": 3,
   "reviews": [],
   "created_at": {
     "$date": "2024-12-05T13:40:28.680Z"
@@ -2085,7 +2062,7 @@
   "author": "Daisuke Aizawa, Touzai",
   "description": "Chúa Tể Bóng Tối - Tập 4  Sau khi sát hại vua cha và phản bội quê hương, giờ đây Rose lại đồng ý bắt tay với Công tước Doem để bảo vệ mẹ mình.  Tại vương quốc nghệ thuật Oriana đang phủ trong bầu không khí chiến tranh, tin tức về đám cưới của Rose và Doem dần lan rộng.  “Ta chắc chắn sẽ không bỏ qua cho chuyện này…”  Có thể hai người đã được gia đình đôi bên chấp thuận, nhưng Chúa tể Bóng tối thì nhất quyết sẽ không để đám cưới kia diễn ra trót lọt!  * CHÚA TỂ BÓNG TỐI là series light-novel ăn khách tại Nhật Bản, đã được chuyển thể thành manga, anime, manga ngoại truyện và cả game mobile với hơn 4 triệu bản sách đã bán ra!",
   "price": 128,
-  "stock": 41,
+  "stock": 39,
   "cover_image": "1733406109721-115699340.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c41"
@@ -2095,7 +2072,7 @@
   },
   "views": 1,
   "status": "visible",
-  "sales": 2,
+  "sales": 4,
   "reviews": [],
   "created_at": {
     "$date": "2024-12-05T13:41:49.734Z"
@@ -2113,7 +2090,7 @@
   "author": "Nguyễn Nhật Ánh",
   "description": "Tiệm Sách Của Nàng  Bối cảnh là một tiệm sách tại thành phố hiện đại. Nhân vật “anh” xuất hiện trong câu chuyện tình cảm lãng mạn, ở đó có nắng ấm êm, có mưa thành dòng để thả thuyền giấy, những câu thoại vu vơ chỉ hai người mới hiểu, với “một chút hân hoan, một chút dỗi hờn…”  Nhưng tràn ngập gần 300 trang sách là ký ức về tuổi trưởng thành ngày ấy ở vùng quê miền Trung. Quá khứ và hiện tại mang màu sắc vui buồn trái ngược, khiến cuốn sách có một hấp dẫn khác biệt.",
   "price": 112,
-  "stock": 18,
+  "stock": 15,
   "cover_image": "1733406159515-595111281.webp",
   "categoryID": {
     "$oid": "66e52d1113ae0384d3444c41"
@@ -2123,7 +2100,7 @@
   },
   "views": 1,
   "status": "visible",
-  "sales": 4,
+  "sales": 7,
   "reviews": [],
   "created_at": {
     "$date": "2024-12-05T13:42:39.517Z"
@@ -2132,4 +2109,55 @@
     "$date": "2024-12-05T13:42:39.517Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ee0cf06e63396ea64fe1e"
+  },
+  "title": "Attack On Titan - Tập 19",
+  "author": "Hajime Isayama",
+  "description": "Attack On Titan - Tập 19  Sau nhiều năm sống yên ổn sau những bức tường thành cao lừng lững, loài người đã bắt đầu cảm nhận được nguy cơ diệt vong đến từ một giống loài khổng lồ mang tên Titan. Dù muốn dù không, họ buộc phải đứng lên, và đã đứng lên một cách đầy quyết tâm, mạnh mẽ để chống lại những kẻ thù hùng mạnh nhất.  Thế rồi họ dần nhận ra bản chất thật sự của những kẻ thù khổng lồ kia...",
+  "price": 45,
+  "stock": 109,
+  "cover_image": "1734271183368-255688141.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "views": 0,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-15T13:59:43.375Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-15T13:59:43.375Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ee14706e63396ea650786"
+  },
+  "title": "Tri Thức Trong Lòng Bàn Tay - Bách Khoa Thiếu Nhi - La Mã Cổ Đại",
+  "author": "Dorling Kindersley Limited",
+  "description": "Bạn có biết chỉ nha khoa là một phát minh của một nha sĩ ? Hay Thomas Edison đã thử dùng tóc người làm dây tóc cho bóng đèn của mình ? Từ những vật dụng đơn giản hàng  ngày như kẹp giấy hay máy chơi game đến công nghệ tiến tiến như robot và AI , tất cả đều là phát minh tuyệt vời của nhân loại.\r\nHãy cùng khám phá kiến thức về những phát minh thú vị đang giúp thế giới của chúng ta tuyệt vời hơn và những nhà phát minh đã tạo ra chúng trong cuốn bách khoa thiếu nhi này .",
+  "price": 85,
+  "stock": 117,
+  "cover_image": "1734277787677-311854909.webp",
+  "categoryID": {
+    "$oid": "66e52d1113ae0384d3444c43"
+  },
+  "views": 11,
+  "status": "visible",
+  "sales": 0,
+  "reviews": [],
+  "created_at": {
+    "$date": "2024-12-15T14:01:43.493Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-15T15:52:25.917Z"
+  },
+  "__v": 0,
+  "category": "Thiếu nhi"
 }]

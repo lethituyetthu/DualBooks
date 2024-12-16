@@ -15,7 +15,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
   const [formData, setFormData] = useState({
     title: "",
     author: "",
-    category: "",
+    categoryID: "",
     publisher: "",
     price: "",
     stock: "",
@@ -35,7 +35,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
       setFormData({
         title: detailBook.title,
         author: detailBook.author,
-        category: detailBook.category.name,
+        categoryID: detailBook.category.id,
         publisher: detailBook.publisher.name,
         price: detailBook.price.toString(),
         stock: detailBook.stock.toString(),
@@ -46,12 +46,17 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
     }
   }, [detailBook]);
 
-  console.log(detailBook?.category.name);
+  //console.log(detailBook?.category.name);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
+
     const { name, value } = e.target;
+    if (name === 'stock' && value < 0) {
+      alert("giá trị phải lơn hơn 0")
+      return; // Không thay đổi giá trị nếu giá trị là số âm
+    }
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -73,10 +78,10 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
     e.preventDefault();
     console.log(formData);
 
-    const { title, author, category, price, stock, cover_image, description } =
+    const { title, author, categoryID, price, stock, cover_image, description } =
       formData;
 
-    if (!title || !author || !category || !price || !stock || !description) {
+    if (!title || !author || !categoryID || !price || !stock || !description) {
       console.error("Tất cả các trường đều bắt buộc");
       return;
     }
@@ -84,7 +89,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
     const formDataToSend = new FormData();
     formDataToSend.append("title", title);
     formDataToSend.append("author", author);
-    formDataToSend.append("category", category);
+    formDataToSend.append("categoryID", categoryID);
     formDataToSend.append("price", price);
     formDataToSend.append("stock", stock);
     formDataToSend.append("description", description);
@@ -102,6 +107,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
 
   if (!detailBook) return <div>Loading...</div>;
 
+ //console.log(cate)
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Chỉnh sửa sản phẩm</h1>
@@ -127,15 +133,15 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
         <div className="mb-4">
           <label className="block text-sm font-medium">Danh mục</label>
           <select
-            name="category"
-            value={formData.category}
+            name="categoryID"
+            value={formData.categoryID}
             onChange={handleInputChange}
             className="mt-1 block w-full border px-3 py-2 rounded"
             required
           >
             <option value="">Chọn danh mục</option>
             {cate.map((category) => (
-              <option key={category.id} value={category.name}>
+              <option key={category.id} value={category.id}>
                 {category.name}
               </option>
             ))}
@@ -153,6 +159,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
         <InputField
           label="Số lượng"
           type="number"
+          min="0"
           name="stock"
           placeholder="Nhập số lượng sản phẩm"
           value={formData.stock}

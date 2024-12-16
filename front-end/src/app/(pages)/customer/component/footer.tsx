@@ -3,17 +3,17 @@ import React from "react";
 
 export default function Footer() {
   const aboutUs = [
-    { name: "Cửa hàng", link: "/store" },
-    { name: "Dịch vụ", link: "/services" },
-    { name: "Tư vấn", link: "/consulting" },
-    { name: "Tiểu sử", link: "/about" },
+    { name: "Cửa hàng", link: "/customer/products" },
+    { name: "Dịch vụ", link: "/customer/Lienhe" },
+    { name: "Tư vấn", link: "/customer/Lienhe" },
+    { name: "Tiểu sử", link: "/customer/Gioithieu" },
   ];
 
   const helpItems = [
-    { name: "Vận chuyển", link: "/shipping" },
-    { name: "Đổi hàng", link: "/exchange" },
-    { name: "Trả hàng", link: "/return" },
-    { name: "Hoàn tiền", link: "/refund" },
+    { name: "Vận chuyển", link: "/customer/Chinhsach" },
+    { name: "Đổi hàng", link: "/customer/Chinhsach" },
+    { name: "Trả hàng", link: "/customer/Chinhsach" },
+    { name: "Hoàn tiền", link: "/customer/Chinhsach" },
   ];
 
   const icons = [
@@ -35,12 +35,16 @@ export default function Footer() {
           </h3>
           <p>"Khám phá thế giới từ những trang giấy."</p>
           <div className="mt-4">
+            <a href="/customer/register">
             <button className="bg-primary text-white px-6 py-2 rounded-lg bg-primary-700 hover:bg-primary-300">
               Đăng ký
             </button>
+            </a>
+            <a href="/customer/login">
             <button className="border border-primary text-primary px-6 py-2 rounded-lg ml-4 hover:bg-primary-700 hover:text-light-100">
               Đăng nhập
             </button>
+            </a>
           </div>
         </div>
         <div className="footer-box2">

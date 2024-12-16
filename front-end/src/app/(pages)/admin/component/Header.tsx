@@ -8,10 +8,10 @@ export default function Header() {
 
   const {logout} = useFetchAdmin()
   return (
-    <div className="py-3 flex ">
+    <div className="py-3 flex justify-between items-center ">
       <Image src={logo} width={250} alt="logo admin" />
 
-      <Link href={"/login_admin"}> <button onClick={logout}>
+      <Link href={"/login_admin"}> <button onClick={logout} className="mr-9 text-primary-400">
         {" "}
         <i className="fas fa-sign-out-alt"></i> Đăng xuất
       </button></Link>

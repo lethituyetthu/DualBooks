@@ -1,9 +1,49 @@
 [{
   "_id": {
-    "$oid": "6740e5655cddabeb4c394be6"
+    "$oid": "6746f01aa060486397caaf93"
   },
   "order_id": {
-    "$oid": "6740e5655cddabeb4c394be4"
+    "$oid": "6746f01aa060486397caaf91"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 2,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-11-27T10:10:34.856Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T10:10:34.856Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6746f01aa060486397caaf9a"
+  },
+  "order_id": {
+    "$oid": "6746f01aa060486397caaf91"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-11-27T10:10:34.942Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T10:10:34.942Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6746f01ba060486397caafa1"
+  },
+  "order_id": {
+    "$oid": "6746f01aa060486397caaf91"
   },
   "book_id": {
     "$oid": "66d57256afc8a51793d73228"
@@ -11,39 +51,99 @@
   "quantity": 1,
   "price": 39.2,
   "createdAt": {
-    "$date": "2024-11-22T20:11:17.847Z"
+    "$date": "2024-11-27T10:10:35.016Z"
   },
   "updatedAt": {
-    "$date": "2024-11-22T20:11:17.847Z"
+    "$date": "2024-11-27T10:10:35.016Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6740e5655cddabeb4c394bed"
+    "$oid": "6746f01ba060486397caafa8"
   },
   "order_id": {
-    "$oid": "6740e5655cddabeb4c394be4"
+    "$oid": "6746f01aa060486397caaf91"
   },
   "book_id": {
-    "$oid": "66d57256afc8a51793d73227"
+    "$oid": "66e533ca526475c476d285b8"
   },
-  "quantity": 2,
-  "price": 52.56,
+  "quantity": 1,
+  "price": 19,
   "createdAt": {
-    "$date": "2024-11-22T20:11:17.866Z"
+    "$date": "2024-11-27T10:10:35.058Z"
   },
   "updatedAt": {
-    "$date": "2024-11-22T20:11:17.866Z"
+    "$date": "2024-11-27T10:10:35.058Z"
   },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6740e5655cddabeb4c394bf4"
+    "$oid": "674702ac37a1279bf1354404"
   },
   "order_id": {
-    "$oid": "6740e5655cddabeb4c394be4"
+    "$oid": "674702ac37a1279bf1354402"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-11-27T11:29:48.867Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T11:29:48.867Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674702d337a1279bf1354445"
+  },
+  "order_id": {
+    "$oid": "674702d337a1279bf1354443"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-11-27T11:30:27.931Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T11:30:27.931Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674702ec37a1279bf1354472"
+  },
+  "order_id": {
+    "$oid": "674702ec37a1279bf1354470"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322a"
+  },
+  "quantity": 1,
+  "price": 28.05,
+  "createdAt": {
+    "$date": "2024-11-27T11:30:52.649Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T11:30:52.649Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674702ec37a1279bf1354479"
+  },
+  "order_id": {
+    "$oid": "674702ec37a1279bf1354470"
   },
   "book_id": {
     "$oid": "66d57256afc8a51793d7322b"
@@ -51,10 +151,4070 @@
   "quantity": 1,
   "price": 29.75,
   "createdAt": {
-    "$date": "2024-11-22T20:11:17.879Z"
+    "$date": "2024-11-27T11:30:52.671Z"
   },
   "updatedAt": {
-    "$date": "2024-11-22T20:11:17.879Z"
+    "$date": "2024-11-27T11:30:52.671Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747030137a1279bf1354482"
+  },
+  "order_id": {
+    "$oid": "6747030137a1279bf1354480"
+  },
+  "book_id": {
+    "$oid": "66e535b0526475c476d285c2"
+  },
+  "quantity": 1,
+  "price": 61.62,
+  "createdAt": {
+    "$date": "2024-11-27T11:31:13.506Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T11:31:13.506Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747038c37a1279bf1354593"
+  },
+  "order_id": {
+    "$oid": "6747038c37a1279bf1354591"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-11-27T11:33:32.338Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T11:33:32.338Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747163837a1279bf1359179"
+  },
+  "order_id": {
+    "$oid": "6747163837a1279bf1359177"
+  },
+  "book_id": {
+    "$oid": "66e5335b2a019adbc7cbf5c6"
+  },
+  "quantity": 1,
+  "price": 79,
+  "createdAt": {
+    "$date": "2024-11-27T12:53:12.507Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T12:53:12.507Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748354f83a2125552565ae5"
+  },
+  "order_id": {
+    "$oid": "6748354f83a2125552565ae3"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:07.537Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:18:07.537Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748354f83a2125552565aec"
+  },
+  "order_id": {
+    "$oid": "6748354f83a2125552565ae3"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322a"
+  },
+  "quantity": 1,
+  "price": 28.05,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:07.612Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:18:07.612Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748356b83a2125552565b1f"
+  },
+  "order_id": {
+    "$oid": "6748356b83a2125552565b1d"
+  },
+  "book_id": {
+    "$oid": "674704d437a1279bf13547b3"
+  },
+  "quantity": 1,
+  "price": 110,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:35.161Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:18:35.161Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748356b83a2125552565b26"
+  },
+  "order_id": {
+    "$oid": "6748356b83a2125552565b1d"
+  },
+  "book_id": {
+    "$oid": "66e5335b2a019adbc7cbf5c6"
+  },
+  "quantity": 1,
+  "price": 79,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:35.199Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:18:35.199Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748356b83a2125552565b2d"
+  },
+  "order_id": {
+    "$oid": "6748356b83a2125552565b1d"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:35.239Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:18:35.239Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748356b83a2125552565b34"
+  },
+  "order_id": {
+    "$oid": "6748356b83a2125552565b1d"
+  },
+  "book_id": {
+    "$oid": "66e53413526475c476d285ba"
+  },
+  "quantity": 2,
+  "price": 21,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:35.273Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:18:35.273Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748356b83a2125552565b3b"
+  },
+  "order_id": {
+    "$oid": "6748356b83a2125552565b1d"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322a"
+  },
+  "quantity": 1,
+  "price": 28.05,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:35.308Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:18:35.308Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748359f83a2125552565b64"
+  },
+  "order_id": {
+    "$oid": "6748359f83a2125552565b62"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:27.401Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:27.401Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748359f83a2125552565b6b"
+  },
+  "order_id": {
+    "$oid": "6748359f83a2125552565b62"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 1,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:27.437Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:27.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748359f83a2125552565b72"
+  },
+  "order_id": {
+    "$oid": "6748359f83a2125552565b62"
+  },
+  "book_id": {
+    "$oid": "6747063437a1279bf1354fd7"
+  },
+  "quantity": 1,
+  "price": 100,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:27.475Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:27.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674835a883a2125552565b7b"
+  },
+  "order_id": {
+    "$oid": "674835a883a2125552565b79"
+  },
+  "book_id": {
+    "$oid": "6747076e37a1279bf1355668"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:36.546Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:36.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674835a883a2125552565b82"
+  },
+  "order_id": {
+    "$oid": "674835a883a2125552565b79"
+  },
+  "book_id": {
+    "$oid": "674706bd37a1279bf1355210"
+  },
+  "quantity": 1,
+  "price": 89,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:36.582Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:36.582Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674835a883a2125552565b89"
+  },
+  "order_id": {
+    "$oid": "674835a883a2125552565b79"
+  },
+  "book_id": {
+    "$oid": "6747072437a1279bf1355432"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:36.612Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:36.612Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674835a883a2125552565b90"
+  },
+  "order_id": {
+    "$oid": "674835a883a2125552565b79"
+  },
+  "book_id": {
+    "$oid": "6747083b37a1279bf1355b32"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:36.645Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:36.645Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674835b083a2125552565b99"
+  },
+  "order_id": {
+    "$oid": "674835b083a2125552565b97"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:44.360Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:44.360Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b13c4818cd277b2c8733e"
+  },
+  "order_id": {
+    "$oid": "674b13c4818cd277b2c8733c"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 1,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-11-30T13:31:48.624Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:31:48.624Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b13c4818cd277b2c87345"
+  },
+  "order_id": {
+    "$oid": "674b13c4818cd277b2c8733c"
+  },
+  "book_id": {
+    "$oid": "66e536ed526475c476d285c9"
+  },
+  "quantity": 1,
+  "price": 69,
+  "createdAt": {
+    "$date": "2024-11-30T13:31:48.660Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:31:48.660Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b13e0818cd277b2c87400"
+  },
+  "order_id": {
+    "$oid": "674b13e0818cd277b2c873fe"
+  },
+  "book_id": {
+    "$oid": "67470bae37a1279bf135687d"
+  },
+  "quantity": 1,
+  "price": 113,
+  "createdAt": {
+    "$date": "2024-11-30T13:32:16.366Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:32:16.366Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b142a818cd277b2c87521"
+  },
+  "order_id": {
+    "$oid": "674b142a818cd277b2c8751f"
+  },
+  "book_id": {
+    "$oid": "67470de437a1279bf1356e60"
+  },
+  "quantity": 1,
+  "price": 131,
+  "createdAt": {
+    "$date": "2024-11-30T13:33:30.184Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:33:30.184Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b142a818cd277b2c87528"
+  },
+  "order_id": {
+    "$oid": "674b142a818cd277b2c8751f"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-11-30T13:33:30.203Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:33:30.203Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b142a818cd277b2c8752f"
+  },
+  "order_id": {
+    "$oid": "674b142a818cd277b2c8751f"
+  },
+  "book_id": {
+    "$oid": "6747058837a1279bf1354999"
+  },
+  "quantity": 1,
+  "price": 700,
+  "createdAt": {
+    "$date": "2024-11-30T13:33:30.221Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:33:30.221Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b1440818cd277b2c87542"
+  },
+  "order_id": {
+    "$oid": "674b1440818cd277b2c87540"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-11-30T13:33:52.054Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:33:52.054Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b144b818cd277b2c8754b"
+  },
+  "order_id": {
+    "$oid": "674b144b818cd277b2c87549"
+  },
+  "book_id": {
+    "$oid": "66e534ab526475c476d285bc"
+  },
+  "quantity": 1,
+  "price": 54.4,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:03.048Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:03.048Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b144b818cd277b2c87552"
+  },
+  "order_id": {
+    "$oid": "674b144b818cd277b2c87549"
+  },
+  "book_id": {
+    "$oid": "66e5360d526475c476d285c4"
+  },
+  "quantity": 1,
+  "price": 123.24,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:03.065Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:03.065Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b144b818cd277b2c87559"
+  },
+  "order_id": {
+    "$oid": "674b144b818cd277b2c87549"
+  },
+  "book_id": {
+    "$oid": "66d5ae3684632959c4685045"
+  },
+  "quantity": 1,
+  "price": 99,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:03.090Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:03.090Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b144b818cd277b2c87560"
+  },
+  "order_id": {
+    "$oid": "674b144b818cd277b2c87549"
+  },
+  "book_id": {
+    "$oid": "66e533ca526475c476d285b8"
+  },
+  "quantity": 1,
+  "price": 19,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:03.147Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:03.147Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b1453818cd277b2c87569"
+  },
+  "order_id": {
+    "$oid": "674b1453818cd277b2c87567"
+  },
+  "book_id": {
+    "$oid": "66d5ae3684632959c4685045"
+  },
+  "quantity": 1,
+  "price": 99,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:11.359Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:11.359Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b1453818cd277b2c87570"
+  },
+  "order_id": {
+    "$oid": "674b1453818cd277b2c87567"
+  },
+  "book_id": {
+    "$oid": "66e53413526475c476d285ba"
+  },
+  "quantity": 1,
+  "price": 21,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:11.381Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:11.381Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b1453818cd277b2c87577"
+  },
+  "order_id": {
+    "$oid": "674b1453818cd277b2c87567"
+  },
+  "book_id": {
+    "$oid": "66e535b0526475c476d285c2"
+  },
+  "quantity": 1,
+  "price": 61.62,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:11.404Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:11.404Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b1453818cd277b2c8757e"
+  },
+  "order_id": {
+    "$oid": "674b1453818cd277b2c87567"
+  },
+  "book_id": {
+    "$oid": "66e536ed526475c476d285c9"
+  },
+  "quantity": 1,
+  "price": 69,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:11.435Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:11.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b14f9818cd277b2c87602"
+  },
+  "order_id": {
+    "$oid": "674b14f9818cd277b2c87600"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 1,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-11-30T13:36:57.170Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:36:57.170Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b1500818cd277b2c8760b"
+  },
+  "order_id": {
+    "$oid": "674b14ff818cd277b2c87609"
+  },
+  "book_id": {
+    "$oid": "66e53749526475c476d285cb"
+  },
+  "quantity": 1,
+  "price": 84.5,
+  "createdAt": {
+    "$date": "2024-11-30T13:37:04.011Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:37:04.011Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b34be818cd277b2c87614"
+  },
+  "order_id": {
+    "$oid": "674b34be818cd277b2c87612"
+  },
+  "book_id": {
+    "$oid": "66e53749526475c476d285cb"
+  },
+  "quantity": 1,
+  "price": 84.5,
+  "createdAt": {
+    "$date": "2024-11-30T15:52:30.512Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T15:52:30.512Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8bee651ec3c38514cf2e"
+  },
+  "order_id": {
+    "$oid": "674c8bee651ec3c38514cf2c"
+  },
+  "book_id": {
+    "$oid": "6747119337a1279bf1358880"
+  },
+  "quantity": 1,
+  "price": 220,
+  "createdAt": {
+    "$date": "2024-12-01T16:16:46.196Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:16:46.196Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8bf4651ec3c38514cf37"
+  },
+  "order_id": {
+    "$oid": "674c8bf4651ec3c38514cf35"
+  },
+  "book_id": {
+    "$oid": "6747109c37a1279bf1358180"
+  },
+  "quantity": 1,
+  "price": 360,
+  "createdAt": {
+    "$date": "2024-12-01T16:16:52.560Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:16:52.560Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8c30651ec3c38514cf9b"
+  },
+  "order_id": {
+    "$oid": "674c8c30651ec3c38514cf99"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-01T16:17:52.738Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:17:52.738Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8c30651ec3c38514cfa2"
+  },
+  "order_id": {
+    "$oid": "674c8c30651ec3c38514cf99"
+  },
+  "book_id": {
+    "$oid": "67470bae37a1279bf135687d"
+  },
+  "quantity": 1,
+  "price": 113,
+  "createdAt": {
+    "$date": "2024-12-01T16:17:52.773Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:17:52.773Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8c43651ec3c38514cfab"
+  },
+  "order_id": {
+    "$oid": "674c8c43651ec3c38514cfa9"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-01T16:18:11.550Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:18:11.550Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8c43651ec3c38514cfb2"
+  },
+  "order_id": {
+    "$oid": "674c8c43651ec3c38514cfa9"
+  },
+  "book_id": {
+    "$oid": "67470bae37a1279bf135687d"
+  },
+  "quantity": 1,
+  "price": 113,
+  "createdAt": {
+    "$date": "2024-12-01T16:18:11.582Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:18:11.582Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8cc0651ec3c38514d0db"
+  },
+  "order_id": {
+    "$oid": "674c8cc0651ec3c38514d0d9"
+  },
+  "book_id": {
+    "$oid": "6747119337a1279bf1358880"
+  },
+  "quantity": 1,
+  "price": 220,
+  "createdAt": {
+    "$date": "2024-12-01T16:20:16.310Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:20:16.310Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8ce5651ec3c38514d15c"
+  },
+  "order_id": {
+    "$oid": "674c8ce5651ec3c38514d15a"
+  },
+  "book_id": {
+    "$oid": "66d5ac5590db775ed89c8df7"
+  },
+  "quantity": 1,
+  "price": 14,
+  "createdAt": {
+    "$date": "2024-12-01T16:20:53.543Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:20:53.543Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc8c185dd663ae6ccffce"
+  },
+  "order_id": {
+    "$oid": "674dc8c185dd663ae6ccffcc"
+  },
+  "book_id": {
+    "$oid": "6747072437a1279bf1355432"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-02T14:48:33.530Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:48:33.530Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc8cb85dd663ae6ccffd7"
+  },
+  "order_id": {
+    "$oid": "674dc8cb85dd663ae6ccffd5"
+  },
+  "book_id": {
+    "$oid": "6747058837a1279bf1354999"
+  },
+  "quantity": 1,
+  "price": 700,
+  "createdAt": {
+    "$date": "2024-12-02T14:48:43.326Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:48:43.326Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc8d185dd663ae6ccffe0"
+  },
+  "order_id": {
+    "$oid": "674dc8d185dd663ae6ccffde"
+  },
+  "book_id": {
+    "$oid": "67470c0a37a1279bf1356b53"
+  },
+  "quantity": 1,
+  "price": 142,
+  "createdAt": {
+    "$date": "2024-12-02T14:48:49.933Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:48:49.933Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc8d185dd663ae6ccffe7"
+  },
+  "order_id": {
+    "$oid": "674dc8d185dd663ae6ccffde"
+  },
+  "book_id": {
+    "$oid": "67470de437a1279bf1356e60"
+  },
+  "quantity": 1,
+  "price": 131,
+  "createdAt": {
+    "$date": "2024-12-02T14:48:49.944Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:48:49.944Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc94785dd663ae6cd009c"
+  },
+  "order_id": {
+    "$oid": "674dc94785dd663ae6cd009a"
+  },
+  "book_id": {
+    "$oid": "6747083b37a1279bf1355b32"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-02T14:50:47.434Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:50:47.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc94785dd663ae6cd00a3"
+  },
+  "order_id": {
+    "$oid": "674dc94785dd663ae6cd009a"
+  },
+  "book_id": {
+    "$oid": "6747087637a1279bf1355da6"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-02T14:50:47.446Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:50:47.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc94785dd663ae6cd00aa"
+  },
+  "order_id": {
+    "$oid": "674dc94785dd663ae6cd009a"
+  },
+  "book_id": {
+    "$oid": "674708ab37a1279bf135604a"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-02T14:50:47.458Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:50:47.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc97385dd663ae6cd011f"
+  },
+  "order_id": {
+    "$oid": "674dc97385dd663ae6cd011d"
+  },
+  "book_id": {
+    "$oid": "67470de437a1279bf1356e60"
+  },
+  "quantity": 1,
+  "price": 131,
+  "createdAt": {
+    "$date": "2024-12-02T14:51:31.201Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:51:31.201Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc9b385dd663ae6cd022d"
+  },
+  "order_id": {
+    "$oid": "674dc9b385dd663ae6cd022b"
+  },
+  "book_id": {
+    "$oid": "674c919a651ec3c385151129"
+  },
+  "quantity": 1,
+  "price": 54,
+  "createdAt": {
+    "$date": "2024-12-02T14:52:35.276Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:52:35.276Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc9b385dd663ae6cd0234"
+  },
+  "order_id": {
+    "$oid": "674dc9b385dd663ae6cd022b"
+  },
+  "book_id": {
+    "$oid": "674706bd37a1279bf1355210"
+  },
+  "quantity": 1,
+  "price": 89,
+  "createdAt": {
+    "$date": "2024-12-02T14:52:35.287Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:52:35.287Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c17d7f795a5bdc218e5"
+  },
+  "order_id": {
+    "$oid": "674f3c17d7f795a5bdc218e3"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 1,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-12-03T17:12:55.647Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:12:55.647Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c17d7f795a5bdc218ec"
+  },
+  "order_id": {
+    "$oid": "674f3c17d7f795a5bdc218e3"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-12-03T17:12:55.733Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:12:55.733Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c34d7f795a5bdc2191f"
+  },
+  "order_id": {
+    "$oid": "674f3c34d7f795a5bdc2191d"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322a"
+  },
+  "quantity": 1,
+  "price": 28.05,
+  "createdAt": {
+    "$date": "2024-12-03T17:13:24.407Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:13:24.407Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c34d7f795a5bdc21926"
+  },
+  "order_id": {
+    "$oid": "674f3c34d7f795a5bdc2191d"
+  },
+  "book_id": {
+    "$oid": "66e5335b2a019adbc7cbf5c6"
+  },
+  "quantity": 1,
+  "price": 79,
+  "createdAt": {
+    "$date": "2024-12-03T17:13:24.438Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:13:24.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c58d7f795a5bdc21945"
+  },
+  "order_id": {
+    "$oid": "674f3c58d7f795a5bdc21943"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-12-03T17:14:00.663Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:14:00.663Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c64d7f795a5bdc2194e"
+  },
+  "order_id": {
+    "$oid": "674f3c64d7f795a5bdc2194c"
+  },
+  "book_id": {
+    "$oid": "66e53504526475c476d285be"
+  },
+  "quantity": 1,
+  "price": 124.8,
+  "createdAt": {
+    "$date": "2024-12-03T17:14:12.111Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:14:12.111Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3f92d7f795a5bdc21a7a"
+  },
+  "order_id": {
+    "$oid": "674f3f92d7f795a5bdc21a78"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-03T17:27:46.678Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:27:46.678Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674fd7b1b4978b3195d83e65"
+  },
+  "order_id": {
+    "$oid": "674fd7b1b4978b3195d83e63"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-12-04T04:16:49.392Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T04:16:49.392Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674fdd2cb4978b3195d867ec"
+  },
+  "order_id": {
+    "$oid": "674fdd2cb4978b3195d867ea"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-04T04:40:12.169Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T04:40:12.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507d953aed98128cd4cd17"
+  },
+  "order_id": {
+    "$oid": "67507d953aed98128cd4cd15"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-04T16:04:37.245Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:04:37.245Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507d953aed98128cd4cd1e"
+  },
+  "order_id": {
+    "$oid": "67507d953aed98128cd4cd15"
+  },
+  "book_id": {
+    "$oid": "6747063437a1279bf1354fd7"
+  },
+  "quantity": 1,
+  "price": 100,
+  "createdAt": {
+    "$date": "2024-12-04T16:04:37.291Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:04:37.291Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507db23aed98128cd4cd3f"
+  },
+  "order_id": {
+    "$oid": "67507db23aed98128cd4cd3d"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 1,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-12-04T16:05:06.570Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:05:06.570Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507db23aed98128cd4cd46"
+  },
+  "order_id": {
+    "$oid": "67507db23aed98128cd4cd3d"
+  },
+  "book_id": {
+    "$oid": "66e5335b2a019adbc7cbf5c6"
+  },
+  "quantity": 1,
+  "price": 79,
+  "createdAt": {
+    "$date": "2024-12-04T16:05:06.587Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:05:06.587Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507db23aed98128cd4cd4d"
+  },
+  "order_id": {
+    "$oid": "67507db23aed98128cd4cd3d"
+  },
+  "book_id": {
+    "$oid": "66d5ae3684632959c4685045"
+  },
+  "quantity": 1,
+  "price": 99,
+  "createdAt": {
+    "$date": "2024-12-04T16:05:06.605Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:05:06.605Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507db93aed98128cd4cd56"
+  },
+  "order_id": {
+    "$oid": "67507db93aed98128cd4cd54"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322a"
+  },
+  "quantity": 1,
+  "price": 28.05,
+  "createdAt": {
+    "$date": "2024-12-04T16:05:13.834Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:05:13.834Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507db93aed98128cd4cd5d"
+  },
+  "order_id": {
+    "$oid": "67507db93aed98128cd4cd54"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 1,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-12-04T16:05:13.851Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:05:13.851Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751a822d0c174ff927bbf46"
+  },
+  "order_id": {
+    "$oid": "6751a822d0c174ff927bbf44"
+  },
+  "book_id": {
+    "$oid": "67470de437a1279bf1356e60"
+  },
+  "quantity": 1,
+  "price": 131,
+  "createdAt": {
+    "$date": "2024-12-05T13:18:26.133Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:18:26.133Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751a822d0c174ff927bbf4d"
+  },
+  "order_id": {
+    "$oid": "6751a822d0c174ff927bbf44"
+  },
+  "book_id": {
+    "$oid": "66e5335b2a019adbc7cbf5c6"
+  },
+  "quantity": 1,
+  "price": 79,
+  "createdAt": {
+    "$date": "2024-12-05T13:18:26.168Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:18:26.168Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751a92bd0c174ff927bcb5f"
+  },
+  "order_id": {
+    "$oid": "6751a92bd0c174ff927bcb5d"
+  },
+  "book_id": {
+    "$oid": "66d5ac5590db775ed89c8df7"
+  },
+  "quantity": 1,
+  "price": 14,
+  "createdAt": {
+    "$date": "2024-12-05T13:22:51.373Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:22:51.373Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751a92bd0c174ff927bcb66"
+  },
+  "order_id": {
+    "$oid": "6751a92bd0c174ff927bcb5d"
+  },
+  "book_id": {
+    "$oid": "66e5360d526475c476d285c4"
+  },
+  "quantity": 1,
+  "price": 123.24,
+  "createdAt": {
+    "$date": "2024-12-05T13:22:51.391Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:22:51.391Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751ac76ab58d03c5e4b05a2"
+  },
+  "order_id": {
+    "$oid": "6751ac76ab58d03c5e4b05a0"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-05T13:36:54.951Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:36:54.951Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751adf3ab58d03c5e4b26a9"
+  },
+  "order_id": {
+    "$oid": "6751adf3ab58d03c5e4b26a7"
+  },
+  "book_id": {
+    "$oid": "6747076e37a1279bf1355668"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-05T13:43:15.183Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:15.183Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751adf3ab58d03c5e4b26b0"
+  },
+  "order_id": {
+    "$oid": "6751adf3ab58d03c5e4b26a7"
+  },
+  "book_id": {
+    "$oid": "6747072437a1279bf1355432"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-05T13:43:15.210Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:15.210Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751adf3ab58d03c5e4b26b7"
+  },
+  "order_id": {
+    "$oid": "6751adf3ab58d03c5e4b26a7"
+  },
+  "book_id": {
+    "$oid": "674707d637a1279bf13558b2"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-05T13:43:15.221Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:15.221Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751adf3ab58d03c5e4b26be"
+  },
+  "order_id": {
+    "$oid": "6751adf3ab58d03c5e4b26a7"
+  },
+  "book_id": {
+    "$oid": "6747087637a1279bf1355da6"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-05T13:43:15.230Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:15.230Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751adf9ab58d03c5e4b26c7"
+  },
+  "order_id": {
+    "$oid": "6751adf9ab58d03c5e4b26c5"
+  },
+  "book_id": {
+    "$oid": "6747119337a1279bf1358880"
+  },
+  "quantity": 1,
+  "price": 220,
+  "createdAt": {
+    "$date": "2024-12-05T13:43:21.765Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:21.765Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67530fa12992039ac5568c94"
+  },
+  "order_id": {
+    "$oid": "67530fa12992039ac5568c92"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-06T14:52:17.513Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T14:52:17.513Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675313a42992039ac5568e95"
+  },
+  "order_id": {
+    "$oid": "675313a42992039ac5568e93"
+  },
+  "book_id": {
+    "$oid": "6747091d37a1279bf13562e4"
+  },
+  "quantity": 1,
+  "price": 25,
+  "createdAt": {
+    "$date": "2024-12-06T15:09:24.711Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:09:24.711Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675313a42992039ac5568e9c"
+  },
+  "order_id": {
+    "$oid": "675313a42992039ac5568e93"
+  },
+  "book_id": {
+    "$oid": "674c90b5651ec3c38514fe79"
+  },
+  "quantity": 1,
+  "price": 81,
+  "createdAt": {
+    "$date": "2024-12-06T15:09:24.727Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:09:24.727Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319442992039ac556932b"
+  },
+  "order_id": {
+    "$oid": "675319442992039ac5569329"
+  },
+  "book_id": {
+    "$oid": "66e5360d526475c476d285c4"
+  },
+  "quantity": 1,
+  "price": 123.24,
+  "createdAt": {
+    "$date": "2024-12-06T15:33:24.341Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:33:24.341Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319442992039ac5569332"
+  },
+  "order_id": {
+    "$oid": "675319442992039ac5569329"
+  },
+  "book_id": {
+    "$oid": "66ef5d2eaf9af43bb23ed4ae"
+  },
+  "quantity": 1,
+  "price": 88,
+  "createdAt": {
+    "$date": "2024-12-06T15:33:24.356Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:33:24.356Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319862992039ac556935d"
+  },
+  "order_id": {
+    "$oid": "675319862992039ac556935b"
+  },
+  "book_id": {
+    "$oid": "67470f8937a1279bf1357796"
+  },
+  "quantity": 1,
+  "price": 58,
+  "createdAt": {
+    "$date": "2024-12-06T15:34:30.323Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:34:30.323Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319862992039ac5569364"
+  },
+  "order_id": {
+    "$oid": "675319862992039ac556935b"
+  },
+  "book_id": {
+    "$oid": "6747101a37a1279bf1357e1e"
+  },
+  "quantity": 1,
+  "price": 90,
+  "createdAt": {
+    "$date": "2024-12-06T15:34:30.331Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:34:30.331Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319862992039ac556936b"
+  },
+  "order_id": {
+    "$oid": "675319862992039ac556935b"
+  },
+  "book_id": {
+    "$oid": "6747112d37a1279bf13584f6"
+  },
+  "quantity": 1,
+  "price": 255,
+  "createdAt": {
+    "$date": "2024-12-06T15:34:30.338Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:34:30.338Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319962992039ac5569396"
+  },
+  "order_id": {
+    "$oid": "675319962992039ac5569394"
+  },
+  "book_id": {
+    "$oid": "6751ab8bd0c174ff927beebe"
+  },
+  "quantity": 1,
+  "price": 26,
+  "createdAt": {
+    "$date": "2024-12-06T15:34:46.528Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:34:46.528Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319962992039ac556939d"
+  },
+  "order_id": {
+    "$oid": "675319962992039ac5569394"
+  },
+  "book_id": {
+    "$oid": "6751ab5bd0c174ff927be8b4"
+  },
+  "quantity": 1,
+  "price": 39,
+  "createdAt": {
+    "$date": "2024-12-06T15:34:46.535Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:34:46.535Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319962992039ac55693a4"
+  },
+  "order_id": {
+    "$oid": "675319962992039ac5569394"
+  },
+  "book_id": {
+    "$oid": "6751abc4d0c174ff927bf4de"
+  },
+  "quantity": 1,
+  "price": 26,
+  "createdAt": {
+    "$date": "2024-12-06T15:34:46.544Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:34:46.544Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319a72992039ac55693cd"
+  },
+  "order_id": {
+    "$oid": "675319a72992039ac55693cb"
+  },
+  "book_id": {
+    "$oid": "6751aa6cd0c174ff927bd6f0"
+  },
+  "quantity": 1,
+  "price": 48,
+  "createdAt": {
+    "$date": "2024-12-06T15:35:03.338Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:35:03.338Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319a72992039ac55693d4"
+  },
+  "order_id": {
+    "$oid": "675319a72992039ac55693cb"
+  },
+  "book_id": {
+    "$oid": "6751ab5bd0c174ff927be8b4"
+  },
+  "quantity": 1,
+  "price": 39,
+  "createdAt": {
+    "$date": "2024-12-06T15:35:03.347Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:35:03.347Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319c72992039ac55693fb"
+  },
+  "order_id": {
+    "$oid": "675319c72992039ac55693f9"
+  },
+  "book_id": {
+    "$oid": "6751ab2dd0c174ff927be2c0"
+  },
+  "quantity": 3,
+  "price": 47,
+  "createdAt": {
+    "$date": "2024-12-06T15:35:35.634Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:35:35.634Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67531b122992039ac55695d2"
+  },
+  "order_id": {
+    "$oid": "67531b122992039ac55695d0"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-06T15:41:06.252Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:41:06.252Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67531b122992039ac55695d9"
+  },
+  "order_id": {
+    "$oid": "67531b122992039ac55695d0"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-06T15:41:06.261Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:41:06.261Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67531b122992039ac55695e0"
+  },
+  "order_id": {
+    "$oid": "67531b122992039ac55695d0"
+  },
+  "book_id": {
+    "$oid": "674704d437a1279bf13547b3"
+  },
+  "quantity": 1,
+  "price": 110,
+  "createdAt": {
+    "$date": "2024-12-06T15:41:06.268Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:41:06.268Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6754679a676a577fe96db760"
+  },
+  "order_id": {
+    "$oid": "6754679a676a577fe96db75e"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-07T15:19:54.882Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:19:54.882Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6754679a676a577fe96db767"
+  },
+  "order_id": {
+    "$oid": "6754679a676a577fe96db75e"
+  },
+  "book_id": {
+    "$oid": "674704d437a1279bf13547b3"
+  },
+  "quantity": 1,
+  "price": 110,
+  "createdAt": {
+    "$date": "2024-12-07T15:19:54.934Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:19:54.934Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467ac676a577fe96db81e"
+  },
+  "order_id": {
+    "$oid": "675467ac676a577fe96db81c"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-07T15:20:12.073Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:20:12.073Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467ac676a577fe96db825"
+  },
+  "order_id": {
+    "$oid": "675467ac676a577fe96db81c"
+  },
+  "book_id": {
+    "$oid": "674704d437a1279bf13547b3"
+  },
+  "quantity": 1,
+  "price": 110,
+  "createdAt": {
+    "$date": "2024-12-07T15:20:12.091Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:20:12.091Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467bf676a577fe96db898"
+  },
+  "order_id": {
+    "$oid": "675467bf676a577fe96db896"
+  },
+  "book_id": {
+    "$oid": "67470ea137a1279bf135715e"
+  },
+  "quantity": 1,
+  "price": 117,
+  "createdAt": {
+    "$date": "2024-12-07T15:20:31.253Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:20:31.253Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467cd676a577fe96db8e7"
+  },
+  "order_id": {
+    "$oid": "675467cd676a577fe96db8e5"
+  },
+  "book_id": {
+    "$oid": "674c91e7651ec3c385151607"
+  },
+  "quantity": 1,
+  "price": 338,
+  "createdAt": {
+    "$date": "2024-12-07T15:20:45.156Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:20:45.156Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467e8676a577fe96db91a"
+  },
+  "order_id": {
+    "$oid": "675467e8676a577fe96db918"
+  },
+  "book_id": {
+    "$oid": "6747109c37a1279bf1358180"
+  },
+  "quantity": 1,
+  "price": 360,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:12.421Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:12.421Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467f0676a577fe96db945"
+  },
+  "order_id": {
+    "$oid": "675467f0676a577fe96db943"
+  },
+  "book_id": {
+    "$oid": "674c903e651ec3c38514f599"
+  },
+  "quantity": 1,
+  "price": 142,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:20.211Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:20.211Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467f0676a577fe96db94c"
+  },
+  "order_id": {
+    "$oid": "675467f0676a577fe96db943"
+  },
+  "book_id": {
+    "$oid": "674c9014651ec3c38514f147"
+  },
+  "quantity": 1,
+  "price": 102,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:20.221Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:20.221Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467f0676a577fe96db953"
+  },
+  "order_id": {
+    "$oid": "675467f0676a577fe96db943"
+  },
+  "book_id": {
+    "$oid": "674c8fc7651ec3c38514ed09"
+  },
+  "quantity": 1,
+  "price": 36,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:20.234Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:20.234Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467f9676a577fe96db97c"
+  },
+  "order_id": {
+    "$oid": "675467f9676a577fe96db97a"
+  },
+  "book_id": {
+    "$oid": "6751a9f1d0c174ff927bcba2"
+  },
+  "quantity": 1,
+  "price": 31,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:29.130Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:29.130Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467f9676a577fe96db983"
+  },
+  "order_id": {
+    "$oid": "675467f9676a577fe96db97a"
+  },
+  "book_id": {
+    "$oid": "6751aa39d0c174ff927bd13e"
+  },
+  "quantity": 1,
+  "price": 13,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:29.140Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:29.140Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467ff676a577fe96db9ac"
+  },
+  "order_id": {
+    "$oid": "675467ff676a577fe96db9aa"
+  },
+  "book_id": {
+    "$oid": "6751ad9dab58d03c5e4b1949"
+  },
+  "quantity": 1,
+  "price": 128,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:35.783Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:35.783Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467ff676a577fe96db9b3"
+  },
+  "order_id": {
+    "$oid": "675467ff676a577fe96db9aa"
+  },
+  "book_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "quantity": 1,
+  "price": 112,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:35.794Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:35.794Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67546807676a577fe96db9dc"
+  },
+  "order_id": {
+    "$oid": "67546807676a577fe96db9da"
+  },
+  "book_id": {
+    "$oid": "6751ac2ad0c174ff927bfb14"
+  },
+  "quantity": 1,
+  "price": 151,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:43.994Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:43.994Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67546808676a577fe96db9e3"
+  },
+  "order_id": {
+    "$oid": "67546807676a577fe96db9da"
+  },
+  "book_id": {
+    "$oid": "6751acfbab58d03c5e4b0c23"
+  },
+  "quantity": 1,
+  "price": 130,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:44.015Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:44.015Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0b9faa9c3be2afab0f7"
+  },
+  "order_id": {
+    "$oid": "6755c0b9faa9c3be2afab0f5"
+  },
+  "book_id": {
+    "$oid": "6747091d37a1279bf13562e4"
+  },
+  "quantity": 1,
+  "price": 25,
+  "createdAt": {
+    "$date": "2024-12-08T15:52:25.451Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:52:25.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0b9faa9c3be2afab0fe"
+  },
+  "order_id": {
+    "$oid": "6755c0b9faa9c3be2afab0f5"
+  },
+  "book_id": {
+    "$oid": "674706bd37a1279bf1355210"
+  },
+  "quantity": 1,
+  "price": 89,
+  "createdAt": {
+    "$date": "2024-12-08T15:52:25.479Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:52:25.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0ccfaa9c3be2afab17a"
+  },
+  "order_id": {
+    "$oid": "6755c0ccfaa9c3be2afab178"
+  },
+  "book_id": {
+    "$oid": "66e537a9526475c476d285cd"
+  },
+  "quantity": 1,
+  "price": 89.6,
+  "createdAt": {
+    "$date": "2024-12-08T15:52:44.497Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:52:44.497Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0eefaa9c3be2afab25a"
+  },
+  "order_id": {
+    "$oid": "6755c0eefaa9c3be2afab258"
+  },
+  "book_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "quantity": 1,
+  "price": 112,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:18.413Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:18.413Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0eefaa9c3be2afab261"
+  },
+  "order_id": {
+    "$oid": "6755c0eefaa9c3be2afab258"
+  },
+  "book_id": {
+    "$oid": "6751ad9dab58d03c5e4b1949"
+  },
+  "quantity": 1,
+  "price": 128,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:18.424Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:18.424Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0f9faa9c3be2afab2b2"
+  },
+  "order_id": {
+    "$oid": "6755c0f9faa9c3be2afab2b0"
+  },
+  "book_id": {
+    "$oid": "6751ad4cab58d03c5e4b12bb"
+  },
+  "quantity": 1,
+  "price": 139,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:29.153Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:29.153Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c10dfaa9c3be2afab2fb"
+  },
+  "order_id": {
+    "$oid": "6755c10dfaa9c3be2afab2f9"
+  },
+  "book_id": {
+    "$oid": "6751acb2ab58d03c5e4b05c1"
+  },
+  "quantity": 1,
+  "price": 53,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:49.101Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:49.101Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c10dfaa9c3be2afab302"
+  },
+  "order_id": {
+    "$oid": "6755c10dfaa9c3be2afab2f9"
+  },
+  "book_id": {
+    "$oid": "6751ac2ad0c174ff927bfb14"
+  },
+  "quantity": 1,
+  "price": 151,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:49.115Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:49.115Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c10dfaa9c3be2afab309"
+  },
+  "order_id": {
+    "$oid": "6755c10dfaa9c3be2afab2f9"
+  },
+  "book_id": {
+    "$oid": "6751abc4d0c174ff927bf4de"
+  },
+  "quantity": 1,
+  "price": 26,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:49.129Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:49.129Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c114faa9c3be2afab332"
+  },
+  "order_id": {
+    "$oid": "6755c114faa9c3be2afab330"
+  },
+  "book_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "quantity": 1,
+  "price": 112,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:56.132Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:56.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c114faa9c3be2afab339"
+  },
+  "order_id": {
+    "$oid": "6755c114faa9c3be2afab330"
+  },
+  "book_id": {
+    "$oid": "6751aaa7d0c174ff927bdcb8"
+  },
+  "quantity": 1,
+  "price": 36,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:56.147Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:56.147Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c11cfaa9c3be2afab362"
+  },
+  "order_id": {
+    "$oid": "6755c11cfaa9c3be2afab360"
+  },
+  "book_id": {
+    "$oid": "674c9175651ec3c385150c5f"
+  },
+  "quantity": 1,
+  "price": 163,
+  "createdAt": {
+    "$date": "2024-12-08T15:54:04.245Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:54:04.245Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c121faa9c3be2afab38b"
+  },
+  "order_id": {
+    "$oid": "6755c121faa9c3be2afab389"
+  },
+  "book_id": {
+    "$oid": "674c903e651ec3c38514f599"
+  },
+  "quantity": 1,
+  "price": 142,
+  "createdAt": {
+    "$date": "2024-12-08T15:54:09.912Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:54:09.912Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c121faa9c3be2afab392"
+  },
+  "order_id": {
+    "$oid": "6755c121faa9c3be2afab389"
+  },
+  "book_id": {
+    "$oid": "674c9014651ec3c38514f147"
+  },
+  "quantity": 1,
+  "price": 102,
+  "createdAt": {
+    "$date": "2024-12-08T15:54:09.925Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:54:09.925Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c12afaa9c3be2afab3bb"
+  },
+  "order_id": {
+    "$oid": "6755c12afaa9c3be2afab3b9"
+  },
+  "book_id": {
+    "$oid": "674c8f08651ec3c38514e0c7"
+  },
+  "quantity": 1,
+  "price": 45,
+  "createdAt": {
+    "$date": "2024-12-08T15:54:18.965Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:54:18.965Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c12afaa9c3be2afab3c2"
+  },
+  "order_id": {
+    "$oid": "6755c12afaa9c3be2afab3b9"
+  },
+  "book_id": {
+    "$oid": "674c8de5651ec3c38514d539"
+  },
+  "quantity": 1,
+  "price": 43,
+  "createdAt": {
+    "$date": "2024-12-08T15:54:18.974Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:54:18.974Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dae4ecdc291a5ef85b99"
+  },
+  "order_id": {
+    "$oid": "6756dae4ecdc291a5ef85b97"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322a"
+  },
+  "quantity": 1,
+  "price": 28.05,
+  "createdAt": {
+    "$date": "2024-12-09T11:56:20.972Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T11:56:20.972Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dbc9ecdc291a5ef85de8"
+  },
+  "order_id": {
+    "$oid": "6756dbc9ecdc291a5ef85de6"
+  },
+  "book_id": {
+    "$oid": "6747076e37a1279bf1355668"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-09T12:00:09.105Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:00:09.105Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dbc9ecdc291a5ef85def"
+  },
+  "order_id": {
+    "$oid": "6756dbc9ecdc291a5ef85de6"
+  },
+  "book_id": {
+    "$oid": "6747083b37a1279bf1355b32"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-09T12:00:09.133Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:00:09.133Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dbe2ecdc291a5ef85ec3"
+  },
+  "order_id": {
+    "$oid": "6756dbe2ecdc291a5ef85ec1"
+  },
+  "book_id": {
+    "$oid": "66d5ae3684632959c4685045"
+  },
+  "quantity": 1,
+  "price": 99,
+  "createdAt": {
+    "$date": "2024-12-09T12:00:34.353Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:00:34.353Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dd5a308c9c844820e3a7"
+  },
+  "order_id": {
+    "$oid": "6756dd5a308c9c844820e3a5"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 2,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-12-09T12:06:50.800Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:06:50.800Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dd5a308c9c844820e3ae"
+  },
+  "order_id": {
+    "$oid": "6756dd5a308c9c844820e3a5"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-09T12:06:50.914Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:06:50.914Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dfea308c9c844820e55e"
+  },
+  "order_id": {
+    "$oid": "6756dfea308c9c844820e55c"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-09T12:17:46.189Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:17:46.189Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dfed308c9c844820e567"
+  },
+  "order_id": {
+    "$oid": "6756dfed308c9c844820e565"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-09T12:17:49.436Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:17:49.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e184308c9c844820e9fd"
+  },
+  "order_id": {
+    "$oid": "6756e184308c9c844820e9fb"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 1,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-12-09T12:24:36.632Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:24:36.632Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e783308c9c8448210367"
+  },
+  "order_id": {
+    "$oid": "6756e783308c9c8448210365"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:11.999Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:11.999Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e784308c9c844821036e"
+  },
+  "order_id": {
+    "$oid": "6756e783308c9c8448210365"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:12.044Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:12.044Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e78d308c9c8448210393"
+  },
+  "order_id": {
+    "$oid": "6756e78d308c9c8448210391"
+  },
+  "book_id": {
+    "$oid": "674c903e651ec3c38514f599"
+  },
+  "quantity": 1,
+  "price": 142,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:21.227Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:21.227Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e798308c9c84482103b8"
+  },
+  "order_id": {
+    "$oid": "6756e798308c9c84482103b6"
+  },
+  "book_id": {
+    "$oid": "674c91e7651ec3c385151607"
+  },
+  "quantity": 1,
+  "price": 338,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:32.084Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:32.084Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e7a7308c9c84482103f9"
+  },
+  "order_id": {
+    "$oid": "6756e7a7308c9c84482103f7"
+  },
+  "book_id": {
+    "$oid": "6751ad9dab58d03c5e4b1949"
+  },
+  "quantity": 1,
+  "price": 128,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:47.390Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:47.390Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e7a7308c9c8448210400"
+  },
+  "order_id": {
+    "$oid": "6756e7a7308c9c84482103f7"
+  },
+  "book_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "quantity": 2,
+  "price": 112,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:47.416Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:47.416Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756ebc1308c9c84482111a1"
+  },
+  "order_id": {
+    "$oid": "6756ebc1308c9c844821119f"
+  },
+  "book_id": {
+    "$oid": "67470de437a1279bf1356e60"
+  },
+  "quantity": 1,
+  "price": 131,
+  "createdAt": {
+    "$date": "2024-12-09T13:08:17.940Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:08:17.940Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756fc45526cec0dd8db273b"
+  },
+  "order_id": {
+    "$oid": "6756fc45526cec0dd8db2739"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-09T14:18:45.280Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T14:18:45.280Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756fd9f526cec0dd8db3403"
+  },
+  "order_id": {
+    "$oid": "6756fd9f526cec0dd8db3401"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322b"
+  },
+  "quantity": 1,
+  "price": 29.75,
+  "createdAt": {
+    "$date": "2024-12-09T14:24:31.472Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T14:24:31.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756fd9f526cec0dd8db340a"
+  },
+  "order_id": {
+    "$oid": "6756fd9f526cec0dd8db3401"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d7322a"
+  },
+  "quantity": 1,
+  "price": 28.05,
+  "createdAt": {
+    "$date": "2024-12-09T14:24:31.494Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T14:24:31.494Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67570036526cec0dd8db352c"
+  },
+  "order_id": {
+    "$oid": "67570036526cec0dd8db352a"
+  },
+  "book_id": {
+    "$oid": "674c9175651ec3c385150c5f"
+  },
+  "quantity": 1,
+  "price": 163,
+  "createdAt": {
+    "$date": "2024-12-09T14:35:34.412Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T14:35:34.412Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757e2cdf8caf0c45d8e18c4"
+  },
+  "order_id": {
+    "$oid": "6757e2cdf8caf0c45d8e18c2"
+  },
+  "book_id": {
+    "$oid": "66e537a9526475c476d285cd"
+  },
+  "quantity": 1,
+  "price": 89.6,
+  "createdAt": {
+    "$date": "2024-12-10T06:42:21.422Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T06:42:21.422Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757e2cdf8caf0c45d8e18cb"
+  },
+  "order_id": {
+    "$oid": "6757e2cdf8caf0c45d8e18c2"
+  },
+  "book_id": {
+    "$oid": "66e53749526475c476d285cb"
+  },
+  "quantity": 1,
+  "price": 84.5,
+  "createdAt": {
+    "$date": "2024-12-10T06:42:21.462Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T06:42:21.462Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757e2cdf8caf0c45d8e18d2"
+  },
+  "order_id": {
+    "$oid": "6757e2cdf8caf0c45d8e18c2"
+  },
+  "book_id": {
+    "$oid": "66e5382a526475c476d285cf"
+  },
+  "quantity": 1,
+  "price": 69,
+  "createdAt": {
+    "$date": "2024-12-10T06:42:21.473Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T06:42:21.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757e397f8caf0c45d8e1a40"
+  },
+  "order_id": {
+    "$oid": "6757e397f8caf0c45d8e1a3e"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-10T06:45:43.875Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T06:45:43.875Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757e53cf8caf0c45d8e1cc5"
+  },
+  "order_id": {
+    "$oid": "6757e53cf8caf0c45d8e1cc3"
+  },
+  "book_id": {
+    "$oid": "66e537a9526475c476d285cd"
+  },
+  "quantity": 1,
+  "price": 89.6,
+  "createdAt": {
+    "$date": "2024-12-10T06:52:44.499Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T06:52:44.499Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757ef6df8caf0c45d8e232b"
+  },
+  "order_id": {
+    "$oid": "6757ef6df8caf0c45d8e2329"
+  },
+  "book_id": {
+    "$oid": "66e536ed526475c476d285c9"
+  },
+  "quantity": 1,
+  "price": 69,
+  "createdAt": {
+    "$date": "2024-12-10T07:36:13.615Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T07:36:13.615Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757f185f8caf0c45d8e2dae"
+  },
+  "order_id": {
+    "$oid": "6757f185f8caf0c45d8e2dac"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-10T07:45:09.494Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T07:45:09.494Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757f185f8caf0c45d8e2db5"
+  },
+  "order_id": {
+    "$oid": "6757f185f8caf0c45d8e2dac"
+  },
+  "book_id": {
+    "$oid": "66e533ca526475c476d285b8"
+  },
+  "quantity": 1,
+  "price": 19,
+  "createdAt": {
+    "$date": "2024-12-10T07:45:09.524Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T07:45:09.524Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757f18bf8caf0c45d8e2ddf"
+  },
+  "order_id": {
+    "$oid": "6757f18bf8caf0c45d8e2ddd"
+  },
+  "book_id": {
+    "$oid": "66ef5d2eaf9af43bb23ed4ae"
+  },
+  "quantity": 1,
+  "price": 88,
+  "createdAt": {
+    "$date": "2024-12-10T07:45:15.466Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T07:45:15.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6758113fae750168bf06d561"
+  },
+  "order_id": {
+    "$oid": "6758113fae750168bf06d55f"
+  },
+  "book_id": {
+    "$oid": "66ef5d2eaf9af43bb23ed4ae"
+  },
+  "quantity": 1,
+  "price": 88,
+  "createdAt": {
+    "$date": "2024-12-10T10:00:31.568Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T10:00:31.568Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6758113fae750168bf06d568"
+  },
+  "order_id": {
+    "$oid": "6758113fae750168bf06d55f"
+  },
+  "book_id": {
+    "$oid": "66e533ca526475c476d285b8"
+  },
+  "quantity": 1,
+  "price": 19,
+  "createdAt": {
+    "$date": "2024-12-10T10:00:31.666Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T10:00:31.666Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67581690ae750168bf06d666"
+  },
+  "order_id": {
+    "$oid": "67581690ae750168bf06d664"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73227"
+  },
+  "quantity": 1,
+  "price": 52.56,
+  "createdAt": {
+    "$date": "2024-12-10T10:23:12.532Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T10:23:12.532Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67594eab9396bd6e5e9e6181"
+  },
+  "order_id": {
+    "$oid": "67594eab9396bd6e5e9e617f"
+  },
+  "book_id": {
+    "$oid": "66e537a9526475c476d285cd"
+  },
+  "quantity": 1,
+  "price": 89.6,
+  "createdAt": {
+    "$date": "2024-12-11T08:34:51.808Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T08:34:51.808Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67594eab9396bd6e5e9e6188"
+  },
+  "order_id": {
+    "$oid": "67594eab9396bd6e5e9e617f"
+  },
+  "book_id": {
+    "$oid": "66ef5d2eaf9af43bb23ed4ae"
+  },
+  "quantity": 1,
+  "price": 88,
+  "createdAt": {
+    "$date": "2024-12-11T08:34:51.876Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T08:34:51.876Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595372395a934980879a0e"
+  },
+  "order_id": {
+    "$oid": "67595372395a934980879a0c"
+  },
+  "book_id": {
+    "$oid": "66e5382a526475c476d285cf"
+  },
+  "quantity": 1,
+  "price": 69,
+  "createdAt": {
+    "$date": "2024-12-11T08:55:14.466Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T08:55:14.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595372395a934980879a15"
+  },
+  "order_id": {
+    "$oid": "67595372395a934980879a0c"
+  },
+  "book_id": {
+    "$oid": "66e537a9526475c476d285cd"
+  },
+  "quantity": 1,
+  "price": 89.6,
+  "createdAt": {
+    "$date": "2024-12-11T08:55:14.520Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T08:55:14.520Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675953bc395a934980879c8c"
+  },
+  "order_id": {
+    "$oid": "675953bc395a934980879c8a"
+  },
+  "book_id": {
+    "$oid": "66e5382a526475c476d285cf"
+  },
+  "quantity": 2,
+  "price": 69,
+  "createdAt": {
+    "$date": "2024-12-11T08:56:28.837Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T08:56:28.837Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759557ff74509cf7f800a33"
+  },
+  "order_id": {
+    "$oid": "6759557ff74509cf7f800a31"
+  },
+  "book_id": {
+    "$oid": "66e537a9526475c476d285cd"
+  },
+  "quantity": 1,
+  "price": 89.6,
+  "createdAt": {
+    "$date": "2024-12-11T09:03:59.673Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:03:59.673Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595629f74509cf7f800b9a"
+  },
+  "order_id": {
+    "$oid": "67595629f74509cf7f800b98"
+  },
+  "book_id": {
+    "$oid": "66d5ac5590db775ed89c8df7"
+  },
+  "quantity": 1,
+  "price": 14,
+  "createdAt": {
+    "$date": "2024-12-11T09:06:49.078Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:06:49.078Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595631f74509cf7f800bc4"
+  },
+  "order_id": {
+    "$oid": "67595631f74509cf7f800bc2"
+  },
+  "book_id": {
+    "$oid": "66e533ca526475c476d285b8"
+  },
+  "quantity": 1,
+  "price": 19,
+  "createdAt": {
+    "$date": "2024-12-11T09:06:57.170Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:06:57.170Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759564cf74509cf7f800bee"
+  },
+  "order_id": {
+    "$oid": "6759564cf74509cf7f800bec"
+  },
+  "book_id": {
+    "$oid": "66e536ac526475c476d285c7"
+  },
+  "quantity": 1,
+  "price": 69.5,
+  "createdAt": {
+    "$date": "2024-12-11T09:07:24.632Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:07:24.632Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595da4f74509cf7f802256"
+  },
+  "order_id": {
+    "$oid": "67595da4f74509cf7f802254"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-11T09:38:44.635Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:38:44.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67596caf6c150c70f6043cbf"
+  },
+  "order_id": {
+    "$oid": "67596caf6c150c70f6043cbd"
+  },
+  "book_id": {
+    "$oid": "6751ad4cab58d03c5e4b12bb"
+  },
+  "quantity": 1,
+  "price": 139,
+  "createdAt": {
+    "$date": "2024-12-11T10:42:55.102Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T10:42:55.102Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bf772ce4f4e82144dfe5f"
+  },
+  "order_id": {
+    "$oid": "675bf772ce4f4e82144dfe5d"
+  },
+  "book_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "quantity": 1,
+  "price": 112,
+  "createdAt": {
+    "$date": "2024-12-13T08:59:30.576Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T08:59:30.576Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bf799ce4f4e82144e004b"
+  },
+  "order_id": {
+    "$oid": "675bf799ce4f4e82144e0049"
+  },
+  "book_id": {
+    "$oid": "66e5355b526475c476d285c0"
+  },
+  "quantity": 1,
+  "price": 84.24,
+  "createdAt": {
+    "$date": "2024-12-13T09:00:09.250Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T09:00:09.250Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bf799ce4f4e82144e0052"
+  },
+  "order_id": {
+    "$oid": "675bf799ce4f4e82144e0049"
+  },
+  "book_id": {
+    "$oid": "67470ea137a1279bf135715e"
+  },
+  "quantity": 1,
+  "price": 117,
+  "createdAt": {
+    "$date": "2024-12-13T09:00:09.285Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T09:00:09.285Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bf832ce4f4e82144e0140"
+  },
+  "order_id": {
+    "$oid": "675bf832ce4f4e82144e013e"
+  },
+  "book_id": {
+    "$oid": "66d5ae3684632959c4685045"
+  },
+  "quantity": 1,
+  "price": 99,
+  "createdAt": {
+    "$date": "2024-12-13T09:02:42.816Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T09:02:42.816Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bfb0df21f6ad6ca1085ad"
+  },
+  "order_id": {
+    "$oid": "675bfb0df21f6ad6ca1085ab"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-13T09:14:53.198Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T09:14:53.198Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f2bf21f6ad6ca109097"
+  },
+  "order_id": {
+    "$oid": "675c4f2bf21f6ad6ca109095"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-13T15:13:47.501Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:13:47.501Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f30f21f6ad6ca1090c4"
+  },
+  "order_id": {
+    "$oid": "675c4f30f21f6ad6ca1090c2"
+  },
+  "book_id": {
+    "$oid": "66d5ac5590db775ed89c8df7"
+  },
+  "quantity": 1,
+  "price": 14,
+  "createdAt": {
+    "$date": "2024-12-13T15:13:52.699Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:13:52.699Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f30f21f6ad6ca1090cb"
+  },
+  "order_id": {
+    "$oid": "675c4f30f21f6ad6ca1090c2"
+  },
+  "book_id": {
+    "$oid": "66d5ae3684632959c4685045"
+  },
+  "quantity": 1,
+  "price": 99,
+  "createdAt": {
+    "$date": "2024-12-13T15:13:52.710Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:13:52.710Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f39f21f6ad6ca1090fe"
+  },
+  "order_id": {
+    "$oid": "675c4f39f21f6ad6ca1090fc"
+  },
+  "book_id": {
+    "$oid": "6747076e37a1279bf1355668"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:01.064Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:01.064Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f39f21f6ad6ca109105"
+  },
+  "order_id": {
+    "$oid": "675c4f39f21f6ad6ca1090fc"
+  },
+  "book_id": {
+    "$oid": "674707d637a1279bf13558b2"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:01.076Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:01.076Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f39f21f6ad6ca10910c"
+  },
+  "order_id": {
+    "$oid": "675c4f39f21f6ad6ca1090fc"
+  },
+  "book_id": {
+    "$oid": "6747087637a1279bf1355da6"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:01.085Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:01.085Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f39f21f6ad6ca109113"
+  },
+  "order_id": {
+    "$oid": "675c4f39f21f6ad6ca1090fc"
+  },
+  "book_id": {
+    "$oid": "674708ab37a1279bf135604a"
+  },
+  "quantity": 1,
+  "price": 35,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:01.095Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:01.095Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f3ff21f6ad6ca109140"
+  },
+  "order_id": {
+    "$oid": "675c4f3ff21f6ad6ca10913e"
+  },
+  "book_id": {
+    "$oid": "67470fd837a1279bf1357ad0"
+  },
+  "quantity": 1,
+  "price": 115,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:07.780Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:07.780Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f3ff21f6ad6ca109147"
+  },
+  "order_id": {
+    "$oid": "675c4f3ff21f6ad6ca10913e"
+  },
+  "book_id": {
+    "$oid": "674c90fc651ec3c385150307"
+  },
+  "quantity": 1,
+  "price": 268,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:07.792Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:07.792Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f49f21f6ad6ca10917a"
+  },
+  "order_id": {
+    "$oid": "675c4f49f21f6ad6ca109178"
+  },
+  "book_id": {
+    "$oid": "6751a9f1d0c174ff927bcba2"
+  },
+  "quantity": 1,
+  "price": 31,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:17.533Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:17.533Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f49f21f6ad6ca109181"
+  },
+  "order_id": {
+    "$oid": "675c4f49f21f6ad6ca109178"
+  },
+  "book_id": {
+    "$oid": "6751aa39d0c174ff927bd13e"
+  },
+  "quantity": 1,
+  "price": 13,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:17.544Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:17.544Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f49f21f6ad6ca109188"
+  },
+  "order_id": {
+    "$oid": "675c4f49f21f6ad6ca109178"
+  },
+  "book_id": {
+    "$oid": "6751ad9dab58d03c5e4b1949"
+  },
+  "quantity": 1,
+  "price": 128,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:17.553Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:17.553Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f49f21f6ad6ca10918f"
+  },
+  "order_id": {
+    "$oid": "675c4f49f21f6ad6ca109178"
+  },
+  "book_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "quantity": 1,
+  "price": 112,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:17.563Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:17.563Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f4ef21f6ad6ca1091bc"
+  },
+  "order_id": {
+    "$oid": "675c4f4ef21f6ad6ca1091ba"
+  },
+  "book_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "quantity": 1,
+  "price": 112,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:22.740Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:22.740Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f4ef21f6ad6ca1091c3"
+  },
+  "order_id": {
+    "$oid": "675c4f4ef21f6ad6ca1091ba"
+  },
+  "book_id": {
+    "$oid": "6751ad4cab58d03c5e4b12bb"
+  },
+  "quantity": 1,
+  "price": 139,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:22.752Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:22.752Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ed44606e63396ea64dc51"
+  },
+  "order_id": {
+    "$oid": "675ed44606e63396ea64dc4f"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-15T13:06:14.511Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:06:14.511Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ed49f06e63396ea64dd15"
+  },
+  "order_id": {
+    "$oid": "675ed49f06e63396ea64dd13"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73229"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-15T13:07:43.740Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:07:43.740Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ed49f06e63396ea64dd1b"
+  },
+  "order_id": {
+    "$oid": "675ed49f06e63396ea64dd13"
+  },
+  "book_id": {
+    "$oid": "66d5ac5590db775ed89c8df7"
+  },
+  "quantity": 1,
+  "price": 14,
+  "createdAt": {
+    "$date": "2024-12-15T13:07:43.751Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:07:43.751Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ed54406e63396ea64dfda"
+  },
+  "order_id": {
+    "$oid": "675ed54406e63396ea64dfd8"
+  },
+  "book_id": {
+    "$oid": "6751adcfab58d03c5e4b1fed"
+  },
+  "quantity": 1,
+  "price": 112,
+  "createdAt": {
+    "$date": "2024-12-15T13:10:28.803Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:10:28.803Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ed54406e63396ea64dfe0"
+  },
+  "order_id": {
+    "$oid": "675ed54406e63396ea64dfd8"
+  },
+  "book_id": {
+    "$oid": "6751acfbab58d03c5e4b0c23"
+  },
+  "quantity": 1,
+  "price": 130,
+  "createdAt": {
+    "$date": "2024-12-15T13:10:28.819Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:10:28.819Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edb9206e63396ea64e6d5"
+  },
+  "order_id": {
+    "$oid": "675edb9206e63396ea64e6d3"
+  },
+  "book_id": {
+    "$oid": "674706bd37a1279bf1355210"
+  },
+  "quantity": 1,
+  "price": 89,
+  "createdAt": {
+    "$date": "2024-12-15T13:37:22.517Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:37:22.517Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edb9206e63396ea64e6db"
+  },
+  "order_id": {
+    "$oid": "675edb9206e63396ea64e6d3"
+  },
+  "book_id": {
+    "$oid": "6747063437a1279bf1354fd7"
+  },
+  "quantity": 1,
+  "price": 100,
+  "createdAt": {
+    "$date": "2024-12-15T13:37:22.555Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:37:22.555Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edbfb06e63396ea64e704"
+  },
+  "order_id": {
+    "$oid": "675edbfb06e63396ea64e702"
+  },
+  "book_id": {
+    "$oid": "6747058837a1279bf1354999"
+  },
+  "quantity": 1,
+  "price": 700,
+  "createdAt": {
+    "$date": "2024-12-15T13:39:07.549Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:39:07.549Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edd1706e63396ea64e84f"
+  },
+  "order_id": {
+    "$oid": "675edd1706e63396ea64e84d"
+  },
+  "book_id": {
+    "$oid": "6751ad9dab58d03c5e4b1949"
+  },
+  "quantity": 1,
+  "price": 128,
+  "createdAt": {
+    "$date": "2024-12-15T13:43:51.894Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:43:51.894Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edd3306e63396ea64e935"
+  },
+  "order_id": {
+    "$oid": "675edd3306e63396ea64e933"
+  },
+  "book_id": {
+    "$oid": "66d57256afc8a51793d73228"
+  },
+  "quantity": 1,
+  "price": 39.2,
+  "createdAt": {
+    "$date": "2024-12-15T13:44:19.926Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:44:19.926Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675efe2006e63396ea6570aa"
+  },
+  "order_id": {
+    "$oid": "675efe2006e63396ea6570a8"
+  },
+  "book_id": {
+    "$oid": "66d5ae3684632959c4685045"
+  },
+  "quantity": 1,
+  "price": 99,
+  "createdAt": {
+    "$date": "2024-12-15T16:04:48.532Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T16:04:48.532Z"
   },
   "__v": 0
 }]

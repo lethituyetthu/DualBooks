@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 import { Books } from "../types/Books";
 
@@ -21,6 +21,7 @@ export default function useFetchBook() {
   const [reviews, setReviews] = useState<Books[]>([]);
   const [hotBooks, setHotBooks] = useState<Books[]>([]);
   const [newBooks, setNewBooks] = useState<Books[]>([]);
+  const [featuredBooks, setFeaturedBooks] = useState<Books[]>([]);
   const [lowStock, setLowStock] = useState<Books[]>([]);
   const [books, setBooks] = useState<Books[]>([]);
   const [booksAll, setBooksAll] = useState<Books[]>([]);
@@ -46,12 +47,28 @@ export default function useFetchBook() {
         const resultNew = await resNew.json();
         setNewBooks(resultNew);
 
+        //console.log(newBooks)
+        const resByFeatured = await fetch(
+          "http://localhost:3200/books/featured"
+        );
+        if (!resByFeatured.ok) {
+          throw new Error("Lỗi khi lấy sách mới!!!");
+        }
+        const resultByFeatured = await resByFeatured.json();
+        setFeaturedBooks(resultByFeatured);
+
+        //console.log(featuredBooks)
+        // Fetch low-stock data only once
         const resLowStock = await fetch(
           "http://localhost:3200/books/low-stock"
         );
-
+        if (!resLowStock.ok) {
+          throw new Error("Lỗi khi lấy sách sắp hết hàng!!!");
+        }
         const resultLowStock = await resLowStock.json();
-        // console.log(resultLowStock)
+        setLowStock(resultLowStock);
+
+        //console.log(resultLowStock)
         setLowStock(resultLowStock);
         const res = await fetch("http://localhost:3200/books/getAllvisible");
         if (!res.ok) {
@@ -126,36 +143,52 @@ export default function useFetchBook() {
 
       const updateBook = await res.json();
 
-      console.log(updateBook);
-
+      console.log("bản cập nhật", updateBook);
       return updateBook;
     } catch (error) {
       console.error("Error updating the book:", error);
       throw error;
     }
   };
-  const fetchDetail = async (id: string) => {
+  const fetchDetail = useCallback(async (id: string) => {
+    if (!id) return; // Không gọi API nếu không có id
     setLoading(true);
     try {
+      console.log(`Fetching details for book ID: ${id}`);
       const res = await fetch(`http://localhost:3200/books/${id}`);
-      /*   if (!res.ok) {
-        throw new Error("Lỗi khi lấy thông tin chi tiết sản phẩm");
-      } */
+      if (!res.ok) throw new Error("Lỗi khi lấy thông tin chi tiết sản phẩm");
 
-      await fetch(`http://localhost:3200/books/${id}/views`, {
-        method: "PATCH",
-      });
       const result = await res.json();
-      setDetailBook(result);
-      setReviews(result.reviews); // Cập nhật reviews từ API
-      // console.log("Reviews fetched:", result.reviews); // Log kết quả
+
+      // Chỉ cập nhật state khi có thay đổi thực sự
+      setDetailBook((prev) =>
+        JSON.stringify(prev) !== JSON.stringify(result) ? result : prev
+      );
+      setReviews((prev) =>
+        JSON.stringify(prev) !== JSON.stringify(result.reviews)
+          ? result.reviews
+          : prev
+      );
+
       return result;
     } catch (error) {
       setError((error as Error).message);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+  const fetchViews = useCallback(async (id: string) => {
+    if (!id) return; // Không gọi API nếu không có id
+    try {
+      console.log(`Updating views for book ID: ${id}`);
+      const res = await fetch(`http://localhost:3200/books/${id}/views`, {
+        method: "PATCH",
+      });
+      if (!res.ok) throw new Error("Lỗi khi tăng lượt xem sản phẩm");
+    } catch (error) {
+      console.error("Lỗi khi gọi API views:", error);
+    }
+  }, []);
 
   // lọc sp theo tên -- admin
   const searchBooksAll = async (term: string) => {
@@ -254,10 +287,12 @@ export default function useFetchBook() {
     lowStock,
     updateBook,
     hotBooks,
+    featuredBooks,
     books,
     booksAll,
     newBooks,
     fetchDetail,
+    fetchViews,
     reviews,
     detailBook,
     loading,

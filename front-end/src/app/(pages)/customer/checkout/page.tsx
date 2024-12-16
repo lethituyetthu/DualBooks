@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useFetchOrder from "@/app/hook/useFetchOder";
 import OderItem from "../../staff/component/oderItem";
-import { totalmem } from "os";
+import { useSnackbar } from "notistack";
 
 type CartItem = {
   _id: string;
@@ -27,6 +27,7 @@ const CheckoutPaymentPage = () => {
   const [shippingAddress, setShippingAddress] = useState<string>("");
   const [isAddressVerified, setIsAddressVerified] = useState<boolean>(false);
   const [isPaymentSuccess, setIsPaymentSuccess] = useState<boolean>(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -65,7 +66,10 @@ const CheckoutPaymentPage = () => {
   const verifyAddress = () => {
     if (shippingAddress.trim() !== "") {
       setIsAddressVerified(true);
-      alert("Địa chỉ đã được xác nhận.");
+      enqueueSnackbar("Địa chỉ đã được xác nhận.", {
+        variant: "success",
+        autoHideDuration: 1500,
+      });
     } else {
       alert("Vui lòng nhập địa chỉ hợp lệ.");
       setIsAddressVerified(false);
@@ -78,17 +82,26 @@ const CheckoutPaymentPage = () => {
 
   const handlePaymentConfirmation = async () => {
     if (!shippingAddress.trim()) {
-      alert("Vui lòng nhập địa chỉ giao hàng.");
+      enqueueSnackbar("Vui lòng nhập địa chỉ giao hàng.", {
+        variant: "error",
+        autoHideDuration: 1500,
+      });
       return;
     }
 
     if (!isAddressVerified) {
-      alert("Vui lòng xác thực địa chỉ giao hàng.");
+      enqueueSnackbar("Vui lòng xác thực địa chỉ giao hàng.", {
+        variant: "error",
+        autoHideDuration: 1500,
+      });
       return;
     }
 
     if (!shippingMethod) {
-      alert("Vui lòng chọn phương thức vận chuyển.");
+      enqueueSnackbar("Vui lòng chọn phương thức vận chuyển.", {
+        variant: "error",
+        autoHideDuration: 1500,
+      });
       return;
     }
 
@@ -109,7 +122,7 @@ const CheckoutPaymentPage = () => {
       status: "Chờ xác nhận",
     };
 
-    console.log("Đơn hàng được gửi:", calculateTotal() + shippingFee);
+    //console.log("Đơn hàng được gửi:", calculateTotal() + shippingFee);
 
     try {
       const response = await addOrder(order);
@@ -127,8 +140,12 @@ const CheckoutPaymentPage = () => {
         await addOrderItem(orderId, orderItemData);
       }
 
-      alert("Thanh toán thành công!");
+      enqueueSnackbar("Thanh toán thành công!", {
+        variant: "success",
+        autoHideDuration: 1500,
+      });
       localStorage.removeItem("cart");
+      router.push("/customer");
       setIsPaymentSuccess(true);
     } catch (err) {
       console.error("Tạo đơn hàng thất bại:", err);
@@ -182,92 +199,115 @@ const CheckoutPaymentPage = () => {
           <h3 className="text-lg font-semibold text-gray-800 mb-2">
             Phương thức giao hàng
           </h3>
-          <label className="block mt-2">
-            <input
-              type="radio"
-              value="standard"
-              checked={shippingMethod === "standard"}
-              onChange={() => handleShippingMethodChange("standard")}
-              className="mr-2"
-            />
-            Giao hàng tiêu chuẩn (30.000 đ)
-          </label>
-          <label className="block mt-2">
-            <input
-              type="radio"
-              value="express"
-              checked={shippingMethod === "express"}
-              onChange={() => handleShippingMethodChange("express")}
-              className="mr-2"
-            />
-            Giao hàng nhanh (50.000 đ)
-          </label>
-        </div>
+          <div className="space-y-4">
+            <label className="flex items-center justify-between p-4 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100 cursor-pointer transition-all">
+              <div className="flex items-center">
+                <input
+                  type="radio"
+                  value="standard"
+                  checked={shippingMethod === "standard"}
+                  onChange={() => handleShippingMethodChange("standard")}
+                  className="mr-3 accent-blue-600"
+                />
+                <div>
+                  <p className="font-medium text-gray-800">
+                    Giao hàng tiêu chuẩn
+                  </p>
+                  <p className="text-sm text-gray-500">Giao từ 3 - 5 ngày</p>
+                </div>
+              </div>
+              <p className="text-gray-700 font-medium">30.000 đ</p>
+            </label>
 
-        <div className="p-4 bg-white shadow-lg rounded-md">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
-            Phương thức thanh toán
-          </h2>
-          <div className="space-y-4 text-gray-600">
-            <label className="block">
-              <input
-                type="radio"
-                value="Tiền mặt"
-                checked={selectedPayment === "Tiền mặt"}
-                onChange={() => handlePaymentSelection("Tiền mặt")}
-                className="mr-2"
-              />
-              Thanh toán khi nhận hàng
+            <label className="flex items-center justify-between p-4 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100 cursor-pointer transition-all">
+              <div className="flex items-center">
+                <input
+                  type="radio"
+                  value="express"
+                  checked={shippingMethod === "express"}
+                  onChange={() => handleShippingMethodChange("express")}
+                  className="mr-3 accent-blue-600"
+                />
+                <div>
+                  <p className="font-medium text-gray-800">Giao hàng nhanh</p>
+                  <p className="text-sm text-gray-500">Giao từ 1 - 2 ngày</p>
+                </div>
+              </div>
+              <p className="text-gray-700 font-medium">50.000 đ</p>
             </label>
           </div>
+        </div>
 
-          <hr className="my-4 border-gray-200" />
-
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">
-            Tóm tắt đơn hàng
-          </h3>
-          {cartItems.map((item) => (
-            <div
-              key={item.id}
-              className="flex justify-between text-gray-600 mb-2"
-            >
-              <span className="w-[80%]">
-                {item.title} x {item.quantity}
-              </span>
-              <span className="text-nowrap">
-                {(item.price * item.quantity * 1000).toLocaleString("vi-VN")} đ
-              </span>
+        <div className="p-4 bg-white shadow-lg rounded-md flex flex-col justify-between h-full">
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              Phương thức thanh toán
+            </h2>
+            <div className="space-y-4 text-gray-600">
+              <label className="block">
+                <input
+                  type="radio"
+                  value="Tiền mặt"
+                  checked={selectedPayment === "Tiền mặt"}
+                  onChange={() => handlePaymentSelection("Tiền mặt")}
+                  className="mr-2"
+                />
+                Thanh toán khi nhận hàng
+              </label>
             </div>
-          ))}
 
-          <div className="flex justify-between mt-4 text-gray-800">
-            <strong>Tổng cộng:</strong>
-            <strong>
-              {((calculateTotal() + shippingFee) * 1000).toLocaleString(
-                "vi-VN"
-              )}{" "}
-              đ
-            </strong>
+            <hr className="my-4 border-gray-200" />
+
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              Tóm tắt đơn hàng
+            </h3>
+            {cartItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex justify-between text-gray-600 mb-2"
+              >
+                <span className="w-[80%]">
+                  {item.title} x {item.quantity}
+                </span>
+                <span className="text-nowrap">
+                  {(item.price * item.quantity * 1000).toLocaleString("vi-VN")}{" "}
+                  đ
+                </span>
+              </div>
+            ))}
+
+            <div className="flex justify-between mt-4 text-gray-800">
+              <strong>Tổng cộng:</strong>
+              <strong>
+                {((calculateTotal() + shippingFee) * 1000).toLocaleString(
+                  "vi-VN"
+                )}{" "}
+                đ
+              </strong>
+            </div>
+
+            <div className="flex justify-between mt-4 text-gray-800">
+              <strong>Tổng sản phẩm:</strong>
+              <strong>{calculateTotalQuantity()}</strong>
+            </div>
           </div>
 
-          <div className="flex justify-between mt-4 text-gray-800">
-            <strong>Tổng sản phẩm:</strong>
-            <strong>{calculateTotalQuantity()}</strong>
+          {/* Nút cố định ở cuối */}
+          <div className="mt-6">
+            <button
+              onClick={handlePaymentConfirmation}
+              className="w-full mt-4 bg-primary-400 text-white py-2 rounded-md shadow hover:bg-primary-500 transition"
+            >
+              Xác nhận thanh toán
+            </button>
+
+            <button
+              onClick={handleBackToCart}
+              className="w-full mt-2 bg-gray-200 text-gray-800 py-2 rounded-md shadow hover:bg-gray-300 transition"
+            >
+              Quay lại giỏ hàng
+            </button>
           </div>
-
-          <button
-            onClick={handlePaymentConfirmation}
-            className="w-full mt-4 bg-primary-400 text-white py-2 rounded-md shadow hover:bg-primary-500 transition"
-          >
-            Xác nhận thanh toán
-          </button>
-
-          <button
-            onClick={handleBackToCart}
-            className="w-full mt-2 bg-gray-200 text-gray-800 py-2 rounded-md shadow hover:bg-gray-300 transition"
-          >
-            Quay lại giỏ hàng
-          </button>
         </div>
       </div>
     </>

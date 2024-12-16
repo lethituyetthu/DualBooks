@@ -53,7 +53,7 @@ const App = () => {
         </div>
       </div>
 
-      <div className="flex justify-center space-x-4 p-10">
+      <div className="flex justify-center flex-wrap space-x-4 gap-6 p-10 max-w-[1000px] mx-auto">
         {filteredAdmins.map((e, index) => (
           <ProfileCardStaff
             key={index}

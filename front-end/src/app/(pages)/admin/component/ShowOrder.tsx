@@ -42,7 +42,6 @@ const formatDateTime = (dateString: string) => {
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
-    second: "2-digit",
   });
 };
 
@@ -110,15 +109,13 @@ export default function ShowOrder({
             </span>
           </td>{" "}
           {/* Trạng Thái */}
-          <td className="p-4 text-right text-nowrap">
+          <td className="p-4 text-right border border-white text-nowrap">
             <Link href={`/admin/OrderDetail/${order.id}`}>
-              <button className="text-blue-500 hover:underline mr-2">
-                Xem
+              <button className="text-grey-500 hover:underline mr-2">
+              <i className="fas fa-eye"></i>
               </button>
             </Link>
-            <Link href={`/admin/editOrder/${order.id}`}>
-              <button className="text-red-500 hover:underline mr-2">Hủy</button>
-            </Link>
+            
           </td>{" "}
           {/* Các nút hành động */}
         </tr>

@@ -52,61 +52,55 @@ const ProfileCardStaff: React.FC<ProfileCardProps> = ({
 
   return (
     <div
-      className="bg-white p-6 rounded-sm shadow-md flex flex-col items-center w-52 relative"
-      onMouseEnter={() => setIsHovered(true)} // Hiển thị nút khi hover
-      onMouseLeave={() => setIsHovered(false)} // Ẩn nút khi không hover
-    >
-      {/* Hiển thị ảnh đại diện của admin */}
-      <Image
-        className="w-24 h-24 rounded-full mb-4" // Kích thước và hình dạng của ảnh
-        width={200}
-        height={200}
-        src={`http://localhost:3200/uploads/admins/${img}`} // URL ảnh
-        alt={`${name} profile`} // Mô tả hình ảnh
-        style={{ objectFit: "cover" }} // Giữ tỉ lệ ảnh
-      />
+  className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center w-[200px] relative transition-all duration-300 ease-in-out transform hover:scale-105"
+  onMouseEnter={() => setIsHovered(true)} // Hiển thị nút khi hover
+  onMouseLeave={() => setIsHovered(false)} // Ẩn nút khi không hover
+>
+  {/* Hiển thị ảnh đại diện của admin */}
+  <Image
+    className="w-24 h-24 rounded-full mb-4 border-4 border-gray-200"
+    width={200}
+    height={200}
+    src={`http://localhost:3200/uploads/admins/${img}`} // URL ảnh
+    alt={`${name} profile`} // Mô tả hình ảnh
+    style={{ objectFit: "cover" }} // Giữ tỉ lệ ảnh
+  />
 
-      {/* Hiển thị tên admin */}
-      <h2 className="text-xl max-w-44 mx-auto text-nowrap">{name}</h2>
+  {/* Hiển thị tên admin */}
+  <h2 className="text-xl font-semibold max-w-44 text-center text-gray-800">{name}</h2>
 
-      {/* Hiển thị vai trò với màu sắc nổi bật */}
-      <p
-        className={`mt-2 px-3 py-1 text-sm font-semibold w-20 text-center uppercase rounded-full ${
-          role === "admin"
-            ? "bg-red-100 text-red-700" // Vai trò admin: màu đỏ
-            : "bg-green-100 text-green-700" // Vai trò staff: màu xanh lá
-        }`}
+  {/* Hiển thị vai trò với màu sắc nổi bật */}
+  <p
+    className={`mt-2 px-3 py-1 text-sm font-semibold w-20 text-center uppercase rounded-full ${role === "admin" ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}
+  >
+    {role}
+  </p>
+
+  {/* Hiển thị email và ngày tạo */}
+  <p className="text-gray-500 mt-2 text-center">{email}</p>
+  <p className="text-gray-400 mt-2 text-center">{formatDateTime(date)}</p>
+
+  {/* Hiển thị các nút chỉnh sửa và xóa khi hover */}
+  {isHovered && (
+    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 rounded-sm flex gap-4 p-2 transition-all duration-300 ease-in-out opacity-100 shadow-lg">
+      {/* Nút chỉnh sửa */}
+      <Link href={`/admin/editStaff/${id}`}>
+        <button className="bg-blue-500 text-white p-2 rounded-full flex items-center justify-center hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105">
+          <i className="fas fa-edit"></i>
+        </button>
+      </Link>
+
+      {/* Nút xóa */}
+      <button
+        className="bg-orange-500 text-white p-2 rounded-full flex items-center justify-center hover:bg-orange-600 transition duration-200 ease-in-out transform hover:scale-105"
+        onClick={handleDelete}
       >
-        {role}
-      </p>
-
-      {/* Hiển thị email và ngày tạo */}
-      <p className="text-gray-500 mt-2">{email}</p>
-      <p className="text-gray-400 mt-2">{formatDateTime(date)}</p>
-
-      {/* Hiển thị các nút chỉnh sửa và xóa khi hover */}
-      {isHovered && (
-        <div
-          className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-opacity-75rounded-sm flex gap-4 p-2 
-      transition-opacity duration-300 ease-in-out opacity-100"
-        >
-          {/* Nút chỉnh sửa */}
-          <Link href={`/admin/editStaff/${id}`}>
-            <button className="bg-blue-500 text-white p-2 rounded mr-2 flex items-center hover:bg-blue-600 transition duration-200 ease-in-out">
-              <i className="fas fa-edit"></i>
-            </button>
-          </Link>
-
-          {/* Nút xóa */}
-          <button
-            className="bg-orange-500 text-white p-2 rounded flex items-center hover:bg-orange-600 transition duration-200 ease-in-out"
-            onClick={handleDelete}
-          >
-            <i className="fas fa-trash-alt"></i>
-          </button>
-        </div>
-      )}
+        <i className="fas fa-trash-alt"></i>
+      </button>
     </div>
+  )}
+</div>
+
   );
 };
 

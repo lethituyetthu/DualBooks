@@ -1,37 +1,4105 @@
 [{
   "_id": {
-    "$oid": "6740e5655cddabeb4c394be4"
+    "$oid": "6746f01aa060486397caaf91"
   },
   "customer_id": {
-    "$oid": "67286e8c684247600f9a8f48"
+    "$oid": "673c7ca7b8029c6f8288659e"
   },
   "order_date": {
-    "$date": "2024-11-22T20:11:17.830Z"
+    "$date": "2024-11-27T10:10:34.824Z"
   },
-  "order_status": "Chờ xác nhận",
+  "order_status": "Đang giao hàng",
   "payment_status": "Chưa thanh toán",
   "payment_method": "Tiền mặt",
-  "shipping_address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
-  "total_amount": 378.14,
-  "total_quantity": 4,
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 408.32000000000005,
+  "total_quantity": 5,
   "orderItems": [
     {
-      "$oid": "6740e5655cddabeb4c394be6"
+      "$oid": "6746f01aa060486397caaf93"
     },
     {
-      "$oid": "6740e5655cddabeb4c394bed"
+      "$oid": "6746f01aa060486397caaf9a"
     },
     {
-      "$oid": "6740e5655cddabeb4c394bf4"
+      "$oid": "6746f01ba060486397caafa1"
+    },
+    {
+      "$oid": "6746f01ba060486397caafa8"
     }
   ],
   "order_type": "online",
   "customer_feedback": null,
   "createdAt": {
-    "$date": "2024-11-22T20:11:17.832Z"
+    "$date": "2024-11-27T10:10:34.826Z"
   },
   "updatedAt": {
-    "$date": "2024-11-22T20:11:17.885Z"
+    "$date": "2024-12-09T13:06:50.555Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674702ac37a1279bf1354402"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-27T11:29:48.852Z"
+  },
+  "order_status": "Đang giao hàng",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 108.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674702ac37a1279bf1354404"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-27T11:29:48.853Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:06:52.292Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674702d337a1279bf1354443"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-27T11:30:27.916Z"
+  },
+  "order_status": "Đang giao hàng",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 128.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674702d337a1279bf1354445"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-27T11:30:27.918Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:06:54.188Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674702ec37a1279bf1354470"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-27T11:30:52.636Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 115.6,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "674702ec37a1279bf1354472"
+    },
+    {
+      "$oid": "674702ec37a1279bf1354479"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-27T11:30:52.641Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T11:30:52.677Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747030137a1279bf1354480"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-27T11:31:13.494Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 123.24,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6747030137a1279bf1354482"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-27T11:31:13.499Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-27T11:31:13.530Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747038c37a1279bf1354591"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-27T11:33:32.326Z"
+  },
+  "order_status": "Đang giao hàng",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 135.12,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6747038c37a1279bf1354593"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-27T11:33:32.327Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:05:31.950Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6747163837a1279bf1359177"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-27T12:53:12.495Z"
+  },
+  "order_status": "Đang giao hàng",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "110/5 tân thới hiệp Trương thị hoa, quận 12\n",
+  "total_amount": 188,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6747163837a1279bf1359179"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-27T12:53:12.497Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:05:34.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748354f83a2125552565ae3"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-28T09:18:07.487Z"
+  },
+  "order_status": "Đang giao hàng",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "quang trung gò vấp",
+  "total_amount": 164.5,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6748354f83a2125552565ae5"
+    },
+    {
+      "$oid": "6748354f83a2125552565aec"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:07.505Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:05:36.981Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748356b83a2125552565b1d"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-28T09:18:35.144Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 653.22,
+  "total_quantity": 6,
+  "orderItems": [
+    {
+      "$oid": "6748356b83a2125552565b1f"
+    },
+    {
+      "$oid": "6748356b83a2125552565b26"
+    },
+    {
+      "$oid": "6748356b83a2125552565b2d"
+    },
+    {
+      "$oid": "6748356b83a2125552565b34"
+    },
+    {
+      "$oid": "6748356b83a2125552565b3b"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-28T09:18:35.148Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:18:57.883Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6748359f83a2125552565b62"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-28T09:19:27.374Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 364.62,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "6748359f83a2125552565b64"
+    },
+    {
+      "$oid": "6748359f83a2125552565b6b"
+    },
+    {
+      "$oid": "6748359f83a2125552565b72"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:27.384Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:27.498Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674835a883a2125552565b79"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-28T09:19:36.526Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 388,
+  "total_quantity": 4,
+  "orderItems": [
+    {
+      "$oid": "674835a883a2125552565b7b"
+    },
+    {
+      "$oid": "674835a883a2125552565b82"
+    },
+    {
+      "$oid": "674835a883a2125552565b89"
+    },
+    {
+      "$oid": "674835a883a2125552565b90"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:36.533Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:36.663Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674835b083a2125552565b97"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-28T09:19:44.340Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 78.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674835b083a2125552565b99"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-28T09:19:44.349Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-28T09:19:44.376Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b13c4818cd277b2c8733c"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-30T13:31:48.602Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Tân thới hiệp quận 12",
+  "total_amount": 227.5,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "674b13c4818cd277b2c8733e"
+    },
+    {
+      "$oid": "674b13c4818cd277b2c87345"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T13:31:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:35:17.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b13e0818cd277b2c873fe"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-30T13:32:16.352Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 256,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674b13e0818cd277b2c87400"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T13:32:16.354Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:20:31.146Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b142a818cd277b2c8751f"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-11-30T13:33:30.173Z"
+  },
+  "order_status": "Đang giao hàng",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Công viên phần mền quang trung, Quận 12",
+  "total_amount": 1797.12,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "674b142a818cd277b2c87521"
+    },
+    {
+      "$oid": "674b142a818cd277b2c87528"
+    },
+    {
+      "$oid": "674b142a818cd277b2c8752f"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T13:33:30.175Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:07:16.193Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b1440818cd277b2c87540"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-30T13:33:52.038Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 78.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674b1440818cd277b2c87542"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T13:33:52.045Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:33:52.066Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b144b818cd277b2c87549"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-30T13:34:03.032Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 591.28,
+  "total_quantity": 4,
+  "orderItems": [
+    {
+      "$oid": "674b144b818cd277b2c8754b"
+    },
+    {
+      "$oid": "674b144b818cd277b2c87552"
+    },
+    {
+      "$oid": "674b144b818cd277b2c87559"
+    },
+    {
+      "$oid": "674b144b818cd277b2c87560"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:03.038Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:03.164Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b1453818cd277b2c87567"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-30T13:34:11.340Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 501.24,
+  "total_quantity": 4,
+  "orderItems": [
+    {
+      "$oid": "674b1453818cd277b2c87569"
+    },
+    {
+      "$oid": "674b1453818cd277b2c87570"
+    },
+    {
+      "$oid": "674b1453818cd277b2c87577"
+    },
+    {
+      "$oid": "674b1453818cd277b2c8757e"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T13:34:11.348Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:34:11.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b14f9818cd277b2c87600"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-30T13:36:57.152Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 59.5,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674b14f9818cd277b2c87602"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T13:36:57.161Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:36:57.181Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b14ff818cd277b2c87609"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-30T13:37:03.994Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 169,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674b1500818cd277b2c8760b"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T13:37:04.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T13:37:04.024Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674b34be818cd277b2c87612"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-11-30T15:52:30.470Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 169,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674b34be818cd277b2c87614"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-11-30T15:52:30.501Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-30T15:52:30.521Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8bee651ec3c38514cf2c"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-01T16:16:46.034Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 440,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674c8bee651ec3c38514cf2e"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-01T16:16:46.112Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:16:46.298Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8bf4651ec3c38514cf35"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-01T16:16:52.537Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 720,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674c8bf4651ec3c38514cf37"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-01T16:16:52.544Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:16:52.581Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8c30651ec3c38514cf99"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-01T16:17:52.718Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Công viên phần mền quang trung quận 12\n\n",
+  "total_amount": 334.4,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "674c8c30651ec3c38514cf9b"
+    },
+    {
+      "$oid": "674c8c30651ec3c38514cfa2"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-01T16:17:52.722Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:19:19.369Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8c43651ec3c38514cfa9"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-01T16:18:11.532Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Công viên phần mền quang trung quận 12\n\n",
+  "total_amount": 334.4,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "674c8c43651ec3c38514cfab"
+    },
+    {
+      "$oid": "674c8c43651ec3c38514cfb2"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-01T16:18:11.535Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:51:43.281Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8cc0651ec3c38514d0d9"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-01T16:20:16.292Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 470,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674c8cc0651ec3c38514d0db"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-01T16:20:16.295Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:20:16.324Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674c8ce5651ec3c38514d15a"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-01T16:20:53.523Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát",
+  "total_amount": 58,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674c8ce5651ec3c38514d15c"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-01T16:20:53.526Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-01T16:20:53.573Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc8c185dd663ae6ccffcc"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-02T14:48:33.472Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 70,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674dc8c185dd663ae6ccffce"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-02T14:48:33.502Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:48:33.552Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc8cb85dd663ae6ccffd5"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-02T14:48:43.310Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 1400,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674dc8cb85dd663ae6ccffd7"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-02T14:48:43.316Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:48:43.333Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc8d185dd663ae6ccffde"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-02T14:48:49.922Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 546,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "674dc8d185dd663ae6ccffe0"
+    },
+    {
+      "$oid": "674dc8d185dd663ae6ccffe7"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-02T14:48:49.927Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:48:49.952Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc94785dd663ae6cd009a"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-02T14:50:47.426Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 240,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "674dc94785dd663ae6cd009c"
+    },
+    {
+      "$oid": "674dc94785dd663ae6cd00a3"
+    },
+    {
+      "$oid": "674dc94785dd663ae6cd00aa"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-02T14:50:47.428Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:52:02.710Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc97385dd663ae6cd011d"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-02T14:51:31.194Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "công viên phần mền quang trung quận 12",
+  "total_amount": 292,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674dc97385dd663ae6cd011f"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-02T14:51:31.195Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:52:00.227Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674dc9b385dd663ae6cd022b"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-02T14:52:35.270Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát",
+  "total_amount": 316,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "674dc9b385dd663ae6cd022d"
+    },
+    {
+      "$oid": "674dc9b385dd663ae6cd0234"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-02T14:52:35.271Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T14:52:43.139Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c17d7f795a5bdc218e3"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-03T17:12:55.544Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát",
+  "total_amount": 194.62,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "674f3c17d7f795a5bdc218e5"
+    },
+    {
+      "$oid": "674f3c17d7f795a5bdc218ec"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-03T17:12:55.568Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:14:55.180Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c34d7f795a5bdc2191d"
+  },
+  "customer_id": {
+    "$oid": "6741e8564144ad4740cc3870"
+  },
+  "order_date": {
+    "$date": "2024-12-03T17:13:24.385Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát",
+  "total_amount": 244.10000000000002,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "674f3c34d7f795a5bdc2191f"
+    },
+    {
+      "$oid": "674f3c34d7f795a5bdc21926"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-03T17:13:24.390Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:14:52.363Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c58d7f795a5bdc21943"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-03T17:14:00.631Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 105.12,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674f3c58d7f795a5bdc21945"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-03T17:14:00.643Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:14:00.682Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3c64d7f795a5bdc2194c"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-03T17:14:12.083Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 249.6,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674f3c64d7f795a5bdc2194e"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-03T17:14:12.095Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-03T17:14:12.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674f3f92d7f795a5bdc21a78"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-03T17:27:46.665Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 108.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674f3f92d7f795a5bdc21a7a"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-03T17:27:46.666Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:06:12.418Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674fd7b1b4978b3195d83e63"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-04T04:16:49.321Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 135.12,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674fd7b1b4978b3195d83e65"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-04T04:16:49.328Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:06:14.103Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674fdd2cb4978b3195d867ea"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-04T04:40:12.121Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 78.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "674fdd2cb4978b3195d867ec"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-04T04:40:12.145Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T04:40:12.194Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507d953aed98128cd4cd15"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-04T16:04:37.206Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 308.4,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "67507d953aed98128cd4cd17"
+    },
+    {
+      "$oid": "67507d953aed98128cd4cd1e"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-04T16:04:37.215Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:06:15.999Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507db23aed98128cd4cd3d"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-04T16:05:06.556Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 415.5,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "67507db23aed98128cd4cd3f"
+    },
+    {
+      "$oid": "67507db23aed98128cd4cd46"
+    },
+    {
+      "$oid": "67507db23aed98128cd4cd4d"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-04T16:05:06.562Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:05:06.616Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67507db93aed98128cd4cd54"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-04T16:05:13.822Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 115.6,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "67507db93aed98128cd4cd56"
+    },
+    {
+      "$oid": "67507db93aed98128cd4cd5d"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-04T16:05:13.828Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-04T16:05:13.860Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751a822d0c174ff927bbf44"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-05T13:18:26.091Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 450,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6751a822d0c174ff927bbf46"
+    },
+    {
+      "$oid": "6751a822d0c174ff927bbf4d"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-05T13:18:26.098Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:06:17.730Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751a92bd0c174ff927bcb5d"
+  },
+  "customer_id": {
+    "$oid": "6751a8fcd0c174ff927bcaa6"
+  },
+  "order_date": {
+    "$date": "2024-12-05T13:22:51.364Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Sông trầu, Trảng Bom, Đồng Nai",
+  "total_amount": 304.48,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6751a92bd0c174ff927bcb5f"
+    },
+    {
+      "$oid": "6751a92bd0c174ff927bcb66"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-05T13:22:51.366Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:30.083Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751ac76ab58d03c5e4b05a0"
+  },
+  "customer_id": {
+    "$oid": "6751a8fcd0c174ff927bcaa6"
+  },
+  "order_date": {
+    "$date": "2024-12-05T13:36:54.905Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Sông trầu, Trảng Bom, Đồng Nai",
+  "total_amount": 108.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6751ac76ab58d03c5e4b05a2"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-05T13:36:54.920Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:31.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751adf3ab58d03c5e4b26a7"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-05T13:43:15.169Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 280,
+  "total_quantity": 4,
+  "orderItems": [
+    {
+      "$oid": "6751adf3ab58d03c5e4b26a9"
+    },
+    {
+      "$oid": "6751adf3ab58d03c5e4b26b0"
+    },
+    {
+      "$oid": "6751adf3ab58d03c5e4b26b7"
+    },
+    {
+      "$oid": "6751adf3ab58d03c5e4b26be"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-05T13:43:15.176Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:15.236Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6751adf9ab58d03c5e4b26c5"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-05T13:43:21.753Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 440,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6751adf9ab58d03c5e4b26c7"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-05T13:43:21.758Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-05T13:43:21.770Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67530fa12992039ac5568c92"
+  },
+  "customer_id": {
+    "$oid": "6751a8fcd0c174ff927bcaa6"
+  },
+  "order_date": {
+    "$date": "2024-12-06T14:52:17.495Z"
+  },
+  "order_status": "Đã hủy",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Sông trầu, Trảng Bom, Đồng Nai",
+  "total_amount": 108.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "67530fa12992039ac5568c94"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-06T14:52:17.498Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:04:39.286Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675313a42992039ac5568e93"
+  },
+  "customer_id": {
+    "$oid": "6751a8fcd0c174ff927bcaa6"
+  },
+  "order_date": {
+    "$date": "2024-12-06T15:09:24.697Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Sông trầu, Trảng Bom, Đồng Nai",
+  "total_amount": 242,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675313a42992039ac5568e95"
+    },
+    {
+      "$oid": "675313a42992039ac5568e9c"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-06T15:09:24.699Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:38:49.226Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319442992039ac5569329"
+  },
+  "customer_id": {
+    "$oid": "6751a8fcd0c174ff927bcaa6"
+  },
+  "order_date": {
+    "$date": "2024-12-06T15:33:24.330Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Sông trầu, Trảng Bom, Đồng Nai",
+  "total_amount": 452.48,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675319442992039ac556932b"
+    },
+    {
+      "$oid": "675319442992039ac5569332"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-06T15:33:24.331Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:38:52.067Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319862992039ac556935b"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-06T15:34:30.315Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 806,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "675319862992039ac556935d"
+    },
+    {
+      "$oid": "675319862992039ac5569364"
+    },
+    {
+      "$oid": "675319862992039ac556936b"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-06T15:34:30.318Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:34:30.342Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319962992039ac5569394"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-06T15:34:46.520Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 182,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "675319962992039ac5569396"
+    },
+    {
+      "$oid": "675319962992039ac556939d"
+    },
+    {
+      "$oid": "675319962992039ac55693a4"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-06T15:34:46.522Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:34:46.548Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319a72992039ac55693cb"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-06T15:35:03.330Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 174,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675319a72992039ac55693cd"
+    },
+    {
+      "$oid": "675319a72992039ac55693d4"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-06T15:35:03.333Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:35:03.351Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675319c72992039ac55693f9"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-06T15:35:35.625Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 282,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "675319c72992039ac55693fb"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-06T15:35:35.629Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:35:35.639Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67531b122992039ac55695d0"
+  },
+  "customer_id": {
+    "$oid": "67531afa2992039ac5569568"
+  },
+  "order_date": {
+    "$date": "2024-12-06T15:41:06.246Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Dương Đình Hôi, Tăng Nhơn Phú B, Thủ Đức",
+  "total_amount": 406.8,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "67531b122992039ac55695d2"
+    },
+    {
+      "$oid": "67531b122992039ac55695d9"
+    },
+    {
+      "$oid": "67531b122992039ac55695e0"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-06T15:41:06.247Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-06T15:41:23.996Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6754679a676a577fe96db75e"
+  },
+  "customer_id": {
+    "$oid": "67531afa2992039ac5569568"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:19:54.809Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Dương Đình Hôi, Tăng Nhơn Phú B, Thủ Đức",
+  "total_amount": 328.4,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6754679a676a577fe96db760"
+    },
+    {
+      "$oid": "6754679a676a577fe96db767"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:19:54.817Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:58.677Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467ac676a577fe96db81c"
+  },
+  "customer_id": {
+    "$oid": "67531afa2992039ac5569568"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:20:12.064Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Dương Đình Hôi, Tăng Nhơn Phú B, Thủ Đức",
+  "total_amount": 328.4,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675467ac676a577fe96db81e"
+    },
+    {
+      "$oid": "675467ac676a577fe96db825"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:20:12.065Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:22:09.406Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467bf676a577fe96db896"
+  },
+  "customer_id": {
+    "$oid": "67531afa2992039ac5569568"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:20:31.245Z"
+  },
+  "order_status": "Đang giao hàng",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Dương Đình Hôi, Tăng Nhơn Phú B, Thủ Đức",
+  "total_amount": 264,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675467bf676a577fe96db898"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:20:31.246Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:06:33.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467cd676a577fe96db8e5"
+  },
+  "customer_id": {
+    "$oid": "67531afa2992039ac5569568"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:20:45.148Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "12 Dương Đình Hôi, Tăng Nhơn Phú B, Thủ Đức",
+  "total_amount": 706,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675467cd676a577fe96db8e7"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:20:45.149Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:22:27.262Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467e8676a577fe96db918"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:21:12.410Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 720,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675467e8676a577fe96db91a"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:12.415Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:12.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467f0676a577fe96db943"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:21:20.202Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 560,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "675467f0676a577fe96db945"
+    },
+    {
+      "$oid": "675467f0676a577fe96db94c"
+    },
+    {
+      "$oid": "675467f0676a577fe96db953"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:20.204Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:20.239Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467f9676a577fe96db97a"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:21:29.122Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 88,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675467f9676a577fe96db97c"
+    },
+    {
+      "$oid": "675467f9676a577fe96db983"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:29.124Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:29.145Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675467ff676a577fe96db9aa"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:21:35.776Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 480,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675467ff676a577fe96db9ac"
+    },
+    {
+      "$oid": "675467ff676a577fe96db9b3"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:35.778Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:35.800Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67546807676a577fe96db9da"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-07T15:21:43.985Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 562,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "67546807676a577fe96db9dc"
+    },
+    {
+      "$oid": "67546808676a577fe96db9e3"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-07T15:21:43.987Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-07T15:21:44.028Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0b9faa9c3be2afab0f5"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:52:25.432Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 258,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6755c0b9faa9c3be2afab0f7"
+    },
+    {
+      "$oid": "6755c0b9faa9c3be2afab0fe"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:52:25.434Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:52:25.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0ccfaa9c3be2afab178"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:52:44.485Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 209.2,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6755c0ccfaa9c3be2afab17a"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:52:44.486Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:52:44.506Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0eefaa9c3be2afab258"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:53:18.402Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 510,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6755c0eefaa9c3be2afab25a"
+    },
+    {
+      "$oid": "6755c0eefaa9c3be2afab261"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:18.403Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:18.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c0f9faa9c3be2afab2b0"
+  },
+  "customer_id": {
+    "$oid": "673c7ca7b8029c6f8288659e"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:53:29.146Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "ấp tân phát xã đồi 61",
+  "total_amount": 308,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6755c0f9faa9c3be2afab2b2"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:29.147Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:29.160Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c10dfaa9c3be2afab2f9"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:53:49.088Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 460,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "6755c10dfaa9c3be2afab2fb"
+    },
+    {
+      "$oid": "6755c10dfaa9c3be2afab302"
+    },
+    {
+      "$oid": "6755c10dfaa9c3be2afab309"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:49.094Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:49.137Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c114faa9c3be2afab330"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:53:56.121Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 296,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6755c114faa9c3be2afab332"
+    },
+    {
+      "$oid": "6755c114faa9c3be2afab339"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:53:56.126Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:53:56.155Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c11cfaa9c3be2afab360"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:54:04.236Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 326,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6755c11cfaa9c3be2afab362"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:54:04.238Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:54:04.249Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c121faa9c3be2afab389"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:54:09.903Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 488,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6755c121faa9c3be2afab38b"
+    },
+    {
+      "$oid": "6755c121faa9c3be2afab392"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:54:09.906Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:54:09.931Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6755c12afaa9c3be2afab3b9"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-08T15:54:18.957Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 176,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6755c12afaa9c3be2afab3bb"
+    },
+    {
+      "$oid": "6755c12afaa9c3be2afab3c2"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-08T15:54:18.960Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-08T15:54:18.980Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dae4ecdc291a5ef85b97"
+  },
+  "customer_id": {
+    "$oid": "6756da7cecdc291a5ef85af4"
+  },
+  "order_date": {
+    "$date": "2024-12-09T11:56:20.943Z"
+  },
+  "order_status": "Đã hủy",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 86.1,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756dae4ecdc291a5ef85b99"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T11:56:20.951Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T11:57:09.646Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dbc9ecdc291a5ef85de6"
+  },
+  "customer_id": {
+    "$oid": "6756da7cecdc291a5ef85af4"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:00:09.087Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 170,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6756dbc9ecdc291a5ef85de8"
+    },
+    {
+      "$oid": "6756dbc9ecdc291a5ef85def"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:00:09.090Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:00:09.148Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dbe2ecdc291a5ef85ec1"
+  },
+  "customer_id": {
+    "$oid": "6756da7cecdc291a5ef85af4"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:00:34.337Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 228,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756dbe2ecdc291a5ef85ec3"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:00:34.339Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:00:34.366Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dd5a308c9c844820e3a5"
+  },
+  "customer_id": {
+    "$oid": "6756da7cecdc291a5ef85af4"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:06:50.691Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 227.39999999999998,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "6756dd5a308c9c844820e3a7"
+    },
+    {
+      "$oid": "6756dd5a308c9c844820e3ae"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:06:50.737Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:06:50.935Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dfea308c9c844820e55c"
+  },
+  "customer_id": {
+    "$oid": "6756da7cecdc291a5ef85af4"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:17:46.157Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 108.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756dfea308c9c844820e55e"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:17:46.164Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:17:46.212Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756dfed308c9c844820e565"
+  },
+  "customer_id": {
+    "$oid": "6756da7cecdc291a5ef85af4"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:17:49.417Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 128.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756dfed308c9c844820e567"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:17:49.419Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:00:52.943Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e184308c9c844820e9fb"
+  },
+  "customer_id": {
+    "$oid": "6756da7cecdc291a5ef85af4"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:24:36.612Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 89.5,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756e184308c9c844820e9fd"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:24:36.615Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:00:46.130Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e783308c9c8448210365"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:50:11.979Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 183.51999999999998,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6756e783308c9c8448210367"
+    },
+    {
+      "$oid": "6756e784308c9c844821036e"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:11.985Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:12.058Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e78d308c9c8448210391"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:50:21.208Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 284,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756e78d308c9c8448210393"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:21.217Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:21.238Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e798308c9c84482103b6"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:50:32.068Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 676,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756e798308c9c84482103b8"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:32.072Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:32.094Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756e7a7308c9c84482103f7"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-09T12:50:47.374Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 704,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "6756e7a7308c9c84482103f9"
+    },
+    {
+      "$oid": "6756e7a7308c9c8448210400"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T12:50:47.381Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T12:50:47.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756ebc1308c9c844821119f"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-09T13:08:17.907Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 292,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756ebc1308c9c84482111a1"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T13:08:17.911Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T13:08:17.964Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756fc45526cec0dd8db2739"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-09T14:18:45.255Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 78.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6756fc45526cec0dd8db273b"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T14:18:45.265Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T14:18:45.298Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6756fd9f526cec0dd8db3401"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-09T14:24:31.454Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 145.6,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6756fd9f526cec0dd8db3403"
+    },
+    {
+      "$oid": "6756fd9f526cec0dd8db340a"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T14:24:31.456Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T14:24:31.499Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67570036526cec0dd8db352a"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-09T14:35:34.403Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 356,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "67570036526cec0dd8db352c"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-09T14:35:34.404Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-09T14:35:34.418Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757e2cdf8caf0c45d8e18c2"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-10T06:42:21.397Z"
+  },
+  "order_status": "Đang giao hàng",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 516.2,
+  "total_quantity": 3,
+  "orderItems": [
+    {
+      "$oid": "6757e2cdf8caf0c45d8e18c4"
+    },
+    {
+      "$oid": "6757e2cdf8caf0c45d8e18cb"
+    },
+    {
+      "$oid": "6757e2cdf8caf0c45d8e18d2"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-10T06:42:21.402Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T07:46:49.373Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757e397f8caf0c45d8e1a3e"
+  },
+  "customer_id": {
+    "$oid": "674f3f69d7f795a5bdc21a1c"
+  },
+  "order_date": {
+    "$date": "2024-12-10T06:45:43.855Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Xuân Lộc, Đồng Nai",
+  "total_amount": 108.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6757e397f8caf0c45d8e1a40"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-10T06:45:43.857Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T06:45:43.902Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757e53cf8caf0c45d8e1cc3"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-10T06:52:44.484Z"
+  },
+  "order_status": "Đã hủy",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 209.2,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6757e53cf8caf0c45d8e1cc5"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-10T06:52:44.486Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T06:54:12.700Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757ef6df8caf0c45d8e2329"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-10T07:36:13.577Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 168,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6757ef6df8caf0c45d8e232b"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-10T07:36:13.582Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T07:47:02.080Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757f185f8caf0c45d8e2dac"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-10T07:45:09.449Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 116.4,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6757f185f8caf0c45d8e2dae"
+    },
+    {
+      "$oid": "6757f185f8caf0c45d8e2db5"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-10T07:45:09.461Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T07:45:09.536Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6757f18bf8caf0c45d8e2ddd"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-10T07:45:15.447Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 176,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6757f18bf8caf0c45d8e2ddf"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-10T07:45:15.452Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T07:45:15.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6758113fae750168bf06d55f"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-10T10:00:31.482Z"
+  },
+  "order_status": "Đã hủy",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 244,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "6758113fae750168bf06d561"
+    },
+    {
+      "$oid": "6758113fae750168bf06d568"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-10T10:00:31.508Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T10:22:48.274Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67581690ae750168bf06d664"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-10T10:23:12.505Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 135.12,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "67581690ae750168bf06d666"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-10T10:23:12.510Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-10T10:23:12.557Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67594eab9396bd6e5e9e617f"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-11T08:34:51.771Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 385.2,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "67594eab9396bd6e5e9e6181"
+    },
+    {
+      "$oid": "67594eab9396bd6e5e9e6188"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T08:34:51.776Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:14:42.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595372395a934980879a0c"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-11T08:55:14.419Z"
+  },
+  "order_status": "Đã hủy",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 347.20000000000005,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "67595372395a934980879a0e"
+    },
+    {
+      "$oid": "67595372395a934980879a15"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T08:55:14.437Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T08:55:44.649Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675953bc395a934980879c8a"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-11T08:56:28.821Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 306,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675953bc395a934980879c8c"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T08:56:28.824Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T10:37:05.915Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759557ff74509cf7f800a31"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-11T09:03:59.648Z"
+  },
+  "order_status": "Đã xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 209.2,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6759557ff74509cf7f800a33"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T09:03:59.653Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:04:39.536Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595629f74509cf7f800b98"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-11T09:06:49.055Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 28,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "67595629f74509cf7f800b9a"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T09:06:49.064Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:06:49.105Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595631f74509cf7f800bc2"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-11T09:06:57.143Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 38,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "67595631f74509cf7f800bc4"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T09:06:57.152Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:06:57.191Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759564cf74509cf7f800bec"
+  },
+  "staff_id": {
+    "$oid": "67420a58a6c7a7e512785691"
+  },
+  "order_date": {
+    "$date": "2024-12-11T09:07:24.612Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 139,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "6759564cf74509cf7f800bee"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T09:07:24.619Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:07:24.651Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67595da4f74509cf7f802254"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-11T09:38:44.611Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 108.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "67595da4f74509cf7f802256"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T09:38:44.616Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T09:38:44.665Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67596caf6c150c70f6043cbd"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-11T10:42:55.079Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 308,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "67596caf6c150c70f6043cbf"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-11T10:42:55.085Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-11T10:42:55.122Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bf772ce4f4e82144dfe5d"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-13T08:59:30.485Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 254,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675bf772ce4f4e82144dfe5f"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T08:59:30.505Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T08:59:30.650Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bf799ce4f4e82144e0049"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-13T09:00:09.232Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 432.48,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675bf799ce4f4e82144e004b"
+    },
+    {
+      "$oid": "675bf799ce4f4e82144e0052"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T09:00:09.235Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T09:00:09.302Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bf832ce4f4e82144e013e"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-13T09:02:42.798Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 228,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675bf832ce4f4e82144e0140"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T09:02:42.800Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T09:02:42.850Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675bfb0df21f6ad6ca1085ab"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-13T09:14:53.163Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 78.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675bfb0df21f6ad6ca1085ad"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T09:14:53.176Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T09:14:53.219Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f2bf21f6ad6ca109095"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-13T15:13:47.472Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 78.4,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675c4f2bf21f6ad6ca109097"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T15:13:47.486Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:13:47.523Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f30f21f6ad6ca1090c2"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-13T15:13:52.690Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 226,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675c4f30f21f6ad6ca1090c4"
+    },
+    {
+      "$oid": "675c4f30f21f6ad6ca1090cb"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T15:13:52.693Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:13:52.715Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f39f21f6ad6ca1090fc"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-13T15:14:01.056Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 280,
+  "total_quantity": 4,
+  "orderItems": [
+    {
+      "$oid": "675c4f39f21f6ad6ca1090fe"
+    },
+    {
+      "$oid": "675c4f39f21f6ad6ca109105"
+    },
+    {
+      "$oid": "675c4f39f21f6ad6ca10910c"
+    },
+    {
+      "$oid": "675c4f39f21f6ad6ca109113"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:01.059Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:01.099Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f3ff21f6ad6ca10913e"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-13T15:14:07.771Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 766,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675c4f3ff21f6ad6ca109140"
+    },
+    {
+      "$oid": "675c4f3ff21f6ad6ca109147"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:07.774Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:07.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f49f21f6ad6ca109178"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-13T15:14:17.524Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 568,
+  "total_quantity": 4,
+  "orderItems": [
+    {
+      "$oid": "675c4f49f21f6ad6ca10917a"
+    },
+    {
+      "$oid": "675c4f49f21f6ad6ca109181"
+    },
+    {
+      "$oid": "675c4f49f21f6ad6ca109188"
+    },
+    {
+      "$oid": "675c4f49f21f6ad6ca10918f"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:17.526Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:17.568Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675c4f4ef21f6ad6ca1091ba"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-13T15:14:22.730Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 502,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675c4f4ef21f6ad6ca1091bc"
+    },
+    {
+      "$oid": "675c4f4ef21f6ad6ca1091c3"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-13T15:14:22.733Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-13T15:14:22.756Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ed44606e63396ea64dc4f"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-15T13:06:14.476Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 69.2,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675ed44606e63396ea64dc51"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-15T13:06:14.477Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:06:14.537Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ed49f06e63396ea64dd13"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-15T13:07:43.727Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 53.2,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675ed49f06e63396ea64dd15"
+    },
+    {
+      "$oid": "675ed49f06e63396ea64dd1b"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-15T13:07:43.733Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:07:43.755Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675ed54406e63396ea64dfd8"
+  },
+  "customer_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "order_date": {
+    "$date": "2024-12-15T13:10:28.793Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "total_amount": 272,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675ed54406e63396ea64dfda"
+    },
+    {
+      "$oid": "675ed54406e63396ea64dfe0"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-15T13:10:28.795Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:10:28.822Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edb9206e63396ea64e6d3"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-15T13:37:22.480Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Chuyển khoản",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 189,
+  "total_quantity": 2,
+  "orderItems": [
+    {
+      "$oid": "675edb9206e63396ea64e6d5"
+    },
+    {
+      "$oid": "675edb9206e63396ea64e6db"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-15T13:37:22.491Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:37:22.558Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edbfb06e63396ea64e702"
+  },
+  "staff_id": {
+    "$oid": "674232d162b17c48f35470be"
+  },
+  "order_date": {
+    "$date": "2024-12-15T13:39:07.539Z"
+  },
+  "order_status": "Hoàn thành",
+  "payment_status": "Đã thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "Đường số 3. CVPM Quang Trung, Quận 12",
+  "total_amount": 700,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675edbfb06e63396ea64e704"
+    }
+  ],
+  "order_type": "offline",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-15T13:39:07.543Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:39:07.554Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edd1706e63396ea64e84d"
+  },
+  "customer_id": {
+    "$oid": "675edc6506e63396ea64e716"
+  },
+  "order_date": {
+    "$date": "2024-12-15T13:43:51.876Z"
+  },
+  "order_status": "Đã hủy",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "741-441, ĐT928, Cây Dương, Phụng Hiệp, Hậu Giang, Việt Nam",
+  "total_amount": 158,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675edd1706e63396ea64e84f"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-15T13:43:51.877Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:43:56.717Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675edd3306e63396ea64e933"
+  },
+  "customer_id": {
+    "$oid": "675edc6506e63396ea64e716"
+  },
+  "order_date": {
+    "$date": "2024-12-15T13:44:19.919Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "741-441, ĐT928, Cây Dương, Phụng Hiệp, Hậu Giang, Việt Nam",
+  "total_amount": 69.2,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675edd3306e63396ea64e935"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-15T13:44:19.920Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T13:44:19.930Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675efe2006e63396ea6570a8"
+  },
+  "customer_id": {
+    "$oid": "675edc6506e63396ea64e716"
+  },
+  "order_date": {
+    "$date": "2024-12-15T16:04:48.502Z"
+  },
+  "order_status": "Chờ xác nhận",
+  "payment_status": "Chưa thanh toán",
+  "payment_method": "Tiền mặt",
+  "shipping_address": "741-441, ĐT928, Cây Dương, Phụng Hiệp, Hậu Giang, Việt Nam",
+  "total_amount": 129,
+  "total_quantity": 1,
+  "orderItems": [
+    {
+      "$oid": "675efe2006e63396ea6570aa"
+    }
+  ],
+  "order_type": "online",
+  "customer_feedback": null,
+  "createdAt": {
+    "$date": "2024-12-15T16:04:48.507Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-15T16:04:48.551Z"
   },
   "__v": 0
 }]

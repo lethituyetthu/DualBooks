@@ -6,8 +6,9 @@ import Link from "next/link";
 export default function Product({ product, formatDateTime }) {
   const { deleteBook, books } = useFetchBook();
 
-  const handleDelete = () => {
-    if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+  const handleDelete = (message: string) => {
+    
+    if (confirm(message)) {
       deleteBook(product.id)
         .then(() => {
           window.location.reload();
@@ -51,18 +52,29 @@ export default function Product({ product, formatDateTime }) {
 
           {product.status === "hidden" ? (
             <button
-              className="bg-orange-500 text-white p-2 rounded flex items-center space-y-4"
-              onClick={handleDelete}
-            >
-              <i className="fas fa-eye"></i>
-            </button>
+            className="bg-orange-500 text-white p-2 rounded flex items-center space-y-4"
+            onClick={() =>
+              handleDelete(
+                "Bạn có chắc chắn muốn khôi phục sản phẩm này?"
+               
+              )
+            }
+          >
+            <i className="fas fa-eye"></i>
+          </button>
           ) : (
             <button
-              className="bg-gray-500 text-white p-2 rounded flex items-center space-y-4"
-              onClick={handleDelete}
-            >
-              <i className="fas fa-eye-slash"></i>
-            </button>
+            className="bg-gray-500 text-white p-2 rounded flex items-center space-y-4"
+            onClick={() =>
+              handleDelete(
+                product.sale > 0
+                  ? "Bạn có chắc chắn muốn ẩn sản phẩm này?"
+                  : "Bạn có chắc chắn muốn xóa sản phẩm này?"
+              )
+            }
+          >
+            <i className="fas fa-eye-slash"></i>
+          </button>
           )}
         </div>
       </td>
