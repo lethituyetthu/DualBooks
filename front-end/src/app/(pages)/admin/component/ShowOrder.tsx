@@ -113,12 +113,12 @@ export default function ShowOrder({
           <td className="p-4 text-right text-nowrap">
             <Link href={`/admin/OrderDetail/${order.id}`}>
               <button className="text-blue-500 hover:underline mr-2">
-                Xem
+              <i className="fas fa-eye"></i>
               </button>
             </Link>
-            <Link href={`/admin/editOrder/${order.id}`}>
+            {/* <Link href={`/admin/editOrder/${order.id}`}>
               <button className="text-red-500 hover:underline mr-2">Hủy</button>
-            </Link>
+            </Link> */}
           </td>{" "}
           {/* Các nút hành động */}
         </tr>

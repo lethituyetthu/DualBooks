@@ -46,11 +46,14 @@ export default function useFetchBook() {
         const resultNew = await resNew.json();
         setNewBooks(resultNew);
 
-        const resLowStock = await fetch(
-          "http://localhost:3200/books/low-stock"
-        );
-
-        const resultLowStock = await resLowStock.json();
+     // Fetch low-stock data only once
+     const resLowStock = await fetch("http://localhost:3200/books/low-stock");
+     if (!resLowStock.ok) {
+       throw new Error("Lỗi khi lấy sách sắp hết hàng!!!");
+     }
+     const resultLowStock = await resLowStock.json();
+     setLowStock(resultLowStock);
+     
         // console.log(resultLowStock)
         setLowStock(resultLowStock);
         const res = await fetch("http://localhost:3200/books/getAllvisible");
@@ -126,9 +129,8 @@ export default function useFetchBook() {
 
       const updateBook = await res.json();
 
-      console.log(updateBook);
-
-      return updateBook;
+      console.log( "bản cập nhật",updateBook);
+          return updateBook;
     } catch (error) {
       console.error("Error updating the book:", error);
       throw error;

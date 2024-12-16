@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import useFetchAdmin from '@/app/hook/useFetchAdmin';
+import Link from "next/link";
 
 export default function Login() {
   const { login } = useFetchAdmin();
@@ -56,10 +57,12 @@ export default function Login() {
               />
             </div>
           </div>
-          
+          <Link
+          href="/ForgotPassword">
           <div className="flex items-center">
             <label htmlFor="remember" className="ml-2 text-gray-700 text-sm">Quên Mật Khẩu</label>
           </div>
+          </Link>
 
           <button
             type="submit"

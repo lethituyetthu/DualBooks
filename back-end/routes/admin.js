@@ -17,7 +17,8 @@ router.post('/register', uploadAdmin.single('user_img'), async (req, res) => {
 // POST /api/admins/login
 router.post('/login', async (req, res) => {
     try {
-        await adminController.loginAdmin(req, res);
+        const result = await adminController.loginAdmin(req, res);
+        res.status(200).json(result);
     } catch (error) {
         res.status(401).json({ error: error.message });
     }
@@ -70,6 +71,11 @@ router.get('/username/:name', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
+// API xác minh email
+router.post('/verify-email',adminController.verifyEmail);
+// API xác thực OTP
+router.post('/verify-otp', adminController.verifyOtp);
+// Định nghĩa route API cho đặt lại mật khẩu
+router.post('/reset-password', adminController.resetPassword);
 
 module.exports = router;

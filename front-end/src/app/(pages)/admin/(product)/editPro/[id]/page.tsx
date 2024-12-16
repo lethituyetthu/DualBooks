@@ -16,7 +16,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
     title: "",
     author: "",
     category: "",
-    publisher: "",
+    // publisher: "",
     price: "",
     stock: "",
     description: "",
@@ -36,7 +36,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
         title: detailBook.title,
         author: detailBook.author,
         category: detailBook.category.name,
-        publisher: detailBook.publisher.name,
+        // publisher: detailBook.publisher.name,
         price: detailBook.price.toString(),
         stock: detailBook.stock.toString(),
         description: detailBook.description,
@@ -71,7 +71,7 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    console.log( "dữ liệu trước khi gửi là" ,formData);
 
     const { title, author, category, price, stock, cover_image, description } =
       formData;
@@ -91,6 +91,10 @@ const EditProduct = ({ params }: { params: { id: string } }) => {
     if (cover_image) {
       formDataToSend.append("cover_image", cover_image);
     }
+    // In ra FormData để kiểm tra
+  formDataToSend.forEach((value, key) => {
+    console.log(`${key}: ${value}`);
+  });
     const response = await updateBook(id, formDataToSend);
     if (response && response.error) {
       alert("lỗi khi chỉnh sửa sản phẩm !!!");

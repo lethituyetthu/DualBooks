@@ -11,15 +11,33 @@ export default function Page() {
   const [orderDate, setOrderDate] = useState<string>(""); // Ngày đặt hàng
 
   // Lọc đơn hàng theo trạng thái, loại và ngày
-  //console.log(orders)
   const filteredOrders = orders?.filter((order) => {
-    const matchesStatus = !status || order.order_status.toLowerCase() === status.toLowerCase();
-    const matchesType = !orderType || order.order_type.toLowerCase() === orderType.toLowerCase();
+    const matchesStatus =
+      !status || order.order_status.toLowerCase() === status.toLowerCase();
+    const matchesType =
+      !orderType || order.order_type.toLowerCase() === orderType.toLowerCase();
     const matchesDate =
-      !orderDate || new Date(order.order_date).toISOString().split("T")[0] === orderDate;
+      !orderDate ||
+      new Date(order.order_date).toISOString().split("T")[0] === orderDate;
 
     return matchesStatus && matchesType && matchesDate;
   });
+
+  // Tính tổng số lượng đơn hàng theo trạng thái
+  const orderCountsByStatus = orders?.reduce((acc, order) => {
+    const status = order.order_status;
+    acc[status] = (acc[status] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const statuses = [
+    { value: "", label: "Tất cả trạng thái" },
+    { value: "Chờ xác nhận", label: "Chờ xác nhận" },
+    { value: "Đã xác nhận", label: "Đã xác nhận" },
+    { value: "Đang giao hàng", label: "Đang giao hàng" },
+    { value: "Hoàn thành", label: "Hoàn thành" },
+    { value: "Đã hủy", label: "Đã hủy" },
+  ];
 
   return (
     <div>
@@ -27,33 +45,37 @@ export default function Page() {
         <div className="ml-6">
           {/* Thanh tiêu đề (Header) */}
           <header className="mb-6 grid grid-cols-12 gap-4 items-center">
-            {/* Cột tiêu đề */}
             <div className="col-span-3">
               <h1 className="text-2xl font-bold text-gray-800">Đơn Hàng</h1>
             </div>
-
             {/* Bộ lọc */}
             <div className="flex flex-wrap items-center gap-4 col-span-9 mt-4 md:mt-0">
-              {/* Lọc trạng thái */}
-              <div className="flex-1 ">
-                
+              <div className="flex-1">
                 <select
                   className="w-full border border-gray-300 rounded-sm p-2 shadow-sm focus:outline-0 focus:ring focus:ring-primary-400"
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <option value="">Tất cả trạng thái</option>
-                  <option value="Chờ xác nhận">Chờ xác nhận</option>
-                  <option value="Đã xác nhận">Đã xác nhận</option>
-                  <option value="Đang giao hàng">Đang giao hàng</option>
-                  <option value="Hoàn thành">Hoàn thành</option>
-                  <option value="Đã hủy">Đã hủy</option>
+                  {statuses.map((statusOption) => {
+                    // Tính số lượng đơn hàng
+                    const count =
+                      statusOption.value === ""
+                        ? orders?.length || 0 // Nếu là "Tất cả trạng thái", lấy tổng số đơn hàng
+                        : orderCountsByStatus?.[statusOption.value] || 0; // Ngược lại lấy theo trạng thái
+
+                    return (
+                      <option
+key={statusOption.value}
+                        value={statusOption.value}
+                      >
+                        {statusOption.label} <span className="text-primary-400">({count})</span>
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
 
-              {/* Lọc loại đơn hàng */}
               <div className="flex-1">
-                
                 <select
                   className="w-full border border-gray-300 rounded-sm p-2 shadow-sm focus:outline-none focus:ring focus:ring-[#AF683E]"
                   value={orderType}
@@ -64,10 +86,7 @@ export default function Page() {
                   <option value="offline">Đơn hàng Offline</option>
                 </select>
               </div>
-
-              {/* Lọc theo ngày */}
               <div className="flex-1">
-               
                 <input
                   type="date"
                   className="w-full border border-gray-300 rounded-sm p-2 shadow-sm focus:outline-none focus:ring focus:ring-[#AF683E]"
@@ -75,9 +94,9 @@ export default function Page() {
                   onChange={(e) => setOrderDate(e.target.value)}
                 />
               </div>
-             </div> 
+            </div>
           </header>
-
+          
           {/* Kiểm tra dữ liệu orders */}
           {loading ? (
             <p>Đang tải dữ liệu...</p>
@@ -94,11 +113,10 @@ export default function Page() {
                   <th className="p-4 border border-white">Ngày Đặt</th>
                   <th className="p-4 border border-white">Địa Chỉ</th>
                   <th className="p-4 border border-white">Tổng Tiền</th>
-                  <th className="p-4 border border-white ">Trạng Thái</th>
+                  <th className="p-4 border border-white">Trạng Thái</th>
                   <th className="p-4 text-right border border-white rounded-tr-lg"></th>
                 </tr>
               </thead>
-              {/* Component hiển thị danh sách đơn hàng */}
               <ShowOrder orders={filteredOrders} />
             </table>
           ) : (

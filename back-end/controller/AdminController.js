@@ -1,6 +1,7 @@
 const adminService = require('../service/AdminService');
-// const mailer = require('../mailer');
-
+const mailer = require('../mailer');
+const jwt = require('jsonwebtoken'); // Để tạo token
+const { SECRET_KEY,REFRESH_SECRET_KEY } = require('../config');
 // Hàm đăng ký admin mới
 exports.registerAdmin = async (req, res) => {
     try {
@@ -24,10 +25,12 @@ exports.registerAdmin = async (req, res) => {
 // Hàm đăng nhập admin
 exports.loginAdmin = async (req, res) => {
     const { email, password } = req.body;
+    console.log('Req from body:',req.body);
+    
 
     try {
-        const { token, admin } = await adminService.loginAdmin(email, password);
-        res.status(200).json({ message: 'Login successful', token, admin });
+        const { token, refreshToken, admin } = await adminService.loginAdmin(email, password);
+        res.status(200).json({ message: 'Login successful', token,  refreshToken, admin });
     } catch (error) {
         res.status(401).json({ error: error.message });
     }
@@ -132,5 +135,94 @@ exports.getAdminsByName = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+exports.verifyEmail = async (req, res) => {
+    try {
+        const { email } = req.body; // Nhận email từ client
 
+        // Gọi service để kiểm tra email tồn tại trong cơ sở dữ liệu
+        const admin = await adminService.findAdminByEmail(email);
+
+        if (!admin) {
+            return res.status(404).json({ success: false, message: 'Email không tồn tại.' });
+        }
+
+        // Tạo mã OTP
+        const otp = Math.floor(100000 + Math.random() * 900000); // Tạo mã OTP 6 chữ số
+
+        // Cập nhật OTP và thời gian hết hạn trong cơ sở dữ liệu
+        const otpExpiry = new Date(Date.now() + 5 * 60 * 1000); // Hết hạn trong 5 phút
+        await adminService.updateOtp(admin._id, otp, otpExpiry);
+
+        // Gửi OTP qua email
+        await mailer.sendOtpEmail(email, otp);
+
+        // Trả về phản hồi thành công
+        res.status(200).json({ success: true, message: 'Mã OTP đã được gửi qua email.' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+exports.verifyOtp = async (req, res) => {
+    try {
+        const { email, otp } = req.body; // Nhận email và OTP từ client
+
+        // Kiểm tra email tồn tại trong cơ sở dữ liệu
+        const admin = await adminService.findAdminByEmail(email);
+        if (!admin) {
+            return res.status(404).json({ success: false, message: 'Email không tồn tại.' });
+        }
+
+        // Kiểm tra OTP và thời gian hết hạn
+        if (admin.otp !== otp) {
+            return res.status(400).json({ success: false, message: 'Mã OTP không chính xác.' });
+        }
+
+        if (new Date() > new Date(admin.otpExpiry)) {
+            return res.status(400).json({ success: false, message: 'Mã OTP đã hết hạn.' });
+        }
+ // Tạo token
+ const token = jwt.sign(
+    { id: admin._id, email: admin.email }, 
+    SECRET_KEY,
+     { expiresIn: '5h' });
+        const tokenExpiry = new Date(Date.now() + 5 * 60 * 60 * 1000); // Thời gian hết hạn token
+
+        await adminService.updateToken(admin._id, token, tokenExpiry);
+
+       // Gửi email với token và link đặt lại mật khẩu
+       await mailer.sendTokenEmails(
+        email,
+        token, 
+    );
+
+
+        // Trả về phản hồi thành công
+        res.status(200).json({ success: true, message: 'Token đã được gửi qua email.' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+// Hàm xử lý yêu cầu đặt lại mật khẩu
+exports.resetPassword = async (req, res) => {
+    const { token, newPassword } = req.body;
+  
+    if (!token || !newPassword) {
+        return res.status(400).json({ message: "Token và mật khẩu mới là bắt buộc" });
+    }
+  
+    try {
+        // Kiểm tra và giải mã token
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const email = decoded.email; // Lấy email từ decoded token
+
+        // Gọi service để thực hiện đặt lại mật khẩu
+        const result = await adminService.resetPassword(email, newPassword);
+
+        // Trả kết quả cho client
+        return res.status(200).json(result);
+    } catch (error) {
+        // Xử lý lỗi nếu token không hợp lệ hoặc gặp lỗi khác
+        return res.status(500).json({ message: error.message || 'Đã có lỗi xảy ra khi đặt lại mật khẩu' });
+    }
+};
 
