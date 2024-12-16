@@ -1,90 +1,204 @@
 [{
   "_id": {
-    "$oid": "67286e8c684247600f9a8f48"
+    "$oid": "66d569d3afc8a51793d731e7"
   },
-  "name": "Ngọc Hiếu ",
-  "email": "hyhaha@example.com",
-  "password": "$2b$10$RGIRpzgtmrawZkKuEscPLuVH7XJRqx8pRfYWcYaX6eBKof5FZ8RjG",
-  "phone": "0912345672",
-  "address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
-  "status": "blocked",
-  "created_at": {
-    "$date": "2024-11-04T06:49:48.136Z"
-  },
-  "updated_at": {
-    "$date": "2024-11-04T06:49:48.136Z"
-  },
-  "__v": 0
+  "id": 3,
+  "name": "Lê Văn C",
+  "email": "levanc@example.com",
+  "phone": "0976543210",
+  "address": "789 Đường Cách Mạng Tháng 8, Quận 10, TP. Hồ Chí Minh",
+  "created_at": "2024-08-17T14:15:00Z",
+  "updated_at": "2024-08-27T12:30:00Z"
 },
 {
   "_id": {
-    "$oid": "672a3ffd0ed491172cc4e4aa"
+    "$oid": "66d569d3afc8a51793d731e8"
   },
-  "name": "Lê Thu",
-  "email": "lethu2004@example.com",
-  "password": "$2b$10$n4jqJx.8CXk.cK90faCzpekflxr3KnmcT2/iOcEynR3IuAXUMhRMa",
-  "phone": "0912345673",
-  "address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
-  "status": "blocked",
-  "created_at": {
-    "$date": "2024-11-05T15:55:41.453Z"
-  },
-  "updated_at": {
-    "$date": "2024-11-05T15:55:41.453Z"
-  },
-  "__v": 0
+  "id": 4,
+  "name": "Phạm Thị D",
+  "email": "phamthid@example.com",
+  "phone": "0965432109",
+  "address": "321 Đường Trần Hưng Đạo, Quận 5, TP. Hồ Chí Minh",
+  "created_at": "2024-08-18T16:45:00Z",
+  "updated_at": "2024-08-28T13:00:00Z"
 },
 {
   "_id": {
-    "$oid": "672b5a49af3298e0083c3832"
+    "$oid": "673c7ca7b8029c6f8288659e"
   },
-  "name": "l",
-  "email": "lethu21004@example.com",
-  "password": "$2b$10$RimAG.lA/rhMcnJ9Zv0I0.SoxHFkv9dl6jJe6blpHUfabArs7jMzu",
-  "phone": "0912345671",
-  "address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
+  "name": "ngọc",
+  "email": "bichngoc.24062004@gmail.com",
+  "password": "$2b$10$RFasyWUzJ2cl6vM5Q8ca5ee9rvp4P3Bc33WUId7e/pWRWj6xRHHsS",
+  "phone": "0792332719",
+  "address": "ấp tân phát xã đồi 61",
   "status": "active",
   "created_at": {
-    "$date": "2024-11-06T12:00:09.090Z"
+    "$date": "2024-11-19T11:55:19.593Z"
   },
   "updated_at": {
-    "$date": "2024-11-06T12:00:09.090Z"
+    "$date": "2024-11-19T11:55:19.593Z"
   },
-  "__v": 0
+  "__v": 0,
+  "isEmailVerified": true,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2M3Y2E3YjgwMjljNmY4Mjg4NjU5ZSIsImVtYWlsIjoiYmljaG5nb2MuMjQwNjIwMDRAZ21haWwuY29tIiwiaWF0IjoxNzM0MzMwOTM1LCJleHAiOjE3MzQ5MzU3MzV9.GinJKYkyYU0NawMp-C646adrgy4zZ6_-hntQM3rjQrE",
+  "otp": "736190",
+  "otpExpiry": {
+    "$date": "2024-12-16T06:34:56.913Z"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2M3Y2E3YjgwMjljNmY4Mjg4NjU5ZSIsImVtYWlsIjoiYmljaG5nb2MuMjQwNjIwMDRAZ21haWwuY29tIiwiaWF0IjoxNzM0MzMwNjM2LCJleHAiOjE3MzQzMzE1MzZ9.aqEbBLbGYaiHWCt2lsQ4Vh4Dl__Ae6noWNB3NZFIXz0",
+  "tokenExpiry": {
+    "$date": "2024-12-16T06:45:36.387Z"
+  }
 },
 {
   "_id": {
-    "$oid": "673862f7a3cd277e8668bc36"
+    "$oid": "6741e8564144ad4740cc3870"
   },
-  "name": "l",
-  "email": "lethu1004@example.com",
-  "password": "$2b$10$MLEdfMqNj89MxsDztadDu.bEUt/ydhQK.hz.Lf6Xe8et2EH5xaysa",
-  "phone": "0912345670",
-  "address": "123 Đường Phạm Hùng, Quận 1, TP.HCM",
+  "name": "Ngọc Bích",
+  "email": "phangocngan335@gmail.com",
+  "password": "$2b$10$ERxtUV7C88smKbifLvORO.5mt7MxSFQ44bEM1lDadZrlJVqHrPUeC",
+  "phone": "0543268535",
+  "address": "ấp tân phát",
   "status": "active",
   "created_at": {
-    "$date": "2024-11-16T09:16:39.515Z"
+    "$date": "2024-11-23T14:36:06.637Z"
   },
   "updated_at": {
-    "$date": "2024-11-16T09:16:39.515Z"
+    "$date": "2024-11-23T14:36:06.638Z"
   },
-  "__v": 0
+  "__v": 0,
+  "otp": "290854",
+  "otpExpiry": {
+    "$date": "2024-12-15T17:08:57.428Z"
+  },
+  "isEmailVerified": true,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDFlODU2NDE0NGFkNDc0MGNjMzg3MCIsImVtYWlsIjoicGhhbmdvY25nYW4zMzVAZ21haWwuY29tIiwiaWF0IjoxNzM0MjgzNTA4LCJleHAiOjE3MzQ4ODgzMDh9.rZNrkgvrjWg2pBITL88wq7nHPNSqWnmXifBaAD6emZI"
 },
 {
   "_id": {
-    "$oid": "6738637ea3cd277e8668bc6d"
+    "$oid": "674f3f69d7f795a5bdc21a1c"
   },
-  "name": "duan",
-  "email": "hieunnps30444@gmail.com",
-  "password": "$2b$10$NdGzI8Ne53jmc15.CP7mwOeWka7TWyFufzVF0IH1u5ZEgRVO4F2i2",
-  "phone": "0947834638",
-  "address": "86/52, Đường TCH 36, Phường Tân Chánh Hiệp, Quận 12, Tp. Hồ Chí Minh",
+  "name": "thanh Vy",
+  "email": "vythanh@gmail.com",
+  "password": "$2b$10$13FMZ9.VkEV6kgPJD9mbFOw2WpoBYEUf5gR6bMIJMlhgGTpbya4ue",
+  "phone": "0948627521",
+  "address": "Xuân Lộc, Đồng Nai",
   "status": "active",
   "created_at": {
-    "$date": "2024-11-16T09:18:54.972Z"
+    "$date": "2024-12-03T17:27:05.432Z"
   },
   "updated_at": {
-    "$date": "2024-11-16T09:18:54.972Z"
+    "$date": "2024-12-03T17:27:05.432Z"
   },
-  "__v": 0
+  "__v": 0,
+  "isEmailVerified": true,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGYzZjY5ZDdmNzk1YTViZGMyMWExYyIsImVtYWlsIjoidnl0aGFuaEBnbWFpbC5jb20iLCJpYXQiOjE3MzQyODM4MTcsImV4cCI6MTczNDg4ODYxN30.o8qCtLrOpzKKqlqL-DW46hxEG7xIdVDvXGwPvFA2Yew"
+},
+{
+  "_id": {
+    "$oid": "6751a8fcd0c174ff927bcaa6"
+  },
+  "name": "Trà My",
+  "email": "mytra@gmail.com",
+  "password": "$2b$10$FKZQsuDPE.Y2sfuLFEPMuO3j7yiYtO6SYN6yBDv10cXdMVLqdpSy.",
+  "phone": "0683756389",
+  "address": "12 Sông trầu, Trảng Bom, Đồng Nai",
+  "status": "active",
+  "created_at": {
+    "$date": "2024-12-05T13:22:04.610Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-05T13:22:04.610Z"
+  },
+  "__v": 0,
+  "isEmailVerified": true,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTFhOGZjZDBjMTc0ZmY5MjdiY2FhNiIsImVtYWlsIjoibXl0cmFAZ21haWwuY29tIiwiaWF0IjoxNzM0MjgzOTE5LCJleHAiOjE3MzQ4ODg3MTl9.rnR73ZTHaNGdXhQxP7oYQn1DNRZg7WJZVSXAsETyi0k"
+},
+{
+  "_id": {
+    "$oid": "67531afa2992039ac5569568"
+  },
+  "name": "Trần Yến Nhi",
+  "email": "nhitran12@gmail.com",
+  "password": "$2b$10$V/NBx88klJlzfGd6.PCReuvgQj/3lJxND8AjOBZQ/flBmflm7ZoNS",
+  "phone": "0958358273",
+  "address": "12 Dương Đình Hôi, Tăng Nhơn Phú B, Thủ Đức",
+  "status": "active",
+  "created_at": {
+    "$date": "2024-12-06T15:40:42.747Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-06T15:40:42.747Z"
+  },
+  "__v": 0,
+  "isEmailVerified": true,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTMxYWZhMjk5MjAzOWFjNTU2OTU2OCIsImVtYWlsIjoibmhpdHJhbjEyQGdtYWlsLmNvbSIsImlhdCI6MTczNDI4NDA1NCwiZXhwIjoxNzM0ODg4ODU0fQ.p_HEX5FwCuQpaANA3oovw0tuX1KCptmOdsSFSui2J2U"
+},
+{
+  "_id": {
+    "$oid": "6756da7cecdc291a5ef85af4"
+  },
+  "name": "Thu Hằng",
+  "email": "Hangt@gmail.com",
+  "password": "$2b$10$lbi3wtjjL1aWw2Frt.s4yenwlOPXvSohbDvMwucwSkYGPvNpML3du",
+  "phone": "0692468363",
+  "address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "status": "active",
+  "created_at": {
+    "$date": "2024-12-09T11:54:36.013Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-09T11:54:36.013Z"
+  },
+  "__v": 0,
+  "isEmailVerified": true,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTZkYTdjZWNkYzI5MWE1ZWY4NWFmNCIsImVtYWlsIjoiSGFuZ3RAZ21haWwuY29tIiwiaWF0IjoxNzM0Mjg0MTQ3LCJleHAiOjE3MzQ4ODg5NDd9.r8lCEaP5m2kgxG00WvvI766RR-J2qjavnFmc-HPin1k"
+},
+{
+  "_id": {
+    "$oid": "6757e517f8caf0c45d8e1c58"
+  },
+  "name": "Ngọc Bích24",
+  "email": "ngochnbps30302@gmail.com",
+  "password": "$2b$10$NyHmqAnAkF.LBw4GTPeI5.ag0BGt8Jloo5/s55rQwG/92RnGSZCY6",
+  "phone": "0593857390",
+  "address": "TL 923, Mỹ Khánh, Phong Điền, Cần Thơ, Việt Nam",
+  "status": "active",
+  "isEmailVerified": true,
+  "verificationCode": "542023",
+  "verificationCodeExpiry": {
+    "$date": "2024-12-11T06:52:04.288Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-10T06:52:07.167Z"
+  },
+  "created_at": {
+    "$date": "2024-12-10T06:52:07.167Z"
+  },
+  "__v": 0,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTdlNTE3ZjhjYWYwYzQ1ZDhlMWM1OCIsImVtYWlsIjoibmdvY2huYnBzMzAzMDJAZ21haWwuY29tIiwiaWF0IjoxNzM0Mjg0MzIyLCJleHAiOjE3MzQ4ODkxMjJ9.WvTGSMTIBxfI7jsawcVxAVKsS_lYphsA2MshZO26-EE"
+},
+{
+  "_id": {
+    "$oid": "675edc6506e63396ea64e716"
+  },
+  "name": "Ngọc Bích",
+  "email": "ngochnbps30302@fpt.edu.vn",
+  "password": "$2b$10$FatGLs.vjUUC.T4ivg6wW.NmJigq1avigFXLKyta37zxvCqoPCjZa",
+  "phone": "0975643651",
+  "address": "741-441, ĐT928, Cây Dương, Phụng Hiệp, Hậu Giang, Việt Nam",
+  "status": "active",
+  "isEmailVerified": true,
+  "verificationCode": "814789",
+  "verificationCodeExpiry": {
+    "$date": "2024-12-16T13:40:49.598Z"
+  },
+  "updated_at": {
+    "$date": "2024-12-15T13:40:53.615Z"
+  },
+  "created_at": {
+    "$date": "2024-12-15T13:40:53.616Z"
+  },
+  "__v": 0,
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWVkYzY1MDZlNjMzOTZlYTY0ZTcxNiIsImVtYWlsIjoibmdvY2huYnBzMzAzMDJAZnB0LmVkdS52biIsImlhdCI6MTczNDI4NDQ0MCwiZXhwIjoxNzM0ODg5MjQwfQ.0NS48n4TbiIGvM9ogtZ3s5UuR3Qh5RMNvMOZesUsydU"
 }]

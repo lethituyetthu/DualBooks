@@ -87,7 +87,7 @@ router.put('/:id/status', async (req, res) => {
   const customerId = req.params.id;
 
   try {
-      const updatedCustomer = await customerController.updateCustomer(customerId);
+      const updatedCustomer = await customerController.updateStatus(customerId);
       res.status(200).json({ message: 'Customer status updated successfully', data: updatedCustomer });
   } catch (error) {
       res.status(500).json({ error: error.message });
@@ -97,7 +97,7 @@ router.put('/:id/status', async (req, res) => {
 // DELETE /api/customers/:id - Xóa khách hàng (chỉ admin được xóa)
 router.delete('/:id', async (req, res) => {
   const customerId = req.params.id; // Lấy ID khách hàng từ URL
-
+        
   try {
       await customerController.deleteCustomer(customerId);
       res.status(200).json({ message: 'Customer deleted successfully' });

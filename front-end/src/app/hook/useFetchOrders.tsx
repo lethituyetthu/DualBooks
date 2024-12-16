@@ -42,6 +42,7 @@ export interface typeOrder {
   order_status: string;
   payment_status: string;
   shipping_address: string;
+  shipping_method:string;
   total_amount: number;
   total_quantity: number;
 }

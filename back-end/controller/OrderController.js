@@ -49,16 +49,18 @@ exports.createOrder = async (orderData) => {
             orderData.payment_status = 'Đã thanh toán';
         }
 
-        // Nếu order_type là 'online', đảm bảo customer_id và shipping_address được cung cấp
-        if (order_type === 'online') {
-            if (!orderData.customer_id) {
-                throw new Error('Customer ID is required for online orders.');
-            }
-            // Nếu không có địa chỉ giao hàng, sử dụng địa chỉ mặc định
-            if (!orderData.shipping_address) {
-                orderData.shipping_address = "Đường số 3. CVPM Quang Trung, Quận 12"; // Địa chỉ mặc định
-            }
+       // Nếu order_type là 'online', đảm bảo customer_id, shipping_address, và shipping_method được cung cấp
+       if (order_type === 'online') {
+        if (!orderData.customer_id) {
+            throw new Error('Customer ID is required for online orders.');
         }
+        if (!orderData.shipping_address) {
+            throw new Error('Shipping address is required for online orders.');
+        }
+        if (!orderData.shipping_method ) {
+            throw new Error('Valid shipping method (standard or express) is required for online orders.');
+        }
+    }
 
         // Gọi service để tạo đơn hàng với các dữ liệu từ request body
         const newOrder = await orderService.createOrder(orderData);
@@ -89,6 +91,8 @@ exports.getOrderDetail = async (req, res) => {
             } else {
                 return res.status(404).json({ message: 'Customer not found' });
             }
+            // Bổ sung phương thức vận chuyển vào đơn hàng
+            formattedOrder.shipping_method = order.shipping_method;
         }
 
         res.json(formattedOrder);
@@ -130,7 +134,8 @@ exports.getAllOrders = async () => {
                         email: order.customer_id.email,
                         address: order.customer_id.address,
                         phone: order.customer_id.phone
-                    }
+                    },
+                    shipping_method: order.shipping_method
                 };
             }
 
@@ -391,6 +396,7 @@ exports.getOrdersByCustomerId = async (req, res, customerId) => {
             order_status: order.order_status,
             payment_status: order.payment_status,
             shipping_address: order.shipping_address,
+            shipping_method: order.shipping_method,
             total_amount: order.total_amount,
             total_quantity: order.total_quantity,
             orderItems: order.orderItems.map(item => ({

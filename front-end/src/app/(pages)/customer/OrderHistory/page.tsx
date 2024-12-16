@@ -55,14 +55,14 @@ const OrderHistory = () => {
 
   const handleCancelOrder = (orderId: string) => {
     cancelOrder(orderId).then(() => {
-      enqueueSnackbar("Order has been cancelled", { variant: "success" });
+      enqueueSnackbar("Huỷ đơn hàng thành công", { variant: "success" });
       fetchOrdersByCustomerId(JSON.parse(localStorage.getItem("customer") || "").id);
     });
   };
 
   const handleCompleteOrder = (orderId: string) => {
     completeOrder(orderId).then(() => {
-      enqueueSnackbar("Order marked as complete", { variant: "success" });
+      enqueueSnackbar("Đơn hàng đã hoàn thành", { variant: "success" });
       fetchOrdersByCustomerId(JSON.parse(localStorage.getItem("customer") || "").id);
     });
   };
@@ -120,6 +120,10 @@ const OrderHistory = () => {
                     <button className="text-gray-600 transition-colors duration-300 text-sm">
                       Đơn hàng: #{order.id.slice(-10)}
                     </button>
+                    <button className="text-gray-600 transition-colors duration-300 text-sm">
+                   Đơn hàng: {order.shipping_method === 'standard' ? 'Tiêu chuẩn' 
+                  : order.shipping_method === 'express' ? 'Hỏa tốc' : 'Chưa xác định'}
+                 </button>
                     <div className="flex items-center justify-between w-60">
                       <div className="text-sm text-gray-600 ">
                         {new Intl.DateTimeFormat("vi-VN", {
@@ -260,6 +264,11 @@ const OrderHistory = () => {
                     <strong className="font-medium">Mã đơn hàng:</strong> #
                     {orderDetail.id.slice(0, 10)}
                   </p>
+                  <p>
+                  <strong className="font-medium">Đơn hàng:</strong>
+                  {orderDetail.shipping_method === 'standard' ? 'Tiêu chuẩn' 
+                  : orderDetail.shipping_method === 'express' ? 'Hỏa tốc' : 'Chưa xác định'}
+                 </p>
                   <p>
                     <strong className="font-medium">Ngày đặt:</strong>{" "}
                     {new Intl.DateTimeFormat("vi-VN").format(

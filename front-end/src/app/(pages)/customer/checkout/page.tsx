@@ -3,24 +3,32 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useFetchOrder from "@/app/hook/useFetchOder";
-import OderItem from "../../staff/component/oderItem";
+// import OderItem from "../../staff/component/oderItem";
 import { useSnackbar } from "notistack";
 
 type CartItem = {
+  id: string;
   _id: string;
   title: string;
   price: number; // Giá sản phẩm
   quantity: number; // Số lượng sản phẩm
   cover_image: string; // Ảnh bìa sản phẩm
 };
+interface Customer {
+  id: string;
+  name: string;
+  email: string;
+  address: string;
+  phone: string;
 
+}
 const CheckoutPaymentPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { addOrder, addOrderItem } = useFetchOrder();
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [customer, setCustomer] = useState<any>(null);
+  const [customer, setCustomer] = useState<Customer | null>(null);
   const [selectedPayment, setSelectedPayment] = useState<string>("Tiền mặt");
   const [shippingMethod, setShippingMethod] = useState<string>("standard");
   const [shippingFee, setShippingFee] = useState<number>(30);
@@ -60,7 +68,12 @@ const CheckoutPaymentPage = () => {
 
   const handleShippingMethodChange = (method: string) => {
     setShippingMethod(method);
-    setShippingFee(method === "express" ? 50 : 30);
+     // Cập nhật phí giao hàng dựa trên phương thức
+     if (method === "standard") {
+      setShippingFee(30); // Phí giao hàng tiêu chuẩn
+    } else if (method === "express") {
+      setShippingFee(50); // Phí giao hàng nhanh
+    }
   };
 
   const verifyAddress = () => {
@@ -104,7 +117,9 @@ const CheckoutPaymentPage = () => {
       });
       return;
     }
+  // Kiểm tra và gán giá trị cho shippingMethod
 
+  console.log("Phương thức vận chuyển:", shippingMethod); // Log giá trị shippingMethod
     if (cartItems.length === 0) {
       alert("Giỏ hàng trống. Vui lòng thêm sản phẩm vào giỏ hàng.");
       return;
@@ -116,6 +131,7 @@ const CheckoutPaymentPage = () => {
       total_amount: totalAmount,
       total_quantity: calculateTotalQuantity(),
       payment_method: selectedPayment,
+      shipping_method: shippingMethod, // Thêm phương thức giao hàng
       shipping_address: shippingAddress,
       payment_status: "Chưa thanh toán",
       order_type: "online",
@@ -276,15 +292,16 @@ const CheckoutPaymentPage = () => {
               </div>
             ))}
 
-            <div className="flex justify-between mt-4 text-gray-800">
-              <strong>Tổng cộng:</strong>
-              <strong>
-                {((calculateTotal() + shippingFee) * 1000).toLocaleString(
-                  "vi-VN"
-                )}{" "}
-                đ
-              </strong>
-            </div>
+              <div className="flex justify-between mt-4 text-gray-800">
+            <strong>Tổng cộng:</strong>
+            <strong>
+              {((calculateTotal() + shippingFee) * 1000).toLocaleString(
+                "vi-VN"
+              )}{" "}
+              đ
+            </strong>
+          </div>
+
 
             <div className="flex justify-between mt-4 text-gray-800">
               <strong>Tổng sản phẩm:</strong>

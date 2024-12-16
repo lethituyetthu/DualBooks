@@ -23,6 +23,7 @@ interface Order {
     | "Đã thanh toán"
     | "Thanh toán thất bại";
   payment_method: "Tiền mặt" | "Chuyển khoản";
+  shipping_method: "standard" | "express";
   shipping_address?: string;
   total_amount: number;
   total_quantity: number;

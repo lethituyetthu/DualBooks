@@ -11,8 +11,10 @@ export default function TotalStats({ totalRevenue, totalOrders, totalCustomers ,
           Tổng Doanh Thu
         </h3>
         <p className="text-xl font-bold text-primary-600">
-          {(totalRevenue * 1000).toLocaleString("vi-VN")} VNĐ
-        </p>
+  {totalRevenue >= 1000
+    ? `${Math.round(totalRevenue / 10).toLocaleString("vi-VN")} triệu VNĐ`
+    : `${Math.round(totalRevenue / 1).toLocaleString("vi-VN")} nghìn VNĐ`}
+</p>
       </div>
       <div>
         <h3 className="text-2xl font-semibold text-primary-300 font-itim">

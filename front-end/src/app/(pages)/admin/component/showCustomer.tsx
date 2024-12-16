@@ -10,6 +10,7 @@ type typeCustomer = {
   email: string;
   phone: string;
   address: string;
+  status: string;
 };
 
 // Định nghĩa kiểu props cho ShowCustomer
@@ -18,19 +19,9 @@ type ShowCustomerProps = {
 };
 
 export default function ShowCustomer({ customers }: ShowCustomerProps) {
-  const { deleteCustomer, toggleCustomerStatus } = useFetchCustomer();
+  const { toggleCustomerStatus } = useFetchCustomer();
 
-  // Hàm xử lý xóa khách hàng
-  const handleDelete = async (customerId: string) => {
-    if (confirm("Bạn có chắc chắn muốn xóa khách hàng này?")) {
-      try {
-        await deleteCustomer(customerId); // Gọi hàm xóa
-        window.location.reload(); // Tải lại trang sau khi xóa thành công
-      } catch (error) {
-        console.error("Lỗi khi xóa khách hàng:", error);
-      }
-    }
-  };
+
   // Hàm xử lý chuyển trạng thái của khách hàng
   const handleToggleStatus = async (customerId: string) => {
     try {
@@ -43,6 +34,7 @@ export default function ShowCustomer({ customers }: ShowCustomerProps) {
   if (customers.length === 0) {
     return <div>Không có khách hàng nào!</div>;
   }
+  console.log(customers)
   return (
     <div className="bg-white shadow-md">
       <table className="w-full table-auto border-separate border-spacing-0 rounded-tl-xl rounded-tr-lg">
@@ -68,12 +60,7 @@ export default function ShowCustomer({ customers }: ShowCustomerProps) {
               <td className="p-4 border border-white">{customer.phone}</td>
               <td className="p-4 border border-white">{customer.address}</td>
               <td className="p-4 text-right flex justify-center items-center border border-white">
-                <button
-                  className="text-red-500 hover:text-red-700 mr-2"
-                  onClick={() => handleDelete(customer._id)} // Gọi hàm xóa và truyền _id đúng
-                >
-                  <i className="fa-solid fa-circle-minus"></i>
-                </button>
+                
 
                 {customer.status === "blocked" ? (
                   <button

@@ -4,7 +4,7 @@
   },
   "name": "Thiếu nhi",
   "cate_image": "1727923378988-394065473.webp",
-  "description": "Truyện tranh, Sách giáo dục sớm, Truyện cổ tích, Sách học sinh tiểu học",
+  "description": "Truyện tranh, Sách giáo dục sớm, Truyện cổ tích, Sách học sinh tiểu học.",
   "status": "visible",
   "created_at": {
     "$date": "2024-11-24T14:15:48.610Z"
@@ -54,7 +54,9 @@
     "$oid": "66e52d1113ae0384d3444c44"
   },
   "name": "Sách học ngoại ngữ",
-  "status": "visible"
+  "status": "visible",
+  "cate_image": "1733747412718-20837375.png",
+  "description": "Tiếng anh, Tiếng trung,...."
 },
 {
   "_id": {

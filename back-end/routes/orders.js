@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
       order_type,
       customer_feedback,
       payment_method,
+      shipping_method,
     } = req.body;
 
     // Gọi controller để tạo đơn hàng
@@ -33,9 +34,9 @@ router.post("/", async (req, res) => {
       order_type,
       customer_feedback,
       payment_method,
+      shipping_method,
     });
-
-    // Trả về phản hồi thành công
+       // Trả về phản hồi thành công
     res
       .status(201)
       .json({ message: "Order created successfully", data: newOrder });

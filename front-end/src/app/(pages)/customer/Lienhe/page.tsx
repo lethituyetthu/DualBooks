@@ -5,7 +5,7 @@ import emailjs from "emailjs-com";
 import { useSnackbar } from "notistack";
 
 const ContactPage: React.FC = () => {
-  const {enqueueSnackbar} = useSnackbar()
+  const { enqueueSnackbar } = useSnackbar();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -54,33 +54,57 @@ const ContactPage: React.FC = () => {
     e.preventDefault();
     setIsSending(true);
 
-    // Gửi email thông qua EmailJS
-
-    // npm install emailjs-com
-
+    // Gửi email thông báo tới shop
     emailjs
       .send(
         "service_ioprh09", // Thay thế bằng Service ID của bạn
-        "template_5ua6bfp", // Thay thế bằng Template ID của bạn
+        "template_5ua6bfp", // Thay thế bằng Template ID thông báo
         {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          message: formData.message,// Thêm trường email nhận tại đây
+          message: formData.message,
         },
-        "i-5lqC1lOpfMqb6Xi" // Thay thế bằng public ID của bạn
+        "i-5lqC1lOpfMqb6Xi" // Thay thế bằng Public Key của bạn
       )
       .then(
         (response) => {
-          console.log("Email sent successfully:", response);
+          console.log("Đã gửi email đến shop thành công:", response);
+
+          // Gửi email phản hồi tự động tới khách hàng
+          emailjs
+            .send(
+              "service_ioprh09", // Thay thế bằng Service ID của bạn
+              "template_0ytb3gi", // Thay thế bằng Template ID phản hồi tự động
+              {
+                name: formData.name, // Gửi tên khách hàng
+                email: formData.email, // Gửi tới email khách hàng
+              },
+              "i-5lqC1lOpfMqb6Xi" // Thay thế bằng Public Key của bạn
+            )
+            .then(
+              (replyResponse) => {
+                console.log(
+                  "Email phản hồi tự động đã gửi thành công:",
+                  replyResponse
+                );
+                enqueueSnackbar(
+                  `Cảm ơn bạn đã liên hệ, chúng tôi sẽ phản hồi bạn sớm!`,
+                  { variant: "success", autoHideDuration: 1500 }
+                );
+              },
+              (replyError) => {
+                console.error(
+                  "Lỗi khi gửi email phản hồi tự động:",
+                  replyError
+                );
+              }
+            );
+
           setIsSending(false);
-          enqueueSnackbar(`Cảm ơn bạn đã liên hệ, chúng tôi sẽ phản hồi bạn sớm!`, {
-            variant: "success",
-            autoHideDuration: 1500,
-          })
         },
         (error) => {
-          console.error("Error sending email:", error);
+          console.error("Lỗi khi gửi email đến shop:", error);
           setIsSending(false);
           alert("Đã có lỗi xảy ra, vui lòng thử lại.");
         }
@@ -88,7 +112,6 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    
     <div className="max-w-[1300px] mx-auto">
       <nav className="flex items-center space-x-2 text-sm text-gray-600 p-4">
         <a href="/customer" className="hover:text-gray-900">
@@ -147,7 +170,7 @@ const ContactPage: React.FC = () => {
                   Email *
                 </label>
                 <input
-                name="email"
+                  name="email"
                   type="email"
                   id="email"
                   className="mt-1 block w-full border border-gray-300 rounded-sm p-2"
@@ -164,7 +187,7 @@ const ContactPage: React.FC = () => {
                   Số điện thoại *
                 </label>
                 <input
-                name="phone"
+                  name="phone"
                   type="tel"
                   id="phone"
                   className="mt-1 block w-full border border-gray-300 rounded-sm p-2"
@@ -182,7 +205,7 @@ const ContactPage: React.FC = () => {
                   Thêm ghi chú *
                 </label>
                 <textarea
-                name="message"
+                  name="message"
                   id="message"
                   rows={4}
                   className="mt-1 block w-full border border-gray-300 rounded-sm p-2"

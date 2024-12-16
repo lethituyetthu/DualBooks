@@ -40,7 +40,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, updateCartCount }) => {
       </Link>
 
       {/* Tác giả */}
-      <p className="text-sm text-gray-600 my-3 text-center">{book.author}</p>
+      <p className="text-sm text-gray-600 my-3 text-center line-clamp-1">{book.author}</p>
 
       {/* Giá và nút thêm vào giỏ hàng */}
       <div className="flex items-center justify-between space-x-2 bg-light-300 rounded-lg m-auto w-[90%]">
