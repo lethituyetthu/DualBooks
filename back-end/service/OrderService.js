@@ -17,7 +17,8 @@ exports.createOrder = async (orderData) => {
             shipping_address: orderData.shipping_address || "Đường số 3. CVPM Quang Trung, Quận 12", // Địa chỉ giao hàng, mặc định nếu không có
             order_type: orderData.order_type, // Loại đơn hàng: online hoặc offline
             customer_feedback: orderData.customer_feedback, // Đánh giá của khách hàng
-            payment_method: orderData.payment_method // Phương thức thanh toán
+            payment_method: orderData.payment_method ,// Phương thức thanh toán
+            shipping_method: orderData.shipping_method || 'standard' // Mặc định là 'standard' nếu không được cung cấp
         });
 
         // Lưu đơn hàng vào cơ sở dữ liệu

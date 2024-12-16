@@ -36,6 +36,12 @@ const orderSchema = new Schema({
         default: 'Tiền mặt', // Mặc định là tiền mặt khi tạo đơn hàng mới
         required: true,
     },
+    shipping_method: { // Trường mới để lưu phương thức vận chuyển
+        type: String,
+        enum: ['standard', 'express'], // Các lựa chọn: tiêu chuẩn hoặc nhanh
+        default: 'standard', // Mặc định là giao hàng tiêu chuẩn
+        required: true,
+    },
     shipping_address: {
         type: String,
         required: function() { return this.order_type === 'online'; }, // địa chỉ giao hàng chỉ bắt buộc cho đơn hàng online
