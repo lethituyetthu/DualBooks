@@ -19,7 +19,7 @@ const CustomerSchema = new Schema({
     },
     verificationCodeExpiry: {
         type: Date,
-        required: true,
+        // required: true,
     },
     otp: { type: String },
     otpExpiry: { type: Date },

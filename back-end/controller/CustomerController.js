@@ -189,21 +189,18 @@ exports.getCustomerById = async (customerId) => {
     }
 };
 // Controller để cập nhật trạng thái khách hàng
-exports.updateStatus = async (req, res) => {
+exports.updateStatus = async (customerId) => {
     try {
-        const customerId = req.params.id;
-
-        // Gọi service để cập nhật trạng thái khách hàng
-        const updatedCustomer = await customerService.updateCustomerStatus(customerId);
-
-        res.status(200).json({
-            message: 'Status updated successfully',
-            customer: updatedCustomer
-        });
+      // Gọi service để lấy và cập nhật trạng thái khách hàng
+      const updatedCustomer = await customerService.updateCustomerStatus(customerId);
+  
+      // Trả về khách hàng đã cập nhật với các thông tin cần thiết
+      return updatedCustomer;
     } catch (error) {
-        res.status(500).json({ message: error.message });
+      console.error('Error in controller:', error.message);
+      throw new Error(error.message); // Ném lại lỗi để Router xử lý
     }
-};
+  };
 // Hàm lấy khách hàng theo tên
 exports.getByName = async (name) => {
     try {

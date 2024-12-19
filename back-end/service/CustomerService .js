@@ -322,6 +322,7 @@ exports.updateCustomerStatus = async (customerId) => {
     // Tìm khách hàng theo ID
     const customer = await Customer.findById(customerId);
     
+    console.log(customer)
     if (!customer) {
         throw new Error('Customer not found');
     }

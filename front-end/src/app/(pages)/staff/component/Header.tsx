@@ -15,6 +15,8 @@ const Header: React.FC = () => {
       setAdmin(adminToken);
     }
   }, []);
+
+  //console.log(admin.username)
   return (
     <header className="bg-primary-400 p-4 flex justify-between items-center">
       {/* Logo and Navigation */}
