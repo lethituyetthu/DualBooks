@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     >
       <div className="">
         <Header />
-        <main className="bg-light-100 ">{children}</main>
+        <main className="bg-light-100 min-h-screen">{children}</main>
       </div>
     </SnackbarProvider>
   );

@@ -60,8 +60,8 @@ const ResetPasswordForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 border border-gray-300 rounded shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">Quên mật khẩu</h2>
+    <div className="max-w-md mx-auto p-4  rounded-sm bg-white shadow-lg">
+      <h2 className="text-3xl text-primary-600 font-bold mb-4 text-center font-itim ">Quên mật khẩu</h2>
       <p className="mb-4 text-center">Vui lòng nhập thông tin bên dưới!</p>
 
       <input
@@ -81,7 +81,7 @@ const ResetPasswordForm: React.FC = () => {
 
       <button
         onClick={handleResetPassword}
-        className="bg-[#fec435] text-white rounded-md p-2 w-full mt-4"
+        className="bg-primary-400 hover:bg-primary-300 text-white rounded-md p-2 w-full mt-4"
       >
         Xác nhận
       </button>

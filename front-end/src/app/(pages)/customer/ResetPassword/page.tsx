@@ -4,7 +4,7 @@ import ResetPasswordForm from './ResetPasswordForm';
 
 const ResetPasswordPage: React.FC = () => {
   return (
-    <div>
+    <div className='p-10'>
       <ResetPasswordForm />
     </div>
   );

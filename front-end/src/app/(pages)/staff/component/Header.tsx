@@ -9,14 +9,15 @@ const Header: React.FC = () => {
   const [admin, setAdmin] = useState<{ username?: string } | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
+   // const token = localStorage.getItem("token");
+    
       const adminToken = JSON.parse(localStorage.getItem("admin") || "{}");
       setAdmin(adminToken);
-    }
+    
+  //console.log(admin)
+
   }, []);
 
-  //console.log(admin.username)
   return (
     <header className="bg-primary-400 p-4 flex justify-between items-center">
       {/* Logo and Navigation */}

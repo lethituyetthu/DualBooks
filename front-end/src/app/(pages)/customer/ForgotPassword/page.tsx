@@ -4,7 +4,7 @@ import ForgotPasswordForm from './ForgotPasswordForm';
 
 const ForgotPasswordPage: React.FC = () => {
   return (
-    <div>
+    <div className='p-10'>
       <ForgotPasswordForm />
     </div>
   );

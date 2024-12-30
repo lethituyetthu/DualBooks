@@ -26,7 +26,7 @@ export default function CategoryTable() {
   };
 
   const handleDelete = async (id) => {
-    if (confirm("Bạn có chắc chắn muốn xóa thể loại này?")) {
+    if (confirm("Bạn có chắc chắn muốn ẩn thể loại này?")) {
       await deleteCategory(id)
       .then(() => {
         window.location.reload();

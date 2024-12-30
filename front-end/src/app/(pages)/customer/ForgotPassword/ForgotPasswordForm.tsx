@@ -103,8 +103,8 @@ const ForgotPasswordForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 border border-gray-300 rounded shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">Quên mật khẩu</h2>
+    <div className="max-w-md mx-auto p-4 bg-white  rounded-sm shadow-lg ">
+      <h2 className="text-3xl font-bold mb-4 text-center text-primary-600  font-itim">Quên mật khẩu</h2>
       <p className="mb-4 text-center">Vui lòng nhập thông tin bên dưới!</p>
 
       <input
@@ -120,7 +120,7 @@ const ForgotPasswordForm: React.FC = () => {
         }}
         className="w-full p-2 border border-gray-300 rounded mb-2"
       />
-      <p className="text-center">
+      <p className="text-center mt-4">
         Nhập mã xác thực OTP gửi đến <strong>{email}</strong>
       </p>
 
@@ -150,7 +150,7 @@ const ForgotPasswordForm: React.FC = () => {
         <p className="text-red-600 text-center mt-3">Thời gian đã hết! Hãy yêu cầu gửi lại mã OTP.</p>
       )}
 
-      <p className="text-center mt-5">
+      <p className="text-center my-5">
         Nếu không nhận được mã?{' '}
         <span
           onClick={handleResendOtp}
@@ -161,7 +161,7 @@ const ForgotPasswordForm: React.FC = () => {
       </p>
       <button
         onClick={handleVerifyOtp}
-        className="bg-[#fec435] text-white rounded-md p-2 w-full"
+        className="bg-primary-400 hover:bg-primary-300 text-white rounded-md p-2 w-full"
         disabled={otpDigits.includes('')} // Disable nút nếu có ô trống
       >
         Xác thực

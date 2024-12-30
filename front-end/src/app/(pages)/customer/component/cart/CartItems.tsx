@@ -47,7 +47,7 @@ const CartItems: React.FC<CartItemListProps> = ({
       </div>
             {/* Cột 2: Hiển thị tên và giá */}
       <div className="flex flex-col justify-between flex-grow">
-        <h3 className="text-lg font-semibold text-gray-700">{item.title}</h3>
+        <h3 className="text-lg text-gray-700">{item.title}</h3>
         <p className="text-gray-500 mt-1">
           Giá: {(item.price * 1000).toLocaleString("vi-VN")} đ
         </p>
@@ -71,7 +71,7 @@ const CartItems: React.FC<CartItemListProps> = ({
         </button>
       </div>
          {/* Cột 4: Hiển thị tổng giá tiền cho sản phẩm */}
-      <div className="text-lg font-semibold text-gray-700">
+      <div className="text-lg font-semibold text-gray-700 text-nowrap">
         {(item.price * 1000 * item.quantity).toLocaleString("vi-VN")} đ
       </div>
 

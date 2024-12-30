@@ -113,7 +113,7 @@ function useFavoriteBooks() {
             variant: "success",
             autoHideDuration: 1500,
           })
-          window.location.reload(); // Làm mới trang sau 3 giây
+           // Làm mới trang sau 3 giây
         } else {
           enqueueSnackbar(`Sản phẩm đã tồn tại danh sách yêu thích!`, {
             variant: "warning",
@@ -128,6 +128,10 @@ function useFavoriteBooks() {
       }
     } else {
       setMessage("Vui lòng đăng nhập.");
+      enqueueSnackbar(`Bạn cần đăng nhập!`, {
+        variant: "error",
+        autoHideDuration: 1500,
+      })
       setTimeout(() => setMessage(""), 3000);
     }
   };
